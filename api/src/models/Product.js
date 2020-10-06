@@ -7,6 +7,26 @@ module.exports = (sequelize) => {
     name: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true
     },
+    description:{
+      type: DataTypes.TEXT,
+    },
+    price:{
+      type: DataTypes.DECIMAL,
+      allowNull: false,
+      validate:{
+        isNumeric: true,
+        isDecimal: true
+      }    
+    },
+    dimentions:{
+      type: DataTypes.TEXT
+    },
+    stock:{
+      type: DataTypes.INTEGER,
+      allowNull: false      
+    } 
+    
   });
 };
