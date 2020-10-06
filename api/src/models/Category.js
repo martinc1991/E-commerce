@@ -9,6 +9,9 @@ module.exports = (sequelize) => {
             validate: {
                 isAlphanumeric: true
             }
+        },
+        description: {
+            type: DataTypes.TEXT,
         }
     });
 };
