@@ -13,6 +13,22 @@ server.post('/category/', (req, res, next) => {
 		
 });
 
+server.delete('/category/:id', (req, res, next) => {
+    return Categories.findOne({
+         where:{
+             id: req.params.id
+         }
+     })
+         .then(category => {                      
+             var categoryName = category.name;
+             category.destroy()
+             return res.send(`Se elimino la categoria ${categoryName}`)
+             
+         })
+         
+         .catch(next);
+ });
+
 
 
 module.exports = server;
