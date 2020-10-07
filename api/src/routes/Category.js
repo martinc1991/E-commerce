@@ -29,6 +29,21 @@ server.delete('/category/:id', (req, res, next) => {
          .catch(next);
  });
 
-
+server.put('/category/:id', (req, res, next) => {
+    return Categories.findOne({
+         where:{
+             id: req.params.id
+         }
+     })
+         .then(category => {             
+            var categoryName = category.name;
+            category.name = req.body.name;
+            category.description = req.body.description;
+            category.save()
+            return res.send(`Se ha modificado la categoria ${categoryName} correctamente`)
+             
+         })
+         .catch(next);
+ });
 
 module.exports = server;
