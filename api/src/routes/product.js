@@ -1,7 +1,12 @@
 const server = require('express').Router();
 const { Product } = require('../db.js');
 var body_parser = require('body-parser');
-var create=201;
+
+const OK = 200;
+const CREATE_OK = 201;
+const ERROR = 400;
+const NOT_FOUND = 404;
+const ERROR_SERVER = 500;
 
 server.get('/', (req, res, next) => {
 	Product.findAll()
@@ -15,7 +20,7 @@ module.exports = server;
 
 server.post('/',function(req,res){
 	if(!req){
-		res.status(400).send("Datos incompletos");
+		res.status(ERROR).send("Datos incompletos");
 	}
 	var skun=req.body.skun;	
 	var name=req.body.name;
@@ -27,7 +32,7 @@ server.post('/',function(req,res){
 	var assessment=req.body.assessment;
 
 	Product.findOrCreate({
-		where:req.body.name
+		where:req.body.skun
 	}).then(function(products){
 		return Product.Create({
 			skun:skun,
@@ -38,11 +43,9 @@ server.post('/',function(req,res){
 			category_id:category_id,
 			stock:stock,
 			assessment:assessment
-		}).then(res.status(create).send("Producto Creado Correctamente."));
+		}).then((products)=>{
+			res.status(CREATE_OK).send("Producto Creado Correctamente.",products)
+		});
 
-	})
-
-
-
-
+	});
 });
