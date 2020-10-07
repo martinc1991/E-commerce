@@ -1,7 +1,10 @@
 const server = require('express').Router();
 const { Product } = require('../db.js');
-const eliminar = 200;
-const badRequest =400;
+const OK = 200;
+const CREATE_OK = 201;
+const ERROR = 400;
+const NOT_FOUND = 404;
+const ERROR_SERVER = 500;
 
 server.get('/', (req, res, next) => {
 	Product.findAll()
@@ -23,9 +26,9 @@ server.delete('/:id',function(req,res,next){
 			// rowDeleted will return number of rows deleted 
 			if(rowDeleted === 1){ 
 				console.log('Deleted successfully'); 
-				res.status(eliminar).send('Deleted successfully');
+				res.status(OK).send('Deleted successfully');
 			}else {
-				res.status(badRequest).send('Deleted successfully');
+				res.status(ERROR).send('Deleted successfully');
 			}
 
 		});
