@@ -4,6 +4,7 @@ const { Product } = require('../db.js');
 // CODIGO VARIABLES DE STATUS
 const OK = 200;
 const CREATE_OK = 201;
+const UPDATE = 204;
 const ERROR = 400;
 const NOT_FOUND = 404;
 const ERROR_SERVER = 500;
