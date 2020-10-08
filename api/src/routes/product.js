@@ -16,36 +16,29 @@ server.get('/', (req, res, next) => {
 		.catch(next);
 });
 
-module.exports = server;
+
 
 server.post('/',function(req,res){
 	if(!req){
 		res.status(ERROR).send("Datos incompletos");
 	}
-	var skun=req.body.skun;	
-	var name=req.body.name;
-	var description=req.body.description;
-	var price= req.body.price;
-	var dimension=req.body.dimension;
-	var category_id=req.body.category_id;
-	var stock=req.body.stock;
-	var assessment=req.body.assessment;
-
-	Product.findOrCreate({
-		where:req.body.skun
-	}).then(function(products){
-		return Product.Create({
-			skun:skun,
-			name:name,
-			description=description,
-			price:price,
-			dimension:dimension,
-			category_id:category_id,
-			stock:stock,
-			assessment:assessment
-		}).then((products)=>{
-			res.status(CREATE_OK).send("Producto Creado Correctamente.",products)
-		});
-
+	const {name,description,price,stock,dimention,rating,thumbnail}=req.body
+	
+	console.log("entro al post");
+	Product.create({
+		
+		name:name,
+		description:description,
+		price:price,
+		stock:stock,
+		dimention:dimention,
+		rating:rating,
+		thumbnail:thumbnail
+		
+	}).then((products)=>{
+		return res.status(CREATE_OK).json({message:"Producto Creado Correctamente.",data:products})
 	});
+	
+
 });
+module.exports = server;
