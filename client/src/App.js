@@ -1,14 +1,15 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import PrinciapalAdmin from './components/AdminForm/pageP'
+import Navegacion from './components/Navegacion/Navegacion';
+// Bootstrap
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-
 function App() {
-  return (
-    <PrinciapalAdmin/>
-  );
+	return (
+		<div className='App'>
+			<Navegacion></Navegacion>
+		</div>
+	);
 }
 
 export default App;
