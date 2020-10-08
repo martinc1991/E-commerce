@@ -1,0 +1,78 @@
+/* Import de fonts */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+/* Colores personalizados */
+:root {
+	--azul: #1f2333;
+	--celeste: #3b8ea5;
+	--blanco: #edf7f6;
+	--naranja: #f19953;
+}
+
+.navbar {
+	height: 60px;
+	font-family: 'Open Sans', sans-serif;
+	background-color: var(--azul);
+	box-shadow: 0px 2px 10px var(--azul);
+}
+
+.logo {
+	height: 45px;
+}
+
+.navbarLinks {
+	font-size: 14px;
+	color: var(--celeste);
+	transition: 300ms;
+}
+
+.navbarLinks:hover {
+	color: var(--blanco);
+}
+
+.separador {
+	border-left: 1px solid var(--celeste);
+	height: 25px;
+}
+
+.contenedorSearchInput {
+	padding-top: 10px;
+}
+
+.searchInput {
+	background-color: var(--blanco) !important;
+	border: 1px solid var(--blanco) !important;
+	border-top-left-radius: 100px !important;
+	border-bottom-left-radius: 100px !important;
+	height: 32px !important;
+	font-size: 14px !important;
+}
+
+.contenedorLupa {
+	/* !important para sobreescribir la clase 'input-group-text' de bootstrap */
+	background-color: var(--celeste) !important;
+	border: 1px solid var(--celeste) !important;
+	border-top-right-radius: 100px !important;
+	border-bottom-right-radius: 100px !important;
+	height: 32px !important;
+}
+
+.searchIcon {
+	color: var(--blanco);
+	transition: 300ms;
+}
+
+.searchIcon:hover {
+	color: var(--azul);
+}
+
+.userLoginIcon,
+.shopCartIcon {
+	color: var(--celeste);
+	transition: 300ms;
+}
+
+.userLoginIcon:hover,
+.shopCartIcon:hover {
+	color: var(--blanco);
+}
