@@ -14,7 +14,7 @@ import { faUser as userLogin, faShoppingCart as shopCart } from '@fortawesome/fr
 import SearchBar from '../SearchBar/SearchBar';
 
 // React -Routes
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 export default function Navegacion() {
 	return (
@@ -50,7 +50,7 @@ export default function Navegacion() {
 					{/* Link: ADMIN */}
 					<div className={`align-self-center ${s.separador}`}></div>
 					<Nav.Link as={Link} to='/admin' className={`flex-fill ${s.navbarLinks}`}>
-						ADMIN
+						Admin
 					</Nav.Link>
 				</Col>
 
