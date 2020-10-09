@@ -5,14 +5,11 @@ import s from '../styles/styles.module.css'
 import Menu from './menu'
 
 
-const Product = ()=> {
-    const [date, setData] = useState(datas.data)
+const Categorys = ()=> {
+    const [date, setData] = useState(datas.dataCat)
     const [form, setForm] = useState({
         name : "",
         description : "",
-        price : "",
-        stock : "",
-        category : ""
     })
     const [show, setShow] = useState(false);
     const [showUpdate, setShowUpdate] = useState(false)
@@ -20,13 +17,13 @@ const Product = ()=> {
 
     /*********************** Functions **************************** */
     const openModal = ()=> { setShow(true)  }
+    const openModalUpdate = ()=> { setShowUpdate(true)  }
     const closeModal = ()=> { setShow(false)  }
     const closeModalUpdate = ()=> { setShowUpdate(false)  }
     const handlerChange = (e) => {  setForm({ ...form, [e.target.name]:e.target.value})  }
     const insertProduct = () => {
         console.log(form)
         let dataNew = date
-        form.id = dataNew.length + 1
         dataNew.push({...form})
         console.log(dataNew)
         setData(dataNew)
@@ -36,10 +33,8 @@ const Product = ()=> {
         console.log(product)
         let cont = 0;
         let list = date
-        console.log(list)
         list.map((dat)=>{
             if(dat.id === product.id) { 
-                list[cont].id = product.id
                 list[cont].name = product.name
                 list[cont].description = product.description
                 list[cont].price = product.price
@@ -73,7 +68,6 @@ const Product = ()=> {
     }
 
     const deleteProduct = (id)=>{
-        console.log(id)
         if(window.confirm('Are you sure remove this product?')){
             let list = date.filter((dt)=> {
                 return dt.id !== id
@@ -85,31 +79,24 @@ const Product = ()=> {
 
     return (
         <>
-        <div>
-            <Menu/>
+        <Menu/>
+        <div className={s.cont__Form__Admin__Pr}>
+            {/* <Menu/> */}
             <div className= {s.cont__table__pr}>
             <Table striped bordered hover>
                     <thead>
                         <tr>
-                        <th>#</th>
                         <th>Name</th>
                         <th>Description</th>
-                        <th>Price</th>
-                        <th>Stock</th>
-                        <th>Category</th>
-                        <th>Action</th>
+                        <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         {date.map(dat => {
                             return (
                                 <tr>
-                                    <td>{dat.id}</td>
                                     <td>{dat.name}</td>
                                     <td>{dat.description}</td>
-                                    <td>{dat.price}</td>
-                                    <td>{dat.stock}</td>
-                                    <td>{dat.category}</td>
                                     <td>
                                         <Button variant="danger" onClick={() => deleteProduct(dat.id)}>Delete</Button>{"  "}
                                         <Button variant="primary" onClick={()=> updateProductModal(dat)}>Update</Button>
@@ -120,7 +107,7 @@ const Product = ()=> {
                         })}
                     </tbody>
             </Table>
-            <Button variant="success" onClick={openModal}>Add Product</Button>
+            <Button variant="success" onClick={openModal}>Add Category</Button>
             </div>
         </div>
         {/**************************** MODAL ADD ******************************** */}
@@ -148,26 +135,6 @@ const Product = ()=> {
                             <Form.Label>Description:</Form.Label>
                             <input type="text" name="description" onChange={handlerChange}/>
                         </Form.Group>
-                        <Form.Group>
-                            <Form.Label>Price:</Form.Label>
-                            <input type="number" name="price" onChange={handlerChange}/>
-                        </Form.Group>
-                        <Form.Group>
-                            <Form.Label>Stock:</Form.Label>
-                            <input type="number" name="stock" onChange={handlerChange}/>
-                        </Form.Group>
-                        <Form.Group>
-                            <Form.Label>Category: </Form.Label>
-                            <select onChange={handlerChange} name="category">
-                            <option value="">....</option>
-                                {datas.dataCat.map((d)=>{
-                                    return (
-                                        <option value={d.name}>{d.name}</option>
-                                    )
-                                })}
-
-                            </select>
-                        </Form.Group>
                     </Modal.Body>
                     <Modal.Footer>
                         <Button variant="success" onClick={insertProduct}>Add</Button>
@@ -175,7 +142,6 @@ const Product = ()=> {
                     </Modal.Footer>
             </Modal>
         </div>
-         {/**************************** MODAL UPDATE ******************************** */}
         <div>
         <Modal 
                 show={showUpdate}
@@ -184,13 +150,13 @@ const Product = ()=> {
                 keyboard={false}
                 >
                     <Modal.Header>
-                        Update Product
+                        Update Category
                     </Modal.Header>
 
                     <Modal.Body>
                     <Form.Group>
                             <Form.Label>Id:</Form.Label>
-                            <input type="text" name="name"  readOnly value={form.id} />
+                            <input type="text" name="name"  readOnly value={date.length+1} />
                         </Form.Group>
                         <Form.Group>
                             <Form.Label>Name:</Form.Label>
@@ -199,26 +165,6 @@ const Product = ()=> {
                         <Form.Group>
                             <Form.Label>Description:</Form.Label>
                             <input type="text" name="description" onChange={handlerChange} value={form.description}/>
-                        </Form.Group>
-                        <Form.Group>
-                            <Form.Label>Price:</Form.Label>
-                            <input type="number" name="price" onChange={handlerChange} value={form.price}/>
-                        </Form.Group>
-                        <Form.Group>
-                            <Form.Label>Stock:</Form.Label>
-                            <input type="number" name="stock" onChange={handlerChange} value={form.stock}/>
-                        </Form.Group>
-                        <Form.Group>
-                            <Form.Label>Category: </Form.Label>
-                            <select onChange={handlerChange} name="category" value={form.category}>
-                            <option value="">....</option>
-                                {datas.dataCat.map((d)=>{
-                                    return (
-                                        <option value={d.name}>{d.name}</option>
-                                    )
-                                })}
-
-                            </select>
                         </Form.Group>
                     </Modal.Body>
                     <Modal.Footer>
@@ -232,4 +178,4 @@ const Product = ()=> {
 }
 
 
-export default Product
+export default Categorys

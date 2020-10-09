@@ -1,0 +1,56 @@
+/* Import de fonts */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+:root {
+	--azul: #1f2333;
+	--celeste: #3b8ea5;
+	--blanco: #edf7f6;
+	--naranja: #f19953;
+}
+
+p {
+	font-family: 'Open Sans', sans-serif;
+}
+
+.footer {
+	background-color: var(--azul);
+	color: var(--celeste);
+	box-shadow: 0px -2px 10px var(--azul);
+	min-height: 300px;
+}
+
+.logo {
+	height: 80px;
+}
+
+.separador {
+	border-left: 1px solid var(--celeste);
+	height: 200px;
+}
+
+.searchInput {
+	background-color: var(--blanco) !important;
+	border: 1px solid var(--blanco) !important;
+	border-top-left-radius: 100px !important;
+	border-bottom-left-radius: 100px !important;
+	height: 32px !important;
+	font-size: 14px !important;
+}
+
+.contenedorSubmit {
+	/* !important para sobreescribir la clase 'input-group-text' de bootstrap */
+	background-color: var(--celeste) !important;
+	border: 1px solid var(--celeste) !important;
+	border-top-right-radius: 100px !important;
+	border-bottom-right-radius: 100px !important;
+	height: 32px !important;
+}
+
+.contenedorSubmit p {
+	line-height: 18px;
+	transition: 300ms;
+}
+
+.contenedorSubmit p:hover {
+	color: var(--azul);
+}

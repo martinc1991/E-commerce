@@ -1,10 +1,15 @@
 import React from 'react'
 import Product from './product'
+import Categorys from './Categorys'
+import Menu from './menu'
 
 
 const PrinciapalAdmin = ()=> {
     return (
-        <Product />
+        <div>
+            <Menu />
+        </div>
+        
     )
 }
 

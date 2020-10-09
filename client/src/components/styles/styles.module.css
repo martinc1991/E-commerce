@@ -9,3 +9,10 @@
     width: 100%;
     padding: 20px;
 }
+
+.list__nav{
+    display: block;
+    padding: 0 10px;
+    margin: 0 10px;
+}
+
