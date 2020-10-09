@@ -9,14 +9,6 @@ const ERROR = 400;
 const NOT_FOUND = 404;
 const ERROR_SERVER = 500;
 
-// CODIGO VARIABLES DE STATUS
-const OK = 200;
-const CREATE_OK = 201;
-const UPDATE = 204;
-const ERROR = 400;
-const NOT_FOUND = 404;
-const ERROR_SERVER = 500;
-
 server.get('/', (req, res, next) => {
 	Product.findAll()
 		.then(products => {
@@ -24,6 +16,26 @@ server.get('/', (req, res, next) => {
 			res.send( products);
 		})
 		.catch(next);
+});
+
+server.post('/',function(req,res){
+	if(!req){
+		res.status(ERROR).send("Datos incompletos");
+	}
+	const {name,description,price,stock,dimention,rating,thumbnail}=req.body
+	
+		Product.create({	
+		name:name,
+		description:description,
+		price:price,
+		stock:stock,
+		dimention:dimention,
+		rating:rating,
+		thumbnail:thumbnail
+		
+	}).then((products)=>{
+		return res.status(CREATE_OK).json({message:"Producto Creado Correctamente.",data:products})
+	});	
 });
 
 server.delete('/:id',function(req,res,next){
@@ -63,11 +75,5 @@ server.get('/search', (req, res) =>{
 		})
 
 });
-
-
-
-
-
-
 
 module.exports = server;
