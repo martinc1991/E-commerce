@@ -1,4 +1,5 @@
 const server = require('express').Router();
+const { INTEGER, STRING } = require('sequelize/types');
 const { Product } = require('../db.js');
 const {Op} = require('sequelize');
 
@@ -16,6 +17,33 @@ server.get('/', (req, res, next) => {
 			res.send( products);
 		})
 		.catch(next);
+});
+
+server.put('/:id', function (req, res) {
+	
+	const idProduct = req.params.id;
+	
+	Product.update({
+
+		name: req.body.name,
+		description:req.body.description,
+		price:req.body.price,
+		stock:req.body.stock,
+		dimention:req.body.dimention,
+		rating:INTEGER,
+		thumbnail:STRING
+
+	},
+		{
+		where: {
+			id: idProduct,
+		}
+	}).then(function(producto){
+		res.status(OK).json({message:"producto Modificado correctamente",producto});
+	}).catch(
+		function(error){
+			console.log("error al modificar producto",error);
+			res.status(ERROR_SERVER).json({message:"error al modificar el producto",error})
 });
 
 server.post('/',function(req,res){
@@ -73,7 +101,6 @@ server.get('/search', (req, res) =>{
 .then((values) => {
 		res.status(OK).send({values})
 		})
-
 });
 
 module.exports = server;
