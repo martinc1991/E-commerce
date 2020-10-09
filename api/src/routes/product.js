@@ -17,7 +17,26 @@ server.get('/', (req, res, next) => {
 		.catch(next);
 });
 
-//s23
+server.delete('/:id',function(req,res,next){
+	var idProducto = req.params.id;
+
+	Product.destroy({ 
+		where: 
+			{ 
+				id: idProducto //this will be your id that you want to delete 
+			}
+		}).then(function(rowDeleted){ 
+			// rowDeleted will return number of rows deleted 
+			if(rowDeleted >= 1){ 
+				console.log('Deleted successfully'); 
+				res.status(OK).json({message:'Deleted successfully',rowDeleted});
+			}else {
+				res.status(ERROR).json({message:'Deleted failed',rowDeleted});
+			}
+
+		});
+})
+
 server.get('/search', (req, res) =>{
 	const value = req.query.query;
 
@@ -35,10 +54,6 @@ server.get('/search', (req, res) =>{
 		})
 
 });
-
-
-
-
 
 
 module.exports = server;
