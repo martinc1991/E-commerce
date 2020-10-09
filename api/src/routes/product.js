@@ -17,23 +17,6 @@ server.get('/', (req, res, next) => {
 		.catch(next);
 });
 
-server.get('/category/:category_id', (req, res) =>{
-	//retornar todos los productos de una categoria
-	const {category_id} = req.params;
-
-	Product.findByFK(category_id,{
-					include: {
-					model: category_pro_id
-					}
-	})// revisar si se debe retornar solo el nombre o todos
-	//los detalles del producto
-	.then((products) => {
-		res.status(OK).send('Los productos guardados serian:', {products});
-	})
-
-});
-
-
 
 server.get('/search', (req, res) =>{
 	const value = req.query.query;
