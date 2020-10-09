@@ -1,0 +1,93 @@
+/* Import de fonts */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+.cont_prin{
+    width: 70%;
+    border: 1px solid black;
+    margin: auto;
+}
+.cont{
+    display: flex;
+}
+.cont_img{
+    width: 50%;
+    border: 1px solid black;
+   
+}
+.cont_info{
+    width: 50%;
+    height: 500px;
+    
+}
+.cont_info h3{
+    color: #1F2333;
+    font-size: 30px;
+    margin-left: 25px;
+    font-weight: bold;
+    font-family: 'Open Sans', sans-serif;
+    margin-top: 5px;
+}
+.cont_info h4{
+    color: #3B8EA5;
+    font-weight: normal;
+    font-size: 25px;
+    font-family: 'Open Sans', sans-serif;
+    margin-left: 25px;
+    margin-top: 15px;
+}
+.cont_info h6{
+    color: #1F2333;
+    font-weight: bolder;
+    font-size: 10px;
+    font-family: 'Open Sans', sans-serif;
+    margin-left: 25px;
+    margin-top: 15px;
+}
+.cont_info p{
+    color: #1F2333;
+    font-weight: normal;
+    font-size: 12px;
+    font-family: 'Open Sans', sans-serif;
+    margin-left: 25px;
+    margin-top: 25px;
+    
+}
+.cont_info p .dim{
+    font-weight: bold;
+}
+.cont_cant{
+    display: flex;
+    align-items: center; 
+    margin-top: 55px;
+}
+.cont_cant .select{
+    width: 40px;
+    height: 18px;
+}
+.cont_cant label{
+    color: #1F2333;
+    font-weight: bold;
+    font-size: 15px;
+    font-family: 'Open Sans', sans-serif;
+    margin-left: 25px;
+}
+.cont_cant h6{
+    color: #1F2333;
+    font-weight: normal;
+    font-size: 10px;
+    font-family: 'Open Sans', sans-serif;
+    margin-left: 15px;
+    padding-bottom: 11px;
+       
+}
+.cont_button{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 45px;
+}
+.button{
+    color: black !important;
+    background-color: tomato !important;
+}
+
+
+

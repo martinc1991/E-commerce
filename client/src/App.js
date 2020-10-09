@@ -5,6 +5,7 @@ import Product from './components/AdminForm/product'
 import Category from './components/AdminForm/Categorys'
 import Navegacion from './components/Navegacion/Navegacion';
 import WellcomeAdmin from './components/AdminForm/WellcomAdmin'
+import ProductDet from './components/ProductDet/index'
 // Bootstrap
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Route, Switch, Link} from 'react-router-dom'
@@ -15,12 +16,14 @@ function App() {
     
     <Switch>
       <Route path='/' exact component={Navegacion} />
-      <Route path='/admin' exact >
+      <Route path='/productdet' exact component={ProductDet} />
+
+      {/* <Route path='/admin' exact >
         <PrinciapalAdmin/>
         <WellcomeAdmin/>
       </Route>
       <Route path='/admin/product'  component={Product}/>
-      <Route path='/admin/category'  component={Category}/>
+      <Route path='/admin/category'  component={Category}/> */}
     </Switch>
     
     </div>
