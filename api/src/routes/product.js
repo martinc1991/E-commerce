@@ -17,7 +17,7 @@ server.get('/', (req, res, next) => {
 		.catch(next);
 });
 
-
+//s23
 server.get('/search', (req, res) =>{
 	const value = req.query.query;
 
@@ -35,13 +35,6 @@ server.get('/search', (req, res) =>{
 		})
 
 });
-
-
-
-
-
-
-
 
 
 
