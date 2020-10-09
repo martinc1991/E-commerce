@@ -1,7 +1,6 @@
 const server = require('express').Router();
 const { Product } = require('../db.js');
 var body_parser = require('body-parser');
-
 const OK = 200;
 const CREATE_OK = 201;
 const ERROR = 400;
@@ -16,17 +15,13 @@ server.get('/', (req, res, next) => {
 		.catch(next);
 });
 
-
-
 server.post('/',function(req,res){
 	if(!req){
 		res.status(ERROR).send("Datos incompletos");
 	}
 	const {name,description,price,stock,dimention,rating,thumbnail}=req.body
 	
-	console.log("entro al post");
-	Product.create({
-		
+		Product.create({	
 		name:name,
 		description:description,
 		price:price,
@@ -37,8 +32,6 @@ server.post('/',function(req,res){
 		
 	}).then((products)=>{
 		return res.status(CREATE_OK).json({message:"Producto Creado Correctamente.",data:products})
-	});
-	
-
+	});	
 });
 module.exports = server;
