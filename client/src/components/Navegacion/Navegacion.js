@@ -13,6 +13,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser as userLogin, faShoppingCart as shopCart } from '@fortawesome/free-solid-svg-icons';
 import SearchBar from '../SearchBar/SearchBar';
 
+// React -Routes
+import { Link } from 'react-router-dom';
+
 export default function Navegacion() {
 	return (
 		<Navbar className={`${s.navbar} sticky-top`}>
@@ -46,7 +49,7 @@ export default function Navegacion() {
 					</Nav.Link>
 					{/* Link: ADMIN */}
 					<div className={`align-self-center ${s.separador}`}></div>
-					<Nav.Link href='#' className={`flex-fill ${s.navbarLinks}`}>
+					<Nav.Link as={Link} to='/admin' className={`flex-fill ${s.navbarLinks}`}>
 						ADMIN
 					</Nav.Link>
 				</Col>
