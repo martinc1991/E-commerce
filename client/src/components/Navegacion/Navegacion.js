@@ -14,7 +14,7 @@ import { faUser as userLogin, faShoppingCart as shopCart } from '@fortawesome/fr
 import SearchBar from '../SearchBar/SearchBar';
 
 // React -Routes
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 export default function Navegacion() {
 	return (
