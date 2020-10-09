@@ -24,11 +24,11 @@ server.delete('/:id',function(req,res,next){
 			}
 		}).then(function(rowDeleted){ 
 			// rowDeleted will return number of rows deleted 
-			if(rowDeleted === 1){ 
+			if(rowDeleted >= 1){ 
 				console.log('Deleted successfully'); 
-				res.status(OK).send('Deleted successfully');
+				res.status(OK).json({message:'Deleted successfully',rowDeleted});
 			}else {
-				res.status(ERROR).send('Deleted successfully');
+				res.status(ERROR).json({message:'Deleted failed',rowDeleted});
 			}
 
 		});
