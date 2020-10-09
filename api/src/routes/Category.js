@@ -7,11 +7,18 @@ server.post('/category/', (req, res, next) => {
         description: req.body.description
     })
     .then((newCategory)=>{
-        return res.send(`La categoria ${newCategory.name} ha sido creada exitosamente`)
+        return res.send({data:newCategory})
     })
-    .catch(next); 
-		
+    .catch(next); 	
 });
+
+server.get('/category/', (req, res, next) => {
+    Categories.findAll()
+        .then(data => {
+            return res.send({result: data})
+        })
+        .catch(next)
+})
 
 server.delete('/category/:id', (req, res, next) => {
     return Categories.findOne({
@@ -22,10 +29,8 @@ server.delete('/category/:id', (req, res, next) => {
          .then(category => {                      
              var categoryName = category.name;
              category.destroy()
-             return res.send(`Se elimino la categoria ${categoryName}`)
-             
-         })
-         
+             return res.send(`Se elimino la categoria ${categoryName}`)  
+         })  
          .catch(next);
  });
 
@@ -41,7 +46,6 @@ server.put('/category/:id', (req, res, next) => {
             category.description = req.body.description;
             category.save()
             return res.send(`Se ha modificado la categoria ${categoryName} correctamente`)
-             
          })
          .catch(next);
  });

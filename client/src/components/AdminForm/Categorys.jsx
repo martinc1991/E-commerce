@@ -1,12 +1,16 @@
-import React, {useState} from 'react'
+import React from 'react';
 import {Table, Button, Container, Modal, FormGroup, Form } from 'react-bootstrap';
-import datas from './Data'
-import s from '../styles/styles.module.css'
-import Menu from './menu'
+import s from '../styles/styles.module.css';
+import Menu from './menu';
+import axios from 'axios';
+import {useState, useEffect} from 'react'
+
+
+const url = 'localhost:3001'
 
 
 const Categorys = ()=> {
-    const [date, setData] = useState(datas.dataCat)
+    const [date, setData] = useState([])
     const [form, setForm] = useState({
         name : "",
         description : "",
@@ -16,25 +20,48 @@ const Categorys = ()=> {
 
 
     /*********************** Functions **************************** */
+    const getProduct = () => {
+        axios.get(`http://${url}/products/category`)
+            .then(res => {
+                if(res){
+                    console.log(res.data.result)
+                    return setData(res.data.result)
+                }else{
+                    console.log("No hay Datos")
+                }
+            })
+            .catch(err => {
+                console.log('Errod')
+            })
+        //console.log('hola')
+    }
+
+    useEffect(()=> {
+        getProduct();
+    }, [])
+
+    const insertProduct = async () => {
+        console.log('hola')
+        await axios.post(`http://${url}/products/category`, form)
+            .then(res => {
+                console.log(res.data.data)
+                // let dataNew = date
+                // dataNew.push({...res.data.data})
+                getProduct()
+                setShow(false)
+            })
+    }
     const openModal = ()=> { setShow(true)  }
-    const openModalUpdate = ()=> { setShowUpdate(true)  }
     const closeModal = ()=> { setShow(false)  }
     const closeModalUpdate = ()=> { setShowUpdate(false)  }
     const handlerChange = (e) => {  setForm({ ...form, [e.target.name]:e.target.value})  }
-    const insertProduct = () => {
-        console.log(form)
-        let dataNew = date
-        dataNew.push({...form})
-        console.log(dataNew)
-        setData(dataNew)
-        setShow(false)
-    }
+
     const updateProductModal = (product)=> {
         console.log(product)
         let cont = 0;
         let list = date
         list.map((dat)=>{
-            if(dat.id === product.id) { 
+            if(dat.id === product.id) {
                 list[cont].name = product.name
                 list[cont].description = product.description
                 list[cont].price = product.price
@@ -49,30 +76,24 @@ const Categorys = ()=> {
     }
 
     const updateProduct = (dat)=>{
-        console.log(dat)
-        let cont = 0;
-        let list = date
-        list.map((date)=>{
-            if(date.id === dat.id) { 
-                list[cont].name = dat.name
-                list[cont].description = dat.description
-                list[cont].price = dat.price
-                list[cont].stock = dat.stock
-                list[cont].category = dat.category
-            }
-            cont++
-        })
-        
-        setData(list)
-        setShowUpdate(false)
+        axios.put(`http://${url}/products/category/${dat.id}`, dat)
+            .then(dat => {
+                setShowUpdate(false);
+                getProduct();
+            })
+        // console.log(dat)
     }
 
     const deleteProduct = (id)=>{
         if(window.confirm('Are you sure remove this product?')){
-            let list = date.filter((dt)=> {
-                return dt.id !== id
-            })
-           return setData(list)
+            axios.delete(`http://${url}/products/category/${id}`)
+                .then(dat => {
+                    getProduct()
+                })
+        //     let list = date.filter((dt)=> {
+        //         return dt.id !== id
+        //     })
+        //    return setData(list)
         }
 
     }
@@ -101,7 +122,7 @@ const Categorys = ()=> {
                                         <Button variant="danger" onClick={() => deleteProduct(dat.id)}>Delete</Button>{"  "}
                                         <Button variant="primary" onClick={()=> updateProductModal(dat)}>Update</Button>
                                     </td>
-                                    
+
                                 </tr>
                             )
                         })}
@@ -112,7 +133,7 @@ const Categorys = ()=> {
         </div>
         {/**************************** MODAL ADD ******************************** */}
         <div>
-            <Modal 
+            <Modal
                 show={show}
                 backdrop="static"
                 onHide={closeModal}
@@ -143,7 +164,7 @@ const Categorys = ()=> {
             </Modal>
         </div>
         <div>
-        <Modal 
+        <Modal
                 show={showUpdate}
                 backdrop="static"
                 onHide={closeModalUpdate}
@@ -156,7 +177,7 @@ const Categorys = ()=> {
                     <Modal.Body>
                     <Form.Group>
                             <Form.Label>Id:</Form.Label>
-                            <input type="text" name="name"  readOnly value={date.length+1} />
+                            <input type="text" name="name"  readOnly value={form.id} />
                         </Form.Group>
                         <Form.Group>
                             <Form.Label>Name:</Form.Label>
