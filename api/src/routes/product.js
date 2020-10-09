@@ -3,19 +3,25 @@ const server = require('express').Router();
 const { Product } = require('../db.js');
 const {Op} = require('sequelize');
 
-// CODIGO VARIABLES DE STATUS
-const OK = 200;
-const CREATE_OK = 201;
-const ERROR = 400;
-const NOT_FOUND = 404;
-const ERROR_SERVER = 500;
+const server = require('express').Router(); //Import router from express module.
+const { OK, CREATED, UPDATED, ERROR, NOT_FOUND, ERROR_SERVER } = require('../constants'); // Import Status constants.
+const { Product } = require('../db.js'); // Import Products model.
+const {Op} = require('sequelize'); // Import operator from sequelize module.
 
-server.get('/', (req, res, next) => {
-	Product.findAll()
+// Start routes
+
+//// 'Get products' route in '/'
+server.get('/', ( req, res ) => {
+	return Product.findAll()
 		.then(products => {
 			res.status(OK).send( products);
 		})
-		.catch(next);
+		.catch(err => {
+            return res.status(ERROR_SERVER).json({
+                message: 'Hubo un error en el servidor',
+                data: err
+            })
+        })
 });
 
 
@@ -138,4 +144,31 @@ server.get('/', (req, res, next) => {
 
 
 
+//// 'Add Category to a product' route in '/:product_id/category/:category_id'
+server.put('/:product_id/category/:category_id', (req, res)=>{
+
+	const { product_id, category_id } = req.params;
+
+	Promise.all([ Product.findByPk(product_id), Categories.findByPk(category_id) ])
+		.then(data =>{
+			data[0].addCategories(data[1])
+				.then(data => console.log(data))
+				return res.send('OK')
+		});
+})
+
+//// 'Remove Category to a product' route in '/:product_id/category/:category_id'
+server.delete('/:product_id/category/:category_id', (req, res)=>{
+
+	const { product_id, category_id } = req.params;
+
+	Promise.all([ Product.findByPk(product_id), Categories.findByPk(category_id) ])
+		.then(data =>{
+			data[0].removeCategories(data[1])
+				.then(data => console.log(data))
+				return res.send('OK')
+		});
+})
+
+//End routes
 module.exports = server;

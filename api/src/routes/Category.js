@@ -1,79 +1,92 @@
-const server = require('express').Router();
-const { Categories } = require('../db.js');
 
+const server = require('express').Router(); //Import router from express module.
+const { Categories } = require('../db.js'); // Import Categories model.
+const { OK, CREATED, UPDATED, ERROR, NOT_FOUND, ERROR_SERVER } = require('../constants'); // Import Status constants.
 
-const OK = 200;
-const CREATE_OK = 201;
-const UPDATE = 204;
-const ERROR = 400;
-const NOT_FOUND = 404;
-const ERROR_SERVER = 500;
+// Start Routes
 
-server.post('/category/', (req, res, next) => {
-    Categories.create({
-        name: req.body.name,
-        description: req.body.description
-    })
-    .then((newCategory)=>{
-        return res.send(`La categoria ${newCategory.name} ha sido creada exitosamente`)
-    })
-    .catch(next);
+//// 'Create Category' route in '/products/category'
+server.post('/category/', ( req, res ) => {
+    const { name, description } = req.body;
 
+    return Categories.create({ name, description })
+        .then( newCategory => {
+            return res.status(CREATED).json({
+                message: `La categoria ${newCategory.name} ha sido creada exitosamente`,
+                data: newCategory
+            });
+        })
+        .catch(err =>{
+            return res.status(ERROR).json({
+                message: 'Hubo un error al crear la categoría',
+                data: err
+            });
+        });
 });
 
-server.delete('/category/:id', (req, res, next) => {
-    return Categories.findOne({
-         where:{
-             id: req.params.id
-         }
-     })
-         .then(category => {
-             var categoryName = category.name;
-             category.destroy()
-             return res.send(`Se elimino la categoria ${categoryName}`)
+//// 'Get Category' route in '/products/category/:name'
+server.get('/category/:name', (req, res) =>{
+    const {name} = req.params;
 
-         })
+    return Categories.findOne({ where:{ name } })
+        .then( category => {
+            return res.status(OK).json({
+                message: 'Success',
+                data: category
+            });
+        })
+        .catch(err => {
+            return res.status(NOT_FOUND).json({
+                message: `La categoría ${name} todavía no ha sido creada`,
+                data: err
+            })
+        })
+});
 
-         .catch(next);
- });
 
-server.put('/category/:id', (req, res, next) => {
-    return Categories.findOne({
-         where:{
-             id: req.params.id
-         }
-     })
-         .then(category => {
-            var categoryName = category.name;
-            category.name = req.body.name;
-            category.description = req.body.description;
+//// 'Update Category' route in '/products/category/:id'
+server.put('/category/:id', (req, res) => {
+    const { id } = req.params;
+    const { name, description } = req.body;
+    return Categories.findOne({ where:{ id } })
+         .then(category => {             
+            let oldCategory = category;
+            category.name = name;
+            category.description = description;
             category.save()
-            return res.send(`Se ha modificado la categoria ${categoryName} correctamente`)
-
+            return res.status(UPDATED).json({
+                    message:`Se ha actualizado la categoria ${oldCategory.name} a ${category.name} correctamente!`,
+                    data: category
+            }); 
          })
-         .catch(next);
+         .catch(err => {
+            return res.status(ERROR).json({
+                message: 'Hubo un error al modificar la Categoría',
+                data: err
+            })
+        })
  });
 
-//s22
- server.get('/category/:name', (req, res) =>{
- 	//retornar todos los productos de una categoria
- 	const {name} = req.params;
-
-return Categories.findOne({
-                where:{
-                   name: name
-                 }
-               })
-
- 	.then((products) => {
-      if(!products){
-        return res.status(NOT_FOUND).send(new Error('Not found!'))
-      }
-    res.status(OK).send('Los productos guardados:', {products});
- 	})
-
+//// 'Remove Category' route in '/products/category/:id'
+server.delete('/category/:id', (req, res, next) => {
+    const { id } = req.params;
+    return Categories.findOne({ where:{ id } })
+         .then(category => {
+             let removedCategory = category;
+             category.destroy()
+             return res.json({
+                 message: `Se eliminó correctamente la categoría ${removedCategory.name}`,
+                 data: removedCategory
+            });
+         })
+         .catch(err => {
+            return res.status(ERROR_SERVER).json({
+                message: 'Error al eliminar la categoría',
+                data: err
+            })
+        })
  });
 
-
+// End Routes
 
 module.exports = server;

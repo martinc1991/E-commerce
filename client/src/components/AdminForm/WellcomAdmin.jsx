@@ -7,7 +7,7 @@ const WelcomeAdmin = ()=> {
     return (
         <div>
             <Jumbotron>
-                    <h1>Hello, Wellcome ADMI!</h1>
+                    <h1>Hello, Wellcome ADMIN!</h1>
                     <p>
                         This is the page for the Adminitrator.
                     </p>
