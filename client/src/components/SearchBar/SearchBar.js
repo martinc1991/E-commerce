@@ -14,7 +14,7 @@ export default function SearchBar() {
 	return (
 		<InputGroup className={`d-flex`}>
 			{/* Input buscador */}
-			<FormControl className={`${s.searchInput}`} id='inlineFormInputGroup' placeholder='Busca algo aqui...' />{' '}
+			<FormControl className={`${s.searchInput} shadow-none`} id='inlineFormInputGroup' placeholder='Busca algo aqui...' />{' '}
 			<InputGroup.Append>
 				<InputGroup.Text className={`${s.contenedorLupa}`}>
 					<FontAwesomeIcon className={`${s.searchIcon}`} icon={searchIcon} />
