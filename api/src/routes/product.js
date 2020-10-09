@@ -1,4 +1,5 @@
 const server = require('express').Router();
+const { INTEGER, STRING } = require('sequelize/types');
 const { Product } = require('../db.js');
 const OK = 200;
 const CREATE_OK = 201;
@@ -14,15 +15,19 @@ server.get('/', (req, res, next) => {
 		.catch(next);
 });
 
-server.put('/:id', function (req, res) {
+server.patch('/:id', function (req, res) {
+	
 	const idProduct = req.params.id;
+	
 	Product.update({
+
 		name: req.body.name,
 		description:req.body.description,
 		price:req.body.price,
 		stock:req.body.stock,
-		dimentions:req.body.dimentions,
-		rating:req.body.rating
+		dimention:req.body.dimention,
+		rating:INTEGER,
+		thumbnail:STRING
 
 	},
 		{
@@ -30,8 +35,13 @@ server.put('/:id', function (req, res) {
 			id: idProduct,
 		}
 	}).then(function(producto){
-		res.status(OK).send({producto});
-	});
+		res.status(OK).json({message:"producto Modificado correctamente",producto});
+	}).catch(
+		function(error){
+			console.log("error al modificar producto",error);
+			res.status(ERROR_SERVER).json({message:"error al modificar el producto",error})
+		}
+	);
 });
 
 module.exports = server;
