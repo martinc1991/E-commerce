@@ -1,3 +1,4 @@
+
 const server = require('express').Router(); //Import router from express module.
 const { OK, CREATED, UPDATED, ERROR, NOT_FOUND, ERROR_SERVER } = require('../constants'); // Import Status constants.
 const { Product } = require('../db.js'); // Import Products model.

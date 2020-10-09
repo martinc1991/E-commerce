@@ -1,3 +1,4 @@
+
 const server = require('express').Router(); //Import router from express module.
 const { Categories } = require('../db.js'); // Import Categories model.
 const { OK, CREATED, UPDATED, ERROR, NOT_FOUND, ERROR_SERVER } = require('../constants'); // Import Status constants.
@@ -41,6 +42,7 @@ server.get('/category/:name', (req, res) =>{
             })
         })
 });
+
 
 //// 'Update Category' route in '/products/category/:id'
 server.put('/category/:id', (req, res) => {
