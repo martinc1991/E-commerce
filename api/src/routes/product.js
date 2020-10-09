@@ -9,10 +9,19 @@ const ERROR = 400;
 const NOT_FOUND = 404;
 const ERROR_SERVER = 500;
 
+// CODIGO VARIABLES DE STATUS
+const OK = 200;
+const CREATE_OK = 201;
+const UPDATE = 204;
+const ERROR = 400;
+const NOT_FOUND = 404;
+const ERROR_SERVER = 500;
+
 server.get('/', (req, res, next) => {
 	Product.findAll()
 		.then(products => {
-			res.send(products);
+			res.status(OK);
+			res.send( products);
 		})
 		.catch(next);
 });
@@ -54,6 +63,11 @@ server.get('/search', (req, res) =>{
 		})
 
 });
+
+
+
+
+
 
 
 module.exports = server;
