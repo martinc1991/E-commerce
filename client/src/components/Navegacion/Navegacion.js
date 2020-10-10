@@ -41,6 +41,32 @@ export default function Navegacion(props) {
 						);
 					})}
 					{/* Link: Categorias */}
+
+
+					<Nav.Link href='#' className={`flex-fill ${s.navbarLinks}`}>
+						Categorias
+					</Nav.Link>
+					{/* Link: FAQs */}
+					<div className={`align-self-center ${s.separador}`}></div>
+					<Nav.Link href='#' className={`flex-fill ${s.navbarLinks}`}>
+						FAQs
+					</Nav.Link>
+					{/* Link: Contacto */}
+					<div className={`align-self-center ${s.separador}`}></div>
+					<Nav.Link href='#' className={`flex-fill ${s.navbarLinks}`}>
+						Contacto
+					</Nav.Link>
+					{/* Link: Ayuda */}
+					<div className={`align-self-center ${s.separador}`}></div>
+					<Nav.Link href='#' className={`flex-fill ${s.navbarLinks}`}>
+						Ayuda
+					</Nav.Link>
+					{/* Link: ADMIN */}
+					<div className={`align-self-center ${s.separador}`}></div>
+					<Nav.Link as={Link} to='/admin' className={`flex-fill ${s.navbarLinks}`}>
+						Admin
+					</Nav.Link>
+
 				</Col>
 
 				<Col className='contenedorSearchInput' lg={3}>
