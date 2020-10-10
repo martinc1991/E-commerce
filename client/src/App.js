@@ -29,7 +29,7 @@ function App() {
 				</Route>
 				<Route path='/admin/product' component={Product} />
 				<Route path='/admin/category' component={Category} />
-        		<Route path='/produt/:id' component={ProductDet} />
+        		<Route path='/product/:id' component={ProductDet} />
 			</Switch>
 		</div>
 	);
