@@ -1,7 +1,7 @@
 const server = require('express').Router(); //Import router from express module.
 const { OK, CREATED, UPDATED, ERROR, NOT_FOUND, ERROR_SERVER } = require('../constants'); // Import Status constants.
 const { Product } = require('../db.js'); // Import Products model.
-const {Op} = require('sequelize'); // Import operator from sequelize module.
+const { Op } = require('sequelize'); // Import operator from sequelize module.
 
 // Start routes
 
@@ -22,8 +22,27 @@ server.get('/', ( req, res ) => {
         })
 });
 
+//// 'Get an especific product' route in '/:id'
+server.get('/:id', (req, res) =>{
+	const {id} = req.params;
+
+	return Product.findOne({where:{ id }} )
+	.then( products => {
+		return res.status(OK).json({
+			message: 'Success',
+			data: products
+		})
+	})
+	.catch( err => {
+		return res.status(NOT_FOUND).json({
+			message: 'El producto no se encuentra en la base de datos',
+			data: err
+		})
+	});
+});
+
 //// 'Create product' route in '/'
-server.post('/',function(req,res){
+server.post('/', ( req, res ) => {
 	const {name,description,price,stock,dimentions,thumbnail} = req.body;
 
 	return Product.create({ name, description, price, stock, dimentions, thumbnail})
@@ -93,7 +112,7 @@ server.get('/search', (req, res) =>{
 	return Product.findAll({
 		where:{ [Op.or]: 
 			[ 	
-				{ name: value }, 
+				{ name: { [Op.like]: `%${value}%` } }, 
 				{ describe: { [Op.like]: `%${value}%` } } 
 			]
 		}
