@@ -12,7 +12,8 @@ const Product = ()=> {
         description : "",
         price : "",
         stock : "",
-        category : ""
+        category : "",
+        image: ""
     })
     const [show, setShow] = useState(false);
     const [showUpdate, setShowUpdate] = useState(false)
@@ -155,6 +156,10 @@ const Product = ()=> {
                         <Form.Group>
                             <Form.Label>Stock:</Form.Label>
                             <input type="number" name="stock" onChange={handlerChange}/>
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label>Image:</Form.Label>
+                            <input type="text" name="image" onChange={handlerChange} placeholder='http://www.image.com'/>
                         </Form.Group>
                         <Form.Group>
                             <Form.Label>Category: </Form.Label>
