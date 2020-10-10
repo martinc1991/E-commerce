@@ -33,7 +33,7 @@ module.exports = (sequelize) => {
     rating:{
       type: DataTypes.FLOAT
     },
-    thumbnail:{
+    image:{
       type: DataTypes.TEXT
     }    
   });
