@@ -63,7 +63,7 @@ server.post('/', ( req, res ) => {
 //// 'Update product' route in '/:id'
 server.put('/:id', ( req, res ) => {
 	const { id } = req.params;
-	const { name, description, price, dimentions, stock, thumbnail}
+	const { name, description, price, dimentions, stock, thumbnail} = req.body;
 	return Product.update(
 		{ name, description, price, dimentions, stock, thumbnail },
 		{ where: { id } }
