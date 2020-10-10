@@ -1,16 +1,10 @@
-import React from 'react'
-import Product from './product'
-import Categorys from './Categorys'
-import Menu from './menu'
+import React from 'react';
+import Product from './product';
+import Categorys from './Categorys';
+import Menu from './menu';
 
+const PrinciapalAdmin = () => {
+	return <div>{/* <Menu /> */}</div>;
+};
 
-const PrinciapalAdmin = ()=> {
-    return (
-        <div>
-            <Menu />
-        </div>
-        
-    )
-}
-
-export default PrinciapalAdmin
+export default PrinciapalAdmin;
