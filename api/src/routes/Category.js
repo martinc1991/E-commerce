@@ -7,7 +7,7 @@ const { OK, CREATED, UPDATED, ERROR, NOT_FOUND, ERROR_SERVER } = require('../con
 
 //// 'Create Category' route in '/products/category'
 
-server.get('/category/', (req, res)=> {
+server.get('/category', (req, res)=> {
     Categories.findAll()    
         .then(categorys => {
             return res.json({
