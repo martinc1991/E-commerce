@@ -1,16 +1,20 @@
 
 const server = require('express').Router(); //Import router from express module.
 const { OK, CREATED, UPDATED, ERROR, NOT_FOUND, ERROR_SERVER } = require('../constants'); // Import Status constants.
-const { Product } = require('../db.js'); // Import Products model.
+const { Product, Categories } = require('../db.js'); // Import Products model.
 const {Op} = require('sequelize'); // Import operator from sequelize module.
 
-// Start routes
 
+// Start routes
+//console.log("this " + Product.findAll().then(dta => console.log("Into the THEN")))
 //// 'Get products' route in '/'
 server.get('/', ( req, res ) => {
-	return Product.findAll()
+	//Product.findAll().then(products => res.status(STATUS.OK).json({message: 'Success',data: products})
+	Product.findAll({
+		include:Categories
+	})
 		.then(products => {
-			return res.status(STATUS.OK).json({
+			return res.status(OK).json({
 				message: 'Success',
 				data: products
 			})
@@ -25,9 +29,9 @@ server.get('/', ( req, res ) => {
 
 //// 'Create product' route in '/'
 server.post('/',function(req,res){
-	const {name,description,price,stock,dimentions,thumbnail} = req.body;
+	const {name,description,price,stock,dimentions,image,sku} = req.body;
 
-	return Product.create({ name, description, price, stock, dimentions, thumbnail})
+	return Product.create({ name, description, price, stock, dimentions, image,sku})
 		.then( product => {
 			return res.status(CREATED).json({
 				message: 'Producto creado exitosamente!',
@@ -45,9 +49,9 @@ server.post('/',function(req,res){
 //// 'Update product' route in '/:id'
 server.put('/:id', ( req, res ) => {
 	const { id } = req.params;
-	const { name, description, price, dimentions, stock, thumbnail}
+	const { name,description,price,stock,dimentions,image,sku} = req.body
 	return Product.update(
-		{ name, description, price, dimentions, stock, thumbnail },
+		{ name, description, price, stock, dimentions, image,sku },
 		{ where: { id } }
 	)
 	.then( product => {
@@ -69,7 +73,7 @@ server.delete('/:id', ( req, res ) => {
 	const { id } = req.params;
 
 	return Product.destroy({ where: { id } })
-	.then( deletedProduct => { 
+	.then( deletedProduct => {
 		return res.status(OK).json({
 			message: 'Producto eliminado',
 			data: deletedProduct
@@ -92,10 +96,10 @@ server.get('/search', (req, res) =>{
 		return res.sendStatus(ERROR);
 	}// Encuentra todos los valores de name y describe que coicidan con value
 	return Product.findAll({
-		where:{ [Op.or]: 
-			[ 	
-				{ name: value }, 
-				{ describe: { [Op.like]: `%${value}%` } } 
+		where:{ [Op.or]:
+			[
+				{ name: value },
+				{ describe: { [Op.like]: `%${value}%` } }
 			]
 		}
 	})
@@ -115,9 +119,9 @@ server.get('/search', (req, res) =>{
 
 //// 'Add Category to a product' route in '/:product_id/category/:category_id'
 server.put('/:product_id/category/:category_id', (req, res)=>{
-	
+
 	const { product_id, category_id } = req.params;
-	
+
 	Promise.all([ Product.findByPk(product_id), Categories.findByPk(category_id) ])
 		.then(data =>{
 			data[0].addCategories(data[1])
@@ -128,7 +132,7 @@ server.put('/:product_id/category/:category_id', (req, res)=>{
 
 //// 'Remove Category to a product' route in '/:product_id/category/:category_id'
 server.delete('/:product_id/category/:category_id', (req, res)=>{
-	
+
 	const { product_id, category_id } = req.params;
 
 	Promise.all([ Product.findByPk(product_id), Categories.findByPk(category_id) ])
