@@ -68,6 +68,24 @@ server.put('/:id', ( req, res ) => {
 	});
 });
 
+server.get('/productID/:id', (req, res) =>{
+	const {id} = req.params;
+
+	return Product.findOne({where:{ id }} )
+	.then( products => {
+		return res.status(OK).json({
+			message: 'Success',
+			data: products
+		})
+	})
+	.catch( err => {
+		return res.status(NOT_FOUND).json({
+			message: 'El ítem no se encuentra en la base de datos',
+			data: err
+		})
+	});
+});
+
 //// 'Delete product' route in '/:id'
 server.delete('/:id', ( req, res ) => {
 	const { id } = req.params;

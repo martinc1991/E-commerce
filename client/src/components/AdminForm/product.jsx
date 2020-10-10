@@ -114,13 +114,26 @@ const Product = ()=> {
         // console.log(dat)
     }
 
+    // const deleteProduct = (id)=>{
+    //     console.log(id)
+    //     if(window.confirm('Are you sure remove this product?')){
+    //         let list = date.filter((dt)=> {
+    //             return dt.id !== id
+    //         })
+    //        return setData(list)
+    //     }
+
+    // }
     const deleteProduct = (id)=>{
-        console.log(id)
         if(window.confirm('Are you sure remove this product?')){
-            let list = date.filter((dt)=> {
-                return dt.id !== id
-            })
-           return setData(list)
+            axios.delete(`http://${url}/products/${id}`)
+                .then(dat => {
+                    getProduct()
+                })
+        //     let list = date.filter((dt)=> {
+        //         return dt.id !== id
+        //     })
+        //    return setData(list)
         }
 
     }
