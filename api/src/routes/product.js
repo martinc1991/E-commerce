@@ -1,8 +1,9 @@
-
 const server = require('express').Router(); //Import router from express module.
 const { OK, CREATED, UPDATED, ERROR, NOT_FOUND, ERROR_SERVER } = require('../constants'); // Import Status constants.
+
 const { Product, Categories } = require('../db.js'); // Import Products model.
 const {Op} = require('sequelize'); // Import operator from sequelize module.
+
 
 
 // Start routes
@@ -27,9 +28,30 @@ server.get('/', ( req, res ) => {
         })
 });
 
+//// 'Get an especific product' route in '/:id'
+server.get('/productID/:id', (req, res) =>{
+	const {id} = req.params;
+
+	return Product.findOne({where:{ id }} )
+	.then( products => {
+		return res.status(OK).json({
+			message: 'Success',
+			data: products
+		})
+	})
+	.catch( err => {
+		return res.status(NOT_FOUND).json({
+			message: 'El producto no se encuentra en la base de datos',
+			data: err
+		})
+	});
+});
+
 //// 'Create product' route in '/'
+
 server.post('/',function(req,res){
 	const {name,description,price,stock,dimentions,image,sku} = req.body;
+
 
 	return Product.create({ name, description, price, stock, dimentions, image,sku})
 		.then( product => {
@@ -49,7 +71,9 @@ server.post('/',function(req,res){
 //// 'Update product' route in '/:id'
 server.put('/:id', ( req, res ) => {
 	const { id } = req.params;
+
 	const { name,description,price,stock,dimentions,image,sku} = req.body
+
 	return Product.update(
 		{ name, description, price, stock, dimentions, image,sku },
 		{ where: { id } }
@@ -114,10 +138,12 @@ server.get('/search', (req, res) =>{
 		return res.sendStatus(ERROR);
 	}// Encuentra todos los valores de name y describe que coicidan con value
 	return Product.findAll({
-		where:{ [Op.or]:
-			[
-				{ name: value },
-				{ describe: { [Op.like]: `%${value}%` } }
+
+		where:{ [Op.or]: 
+			[ 	
+				{ name: { [Op.like]: `%${value}%` } }, 
+				{ describe: { [Op.like]: `%${value}%` } } 
+
 			]
 		}
 	})
@@ -132,7 +158,7 @@ server.get('/search', (req, res) =>{
 			message: 'Failed',
 			data: err
 		})
-	})
+	});
 });
 
 //// 'Add Category to a product' route in '/:product_id/category/:category_id'

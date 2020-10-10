@@ -100,7 +100,7 @@ const Categorys = ()=> {
 
     return (
         <>
-        <Menu/>
+        {/* <Menu/> */}
         <div className={s.cont__Form__Admin__Pr}>
             {/* <Menu/> */}
             <div className= {s.cont__table__pr}>
@@ -197,6 +197,4 @@ const Categorys = ()=> {
         </>
     )
 }
-
-
 export default Categorys

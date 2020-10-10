@@ -114,26 +114,13 @@ const Product = ()=> {
         // console.log(dat)
     }
 
-    // const deleteProduct = (id)=>{
-    //     console.log(id)
-    //     if(window.confirm('Are you sure remove this product?')){
-    //         let list = date.filter((dt)=> {
-    //             return dt.id !== id
-    //         })
-    //        return setData(list)
-    //     }
-
-    // }
     const deleteProduct = (id)=>{
+        console.log(id)
         if(window.confirm('Are you sure remove this product?')){
-            axios.delete(`http://${url}/products/${id}`)
-                .then(dat => {
-                    getProduct()
-                })
-        //     let list = date.filter((dt)=> {
-        //         return dt.id !== id
-        //     })
-        //    return setData(list)
+            let list = date.filter((dt)=> {
+                return dt.id !== id
+            })
+           return setData(list)
         }
 
     }
@@ -141,7 +128,7 @@ const Product = ()=> {
     return (
         <>
         <div>
-            <Menu/>
+            {/* <Menu/> */}
             <div className= {s.cont__table__pr}>
             <Table striped bordered hover>
                     <thead>
@@ -302,6 +289,4 @@ const Product = ()=> {
         </>
     )
 }
-
-
 export default Product
