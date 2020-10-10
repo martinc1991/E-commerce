@@ -1,0 +1,78 @@
+/* Import de fonts */
+/* @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap'); */
+
+/* Colores personalizados */
+/* :root {
+	--azul: #1f2333;
+	--celeste: #3b8ea5;
+	--blanco: #edf7f6;
+	--naranja: #f19953;
+} */
+
+.productCard {
+	width: 250px;
+	background-color: var(--blanco);
+	box-shadow: 1px 1px 5px black;
+	transition: 300ms;
+}
+
+.productCard:hover {
+	box-shadow: 1px 1px 10px black;
+}
+
+.productCardHeadingContainer {
+	height: 250px;
+	/* border: 1px solid red; */
+}
+
+.productCardHeading {
+	font-family: 'Open Sans', sans-serif;
+	color: var(--blanco);
+	font-size: 12px;
+	font-style: italic;
+	max-height: 25px;
+	line-height: 25px;
+	width: 70px;
+	border-radius: 100px;
+	background-color: var(--naranja);
+}
+
+.productCardShopCartIcon {
+	color: white;
+	transition: 300ms;
+}
+
+.productCardShopCartIcon:hover {
+	color: var(--celeste);
+}
+
+.productCardTitle {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 24px;
+	color: var(--azul);
+}
+
+.productCardDescription {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 13px;
+	color: var(--azul);
+}
+
+.productCardPrice {
+	font-family: 'Open Sans', sans-serif;
+	font-weight: bold;
+	font-size: 36px;
+	color: var(--celeste);
+}
+
+.productCardButton {
+	font-family: 'Open Sans', sans-serif;
+	background-color: var(--azul);
+	border: none;
+	border-radius: 100px;
+	width: 70%;
+}
+
+.productCardButton:hover {
+	background-color: var(--celeste);
+}
