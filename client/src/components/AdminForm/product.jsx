@@ -26,11 +26,7 @@ const Product = ()=> {
 
 
     /*********************** Functions **************************** */
-    const getId = (e) => {
-        let selectedCat = e.target.value;
-        let selectedCategorie = cat.filter(elem => elem.name === selectedCat)[0];
-        let catId = 0;
-    }
+
     const getProduct = () => {
         axios.get(`http://${url}/products`)
             .then(res => {
@@ -69,7 +65,6 @@ const Product = ()=> {
     console.log(cat)
 
     const insertProduct = async () => {
-        
         form.sku = Math.random()
         await axios.post(`http://${url}/products`, form)
             .then(res => {
