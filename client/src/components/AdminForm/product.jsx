@@ -10,8 +10,9 @@ const url = 'localhost:3001'
 
 
 const Product = ()=> {
-    const [data, setData] = useState([])
-    const [cat, setCat] = useState([])
+    const [data, setData] = useState([]);
+    const [cat, setCat] = useState([]);
+    const [productCat, setProdutCat] = useState([]);
     const [form, setForm] = useState({
         name : "",
         description : "",
@@ -22,11 +23,11 @@ const Product = ()=> {
         image: "",
     })
     const [show, setShow] = useState(false);
-    const [showUpdate, setShowUpdate] = useState(false)
+    const [showUpdate, setShowUpdate] = useState(false);
+    const [openCategories, setOpenCategories] = useState(false);
 
 
     /*********************** Functions **************************** */
-
     const getProduct = () => {
         axios.get(`http://${url}/products`)
             .then(res => {
@@ -65,13 +66,22 @@ const Product = ()=> {
     console.log(cat)
 
     const insertProduct = async () => {
+        
         form.sku = Math.random()
         await axios.post(`http://${url}/products`, form)
             .then(res => {
                 // let dataNew = data
                 // dataNew.push({...res.data.data})
+
                 let productId = res.data.data.id;
                 let catId = cat.filter(elem => elem.name === form.category)[0].id;
+
+                if(!res.data.data.id || !catId){
+                    getProduct();
+                    setShow(false);
+                    return
+                }
+                
                 axios.put(`http://${url}/products/${productId}/category/${catId}`)
                     .then(res => {
                         getProduct();
@@ -82,7 +92,7 @@ const Product = ()=> {
 
     const openModal = ()=> { setShow(true)  }
     const closeModal = ()=> { setShow(false)  }
-    const closeModalUpdate = ()=> { setShowUpdate(false)  }
+    const closeModalUpdate = ()=> { setShowUpdate(false) }
     const handlerChange = (e) => {  setForm({ ...form, [e.target.name]:e.target.value})  }
 
     const updateProductModal = (product)=> {
@@ -130,6 +140,11 @@ const Product = ()=> {
 
     }
 
+    function validarInput() {
+        console.log('sfd')
+        document.getElementById("btn_Validar").disabled = !document.getElementById("quanti").value.length;
+      }
+
     return (
         <>
         <div>
@@ -150,8 +165,24 @@ const Product = ()=> {
                     <tbody>
                         {data.map((dat,index) => {
                             return (
+                                (dat.categories.length < 1)?
                                 <tr key={index}>
         
+                                    <td>{dat.name}</td>
+                                    <td>{dat.description}</td>
+                                    <td>{dat.price}</td>
+                                    <td>{dat.stock}</td>
+                                    <td>{dat.dimentions}</td>
+                                    <td>{""}</td>
+                                    <td>
+                                        <Button variant="danger" onClick={() => deleteProduct(dat.id)}>Delete</Button>{"  "}
+                                        <Button variant="primary" onClick={()=> updateProductModal(dat)}>Update</Button>
+                                    </td>
+                                    
+                                </tr>
+                                :
+                                    <tr key={index}>
+            
                                     <td>{dat.name}</td>
                                     <td>{dat.description}</td>
                                     <td>{dat.price}</td>
@@ -162,7 +193,7 @@ const Product = ()=> {
                                         <Button variant="danger" onClick={() => deleteProduct(dat.id)}>Delete</Button>{"  "}
                                         <Button variant="primary" onClick={()=> updateProductModal(dat)}>Update</Button>
                                     </td>
-                                    
+                                
                                 </tr>
                             )
                         })}
@@ -213,8 +244,8 @@ const Product = ()=> {
                             <input type="text" name="dimentions" onChange={handlerChange} />
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label>Category: </Form.Label>
-                            <select onChange={handlerChange} name="category">
+                            {/* <Button variant="success" onClick={() => setOpenCategories(true)}>Add Categories</Button> */}
+                            <select onChange={handlerChange} name="category" id="quanti" onInput={validarInput}>
                             <option value="">....</option>
                                 {cat.map((d)=>{
                                     return (
@@ -226,12 +257,35 @@ const Product = ()=> {
                         </Form.Group>
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button variant="success" onClick={insertProduct}>Add</Button>
+                        <Button variant="success" onClick={insertProduct} id="btn_Validar">Add</Button>
                         <Button variant="danger" onClick={closeModal}>Cancel</Button>
                     </Modal.Footer>
             </Modal>
         </div>
-         {/**************************** MODAL UPDATE ******************************** */}
+        {/**************************** MODAL CATEGORIES ******************************** */}
+        {/* <div>
+            <Modal 
+                show={openCategories} 
+                onHide={()=> setOpenCategories(false)} 
+                centered={true}
+                backdrop='static'
+                aria-labelledby="contained-modal-title-vcenter"
+                animation={true}
+            >
+                <Modal.Header closeButton>
+                    <Modal.Title>Choose at least one category</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <Form.Group>
+                        pruebaaaaaaaaa
+                    </Form.Group>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="success" onClick={()=> setOpenCategories(false)}>done!</Button>
+                </Modal.Footer>
+            </Modal>
+        </div> */}
+        {/**************************** MODAL UPDATE ******************************** */}
         <div>
         <Modal 
                 show={showUpdate}

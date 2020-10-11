@@ -11,7 +11,7 @@ import {faStar} from '@fortawesome/free-solid-svg-icons';
 const Product = ({ name, description, dimentions, price, stock, sku, rating, thumbnail })=>{
     return(
         <div>
-            <Navegacion/>
+            {/* <Navegacion/> */}
             <div className={s.cont_prin}>
             <div className={s.cont}>
             <div className={s.cont_img}>

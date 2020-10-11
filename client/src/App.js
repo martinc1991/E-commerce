@@ -8,6 +8,7 @@ import WellcomeAdmin from './components/AdminForm/WellcomAdmin'
 import Slider from './components/Slider/Slider' 
 import Footer from './components/Footer/Footer'
 import ProductDet from './components/ProductDet/index'
+import ProductCard from './components/ProductCard/index'
 // Bootstrap
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Route, Switch, Link } from 'react-router-dom';
@@ -29,20 +30,16 @@ var enlacesAdmin = [
 function App() {
 	return (
 		<div>
+			
 			<Switch>
 				<Route path='/' exact>
 					<Navegacion links={enlacesUser} showSearchbar={true} />
 					<Slider />
 					<Footer></Footer>
-				</Route>
-
-        
-				<Route path='/admin' exact>
-
-
-				<Route path='/admin'>
+				</Route>        
+				{/* <Route path='/admin' exact > */}
+				<Route path='/admin' >
 					<Navegacion links={enlacesAdmin} showSearchbar={false} />
-
 					<PrinciapalAdmin />
 					<Route path='/admin' exact>
 						<WellcomeAdmin />
@@ -50,15 +47,17 @@ function App() {
 					<Route path='/admin/product' component={Product} />
 					<Route path='/admin/category' component={Category} />
 				</Route>
-
 				<Route path='/admin/product' component={Product} />
 				<Route path='/admin/category' component={Category} />
-        		<Route path='/product/:id' component={ProductDet} />
-
-
+        		{/* <Route path='/product/:id' component={ProductDet} /> */}
+				<Route path='/products/product/:id'>
+					<Navegacion links={enlacesUser} showSearchbar={true} />
+					<ProductDet  />
+				</Route>
 			</Switch>
 		</div>
 	);
 }
+
 
 export default App;
