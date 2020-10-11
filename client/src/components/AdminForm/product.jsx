@@ -10,7 +10,7 @@ const url = 'localhost:3001'
 
 
 const Product = ()=> {
-    const [date, setData] = useState([])
+    const [data, setData] = useState([])
     const [cat, setCat] = useState([])
     const [form, setForm] = useState({
         name : "",
@@ -26,6 +26,11 @@ const Product = ()=> {
 
 
     /*********************** Functions **************************** */
+    const getId = (e) => {
+        let selectedCat = e.target.value;
+        let selectedCategorie = cat.filter(elem => elem.name === selectedCat)[0];
+        let catId = 0;
+    }
     const getProduct = () => {
         axios.get(`http://${url}/products`)
             .then(res => {
@@ -45,7 +50,6 @@ const Product = ()=> {
         axios.get(`http://${url}/products/category`)
             .then(res => {
                 if(res){
-                    console.log(res.data.result)
                     return setCat(res.data.result)
                 }else{
                     console.log("No hay Datos")
@@ -67,14 +71,17 @@ const Product = ()=> {
     const insertProduct = async () => {
         
         form.sku = Math.random()
-        console.log(form)
         await axios.post(`http://${url}/products`, form)
             .then(res => {
-                console.log(res.data.data)
-                // let dataNew = date
+                // let dataNew = data
                 // dataNew.push({...res.data.data})
-                getProduct()
-                setShow(false)
+                let productId = res.data.data.id;
+                let catId = cat.filter(elem => elem.name === form.category)[0].id;
+                axios.put(`http://${url}/products/${productId}/category/${catId}`)
+                    .then(res => {
+                        getProduct();
+                        setShow(false);
+                    })
             })
     }
 
@@ -86,7 +93,7 @@ const Product = ()=> {
     const updateProductModal = (product)=> {
         console.log(product)
         let cont = 0;
-        let list = date
+        let list = data
         console.log(list)
         list.map((dat)=>{
             if(dat.id === product.id) { 
@@ -120,7 +127,7 @@ const Product = ()=> {
                 .then(dat => {
                     getProduct()
                 })
-        //     let list = date.filter((dt)=> {
+        //     let list = data.filter((dt)=> {
         //         return dt.id !== id
         //     })
         //    return setData(list)
@@ -146,7 +153,7 @@ const Product = ()=> {
                         </tr>
                     </thead>
                     <tbody>
-                        {date.map((dat,index) => {
+                        {data.map((dat,index) => {
                             return (
                                 <tr key={index}>
         
@@ -155,7 +162,7 @@ const Product = ()=> {
                                     <td>{dat.price}</td>
                                     <td>{dat.stock}</td>
                                     <td>{dat.dimentions}</td>
-                                    <td>{dat.category}</td>
+                                    <td>{dat.categories[0].name}</td>
                                     <td>
                                         <Button variant="danger" onClick={() => deleteProduct(dat.id)}>Delete</Button>{"  "}
                                         <Button variant="primary" onClick={()=> updateProductModal(dat)}>Update</Button>
@@ -184,7 +191,7 @@ const Product = ()=> {
                     <Modal.Body>
                     <Form.Group>
                             <Form.Label>Id:</Form.Label>
-                            <input type="text" name="name" value={date.length+1} readOnly/>
+                            <input type="text" name="name" value={data.length+1} readOnly/>
                         </Form.Group>
                         <Form.Group>
                             <Form.Label>Name:</Form.Label>
@@ -274,7 +281,7 @@ const Product = ()=> {
                             <Form.Label>Category: </Form.Label>
                             <select onChange={handlerChange} name="category" value={form.category} >
                             <option value="">....</option>
-                                {datas.dataCat.map((d)=>{
+                                {cat.map((d)=>{
                                     return (
                                         <option value={d.name} >{d.name}</option>
                                     )
