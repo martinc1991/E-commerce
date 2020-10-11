@@ -13,7 +13,7 @@ server.get('/', ( req, res ) => {
 	//Product.findAll().then(products => res.status(STATUS.OK).json({message: 'Success',data: products})
 	Product.findAll({
 		include:Categories
-	})
+	}) 
 		.then(products => {
 			return res.status(OK).json({
 				message: 'Success',
@@ -169,8 +169,7 @@ server.put('/:product_id/category/:category_id', (req, res)=>{
 	Promise.all([ Product.findByPk(product_id), Categories.findByPk(category_id) ])
 		.then(data =>{
 			data[0].addCategories(data[1])
-				.then(data => console.log(data))
-				return res.send('OK')
+				.then(data => res.send('Categoría añadida correctamente!'))
 		});
 })
 
