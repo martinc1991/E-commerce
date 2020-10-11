@@ -12,24 +12,50 @@ import ProductDet from './components/ProductDet/index'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Route, Switch, Link } from 'react-router-dom';
 
+var enlacesUser = [
+	{ text: 'Catalogo', to: '/' },
+	{ text: 'FAQs', to: '/' },
+	{ text: 'Contacto', to: '/' },
+	{ text: 'Ayuda', to: '/' },
+	{ text: 'ADMIN', to: '/admin' },
+];
+
+var enlacesAdmin = [
+	{ text: 'Inicio', to: '/admin' },
+	{ text: 'Productos', to: '/admin/product' },
+	{ text: 'Categorias', to: '/admin/category' },
+];
+
 function App() {
 	return (
 		<div>
 			<Switch>
 				<Route path='/' exact>
-					<Navegacion />
-					{/* <hr /> */}
+					<Navegacion links={enlacesUser} showSearchbar={true} />
 					<Slider />
 					<Footer></Footer>
 				</Route>
+
         
 				<Route path='/admin' exact>
+
+
+				<Route path='/admin'>
+					<Navegacion links={enlacesAdmin} showSearchbar={false} />
+
 					<PrinciapalAdmin />
-					<WellcomeAdmin />
+					<Route path='/admin' exact>
+						<WellcomeAdmin />
+					</Route>
+					<Route path='/admin/product' component={Product} />
+					<Route path='/admin/category' component={Category} />
 				</Route>
+
 				<Route path='/admin/product' component={Product} />
 				<Route path='/admin/category' component={Category} />
         		<Route path='/product/:id' component={ProductDet} />
+
+
 			</Switch>
 		</div>
 	);
