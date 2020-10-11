@@ -29,7 +29,7 @@ server.get('/', ( req, res ) => {
 });
 
 //// 'Get an especific product' route in '/:id'
-server.get('/productID/:id', (req, res) =>{
+server.get('/product/:id', (req, res) =>{
 	const {id} = req.params;
 
 	return Product.findOne({where:{ id }} )

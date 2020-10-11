@@ -72,13 +72,15 @@ const Product = ()=> {
             .then(res => {
                 // let dataNew = data
                 // dataNew.push({...res.data.data})
-                if (!form.category){
-                    getProduct();
-                    setShow(false);
-                    return;
-                }
                 let productId = res.data.data.id;
                 let catId = cat.filter(elem => elem.name === form.category)[0].id;
+
+                if(!res.data.data.id || !catId){
+                    getProduct();
+                    setShow(false);
+                    return
+                }
+                
                 axios.put(`http://${url}/products/${productId}/category/${catId}`)
                     .then(res => {
                         getProduct();
@@ -137,6 +139,11 @@ const Product = ()=> {
 
     }
 
+    function validarInput() {
+        console.log('sfd')
+        document.getElementById("btn_Validar").disabled = !document.getElementById("quanti").value.length;
+      }
+
     return (
         <>
         <div>
@@ -156,38 +163,37 @@ const Product = ()=> {
                     </thead>
                     <tbody>
                         {data.map((dat,index) => {
-                            if (dat.categories.length < 1){
-                                return (
-                                    <tr key={index}>
+                            return (
+                                (dat.categories.length < 1)?
+                                <tr key={index}>
+        
                                     <td>{dat.name}</td>
                                     <td>{dat.description}</td>
                                     <td>{dat.price}</td>
                                     <td>{dat.stock}</td>
                                     <td>{dat.dimentions}</td>
-                                    <td></td>
+                                    <td>{""}</td>
                                     <td>
                                         <Button variant="danger" onClick={() => deleteProduct(dat.id)}>Delete</Button>{"  "}
                                         <Button variant="primary" onClick={()=> updateProductModal(dat)}>Update</Button>
                                     </td>
                                 </tr>
-                                )
-                            }
-                            else {
-                                return (
+                                :
                                     <tr key={index}>
-                                        <td>{dat.name}</td>
-                                        <td>{dat.description}</td>
-                                        <td>{dat.price}</td>
-                                        <td>{dat.stock}</td>
-                                        <td>{dat.dimentions}</td>
-                                        <td>{dat.categories[0].name}</td>
-                                        <td>
-                                            <Button variant="danger" onClick={() => deleteProduct(dat.id)}>Delete</Button>{"  "}
-                                            <Button variant="primary" onClick={()=> updateProductModal(dat)}>Update</Button>
-                                        </td>
-                                    </tr>
-                                )
-                            }
+            
+                                    <td>{dat.name}</td>
+                                    <td>{dat.description}</td>
+                                    <td>{dat.price}</td>
+                                    <td>{dat.stock}</td>
+                                    <td>{dat.dimentions}</td>
+                                    <td>{dat.categories[0].name}</td>
+                                    <td>
+                                        <Button variant="danger" onClick={() => deleteProduct(dat.id)}>Delete</Button>{"  "}
+                                        <Button variant="primary" onClick={()=> updateProductModal(dat)}>Update</Button>
+                                    </td>
+                                
+                                </tr>
+                            )
                         })}
                     </tbody>
             </Table>
@@ -237,7 +243,7 @@ const Product = ()=> {
                         </Form.Group>
                         <Form.Group>
                             {/* <Button variant="success" onClick={() => setOpenCategories(true)}>Add Categories</Button> */}
-                            <select onChange={handlerChange} name="category">
+                            <select onChange={handlerChange} name="category" id="quanti" onInput={validarInput}>
                             <option value="">....</option>
                                 {cat.map((d)=>{
                                     return (
@@ -249,7 +255,7 @@ const Product = ()=> {
                         </Form.Group>
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button variant="success" onClick={insertProduct}>Add</Button>
+                        <Button variant="success" onClick={insertProduct} id="btn_Validar">Add</Button>
                         <Button variant="danger" onClick={closeModal}>Cancel</Button>
                     </Modal.Footer>
             </Modal>
