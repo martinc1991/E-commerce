@@ -10,8 +10,9 @@ const url = 'localhost:3001'
 
 
 const Product = ()=> {
-    const [data, setData] = useState([])
-    const [cat, setCat] = useState([])
+    const [data, setData] = useState([]);
+    const [cat, setCat] = useState([]);
+    const [productCat, setProdutCat] = useState([]);
     const [form, setForm] = useState({
         name : "",
         description : "",
@@ -22,15 +23,11 @@ const Product = ()=> {
         image: "",
     })
     const [show, setShow] = useState(false);
-    const [showUpdate, setShowUpdate] = useState(false)
+    const [showUpdate, setShowUpdate] = useState(false);
+    const [openCategories, setOpenCategories] = useState(false);
 
 
     /*********************** Functions **************************** */
-    const getId = (e) => {
-        let selectedCat = e.target.value;
-        let selectedCategorie = cat.filter(elem => elem.name === selectedCat)[0];
-        let catId = 0;
-    }
     const getProduct = () => {
         axios.get(`http://${url}/products`)
             .then(res => {
@@ -75,6 +72,11 @@ const Product = ()=> {
             .then(res => {
                 // let dataNew = data
                 // dataNew.push({...res.data.data})
+                if (!form.category){
+                    getProduct();
+                    setShow(false);
+                    return;
+                }
                 let productId = res.data.data.id;
                 let catId = cat.filter(elem => elem.name === form.category)[0].id;
                 axios.put(`http://${url}/products/${productId}/category/${catId}`)
@@ -87,7 +89,7 @@ const Product = ()=> {
 
     const openModal = ()=> { setShow(true)  }
     const closeModal = ()=> { setShow(false)  }
-    const closeModalUpdate = ()=> { setShowUpdate(false)  }
+    const closeModalUpdate = ()=> { setShowUpdate(false) }
     const handlerChange = (e) => {  setForm({ ...form, [e.target.name]:e.target.value})  }
 
     const updateProductModal = (product)=> {
@@ -154,22 +156,38 @@ const Product = ()=> {
                     </thead>
                     <tbody>
                         {data.map((dat,index) => {
-                            return (
-                                <tr key={index}>
-        
+                            if (dat.categories.length < 1){
+                                return (
+                                    <tr key={index}>
                                     <td>{dat.name}</td>
                                     <td>{dat.description}</td>
                                     <td>{dat.price}</td>
                                     <td>{dat.stock}</td>
                                     <td>{dat.dimentions}</td>
-                                    <td>{dat.categories[0].name}</td>
+                                    <td></td>
                                     <td>
                                         <Button variant="danger" onClick={() => deleteProduct(dat.id)}>Delete</Button>{"  "}
                                         <Button variant="primary" onClick={()=> updateProductModal(dat)}>Update</Button>
                                     </td>
-                                    
                                 </tr>
-                            )
+                                )
+                            }
+                            else {
+                                return (
+                                    <tr key={index}>
+                                        <td>{dat.name}</td>
+                                        <td>{dat.description}</td>
+                                        <td>{dat.price}</td>
+                                        <td>{dat.stock}</td>
+                                        <td>{dat.dimentions}</td>
+                                        <td>{dat.categories[0].name}</td>
+                                        <td>
+                                            <Button variant="danger" onClick={() => deleteProduct(dat.id)}>Delete</Button>{"  "}
+                                            <Button variant="primary" onClick={()=> updateProductModal(dat)}>Update</Button>
+                                        </td>
+                                    </tr>
+                                )
+                            }
                         })}
                     </tbody>
             </Table>
@@ -218,7 +236,7 @@ const Product = ()=> {
                             <input type="text" name="dimentions" onChange={handlerChange} />
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label>Category: </Form.Label>
+                            {/* <Button variant="success" onClick={() => setOpenCategories(true)}>Add Categories</Button> */}
                             <select onChange={handlerChange} name="category">
                             <option value="">....</option>
                                 {cat.map((d)=>{
@@ -236,7 +254,30 @@ const Product = ()=> {
                     </Modal.Footer>
             </Modal>
         </div>
-         {/**************************** MODAL UPDATE ******************************** */}
+        {/**************************** MODAL CATEGORIES ******************************** */}
+        {/* <div>
+            <Modal 
+                show={openCategories} 
+                onHide={()=> setOpenCategories(false)} 
+                centered={true}
+                backdrop='static'
+                aria-labelledby="contained-modal-title-vcenter"
+                animation={true}
+            >
+                <Modal.Header closeButton>
+                    <Modal.Title>Choose at least one category</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <Form.Group>
+                        pruebaaaaaaaaa
+                    </Form.Group>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="success" onClick={()=> setOpenCategories(false)}>done!</Button>
+                </Modal.Footer>
+            </Modal>
+        </div> */}
+        {/**************************** MODAL UPDATE ******************************** */}
         <div>
         <Modal 
                 show={showUpdate}

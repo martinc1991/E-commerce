@@ -130,7 +130,7 @@ server.delete('/:id', ( req, res ) => {
 });
 
 //// 'Search product' route in '/search?query={value}'
-server.get('/search', (req, res) =>{
+server.get('/search', (req, res, next) =>{
 	const value = req.query.query;
 
 //SELECT name, describe FROM product WHERE name OR describe LIKE '%value%'
@@ -143,9 +143,9 @@ server.get('/search', (req, res) =>{
 			[ 	
 				{ name: { [Op.like]: `%${value}%` } }, 
 				{ describe: { [Op.like]: `%${value}%` } } 
-
 			]
-		}
+		},
+		include: Categories
 	})
 	.then((products) => {
 		return res.status(OK).json({
@@ -153,12 +153,7 @@ server.get('/search', (req, res) =>{
 			data: products
 		});
 	})
-	.catch(err => {
-		return res.status(NOT_FOUND).json({
-			message: 'Failed',
-			data: err
-		})
-	});
+	.catch(next);
 });
 
 //// 'Add Category to a product' route in '/:product_id/category/:category_id'
