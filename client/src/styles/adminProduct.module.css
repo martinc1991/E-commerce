@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+/******************** Formulario Add y Update ******************/
+.title{
+    color:#F19953 !important; 
+    font-family: 'Open Sans', sans-serif !important;
+    font-weight: bolder !important;
+    font-size: 1.3em !important;
+    justify-content: center !important;        
+}
+.cont{
+    color:#1F2333 !important; 
+    font-family: 'Open Sans', sans-serif !important;
+    font-weight: bolder !important;
+    font-size: 0.9em !important;
+}
+.cont .titles{
+    
+    width: 80px !important;
+    text-align: right !important;
+    margin-right: 5px !important;
+}
+.cont .inputs{
+    width: 50% !important;
+}
+.buttons{
+    display: flex !important;
+    justify-content: center !important;
+}
+.buttonAdd{
+    background-color: #1F2333 !important;
+    border: 1px solid #1F2333 !important;
+    width: 20% !important;
+    color: white !important;
+    font-family: 'Open Sans', sans-serif !important;
+    font-weight: bolder !important;
+}
+.buttonCancel{
+    background-color: #3B8EA5 !important;
+    border: 1px solid #3B8EA5 !important;
+    width: 20% !important;
+    color: white !important;
+    font-family: 'Open Sans', sans-serif !important;
+    font-weight: bolder !important;
+}
+/******************** Table******************/
+.table_prin{
+  margin-top: 30px !important;
+}
+
+.tableTitle{
+    color: #3B8EA5;
+    font-family: 'Open Sans', sans-serif !important;
+    font-weight: bolder !important;
+    text-align: center !important;
+}
+.tableDescrip{
+    color: black;
+    font-family: 'Open Sans', sans-serif !important;
+    font-weight: normal !important;
+    font-size: 0.85em !important;
+}
+.tablebuttons{
+    display: flex !important;
+    justify-content: center !important;
+}
+.buttonDelete{
+    background-color: #1F2333 !important;
+    border: 1px solid #1F2333 !important;
+    width: 30% !important;
+    color: white !important;
+    font-family: 'Open Sans', sans-serif !important;
+    font-weight: bolder !important;
+}
+.buttonUp{
+    background-color: #3B8EA5 !important;
+    border: 1px solid #3B8EA5 !important;
+    width: 30% !important;
+    color: white !important;
+    font-family: 'Open Sans', sans-serif !important;
+    font-weight: bolder !important;
+    margin-left: 10px !important;
+}
+.buttonADD{
+    background-color: #F19953 !important;
+    border: 1px solid #F19953 !important;
+    width: 10% !important;
+    color: white !important;
+    font-family: 'Open Sans', sans-serif !important;
+    font-weight: bolder !important;
+    margin-left: 30px !important;
+}

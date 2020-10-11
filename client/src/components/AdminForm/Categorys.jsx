@@ -20,7 +20,7 @@ const Categorys = ()=> {
 
 
     /*********************** Functions **************************** */
-    const getProduct = () => {
+    const getCategory = () => {
         axios.get(`http://${url}/products/category`)
             .then(res => {
                 if(res){
@@ -37,7 +37,7 @@ const Categorys = ()=> {
     }
 
     useEffect(()=> {
-        getProduct();
+        getCategory();
     }, [])
 
     const insertProduct = async () => {
@@ -47,7 +47,7 @@ const Categorys = ()=> {
                 console.log(res.data.data)
                 // let dataNew = date
                 // dataNew.push({...res.data.data})
-                getProduct()
+                getCategory()
                 setShow(false)
             })
     }
@@ -79,7 +79,7 @@ const Categorys = ()=> {
         axios.put(`http://${url}/products/category/${dat.id}`, dat)
             .then(dat => {
                 setShowUpdate(false);
-                getProduct();
+                getCategory();
             })
         // console.log(dat)
     }
@@ -88,7 +88,7 @@ const Categorys = ()=> {
         if(window.confirm('Are you sure remove this product?')){
             axios.delete(`http://${url}/products/category/${id}`)
                 .then(dat => {
-                    getProduct()
+                    getCategory()
                 })
         //     let list = date.filter((dt)=> {
         //         return dt.id !== id
@@ -100,7 +100,7 @@ const Categorys = ()=> {
 
     return (
         <>
-        <Menu/>
+        {/* <Menu/> */}
         <div className={s.cont__Form__Admin__Pr}>
             {/* <Menu/> */}
             <div className= {s.cont__table__pr}>
@@ -197,6 +197,4 @@ const Categorys = ()=> {
         </>
     )
 }
-
-
 export default Categorys
