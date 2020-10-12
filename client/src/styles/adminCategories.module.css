@@ -43,6 +43,7 @@
     font-family: 'Open Sans', sans-serif !important;
     font-weight: bolder !important;
 }
+
 /******************** Table******************/
 .table_prin{
   margin-top: 30px !important;
@@ -62,6 +63,9 @@
     font-weight: normal !important;
     font-size: 0.85em !important;
     text-align: center !important;
+}
+.tableActions{
+    width: 10% !important;
 }
 .icons{
     display: flex !important;
@@ -84,6 +88,7 @@
     background-color: #F19953 !important;
     border: 1px solid #F19953 !important;
     width: 10% !important;
+    padding: 5px !important;
     color: white !important;
     font-family: 'Open Sans', sans-serif !important;
     font-weight: bolder !important;
