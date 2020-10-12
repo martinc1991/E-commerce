@@ -1,10 +1,12 @@
 import React from 'react'
 import {Table, Button, Container, Modal, FormGroup, Form } from 'react-bootstrap';
 import datas from './Data'
-import s from '../styles/styles.module.css'
+import s from '../../styles/adminProduct.module.css'
 import Menu from './menu'
 import axios from 'axios';
 import {useState, useEffect} from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faTrashAlt, faPencilAlt} from '@fortawesome/free-solid-svg-icons';
 
 const url = 'localhost:3001'
 
@@ -147,11 +149,11 @@ const Product = ()=> {
 
     return (
         <>
-        <div>
+        <div className={s.table_prin}>
             {/* <Menu/> */}
             <div className= {s.cont__table__pr}>
-            <Table striped bordered hover>
-                    <thead>
+            <Table  striped bordered hover size="sm">
+                    <thead className={s.tableTitle}>
                         <tr>
                         <th>Name</th>
                         <th>Description</th>
@@ -166,7 +168,7 @@ const Product = ()=> {
                         {data.map((dat,index) => {
                             return (
                                 (dat.categories.length < 1)?
-                                <tr key={index}>
+                                <tr className={s.tableDescrip} key={index}>
         
                                     <td>{dat.name}</td>
                                     <td>{dat.description}</td>
@@ -174,14 +176,16 @@ const Product = ()=> {
                                     <td>{dat.stock}</td>
                                     <td>{dat.dimentions}</td>
                                     <td>{""}</td>
-                                    <td>
-                                        <Button variant="danger" onClick={() => deleteProduct(dat.id)}>Delete</Button>{"  "}
-                                        <Button variant="primary" onClick={()=> updateProductModal(dat)}>Update</Button>
+                                    <td className={s.icons}>
+                                    <FontAwesomeIcon icon={faPencilAlt} size={'1x'} className={s.iconUpdate} onClick={()=> updateProductModal(dat)} />
+                                    <FontAwesomeIcon icon={faTrashAlt} size={'1x'} className={s.iconDelete} onClick={() => deleteProduct(dat.id)} />                                  
+                                        {/* <Button className={s.buttonDelete} onClick={() => deleteProduct(dat.id)}>Delete</Button>{"  "}
+                                        <Button className={s.buttonUp} onClick={()=> updateProductModal(dat)}>Update</Button> */}
                                     </td>
                                     
                                 </tr>
                                 :
-                                    <tr key={index}>
+                                <tr className={s.tableDescrip} key={index}>
             
                                     <td>{dat.name}</td>
                                     <td>{dat.description}</td>
@@ -189,9 +193,11 @@ const Product = ()=> {
                                     <td>{dat.stock}</td>
                                     <td>{dat.dimentions}</td>
                                     <td>{dat.categories[0].name}</td>
-                                    <td>
-                                        <Button variant="danger" onClick={() => deleteProduct(dat.id)}>Delete</Button>{"  "}
-                                        <Button variant="primary" onClick={()=> updateProductModal(dat)}>Update</Button>
+                                    <td className={s.icons}>
+                                    <FontAwesomeIcon icon={faPencilAlt} size={'1x'} className={s.iconUpdate} onClick={()=> updateProductModal(dat)} />
+                                    <FontAwesomeIcon icon={faTrashAlt} size={'1x'} className={s.iconDelete} onClick={() => deleteProduct(dat.id)} />                                   
+                                        {/* <Button className={s.buttonDelete} onClick={() => deleteProduct(dat.id)}>Delete</Button>{"  "}
+                                        <Button className={s.buttonUp} onClick={()=> updateProductModal(dat)}>Update</Button> */}
                                     </td>
                                 
                                 </tr>
@@ -199,7 +205,7 @@ const Product = ()=> {
                         })}
                     </tbody>
             </Table>
-            <Button variant="success" onClick={openModal}>Add Product</Button>
+            <Button className={s.buttonADD} onClick={openModal}>Add Product</Button>
             </div>
         </div>
         {/**************************** MODAL ADD ******************************** */}
@@ -209,43 +215,44 @@ const Product = ()=> {
                 backdrop="static"
                 onHide={closeModal}
                 keyboard={false}
+                className={s.cont_prin}
                 >
-                    <Modal.Header>
+                    <Modal.Header closeButton className={s.title} >
                         Add Product
                     </Modal.Header>
 
-                    <Modal.Body>
+                    <Modal.Body className={s.cont} >
                     <Form.Group>
-                            <Form.Label>Id:</Form.Label>
-                            <input type="text" name="name" value={data.length+1} readOnly/>
+                            <Form.Label className={s.titles} >Id:</Form.Label>
+                            <input className={s.inputs} type="text" name="name" value={data.length+1} readOnly/>
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label>Name:</Form.Label>
-                            <input type="text" name="name"  onChange={handlerChange}/>
+                            <Form.Label className={s.titles}>Name:</Form.Label>
+                            <input className={s.inputs} type="text" name="name"  onChange={handlerChange}/>
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label>Description:</Form.Label>
-                            <input type="text" name="description" onChange={handlerChange}/>
+                            <Form.Label className={s.titles}>Description:</Form.Label>
+                            <input className={s.inputs} type="text" name="description" onChange={handlerChange}/>
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label>Price:</Form.Label>
-                            <input type="number" name="price" onChange={handlerChange}/>
+                            <Form.Label className={s.titles}>Price:</Form.Label>
+                            <input className={s.inputs} type="number" name="price" onChange={handlerChange}/>
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label>Stock:</Form.Label>
-                            <input type="number" name="stock" onChange={handlerChange}/>
+                            <Form.Label className={s.titles}>Stock:</Form.Label>
+                            <input className={s.inputs} type="number" name="stock" onChange={handlerChange}/>
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label>Image:</Form.Label>
-                            <input type="text" name="image" onChange={handlerChange} placeholder='http://www.image.com'/>
+                            <Form.Label className={s.titles}>Image:</Form.Label>
+                            <input className={s.inputs} type="text" name="image" onChange={handlerChange} placeholder='http://www.image.com'/>
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label>Dimention:</Form.Label>
-                            <input type="text" name="dimentions" onChange={handlerChange} />
+                            <Form.Label className={s.titles}>Dimention:</Form.Label>
+                            <input className={s.inputs} type="text" name="dimentions" onChange={handlerChange} />
                         </Form.Group>
                         <Form.Group>
-                            {/* <Button variant="success" onClick={() => setOpenCategories(true)}>Add Categories</Button> */}
-                            <select onChange={handlerChange} name="category" id="quanti" onInput={validarInput}>
+                            <Form.Label className={s.titles}>Category: </Form.Label>
+                            <select className={s.inputs} onChange={handlerChange} name="category">
                             <option value="">....</option>
                                 {cat.map((d)=>{
                                     return (
@@ -256,9 +263,9 @@ const Product = ()=> {
                             </select>
                         </Form.Group>
                     </Modal.Body>
-                    <Modal.Footer>
-                        <Button variant="success" onClick={insertProduct} id="btn_Validar">Add</Button>
-                        <Button variant="danger" onClick={closeModal}>Cancel</Button>
+                    <Modal.Footer className={s.buttons} >
+                        <Button className={s.buttonAdd} onClick={insertProduct}>Add</Button>
+                        <Button  className={s.buttonCancel} onClick={closeModal}>Cancel</Button>
                     </Modal.Footer>
             </Modal>
         </div>
@@ -293,42 +300,42 @@ const Product = ()=> {
                 onHide={closeModalUpdate}
                 keyboard={false}
                 >
-                    <Modal.Header>
+                    <Modal.Header closeButton className={s.title} >
                         Update Product
                     </Modal.Header>
 
-                    <Modal.Body>
+                    <Modal.Body className={s.cont}>
                     <Form.Group>
-                            <Form.Label>Id:</Form.Label>
-                            <input type="text" name="name"  readOnly value={form.id} />
+                            <Form.Label className={s.titles}>Id:</Form.Label>
+                            <input className={s.inputs} type="text" name="name"  readOnly value={form.id} />
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label>Name:</Form.Label>
-                            <input type="text" name="name"  onChange={handlerChange} value={form.name}/>
+                            <Form.Label className={s.titles}>Name:</Form.Label>
+                            <input className={s.inputs} type="text" name="name"  onChange={handlerChange} value={form.name}/>
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label>Description:</Form.Label>
-                            <input type="text" name="description" onChange={handlerChange} value={form.description}/>
+                            <Form.Label className={s.titles}>Description:</Form.Label>
+                            <input className={s.inputs} type="text" name="description" onChange={handlerChange} value={form.description}/>
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label>Price:</Form.Label>
-                            <input type="number" name="price" onChange={handlerChange} value={form.price}/>
+                            <Form.Label className={s.titles}>Price:</Form.Label>
+                            <input className={s.inputs} type="number" name="price" onChange={handlerChange} value={form.price}/>
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label>Stock:</Form.Label>
-                            <input type="number" name="stock" onChange={handlerChange} value={form.stock}/>
+                            <Form.Label className={s.titles}>Stock:</Form.Label>
+                            <input className={s.inputs} type="number" name="stock" onChange={handlerChange} value={form.stock}/>
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label>Image:</Form.Label>
-                            <input type="text" name="image" onChange={handlerChange} placeholder='http://www.image.com' value={form.image}/>
+                            <Form.Label className={s.titles}>Image:</Form.Label>
+                            <input className={s.inputs} type="text" name="image" onChange={handlerChange} placeholder='http://www.image.com' value={form.image}/>
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label>Dimention:</Form.Label>
-                            <input type="text" name="dimention" onChange={handlerChange}  value={form.dimentions}/>
+                            <Form.Label className={s.titles}>Dimention:</Form.Label>
+                            <input className={s.inputs} type="text" name="dimention" onChange={handlerChange}  value={form.dimentions}/>
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label>Category: </Form.Label>
-                            <select onChange={handlerChange} name="category" value={form.category} >
+                            <Form.Label className={s.titles}>Category: </Form.Label>
+                            <select className={s.inputs} onChange={handlerChange} name="category" value={form.category} >
                             <option value="">....</option>
                                 {cat.map((d)=>{
                                     return (
@@ -339,9 +346,9 @@ const Product = ()=> {
                             </select>
                         </Form.Group>
                     </Modal.Body>
-                    <Modal.Footer>
-                        <Button variant="success" onClick={() => updateProduct(form)}>Update</Button>
-                        <Button variant="danger" onClick={closeModalUpdate}>Cancel</Button>
+                    <Modal.Footer className={s.buttons}>
+                        <Button className={s.buttonAdd} onClick={() => updateProduct(form)}>Update</Button>
+                        <Button className={s.buttonCancel} onClick={closeModalUpdate}>Cancel</Button>
                     </Modal.Footer>
             </Modal>
         </div>
