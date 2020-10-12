@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import PrinciapalAdmin from './components/AdminForm/pageP';
 import Product from './components/AdminForm/product';
@@ -9,12 +9,18 @@ import Slider from './components/Slider/Slider'
 import Footer from './components/Footer/Footer'
 import ProductDet from './components/ProductDet/index'
 import ProductCard from './components/ProductCard/index'
+import Catalogo from './components/Catalogo/index'
 // Bootstrap
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Route, Switch, Link } from 'react-router-dom';
+import axios from 'axios'
+
+
+
+const url = 'localhost:3001'
 
 var enlacesUser = [
-	{ text: 'Catalogo', to: '/' },
+	{ text: 'Catalogo', to: '/products/catalogo' },
 	{ text: 'FAQs', to: '/' },
 	{ text: 'Contacto', to: '/' },
 	{ text: 'Ayuda', to: '/' },
@@ -27,13 +33,32 @@ var enlacesAdmin = [
 	{ text: 'Categorias', to: '/admin/category' },
 ];
 
+
+
+
 function App() {
+	const [products, setProduct] = useState([])
+
+	const onSearch = (search)=> {
+		//console.log('NOmbre: ' + search)
+		axios.get(`http://${url}/products/search?query=${search}`)
+			 .then(res => {
+				 let {data} = res.data
+				 console.log(data)
+				 setProduct(data)
+				 return
+				 
+			 })
+	}
+
+	console.log(products)
+
 	return (
 		<div>
-			
+			{/* <ProductCard/> */}
 			<Switch>
 				<Route path='/' exact>
-					<Navegacion links={enlacesUser} showSearchbar={true} />
+					< Navegacion links={enlacesUser} showSearchbar={false} onSearch={onSearch} />
 					<Slider />
 					<Footer></Footer>
 				</Route>        
@@ -52,8 +77,21 @@ function App() {
         		{/* <Route path='/product/:id' component={ProductDet} /> */}
 				<Route path='/products/product/:id'>
 					<Navegacion links={enlacesUser} showSearchbar={true} />
-					<ProductDet  />
+					<ProductDet />
 				</Route>
+				
+				<Route  
+					path='/products/catalogo' 
+					render={()=> 
+						<Catalogo 
+							products ={products}
+							onSearch={onSearch}
+						/>
+					}
+				>	
+				 </Route>
+
+				 
 			</Switch>
 		</div>
 	);

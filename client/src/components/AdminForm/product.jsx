@@ -6,7 +6,7 @@ import Menu from './menu'
 import axios from 'axios';
 import {useState, useEffect} from 'react'
 
-const url = 'localhost:3001'
+const url = 'localhost:3001';
 
 
 const Product = ()=> {
@@ -18,7 +18,7 @@ const Product = ()=> {
         description : "",
         price : "",
         stock : "",
-        category : "",
+        category : [],
         dimentions: "",
         image: "",
     })
@@ -75,12 +75,6 @@ const Product = ()=> {
 
                 let productId = res.data.data.id;
                 let catId = cat.filter(elem => elem.name === form.category)[0].id;
-
-                if(!res.data.data.id || !catId){
-                    getProduct();
-                    setShow(false);
-                    return
-                }
                 
                 axios.put(`http://${url}/products/${productId}/category/${catId}`)
                     .then(res => {
@@ -93,7 +87,8 @@ const Product = ()=> {
     const openModal = ()=> { setShow(true)  }
     const closeModal = ()=> { setShow(false)  }
     const closeModalUpdate = ()=> { setShowUpdate(false) }
-    const handlerChange = (e) => {  setForm({ ...form, [e.target.name]:e.target.value})  }
+    const handlerChange = (e) => {  setForm( { ...form, [e.target.name]:e.target.value})  }
+   
 
     const updateProductModal = (product)=> {
         console.log(product)
@@ -107,7 +102,7 @@ const Product = ()=> {
                 list[cont].description = product.description
                 list[cont].price = product.price
                 list[cont].stock = product.stock
-                list[cont].category = product.category
+                list[cont].category = product.categories[0].name
             }
             cont++
         })
@@ -118,6 +113,8 @@ const Product = ()=> {
 
 
     const updateProduct = (dat)=>{
+        //console.log(dat)
+        console.log(dat)
         axios.put(`http://${url}/products/${dat.id}`, dat)
             .then(dat => {
                 setShowUpdate(false);
@@ -165,23 +162,7 @@ const Product = ()=> {
                     <tbody>
                         {data.map((dat,index) => {
                             return (
-                                (dat.categories.length < 1)?
                                 <tr key={index}>
-        
-                                    <td>{dat.name}</td>
-                                    <td>{dat.description}</td>
-                                    <td>{dat.price}</td>
-                                    <td>{dat.stock}</td>
-                                    <td>{dat.dimentions}</td>
-                                    <td>{""}</td>
-                                    <td>
-                                        <Button variant="danger" onClick={() => deleteProduct(dat.id)}>Delete</Button>{"  "}
-                                        <Button variant="primary" onClick={()=> updateProductModal(dat)}>Update</Button>
-                                    </td>
-                                    
-                                </tr>
-                                :
-                                    <tr key={index}>
             
                                     <td>{dat.name}</td>
                                     <td>{dat.description}</td>
@@ -257,8 +238,8 @@ const Product = ()=> {
                         </Form.Group>
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button variant="success" onClick={insertProduct} id="btn_Validar">Add</Button>
-                        <Button variant="danger" onClick={closeModal}>Cancel</Button>
+                        <Button variant="success" onClick={insertProduct} id="btn_Validar" disabled={form.category.length === 0}>Add</Button>
+                        <Button variant="danger" onClick={closeModal} >Cancel</Button>
                     </Modal.Footer>
             </Modal>
         </div>
