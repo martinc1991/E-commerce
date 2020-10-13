@@ -140,8 +140,8 @@ server.get('/search', (req, res, next) =>{
 		queryParameters = {
 			where:{ [Op.or]: 
 				[ 	
-					{ name: { [Op.like]: `%${value}%` } }, 
-					{ description: { [Op.like]: `%${value}%` } } 
+					{ name: { [Op.iLike]: `%${value}%` } }, 
+					{ description: { [Op.iLike]: `%${value}%` } } 
 				]
 			},
 			include: Categories

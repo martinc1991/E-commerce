@@ -1,19 +1,21 @@
 import React from 'react'
 import { Table, Button } from 'react-bootstrap';
 import AddProduct from '../Modals/AddProduct';
+import AddCategories from '../Modals/AddCategories';
 import AddProductCategories from '../Modals/AddProductCategories';
 import UpdateProduct from '../Modals/UpdateProduct';
 import s from '../../styles/adminProduct.module.css'
 import axios from 'axios';
 import {useState, useEffect} from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faTrashAlt, faPencilAlt} from '@fortawesome/free-solid-svg-icons';
+import {faTrashAlt, faPencilAlt, faPlusCircle} from '@fortawesome/free-solid-svg-icons';
 
 const url = 'localhost:3001';
 
 const Product = ()=> {
     /*********************** Local States ************************* */
     const [data, setData] = useState([]);
+    const [dataObject, setDataObject] = useState({});
     const [cat, setCat] = useState([]);
     const [productCat, setProdutCat] = useState([]);
     const [form, setForm] = useState({
@@ -28,7 +30,7 @@ const Product = ()=> {
     const [show, setShow] = useState(false);
     const [showUpdate, setShowUpdate] = useState(false);
     const [showCategories, setShowCategories] = useState(false);
-    const [catSelected, setCatSelected] = useState([])
+    const [editCategories, setEditCategories] = useState(false);
 
 
     /*********************** Functions **************************** */
@@ -95,6 +97,7 @@ const Product = ()=> {
             productCat.splice(catIndex,1)
             setProdutCat(productCat);
         }
+        console.log(productCat);
         return;
     }
 
@@ -106,6 +109,7 @@ const Product = ()=> {
         form.category = productCat;
         await axios.post(`http://${url}/products`, form)
             .then(res => {
+                setProdutCat([]);
                 let productCategoriesId = [];
                 let productId = res.data.data.id;
                 form.category.forEach(selectedCat => {
@@ -121,6 +125,24 @@ const Product = ()=> {
                         })
                 })
             })
+    }
+
+    const addProductCat = async (dat) => {
+        setProdutCat([]);
+        let productId = dat.id;
+        let catIds = [];
+        productCat.forEach(selectedCat => {
+            catIds.push(cat.filter(elem => elem.name === selectedCat)[0].id);
+        })
+        catIds.forEach(catId => {
+            axios.put(`http://${url}/products/${productId}/category/${catId}`)
+            .then(()=>{
+                getProduct();
+                setEditCategories(false);
+                setProdutCat([]);
+                setDataObject({});
+            })
+        })
     }
 
     const deleteProductCat = (productId, catId) => {
@@ -184,7 +206,12 @@ const Product = ()=> {
                                     <td>{dat.price}</td>
                                     <td>{dat.stock}</td>
                                     <td>{dat.dimentions}</td>
-                                    <td>{""}</td>
+                                    <td>
+                                        <FontAwesomeIcon icon={faPlusCircle} size={'1x'} className={s.iconAdd} onClick={()=> {
+                                            setEditCategories(true);
+                                            setDataObject(dat);
+                                        }} />
+                                    </td>
                                     <td className={s.icons}>
                                     <FontAwesomeIcon icon={faPencilAlt} size={'1x'} className={s.iconUpdate} onClick={()=> updateProductModal(dat)} />
                                     <FontAwesomeIcon icon={faTrashAlt} size={'1x'} className={s.iconDelete} onClick={() => deleteProduct(dat.id)} />                                  
@@ -205,6 +232,10 @@ const Product = ()=> {
                                             let catId = category.id;
                                             return <h6>{category.name} <span onClick={() => deleteProductCat(productId, catId)} className={s.spanDelete}>X</span></h6>
                                         })}
+                                        <FontAwesomeIcon icon={faPlusCircle} size={'1x'} className={s.iconAdd} onClick={()=> {
+                                            setEditCategories(true);
+                                            setDataObject(dat);
+                                        }} />
                                     </td>
                                     <td className={s.icons}>
                                         <FontAwesomeIcon icon={faPencilAlt} size={'1x'} className={s.iconUpdate} onClick={()=> updateProductModal(dat)} />
@@ -236,7 +267,6 @@ const Product = ()=> {
             showCategories={showCategories}
             handlerProductCat={handlerProductCat}
             setShowCategories={setShowCategories}
-            
         />
 
         {/************************** UPDATE PRODUCT MODAL ******************************** */}
@@ -247,6 +277,16 @@ const Product = ()=> {
             handlerChange={handlerChange}
             updateProduct={updateProduct}
             setShowCategories={setShowCategories}
+        />
+
+        {/************************** EDIT CATEGORIES MODAL ******************************* */}
+        <AddCategories 
+            cat={cat}
+            dat={dataObject}
+            editCategories={editCategories}
+            handlerProductCat={handlerProductCat}
+            setEditCategories={setEditCategories}
+            addProductCat={addProductCat}
         />
     </div>
     )

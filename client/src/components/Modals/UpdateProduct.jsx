@@ -37,9 +37,6 @@ const UpdateProduct = ({form, showUpdate, closeModalUpdate, handlerChange, updat
                     <Form.Label className={s.titles}>Dimention:</Form.Label>
                     <input className={s.inputs} type="text" name="dimention" onChange={handlerChange}  value={form.dimentions}/>
                 </Form.Group>
-                    <Form.Group>
-                        <Button variant="success" onClick={() => setShowCategories(true)}>Edit Categories</Button>
-                    </Form.Group>
                 </Modal.Body>
             <Modal.Footer className={s.buttons}>
                 <Button className={s.buttonAdd} onClick={() => updateProduct(form)}>Update</Button>
