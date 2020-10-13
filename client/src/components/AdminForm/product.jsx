@@ -28,6 +28,7 @@ const Product = ()=> {
     const [show, setShow] = useState(false);
     const [showUpdate, setShowUpdate] = useState(false);
     const [showCategories, setShowCategories] = useState(false);
+    const [catSelected, setCatSelected] = useState([])
 
 
     /*********************** Functions **************************** */
@@ -55,6 +56,7 @@ const Product = ()=> {
         setForm(product)
         setData(list)
     }
+
 
     const getProduct = () => {
         axios.get(`http://${url}/products`)
@@ -96,6 +98,8 @@ const Product = ()=> {
         return;
     }
 
+   
+
     const insertProduct = async () => {
         
         form.sku = Math.random();
@@ -127,6 +131,8 @@ const Product = ()=> {
     }
 
     const updateProduct = (dat)=>{
+        //console.log(dat)
+        console.log(dat)
         axios.put(`http://${url}/products/${dat.id}`, dat)
             .then(dat => {
                 setShowUpdate(false);
@@ -197,7 +203,7 @@ const Product = ()=> {
                                     <td>{dat.categories.map(category => {   
                                             let productId = dat.id;
                                             let catId = category.id;
-                                            return <h6>{category.name} <span onClick={() => deleteProductCat(productId, catId)}>X</span></h6>
+                                            return <h6>{category.name} <span onClick={() => deleteProductCat(productId, catId)} className={s.spanDelete}>X</span></h6>
                                         })}
                                     </td>
                                     <td className={s.icons}>
@@ -220,6 +226,8 @@ const Product = ()=> {
             handlerChange={handlerChange}
             insertProduct={insertProduct}
             setShowCategories={setShowCategories}
+            productCat={productCat}
+            
         />
 
         {/*********************** ADD PRODUCT CATEGORIES MODAL ************************** */}
@@ -228,6 +236,7 @@ const Product = ()=> {
             showCategories={showCategories}
             handlerProductCat={handlerProductCat}
             setShowCategories={setShowCategories}
+            
         />
 
         {/************************** UPDATE PRODUCT MODAL ******************************** */}

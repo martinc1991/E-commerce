@@ -1,8 +1,10 @@
 import React from 'react';
 import s from '../../styles/adminProduct.module.css';
-import {Button, Modal, Form } from 'react-bootstrap';
+import {Button, Modal, Form, Container } from 'react-bootstrap';
 
-const AddProduct = ({data, show, closeModal, handlerChange, insertProduct, setShowCategories}) => {
+const AddProduct = ({data, show, closeModal, handlerChange, insertProduct, setShowCategories, productCat}) => {
+
+    console.log(productCat)
 
     return (
         <Modal show={show} backdrop="static" onHide={closeModal} keyboard={false}>
@@ -40,6 +42,15 @@ const AddProduct = ({data, show, closeModal, handlerChange, insertProduct, setSh
                 <Form.Group>
                     <Button variant="success" onClick={() => setShowCategories(true)}>Add Categories</Button>
                 </Form.Group>
+                <Container>
+                    <ul className={s.ulList}>
+                        {productCat.map((p, index)=>{
+                            return (
+                                <li className={s.liList} key={index}>{p}</li>
+                            )
+                        })}
+                    </ul>
+                </Container>
             </Modal.Body>
             <Modal.Footer className={s.buttons} >
                 <Button className={s.buttonAdd} onClick={insertProduct}>Add</Button>

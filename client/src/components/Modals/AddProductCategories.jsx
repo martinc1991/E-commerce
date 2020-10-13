@@ -1,7 +1,10 @@
 import React from 'react';
 import {Button, Modal, Form } from 'react-bootstrap';
 
-const AddProductCategories = ({cat, showCategories, handlerProductCat, setShowCategories}) => {
+const AddProductCategories = ({cat, showCategories, handlerProductCat, setShowCategories, catSelect}) => {
+    console.log(catSelect)
+
+    
 
     return (
         <Modal show={showCategories} onHide={()=> setShowCategories(false)} centered={true} backdrop='static'>
@@ -13,7 +16,7 @@ const AddProductCategories = ({cat, showCategories, handlerProductCat, setShowCa
                             return (
                                     <div>
                                         <label htmlFor={c.name}>{c.name}</label>
-                                        <input type="checkbox" name={c.name} value={c.name} />
+                                        <input type="checkbox" name={c.name} value={c.name} onChange={handlerProductCat}/>
                                     </div>
                             )
                         })}

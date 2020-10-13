@@ -2,8 +2,8 @@ import React from 'react';
 import s from '../../styles/adminCategories.module.css';
 import {Button, Modal, Form } from 'react-bootstrap';
 
-const AddCategory = ({data, show, closeModal, handlerChange, insertCategory}) => {
-
+const AddCategory = ({data, show, closeModal, handlerChange, insertCategory, form}) => {
+    console.log(form)
     return (
         <Modal show={show} backdrop="static" onHide={closeModal} keyboard={false}>
 
