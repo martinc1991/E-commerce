@@ -15,8 +15,17 @@
 }
 .cont_img{
     width: 62%;
+    padding: 10px;
     border-radius:7px 0px 0px 7px;
-    overflow: hidden;
+    overflow: scroll;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cont_img > img {
+    width: 80%;
+    height: 80%;
 }
 .cont_info{
     width: 38%;

@@ -1,9 +1,11 @@
 import React from 'react';
 import {Table, Button, Container, Modal, FormGroup, Form } from 'react-bootstrap';
-import s from '../styles/styles.module.css';
 import Menu from './menu';
 import axios from 'axios';
-import {useState, useEffect} from 'react'
+import {useState, useEffect} from 'react';
+import s from '../../styles/adminCategories.module.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faTrashAlt, faPencilAlt} from '@fortawesome/free-solid-svg-icons';
 
 
 const url = 'localhost:3001'
@@ -101,26 +103,28 @@ const Categorys = ()=> {
     return (
         <>
         {/* <Menu/> */}
-        <div className={s.cont__Form__Admin__Pr}>
+        <div className={s.table_prin}>
             {/* <Menu/> */}
-            <div className= {s.cont__table__pr}>
-            <Table striped bordered hover>
-                    <thead>
+            <div>
+            <Table striped bordered hover size="sm">
+                    <thead className={s.tableTitle}>
                         <tr>
                         <th>Name</th>
                         <th>Description</th>
-                        <th>Actions</th>
+                        <th className={s.tableActions}>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         {date.map(dat => {
                             return (
-                                <tr>
+                                <tr className={s.tableDescrip}>
                                     <td>{dat.name}</td>
                                     <td>{dat.description}</td>
-                                    <td>
-                                        <Button variant="danger" onClick={() => deleteProduct(dat.id)}>Delete</Button>{"  "}
-                                        <Button variant="primary" onClick={()=> updateProductModal(dat)}>Update</Button>
+                                    <td className={s.icons}>
+                                    <FontAwesomeIcon icon={faPencilAlt} size={'1x'} className={s.iconUpdate} onClick={()=> updateProductModal(dat)} />
+                                    <FontAwesomeIcon icon={faTrashAlt} size={'1x'} className={s.iconDelete} onClick={() => deleteProduct(dat.id)} />
+                                        {/* <Button variant="danger" onClick={() => deleteProduct(dat.id)}>Delete</Button>{"  "}
+                                        <Button variant="primary" onClick={()=> updateProductModal(dat)}>Update</Button> */}
                                     </td>
 
                                 </tr>
@@ -128,7 +132,7 @@ const Categorys = ()=> {
                         })}
                     </tbody>
             </Table>
-            <Button variant="success" onClick={openModal}>Add Category</Button>
+            <Button className={s.buttonADD} onClick={openModal}>Add Category</Button>
             </div>
         </div>
         {/**************************** MODAL ADD ******************************** */}
@@ -139,27 +143,27 @@ const Categorys = ()=> {
                 onHide={closeModal}
                 keyboard={false}
                 >
-                    <Modal.Header>
+                    <Modal.Header closeButton className={s.title}>
                         Add Product
                     </Modal.Header>
 
-                    <Modal.Body>
+                    <Modal.Body className={s.cont} >
                     <Form.Group>
-                            <Form.Label>Id:</Form.Label>
-                            <input type="text" name="name" value={date.length+1} readOnly/>
+                            <Form.Label className={s.titles} >Id:</Form.Label>
+                            <input className={s.inputs} type="text" name="name" value={date.length+1} readOnly/>
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label>Name:</Form.Label>
-                            <input type="text" name="name"  onChange={handlerChange}/>
+                            <Form.Label className={s.titles} >Name:</Form.Label>
+                            <input className={s.inputs} type="text" name="name"  onChange={handlerChange}/>
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label>Description:</Form.Label>
-                            <input type="text" name="description" onChange={handlerChange}/>
+                            <Form.Label className={s.titles} >Description:</Form.Label>
+                            <input className={s.inputs} type="text" name="description" onChange={handlerChange}/>
                         </Form.Group>
                     </Modal.Body>
-                    <Modal.Footer>
-                        <Button variant="success" onClick={insertProduct}>Add</Button>
-                        <Button variant="danger" onClick={closeModal}>Cancel</Button>
+                    <Modal.Footer className={s.buttons}>
+                        <Button className={s.buttonAdd} onClick={insertProduct}>Add</Button>
+                        <Button className={s.buttonCancel} onClick={closeModal}>Cancel</Button>
                     </Modal.Footer>
             </Modal>
         </div>
@@ -170,27 +174,27 @@ const Categorys = ()=> {
                 onHide={closeModalUpdate}
                 keyboard={false}
                 >
-                    <Modal.Header>
+                    <Modal.Header closeButton className={s.title}>
                         Update Category
                     </Modal.Header>
 
-                    <Modal.Body>
+                    <Modal.Body className={s.cont}>
                     <Form.Group>
-                            <Form.Label>Id:</Form.Label>
-                            <input type="text" name="name"  readOnly value={form.id} />
+                            <Form.Label className={s.titles}>Id:</Form.Label>
+                            <input className={s.inputs} type="text" name="name"  readOnly value={form.id} />
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label>Name:</Form.Label>
-                            <input type="text" name="name"  onChange={handlerChange} value={form.name}/>
+                            <Form.Label className={s.titles}>Name:</Form.Label>
+                            <input className={s.inputs} type="text" name="name"  onChange={handlerChange} value={form.name}/>
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label>Description:</Form.Label>
-                            <input type="text" name="description" onChange={handlerChange} value={form.description}/>
+                            <Form.Label className={s.titles}>Description:</Form.Label>
+                            <input className={s.inputs} type="text" name="description" onChange={handlerChange} value={form.description}/>
                         </Form.Group>
                     </Modal.Body>
-                    <Modal.Footer>
-                        <Button variant="success" onClick={() => updateProduct(form)}>Update</Button>
-                        <Button variant="danger" onClick={closeModalUpdate}>Cancel</Button>
+                    <Modal.Footer className={s.buttons}>
+                        <Button className={s.buttonAdd} onClick={() => updateProduct(form)}>Update</Button>
+                        <Button className={s.buttonCancel} onClick={closeModalUpdate}>Cancel</Button>
                     </Modal.Footer>
             </Modal>
         </div>

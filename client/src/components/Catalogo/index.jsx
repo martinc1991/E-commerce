@@ -52,7 +52,7 @@ const Catalogo = (props)=> {
         :
         <Container>
             <h1>Registros encontrados: {data.length}</h1>
-            <Row>
+            <Row >
            
             {data.map((p)=> {
                 return (

@@ -58,7 +58,7 @@ function App() {
 			{/* <ProductCard/> */}
 			<Switch>
 				<Route path='/' exact>
-					< Navegacion links={enlacesUser} showSearchbar={false} onSearch={onSearch} />
+					< Navegacion links={enlacesUser} showSearchbar={true} onSearch={onSearch} />
 					<Slider />
 					<Footer></Footer>
 				</Route>        
