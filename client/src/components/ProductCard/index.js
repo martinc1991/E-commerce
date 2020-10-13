@@ -41,7 +41,7 @@ export default function ProductCard({ name, description, img, price, id, destaca
 				<Card.Title as={Link} to={`/products/product/${id}`} className={`my-1 ${s.productCardTitle}`}>
 					{`${name}` || `Product Name`}
 				</Card.Title>
-				<Card.Text className={`my-1 ${s.productCardDescription}`}>{`${description}` || `Product Name`} </Card.Text>
+				{/* <Card.Text className={`my-1 ${s.productCardDescription}`}>{`${description}` || `Product Name`} </Card.Text> */}
 				<Card.Text className={`my-1 ${s.productCardPrice}`}>{`$ ${price}` || `Product Name`}</Card.Text>
 				<Row className={`d-flex justify-content-around`}>
 					<Button as={Link} to={`/products/product/${id}`} className={`mb-1 ${s.productCardButton}`}>

@@ -4,6 +4,7 @@ import {useState, useEffect} from 'react'
 import ProductCard from '../ProductCard/index';
 import Navegacion from '../Navegacion/Navegacion'
 import {Container, Row, Col} from 'react-bootstrap';
+import s from '../../styles/catalogo.module.css';
 const url = 'localhost:3001';
 
 var enlacesUser = [
@@ -46,12 +47,12 @@ const Catalogo = (props)=> {
 
     <div>
         < Navegacion links={enlacesUser} showSearchbar={true} onSearch={props.onSearch}/>
-        <h5><a href="/products/catalogo">Mostrar todos</a></h5>
+        <h5><a href="/products/catalogo" className={s.title5}>Mostrar todos</a></h5>
         {products.length == 0  ? 
-        data.length == 0 ? <h1>No hay registros en la base de datos</h1>
+        data.length == 0 ? <h1 className={s.title2}>No hay registros en la base de datos</h1>
         :
         <Container>
-            <h1>Registros encontrados: {data.length}</h1>
+            <h1 className={s.title1}>Registros encontrados: {data.length}</h1>
             <Row >
            
             {data.map((p)=> {
@@ -72,7 +73,7 @@ const Catalogo = (props)=> {
         </Container>
         :
         <Container>
-        <h1>Registros encontrados: {products.length}</h1>
+        <h1 className={s.title1}>Registros encontrados: {products.length}</h1>
         <Row>
         {products.map((p)=> {
             return (

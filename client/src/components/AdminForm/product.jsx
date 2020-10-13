@@ -187,12 +187,12 @@ const Product = ()=> {
                     <thead className={s.tableTitle}>
                         <tr>
                         <th>Name</th>
-                        <th>Description</th>
+                        <th className={s.tibleThDescrip}>Description</th>
                         <th>Price</th>
                         <th>Stock</th>
                         <th>Dimentions</th>
                         <th>Category</th>
-                        <th>Action</th>
+                        <th className={s.tableActions} >Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -230,7 +230,7 @@ const Product = ()=> {
                                     <td>{dat.categories.map(category => {   
                                             let productId = dat.id;
                                             let catId = category.id;
-                                            return <h6>{category.name} <span onClick={() => deleteProductCat(productId, catId)} className={s.spanDelete}>X</span></h6>
+                                            return <h6 className={s.tableDescrip}>{category.name} <span onClick={() => deleteProductCat(productId, catId)} className={s.spanDelete}>x</span></h6>
                                         })}
                                         <FontAwesomeIcon icon={faPlusCircle} size={'1x'} className={s.iconAdd} onClick={()=> {
                                             setEditCategories(true);
