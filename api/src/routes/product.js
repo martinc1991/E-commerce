@@ -130,35 +130,31 @@ server.delete('/:id', ( req, res ) => {
 });
 
 //// 'Search product' route in '/search?query={value}'
-server.get('/search', (req, res) =>{
+server.get('/search', (req, res, next) =>{
 	const value = req.query.query;
-
-//SELECT name, describe FROM product WHERE name OR describe LIKE '%value%'
-	if(!value || !isNaN(value)){
-		return res.sendStatus(ERROR);
-	}// Encuentra todos los valores de name y describe que coicidan con value
-	return Product.findAll({
-
-		where:{ [Op.or]: 
-			[ 	
-				{ name: { [Op.like]: `%${value}%` } }, 
-				{ describe: { [Op.like]: `%${value}%` } } 
-
-			]
+	let queryParameters;
+	if(value === ''){
+		queryParameters = {include: Categories};
+	}
+	else {
+		queryParameters = {
+			where:{ [Op.or]: 
+				[ 	
+					{ name: { [Op.like]: `%${value}%` } }, 
+					{ description: { [Op.like]: `%${value}%` } } 
+				]
+			},
+			include: Categories
 		}
-	})
-	.then((products) => {
-		return res.status(OK).json({
-			message: 'Success',
-			data: products
-		});
-	})
-	.catch(err => {
-		return res.status(NOT_FOUND).json({
-			message: 'Failed',
-			data: err
+	}
+	return Product.findAll(queryParameters)
+		.then((products) => {
+			return res.status(OK).json({
+				message: 'Success',
+				data: products
+			});
 		})
-	});
+		.catch(next);
 });
 
 //// 'Add Category to a product' route in '/:product_id/category/:category_id'
