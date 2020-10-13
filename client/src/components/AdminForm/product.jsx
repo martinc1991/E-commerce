@@ -1,11 +1,13 @@
 import React from 'react'
-import {Table, Button, Modal, Form } from 'react-bootstrap';
+import { Table, Button } from 'react-bootstrap';
 import AddProduct from '../Modals/AddProduct';
 import AddProductCategories from '../Modals/AddProductCategories';
 import UpdateProduct from '../Modals/UpdateProduct';
-import s from '../styles/styles.module.css'
+import s from '../../styles/adminProduct.module.css'
 import axios from 'axios';
 import {useState, useEffect} from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faTrashAlt, faPencilAlt} from '@fortawesome/free-solid-svg-icons';
 
 const url = 'localhost:3001';
 
@@ -152,9 +154,9 @@ const Product = ()=> {
         <div>
         <div>
             {/* <Menu/> */}
-            <div className= {s.cont__table__pr}>
-            <Table striped bordered hover>
-                    <thead>
+            <div className= {s.table_prin}>
+            <Table  striped bordered hover size="sm">
+                    <thead className={s.tableTitle}>
                         <tr>
                         <th>Name</th>
                         <th>Description</th>
@@ -169,7 +171,7 @@ const Product = ()=> {
                         {data.map((dat,index) => {
                             return (
                                 (dat.categories.length < 1)?
-                                <tr key={index}>
+                                <tr className={s.tableDescrip} key={index}>
         
                                     <td>{dat.name}</td>
                                     <td>{dat.description}</td>
@@ -177,13 +179,15 @@ const Product = ()=> {
                                     <td>{dat.stock}</td>
                                     <td>{dat.dimentions}</td>
                                     <td>{""}</td>
-                                    <td>
-                                        <Button variant="danger" onClick={() => deleteProduct(dat.id)}>Delete</Button>{"  "}
-                                        <Button variant="primary" onClick={()=> updateProductModal(dat)}>Update</Button>
+                                    <td className={s.icons}>
+                                    <FontAwesomeIcon icon={faPencilAlt} size={'1x'} className={s.iconUpdate} onClick={()=> updateProductModal(dat)} />
+                                    <FontAwesomeIcon icon={faTrashAlt} size={'1x'} className={s.iconDelete} onClick={() => deleteProduct(dat.id)} />                                  
+                                        {/* <Button className={s.buttonDelete} onClick={() => deleteProduct(dat.id)}>Delete</Button>{"  "}
+                                        <Button className={s.buttonUp} onClick={()=> updateProductModal(dat)}>Update</Button> */}
                                     </td>
                                 </tr>
                                 :
-                                    <tr key={index}>
+                                <tr className={s.tableDescrip} key={index}>
             
                                     <td>{dat.name}</td>
                                     <td>{dat.description}</td>
@@ -196,17 +200,16 @@ const Product = ()=> {
                                             return <h6>{category.name} <span onClick={() => deleteProductCat(productId, catId)}>X</span></h6>
                                         })}
                                     </td>
-                                    <td>
-                                        <Button variant="danger" onClick={() => deleteProduct(dat.id)}>Delete</Button>{"  "}
-                                        <Button variant="primary" onClick={()=> updateProductModal(dat)}>Update</Button>
+                                    <td className={s.icons}>
+                                        <FontAwesomeIcon icon={faPencilAlt} size={'1x'} className={s.iconUpdate} onClick={()=> updateProductModal(dat)} />
+                                        <FontAwesomeIcon icon={faTrashAlt} size={'1x'} className={s.iconDelete} onClick={() => deleteProduct(dat.id)} />                                   
                                     </td>
-                                
                                 </tr>
                             )
                         })}
                     </tbody>
             </Table>
-            <Button variant="success" onClick={openModal}>Add Product</Button>
+            <Button className={s.buttonADD} onClick={openModal}>Add Product</Button>
             </div>
         </div>
         {/**************************** ADD PRODUCT MODAL ******************************** */}
@@ -236,7 +239,6 @@ const Product = ()=> {
             updateProduct={updateProduct}
             setShowCategories={setShowCategories}
         />
-
     </div>
     )
 }

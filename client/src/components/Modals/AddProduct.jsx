@@ -1,4 +1,5 @@
 import React from 'react';
+import s from '../../styles/adminProduct.module.css';
 import {Button, Modal, Form } from 'react-bootstrap';
 
 const AddProduct = ({data, show, closeModal, handlerChange, insertProduct, setShowCategories}) => {
@@ -6,43 +7,43 @@ const AddProduct = ({data, show, closeModal, handlerChange, insertProduct, setSh
     return (
         <Modal show={show} backdrop="static" onHide={closeModal} keyboard={false}>
             
-            <Modal.Header>Add Product</Modal.Header>
-            <Modal.Body>
+            <Modal.Header closeButton className={s.title}>Add Product</Modal.Header>
+            <Modal.Body className={s.cont}>
             <Form.Group>
-                    <Form.Label>Id:</Form.Label>
-                    <input type="text" name="name" value={data.length+1} readOnly/>
+                <Form.Label className={s.titles} >Id:</Form.Label>
+                    <input className={s.inputs} type="text" name="name" value={data.length+1} readOnly/>
                 </Form.Group>
                 <Form.Group>
-                    <Form.Label>Name:</Form.Label>
-                    <input type="text" name="name"  onChange={handlerChange}/>
+                    <Form.Label className={s.titles}>Name:</Form.Label>
+                    <input className={s.inputs} type="text" name="name"  onChange={handlerChange}/>
                 </Form.Group>
                 <Form.Group>
-                    <Form.Label>Description:</Form.Label>
-                    <input type="text" name="description" onChange={handlerChange}/>
+                    <Form.Label className={s.titles}>Description:</Form.Label>
+                    <input className={s.inputs} type="text" name="description" onChange={handlerChange}/>
                 </Form.Group>
                 <Form.Group>
-                    <Form.Label>Price:</Form.Label>
-                    <input type="number" name="price" onChange={handlerChange}/>
+                    <Form.Label className={s.titles}>Price:</Form.Label>
+                    <input className={s.inputs} type="number" name="price" onChange={handlerChange}/>
                 </Form.Group>
                 <Form.Group>
-                    <Form.Label>Stock:</Form.Label>
-                    <input type="number" name="stock" onChange={handlerChange}/>
+                    <Form.Label className={s.titles}>Stock:</Form.Label>
+                    <input className={s.inputs} type="number" name="stock" onChange={handlerChange}/>
                 </Form.Group>
                 <Form.Group>
-                    <Form.Label>Image:</Form.Label>
-                    <input type="text" name="image" onChange={handlerChange} placeholder='http://www.image.com'/>
+                    <Form.Label className={s.titles}>Image:</Form.Label>
+                    <input className={s.inputs} type="text" name="image" onChange={handlerChange} placeholder='http://www.image.com'/>
                 </Form.Group>
                 <Form.Group>
-                    <Form.Label>Dimention:</Form.Label>
-                    <input type="text" name="dimentions" onChange={handlerChange} />
+                    <Form.Label className={s.titles}>Dimention:</Form.Label>
+                    <input className={s.inputs} type="text" name="dimentions" onChange={handlerChange} />
                 </Form.Group>
                 <Form.Group>
                     <Button variant="success" onClick={() => setShowCategories(true)}>Add Categories</Button>
                 </Form.Group>
             </Modal.Body>
-            <Modal.Footer>
-                <Button variant="success" onClick={insertProduct} id="btn_Validar">Add</Button>
-                <Button variant="danger" onClick={closeModal}>Cancel</Button>
+            <Modal.Footer className={s.buttons} >
+                <Button className={s.buttonAdd} onClick={insertProduct}>Add</Button>
+                <Button  className={s.buttonCancel} onClick={closeModal}>Cancel</Button>
             </Modal.Footer>
         </Modal>
     )

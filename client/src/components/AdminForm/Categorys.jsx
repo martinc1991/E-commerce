@@ -2,9 +2,11 @@ import React from 'react';
 import {Table, Button } from 'react-bootstrap';
 import AddCategory from '../Modals/AddCategory';
 import UpdateCategory from '../Modals/UpdateCategory';
-import s from '../styles/styles.module.css';
 import axios from 'axios';
-import {useState, useEffect} from 'react'
+import {useState, useEffect} from 'react';
+import s from '../../styles/adminCategories.module.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faTrashAlt, faPencilAlt} from '@fortawesome/free-solid-svg-icons';
 
 
 const url = 'localhost:3001';
@@ -68,10 +70,6 @@ const Categorys = () => {
                 .then(dat => {
                     getCategory()
                 })
-        //     let list = date.filter((dt)=> {
-        //         return dt.id !== id
-        //     })
-        //    return setData(list)
         }
 
     }
@@ -82,55 +80,55 @@ const Categorys = () => {
 
     /****************************** Render ********************************** */
     return (
-        <>
-        {/* <Menu/> */}
-        <div className={s.cont__Form__Admin__Pr}>
+        <div>
             {/* <Menu/> */}
-            <div className= {s.cont__table__pr}>
-            <Table striped bordered hover>
-                    <thead>
-                        <tr>
-                        <th>Name</th>
-                        <th>Description</th>
-                        <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {data.map(dat => {
-                            return (
-                                <tr>
-                                    <td>{dat.name}</td>
-                                    <td>{dat.description}</td>
-                                    <td>
-                                        <Button variant="danger" onClick={() => deleteCategory(dat.id)}>Delete</Button>{"  "}
-                                        <Button variant="primary" onClick={() => updateCategoryModal(dat)}>Update</Button>
-                                    </td>
-                                </tr>
-                            )
-                        })}
-                    </tbody>
-            </Table>
-            <Button variant="success" onClick={openModal}>Add Category</Button>
+            <div className={s.table_prin}>
+                {/* <Menu/> */}
+                <div>
+                <Table striped bordered hover size="sm">
+                        <thead className={s.tableTitle}>
+                            <tr>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th className={s.tableActions}>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {data.map(dat => {
+                                return (
+                                    <tr className={s.tableDescrip}>
+                                        <td>{dat.name}</td>
+                                        <td>{dat.description}</td>
+                                        <td className={s.icons}>
+                                            <FontAwesomeIcon icon={faPencilAlt} size={'1x'} className={s.iconUpdate} onClick={()=> updateCategoryModal(dat)} />
+                                            <FontAwesomeIcon icon={faTrashAlt} size={'1x'} className={s.iconDelete} onClick={() => deleteCategory(dat.id)} />
+                                        </td>
+                                    </tr>
+                                )
+                            })}
+                        </tbody>
+                </Table>
+                <Button className={s.buttonADD} onClick={openModal}>Add Category</Button>
+                </div>
             </div>
-        </div>
-        {/**************************** ADD CATEGORY MODAL ******************************** */}
-        <AddCategory 
-            data={data} 
-            show={show} 
-            closeModal={closeModal} 
-            handlerChange={handlerChange} 
-            insertCategory={insertCategory} 
-        />
+            {/**************************** ADD CATEGORY MODAL ******************************** */}
+            <AddCategory 
+                data={data} 
+                show={show} 
+                closeModal={closeModal} 
+                handlerChange={handlerChange} 
+                insertCategory={insertCategory} 
+            />
 
-        {/*************************** UPDATE CATEGORY MODAL ****************************** */}
-        <UpdateCategory 
-            form={form} 
-            showUpdate={showUpdate} 
-            closeModalUpdate={closeModalUpdate} 
-            handlerChange={handlerChange} 
-            updateCategory={updateCategory} 
-        />
-        </>
+            {/*************************** UPDATE CATEGORY MODAL ****************************** */}
+            <UpdateCategory 
+                form={form} 
+                showUpdate={showUpdate} 
+                closeModalUpdate={closeModalUpdate} 
+                handlerChange={handlerChange} 
+                updateCategory={updateCategory} 
+            />
+        </div>
     )
 }
 export default Categorys;
