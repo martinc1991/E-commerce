@@ -10,10 +10,13 @@
 } */
 
 .productCard {
-	width: 250px;
+	width: 100%;
 	background-color: var(--blanco);
 	box-shadow: 1px 1px 5px black;
 	transition: 300ms;
+	padding: 10px;
+	height: 95%;
+	
 }
 
 .productCard:hover {

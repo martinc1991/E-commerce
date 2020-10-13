@@ -89,3 +89,24 @@
     font-weight: bolder !important;
     margin-left: 30px !important;
 }
+
+.spanDelete{
+    cursor: pointer;
+    color: #F19953;
+    font-weight: bold;
+}
+
+.ulList{
+    list-style: none;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.liList{
+    margin: 0 5px;
+    background-color: #F19953;
+    color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    padding: 5px 10px;
+}

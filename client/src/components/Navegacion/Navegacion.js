@@ -17,13 +17,13 @@ import SearchBar from '../SearchBar/SearchBar';
 import { Link } from 'react-router-dom';
 
 export default function Navegacion(props) {
-	console.log(props);
+	
 
 	return (
 		<Navbar className={`${s.navbar} sticky-top`}>
 			<Container style={{ maxWidth: '1200px' }}>
 				<Col lg={1}>
-					<Navbar.Brand href='/'>
+					<Navbar.Brand   as={Link} to='/'>
 						{/* Logo */}
 						<img className={`${s.logo}`} src={logo}></img>
 					</Navbar.Brand>
@@ -44,7 +44,7 @@ export default function Navegacion(props) {
 				</Col>
 
 				<Col className='contenedorSearchInput' lg={3}>
-					{props.showSearchbar && <SearchBar></SearchBar>}
+					{props.showSearchbar && <SearchBar onSearch={props.onSearch}></SearchBar>}
 					{/* <SearchBar></SearchBar> */}
 				</Col>
 

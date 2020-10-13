@@ -140,8 +140,8 @@ server.get('/search', (req, res, next) =>{
 		queryParameters = {
 			where:{ [Op.or]: 
 				[ 	
-					{ name: { [Op.like]: `%${value}%` } }, 
-					{ description: { [Op.like]: `%${value}%` } } 
+					{ name: { [Op.iLike]: `%${value}%` } }, 
+					{ description: { [Op.iLike]: `%${value}%` } } 
 				]
 			},
 			include: Categories
@@ -159,7 +159,7 @@ server.get('/search', (req, res, next) =>{
 
 //// 'Add Category to a product' route in '/:product_id/category/:category_id'
 server.put('/:product_id/category/:category_id', (req, res)=>{
-
+	console.log(req)
 	const { product_id, category_id } = req.params;
 
 	Promise.all([ Product.findByPk(product_id), Categories.findByPk(category_id) ])
@@ -171,6 +171,7 @@ server.put('/:product_id/category/:category_id', (req, res)=>{
 
 //// 'Remove Category to a product' route in '/:product_id/category/:category_id'
 server.delete('/:product_id/category/:category_id', (req, res)=>{
+	console.log(req.body)
 
 	const { product_id, category_id } = req.params;
 

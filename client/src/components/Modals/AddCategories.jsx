@@ -1,13 +1,12 @@
 import React from 'react';
 import {Button, Modal, Form } from 'react-bootstrap';
 
-const AddProductCategories = ({cat, showCategories, handlerProductCat, setShowCategories}) => {
+const AddCategories = ({cat, dat, editCategories, setEditCategories, handlerProductCat, addProductCat}) => {
 
-    
     return (
-        <Modal show={showCategories} onHide={()=> setShowCategories(false)} centered={true} backdrop='static'>
+        <Modal show={editCategories} onHide={()=> setEditCategories(false)} centered={true} backdrop='static'>
             
-            <Modal.Header><Modal.Title>Choose at least one category</Modal.Title></Modal.Header>
+            <Modal.Header closeButton><Modal.Title>Choose at least one category</Modal.Title></Modal.Header>
             <Modal.Body>
                 <Form.Group onChange={handlerProductCat} >
                         {cat.map(c => {
@@ -21,9 +20,9 @@ const AddProductCategories = ({cat, showCategories, handlerProductCat, setShowCa
                 </Form.Group>
             </Modal.Body>
             <Modal.Footer>
-                <Button variant="success" onClick={() => setShowCategories(false)}>done!</Button>
+                <Button variant="success" onClick={() => addProductCat(dat)}>done!</Button>
             </Modal.Footer>
         </Modal>
     )
 }
-export default AddProductCategories; 
+export default AddCategories; 
