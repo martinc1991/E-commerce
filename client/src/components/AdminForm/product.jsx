@@ -93,6 +93,7 @@ const Product = ()=> {
             productCat.splice(catIndex,1)
             setProdutCat(productCat);
         }
+        console.log(productCat);
         return;
     }
 
@@ -102,6 +103,7 @@ const Product = ()=> {
         form.category = productCat;
         await axios.post(`http://${url}/products`, form)
             .then(res => {
+                setProdutCat([]);
                 let productCategoriesId = [];
                 let productId = res.data.data.id;
                 form.category.forEach(selectedCat => {
@@ -126,12 +128,26 @@ const Product = ()=> {
             })
     }
 
-    const updateProduct = (dat)=>{
-        axios.put(`http://${url}/products/${dat.id}`, dat)
+    const updateProduct = async (dat)=>{
+        
+        await axios.put(`http://${url}/products/${dat.id}`, dat)
             .then(dat => {
-                setShowUpdate(false);
-                getProduct();
+                form.category = productCat;
+                let productCategoriesId = [];
+                let productId = form.id;
+                form.category.forEach(selectedCat => {
+                    productCategoriesId.push(cat.filter(elem => elem.name === selectedCat)[0].id);
+                })
+                productCategoriesId.forEach(catId => {
+                    axios.put(`http://${url}/products/${productId}/category/${catId}`)
+                        .then(()=>{
+                            setShowUpdate(false);
+                            getProduct();
+                            setProdutCat([]);
+                        })
+                })
             })
+
     }
 
     const deleteProduct = (id)=>{
