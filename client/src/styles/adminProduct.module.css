@@ -63,21 +63,29 @@
     font-size: 0.85em !important;
     text-align: center !important;
 }
+.tibleThDescrip{
+    width: 60% !important;
+}
+.tableActions{
+    width: 7% !important;
+}
 .icons{
     display: flex !important;
     justify-content: space-evenly;
+    
        
 }
 .iconDelete{
     color:  #3B8EA5 !important;
     cursor: pointer !important;
     font-size: 1.3em !important;
+    border: none !important;
 }
 .iconUpdate{
     color:  #1F2333 !important;
     cursor: pointer !important;
     font-size: 1.3em !important;
-
+    
 }
 
 .buttonADD{
@@ -88,12 +96,17 @@
     font-family: 'Open Sans', sans-serif !important;
     font-weight: bolder !important;
     margin-left: 30px !important;
+    margin-bottom: 30px !important;
 }
 
 .spanDelete{
     cursor: pointer;
     color: #F19953;
     font-weight: bold;
+}
+.iconAdd{
+    cursor: pointer;
+    color: #1F2333;
 }
 
 .ulList{

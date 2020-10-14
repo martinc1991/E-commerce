@@ -41,7 +41,9 @@
 }
 
 .productCardShopCartIcon {
-	color: white;
+	margin-right: 20px !important;
+	cursor: pointer;
+	color: var(--azul);
 	transition: 300ms;
 }
 
@@ -51,7 +53,8 @@
 
 .productCardTitle {
 	font-family: 'Open Sans', sans-serif;
-	font-size: 24px;
+	font-size: 15px;
+	font-weight: bold;
 	color: var(--azul);
 }
 
@@ -64,15 +67,17 @@
 .productCardPrice {
 	font-family: 'Open Sans', sans-serif;
 	font-weight: bold;
-	font-size: 36px;
+	font-size: 20px;
 	color: var(--celeste);
 }
 
 .productCardButton {
 	font-family: 'Open Sans', sans-serif;
+	font-weight: bold;
 	background-color: var(--azul);
 	border: none;
 	border-radius: 100px;
+	margin-top: 10px;
 	width: 70%;
 }
 

@@ -22,6 +22,7 @@ const AddProduct = ({data, show, closeModal, handlerChange, insertProduct, setSh
                 <Form.Group>
                     <Form.Label className={s.titles}>Description:</Form.Label>
                     <input className={s.inputs} type="text" name="description" onChange={handlerChange}/>
+                    {/* <textarea className={s.inputs} name="description" onChange={handlerChange}></textarea> */}
                 </Form.Group>
                 <Form.Group>
                     <Form.Label className={s.titles}>Price:</Form.Label>
