@@ -75,12 +75,48 @@
 	font-family: 'Open Sans', sans-serif;
 	font-weight: bold;
 	background-color: var(--azul);
-	border: none;
-	border-radius: 100px;
-	margin-top: 10px;
-	width: 70%;
+	border: none;	
+	padding: 2px;
+	margin-top: 30px;
+	width: 90%;
+	height: 30px;
 }
 
 .productCardButton:hover {
 	background-color: var(--celeste);
+}
+.productCardButton2:hover {
+	background-color: var(--celeste);
+}
+.icon{
+	padding-top: 1%;
+	color:#F19953;
+	font-size: 0.8em;
+}
+.cont_prin{
+	position: relative;
+}
+.buttons{
+	opacity: 0;
+	transition: all 0.3s ease-in-out;
+	position: absolute;
+	width: 100%;
+	bottom: 160px;
+	left: 15px;	
+}
+.cont_prin:hover .buttons{
+	opacity: 1;
+	
+}
+.productCardButton2{
+	color:var(--azul);
+	font-family: 'Open Sans', sans-serif;
+	font-weight: bold;
+	background-color: var(--naranja);
+	border: none;	
+	padding: 2px;
+	margin-top: 30px;
+	width: 90%;
+	height: 30px;
+
 }
