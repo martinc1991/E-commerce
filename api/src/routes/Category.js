@@ -35,7 +35,7 @@ server.post('/category/', ( req, res ) => {
         });
 });
 
-//// 'Get all products from Categories' route in '/:id'
+//// 'Get all products from Categories' route in '/:catName'
 server.get('/category/:catName', (req, res, next) =>{
 
     let { catName } = req.params;
