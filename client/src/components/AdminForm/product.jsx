@@ -1,12 +1,12 @@
-import React from 'react'
+import React from 'react';
 import { Table, Button } from 'react-bootstrap';
 import AddProduct from '../Modals/AddProduct';
 import AddCategories from '../Modals/AddCategories';
 import AddProductCategories from '../Modals/AddProductCategories';
 import UpdateProduct from '../Modals/UpdateProduct';
-import s from '../../styles/adminProduct.module.css'
+import s from '../../styles/adminProduct.module.css';
 import axios from 'axios';
-import {useState, useEffect} from 'react'
+import {useState, useEffect} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faTrashAlt, faPencilAlt, faPlusCircle} from '@fortawesome/free-solid-svg-icons';
 
@@ -37,7 +37,7 @@ const Product = ()=> {
     const openModal = ()=> { setShow(true)  }
     const closeModal = ()=> { setShow(false)  }
     const closeModalUpdate = ()=> { setShowUpdate(false) }
-    const handlerChange = (e) => {  setForm({ ...form, [e.target.name]:e.target.value})  }
+    const handlerChange = (e) => {  setForm({ ...form, [e.target.name]: e.target.value})  }
     const updateProductModal = (product)=> {
         console.log(product)
         let cont = 0;
@@ -106,7 +106,7 @@ const Product = ()=> {
     const insertProduct = async () => {
         
         form.sku = Math.random();
-        form.category = productCat;
+        form.category = productCat; 
         await axios.post(`http://${url}/products`, form)
             .then(res => {
                 setProdutCat([]);

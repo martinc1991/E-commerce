@@ -5,14 +5,13 @@ const { Product, Categories } = require('../db.js'); // Import Products model.
 const {Op} = require('sequelize'); // Import operator from sequelize module.
 
 
-
 // Start routes
 //console.log("this " + Product.findAll().then(dta => console.log("Into the THEN")))
 //// 'Get products' route in '/'
 server.get('/', ( req, res ) => {
 	//Product.findAll().then(products => res.status(STATUS.OK).json({message: 'Success',data: products})
 	Product.findAll({
-		include:Categories
+		include: Categories
 	}) 
 		.then(products => {
 			return res.status(OK).json({
@@ -28,11 +27,13 @@ server.get('/', ( req, res ) => {
         })
 });
 
+
+
 //// 'Get an especific product' route in '/:id'
 server.get('/product/:id', (req, res) =>{
 	const {id} = req.params;
 
-	return Product.findOne({where:{ id }} )
+	return Product.findOne({ where:{ id }} )
 	.then( products => {
 		return res.status(OK).json({
 			message: 'Success',
@@ -48,7 +49,6 @@ server.get('/product/:id', (req, res) =>{
 });
 
 //// 'Create product' route in '/'
-
 server.post('/',function(req,res){
 	const {name,description,price,stock,dimentions,image,sku} = req.body;
 
@@ -87,24 +87,6 @@ server.put('/:id', ( req, res ) => {
 	.catch( err => {
 		return res.status(ERROR).json({
 			message: 'Error al modificar producto',
-			data: err
-		})
-	});
-});
-
-server.get('/productID/:id', (req, res) =>{
-	const {id} = req.params;
-
-	return Product.findOne({where:{ id }} )
-	.then( products => {
-		return res.status(OK).json({
-			message: 'Success',
-			data: products
-		})
-	})
-	.catch( err => {
-		return res.status(NOT_FOUND).json({
-			message: 'El ítem no se encuentra en la base de datos',
 			data: err
 		})
 	});
