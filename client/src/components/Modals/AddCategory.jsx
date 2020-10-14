@@ -3,16 +3,16 @@ import s from '../../styles/adminCategories.module.css';
 import {Button, Modal, Form } from 'react-bootstrap';
 
 const AddCategory = ({data, show, closeModal, handlerChange, insertCategory, form}) => {
-    console.log(form)
+   
     return (
         <Modal show={show} backdrop="static" onHide={closeModal} keyboard={false}>
 
             <Modal.Header closeButton className={s.title}> Add Category </Modal.Header>
             <Modal.Body className={s.cont}>
-                <Form.Group>
+                {/* <Form.Group>
                     <Form.Label className={s.titles} >Id:</Form.Label>
-                    <input className={s.inputs} type="text" name="name" value={data.length+1} readOnly/>
-                </Form.Group>
+                    <input className={s.inputs} type="text" name="name" value={1} readOnly/>
+                </Form.Group> */}
                 <Form.Group>
                     <Form.Label className={s.titles} >Name:</Form.Label>
                     <input className={s.inputs} type="text" name="name"  onChange={handlerChange}/>

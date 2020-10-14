@@ -14,6 +14,10 @@ server.get('/category', (req, res)=> {
                 result: categorys,
             })
         })
+        .catch((err) => {
+            res.status(500).send({ text: "Internal error." });
+            console.error(err);
+          });
 })
 
 
@@ -65,10 +69,15 @@ server.put('/category/:id', (req, res) => {
             category.name = name;
             category.description = description;
             category.save()
-            return res.status(UPDATED).json({
-                    message:`Se ha actualizado la categoria ${oldCategory.name} a ${category.name} correctamente!`,
-                    data: category
-            }); 
+            // return res.status(UPDATED).json({
+            //         message:`Se ha actualizado la categoria ${oldCategory.name} a ${category.name} correctamente!`,
+            //         data: category
+            
+            // }); 
+            return res.send({
+                message:`Se ha actualizado la categoria ${oldCategory.name} a ${category.name} correctamente!`,
+                data: category
+                })
          })
          .catch(err => {
             return res.status(ERROR).json({
