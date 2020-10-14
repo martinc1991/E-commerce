@@ -147,7 +147,7 @@ server.put('/:product_id/category/:category_id', (req, res)=>{
 	Promise.all([ Product.findByPk(product_id), Categories.findByPk(category_id) ])
 		.then(data =>{
 			data[0].addCategories(data[1])
-				.then(data => res.send('Categoría añadida correctamente!'))
+				.then(data => res.send({message: 'Categoría añadida correctamente!', result:data}))
 		});
 })
 

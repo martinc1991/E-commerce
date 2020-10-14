@@ -9,14 +9,21 @@ import axios from 'axios';
 import {useState, useEffect} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faTrashAlt, faPencilAlt, faPlusCircle} from '@fortawesome/free-solid-svg-icons';
+import { connect } from 'react-redux';
+import {
+    getCategories,
+    getProducts,
+    addProduct
+} from '../../store/actions/actions'
 
 const url = 'localhost:3001';
 
-const Product = ()=> {
+const Product = ({productsP, getCategoryP, getProductP, categoriesP, addProductP})=> {
+    
     /*********************** Local States ************************* */
-    const [data, setData] = useState([]);
+    const [data, setData] = useState(productsP);
     const [dataObject, setDataObject] = useState({});
-    const [cat, setCat] = useState([]);
+    const [cat, setCat] = useState(categoriesP);
     const [productCat, setProdutCat] = useState([]);
     const [form, setForm] = useState({
         name : "",
@@ -60,33 +67,8 @@ const Product = ()=> {
     }
 
 
-    const getProduct = () => {
-        axios.get(`http://${url}/products`)
-            .then(res => {
-                if(res) return setData(res.data.data)
-                else console.log("No hay Datos")
-            })
-            .catch(err => {
-                console.log('Error')
-            })
-    }
-
-    const getCategory = () => {
-        axios.get(`http://${url}/products/category`)
-            .then(res => {
-                if(res){
-                    return setCat(res.data.result)
-                }else{
-                    console.log("No hay Datos")
-                }
-            })
-            .catch(err => {
-                console.log('Error')
-            })
-    }
 
     const handlerProductCat = (e) => {
-        
         if (e.target.checked){
             if (!productCat.includes(e.target.value)){
                 setProdutCat([...productCat, e.target.value]);
@@ -104,7 +86,7 @@ const Product = ()=> {
    
 
     const insertProduct = async () => {
-        
+        //addProductP(form, productCat, categoriesP)
         form.sku = Math.random();
         form.category = productCat; 
         await axios.post(`http://${url}/products`, form)
@@ -113,13 +95,13 @@ const Product = ()=> {
                 let productCategoriesId = [];
                 let productId = res.data.data.id;
                 form.category.forEach(selectedCat => {
-                    productCategoriesId.push(cat.filter(elem => elem.name === selectedCat)[0].id);
+                    productCategoriesId.push(categoriesP.filter(elem => elem.name === selectedCat)[0].id);
                 })
                 
                 productCategoriesId.forEach(catId => {
                     axios.put(`http://${url}/products/${productId}/category/${catId}`)
                         .then(()=>{
-                            getProduct();
+                            getProductP();
                             setShow(false);
                             setProdutCat([]);
                         })
@@ -132,12 +114,12 @@ const Product = ()=> {
         let productId = dat.id;
         let catIds = [];
         productCat.forEach(selectedCat => {
-            catIds.push(cat.filter(elem => elem.name === selectedCat)[0].id);
+            catIds.push(categoriesP.filter(elem => elem.name === selectedCat)[0].id);
         })
         catIds.forEach(catId => {
             axios.put(`http://${url}/products/${productId}/category/${catId}`)
             .then(()=>{
-                getProduct();
+                getProductP();
                 setEditCategories(false);
                 setProdutCat([]);
                 setDataObject({});
@@ -148,7 +130,7 @@ const Product = ()=> {
     const deleteProductCat = (productId, catId) => {
         axios.delete(`http://${url}/products/${productId}/category/${catId}`)
             .then(()=>{
-                getProduct();
+                getProductP();
             })
     }
 
@@ -158,7 +140,7 @@ const Product = ()=> {
         axios.put(`http://${url}/products/${dat.id}`, dat)
             .then(dat => {
                 setShowUpdate(false);
-                getProduct();
+                getProductP();
             })
     }
 
@@ -166,15 +148,15 @@ const Product = ()=> {
         if(window.confirm('Are you sure remove this product?')){
             axios.delete(`http://${url}/products/${id}`)
                 .then(dat => {
-                    getProduct()
+                    getProductP()
                 })
         }
     }
 
     /*********************** Component Life Cycle *************************** */
     useEffect(()=> {
-        getProduct();
-        getCategory()
+        getCategoryP();
+        getProductP()
     }, [])
 
     /****************************** Render ********************************** */
@@ -196,7 +178,7 @@ const Product = ()=> {
                         </tr>
                     </thead>
                     <tbody>
-                        {data.map((dat,index) => {
+                        {productsP.map((dat,index) => {
                             return (
                                 (dat.categories.length < 1)?
                                 <tr className={s.tableDescrip} key={index}>
@@ -263,7 +245,7 @@ const Product = ()=> {
 
         {/*********************** ADD PRODUCT CATEGORIES MODAL ************************** */}
         <AddProductCategories 
-            cat={cat}
+            cat={categoriesP}
             showCategories={showCategories}
             handlerProductCat={handlerProductCat}
             setShowCategories={setShowCategories}
@@ -281,7 +263,7 @@ const Product = ()=> {
 
         {/************************** EDIT CATEGORIES MODAL ******************************* */}
         <AddCategories 
-            cat={cat}
+            cat={categoriesP}
             dat={dataObject}
             editCategories={editCategories}
             handlerProductCat={handlerProductCat}
@@ -291,4 +273,22 @@ const Product = ()=> {
     </div>
     )
 }
-export default Product
+
+
+
+function mapStateToProps(state){
+    return {
+        productsP: state.products,
+        categoriesP: state.categories
+    }
+}
+
+function mapDispatchToProps(dispatch){
+    return {
+        getCategoryP: () =>  dispatch(getCategories()),
+        getProductP: () => dispatch(getProducts()),
+       
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Product)
