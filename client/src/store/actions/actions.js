@@ -1,6 +1,4 @@
 import axios from "axios";
-import AddCategory from "../../components/Modals/AddCategory";
-
 import {
     ADD_CATEGORY,
     GET_CATEGORIES,
@@ -11,16 +9,14 @@ import {
     DELETE_PRODUCTS,
     ADD_CATEGORY_PRODUCT,
     REMOVE_CATEGORY_PRODUCT,
-    GET_PRODUCTS
+    GET_PRODUCTS,
+    GET_PRODUCTS_BY_CATEGORY
 } from '../constants/constans'
-
 
 const url = "localhost:3001";
 let productCategoriesId = [];
 
-
 export function getCategories()  {
-    
     return  (dispatch) => {
         axios.get(`http://${url}/products/category`)
         .then(res => {
@@ -44,7 +40,6 @@ export function getCategories()  {
 }
 
 export function AddCategorie(data){
-    
     return async (dispatch) => {
         await axios.post(`http://${url}/products/category`, data)
         .then(res => {
@@ -110,6 +105,8 @@ export function deleteCategory(id){
     }
 }
 
+
+/************************************** PRODUCTS ********************************************** */
 export function getProducts(){
     return (dispatch) => {
         axios.get(`http://${url}/products`)
@@ -131,6 +128,32 @@ export function getProducts(){
             })
     }
 }
+
+
+/************************************** CATALOGO ********************************************** */
+export function getProductByCategory(catName){
+    return (dispatch)=> {
+        axios.get(`http://${url}/products/category/${catName}`)
+            .then(res => {
+                if(res.status === 200){
+                    dispatch({
+                        type: GET_PRODUCTS_BY_CATEGORY,
+                        products: res.data.data
+                    })
+                }else{
+                    dispatch({
+                        type: ERROR_MESSAGE,
+                        message: 'Error al obtener productos por Categoria'
+                    })
+                }
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
+}
+
+
 
 
 
