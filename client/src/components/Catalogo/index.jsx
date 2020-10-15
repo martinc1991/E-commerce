@@ -3,7 +3,8 @@ import axios from 'axios';
 import {useState, useEffect} from 'react'
 import ProductCard from '../ProductCard/index';
 import Navegacion from '../Navegacion/Navegacion'
-import Filter from '../Filter/index.jsx';
+import Filter from '../Filter/index';
+
 import {Container, Row, Col} from 'react-bootstrap';
 import s from '../../styles/catalogo.module.css';
 const url = 'localhost:3001';

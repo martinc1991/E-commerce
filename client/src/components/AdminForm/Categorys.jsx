@@ -7,11 +7,19 @@ import {useState, useEffect} from 'react';
 import s from '../../styles/adminCategories.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faTrashAlt, faPencilAlt} from '@fortawesome/free-solid-svg-icons';
+import { connect } from 'react-redux'
+import {
+    getCategories,
+    AddCategorie,
+    updCategory,
+    deleteCategory
+} from '../../store/actions/actions'
 
 
 const url = 'localhost:3001';
 
-const Categorys = () => {
+const Categorys = ({categories, getCategoryP, addCategoryP, updCategoryP, deleteCategoryP}) => {
+    //console.log(props)
     /*********************** Local States ************************* */
     const [data, setData] = useState([]);
     const [form, setForm] = useState({ name : "", description : "" });
@@ -24,23 +32,11 @@ const Categorys = () => {
     const closeModalUpdate = ()=> { setShowUpdate(false)  }
     const handlerChange = (e) => {  setForm({ ...form, [e.target.name]:e.target.value})  }
     
-    const getCategory = () => {
-        axios.get(`http://${url}/products/category`)
-            .then(res => {
-                if(res) return setData(res.data.result)
-                else console.log("No hay Datos")
-            })
-            .catch(err => {
-                console.log('Error')
-            })
-    }
 
-    const insertCategory = async () => {
-        await axios.post(`http://${url}/products/category`, form)
-            .then(res => {
-                getCategory()
-                setShow(false)
-            })
+    const insertCategory = () => {
+        addCategoryP(form)
+        setShow(false)
+        return
     }
 
     const updateCategoryModal = (category)=> {
@@ -57,25 +53,20 @@ const Categorys = () => {
     }
 
     const updateCategory = (dat)=>{
-        axios.put(`http://${url}/products/category/${dat.id}`, dat)
-            .then(dat => {
+        console.log(dat)
+                updCategoryP(dat)
                 setShowUpdate(false);
-                getCategory();
-            })
+                return
     }
 
     const deleteCategory = (id)=>{
         if(window.confirm('Are you sure remove this product?')){
-            axios.delete(`http://${url}/products/category/${id}`)
-                .then(dat => {
-                    getCategory()
-                })
+            deleteCategoryP(id)
         }
-
     }
     /*********************** Component Life Cycle *************************** */
     useEffect(()=> {
-        getCategory();
+        getCategoryP();
     }, [])
 
     /****************************** Render ********************************** */
@@ -94,7 +85,7 @@ const Categorys = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {data.map(dat => {
+                            {categories.map(dat => {
                                 return (
                                     <tr className={s.tableDescrip}>
                                         <td>{dat.name}</td>
@@ -113,7 +104,7 @@ const Categorys = () => {
             </div>
             {/**************************** ADD CATEGORY MODAL ******************************** */}
             <AddCategory 
-                data={data} 
+                data={form} 
                 show={show} 
                 closeModal={closeModal} 
                 handlerChange={handlerChange} 
@@ -131,4 +122,22 @@ const Categorys = () => {
         </div>
     )
 }
-export default Categorys;
+
+
+function mapStateToProps(state){
+    return {
+        categories: state.categories,
+    }
+}
+
+function mapDispatchToProps(dispatch){
+    return {
+        getCategoryP: () =>  dispatch(getCategories()),
+        addCategoryP: (data) => dispatch(AddCategorie(data)),
+        updCategoryP: (data) => dispatch(updCategory(data)),
+        deleteCategoryP : (id) => dispatch(deleteCategory(id))
+    }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Categorys);
