@@ -30,11 +30,11 @@ module.exports=(sequelize)=>{
             type:DataTypes.TEXT
         },
         regionId:{
-            type:DataTypes.INTEGER,
+            type:DataTypes.STRING,
             allowNull:false
         },
         country_id:{
-            type:DataTypes.INTEGER,
+            type:DataTypes.STRING,
             allowNull:false
         }
 
