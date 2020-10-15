@@ -1,12 +1,11 @@
-
 const server = require('express').Router(); //Import router from express module.
-const { Categories } = require('../db.js'); // Import Categories model.
+const { Product, Categories } = require('../db.js'); // Import Categories model.
 const { OK, CREATED, UPDATED, ERROR, NOT_FOUND, ERROR_SERVER } = require('../constants'); // Import Status constants.
 
 // Start Routes
 
-//// 'Create Category' route in '/products/category'
 
+//// 'Get Categories' route in '/products/category'
 server.get('/category', (req, res)=> {
     Categories.findAll()    
         .then(categorys => {
@@ -20,7 +19,7 @@ server.get('/category', (req, res)=> {
           });
 })
 
-
+//// 'Create Category' route in '/products/category'
 server.post('/category/', ( req, res ) => {
     const { name, description } = req.body;
 
@@ -39,23 +38,24 @@ server.post('/category/', ( req, res ) => {
         });
 });
 
-//// 'Get Category' route in '/products/category/:name'
-server.get('/category/:name', (req, res) =>{
-    const {name} = req.params;
+//// 'Get all products from Categories' route in '/:catName'
+server.get('/category/:catName', (req, res, next) =>{
 
-    return Categories.findOne({ where:{ name } })
-        .then( category => {
-            return res.status(OK).json({
-                message: 'Success',
-                data: category
-            });
+    let { catName } = req.params;
+    Product.findAll({
+        include: [{
+            model: Categories,
+            where: { name: catName}
+        }]
+    })
+    .then(products => {
+        return res.status(OK).json({
+            message: 'Success',
+            data: products
         })
-        .catch(err => {
-            return res.status(NOT_FOUND).json({
-                message: `La categoría ${name} todavía no ha sido creada`,
-                data: err
-            })
-        })
+    })
+    .catch(next)
+	
 });
 
 
@@ -106,6 +106,7 @@ server.delete('/category/:id', (req, res, next) => {
             })
         })
  });
+
 
 // End Routes
 

@@ -76,6 +76,14 @@
 	width: 70%;
 }
 
-.productCardButton:hover {
+.productCardButton:hover, .productCardButtonAgo:hover{
 	background-color: var(--celeste);
+}
+
+.productCardButtonAgot{
+	font-family: 'Open Sans', sans-serif;
+	background-color: rgb(252, 130, 130);
+	border: none;
+	border-radius: 100px;
+	width: 70%;
 }

@@ -10,13 +10,14 @@ import { Link } from 'react-router-dom';
 // CSS
 import s from '../../styles/ProductCard.module.css';
 
-export default function ProductCard({ name, description, img, price, id, destacado }) {
+export default function ProductCard({ name, description, img, price, id, destacado, stock }) {
 	// console.log('name: ' + name);
 	// console.log('description: ' + description);
 	// console.log('img: ' + img);
 	// console.log('price: ' + price);
 	// console.log('id: ' + id);
 	// console.log('destacado: ' + destacado);
+	console.log('destacado: ' + stock);
 
 	var destacadoText = '';
 
@@ -25,7 +26,7 @@ export default function ProductCard({ name, description, img, price, id, destaca
 	}
 
 	return (
-		<Card className={`m-2 flex-fill ${s.productCard}`}>
+		<Card className={` m-2 flex-dark  ${s.productCard}` }  bg={  stock>0 ? `fill`: `fill` }  >
 			<Card.Img variant='top' src={`${img}` || `https://picsum.photos/200`} />
 			<Card.ImgOverlay
 				className={`p-1 d-flex flex-column align-items-end justify-content-between ${s.productCardHeadingContainer}`}
@@ -44,9 +45,16 @@ export default function ProductCard({ name, description, img, price, id, destaca
 				<Card.Text className={`my-1 ${s.productCardDescription}`}>{`${description}` || `Product Name`} </Card.Text>
 				<Card.Text className={`my-1 ${s.productCardPrice}`}>{`$ ${price}` || `Product Name`}</Card.Text>
 				<Row className={`d-flex justify-content-around`}>
-					<Button as={Link} to={`/products/product/${id}`} className={`mb-1 ${s.productCardButton}`}>
-						Ver Mas
-					</Button>
+					{stock == 0 ? 
+						<Button as={Link} to={`/products/product/${id}`} className={`mb-1 ${s.productCardButtonAgot}`}>
+							Agotado!
+						</Button>
+					:
+						<Button as={Link} to={`/products/product/${id}`} className={`mb-1 ${s.productCardButton}`}>
+							Ver mas
+						</Button>
+					}
+
 				</Row>
 			</Card.Body>
 		</Card>
