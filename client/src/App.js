@@ -23,6 +23,7 @@ var enlacesUser = [
 	{ text: 'FAQs', to: '/' },
 	{ text: 'Contacto', to: '/' },
 	{ text: 'Ayuda', to: '/' },
+	{ text: 'Registro', to: '/users' }, // Por ahora para probar nomas
 	{ text: 'ADMIN', to: '/admin' },
 ];
 
@@ -51,9 +52,9 @@ function App() {
 			<Switch>
 				<Route path='/' exact>
 					<Navegacion links={enlacesUser} showSearchbar={true} onSearch={onSearch} />
-					{/* <Slider /> */}
-					{/* <Footer></Footer> */}
-					<FormUsers></FormUsers>
+					<Slider />
+					<Footer></Footer>
+					{/* <FormUsers></FormUsers> */}
 				</Route>
 				{/* <Route path='/admin' exact > */}
 				<Route path='/admin'>
@@ -65,6 +66,12 @@ function App() {
 					<Route path='/admin/product' component={Product} />
 					<Route path='/admin/category' component={Category} />
 				</Route>
+				<Route path='/users' exact>
+					<Navegacion links={enlacesUser} showSearchbar={true} onSearch={onSearch} />
+					<FormUsers></FormUsers>
+					<Footer></Footer>
+				</Route>
+
 				<Route path='/admin/product' component={Product} />
 				<Route path='/admin/category' component={Category} />
 				{/* <Route path='/product/:id' component={ProductDet} /> */}
