@@ -1,4 +1,4 @@
-import { ADD_CATEGORY, GET_CATEGORIES, DELETE_CATEGORY, MODIFY_CATEGORY, ERROR_MESSAGE, ADD_PRODUCT, DELETE_PRODUCTS, ADD_CATEGORY_PRODUCT, REMOVE_CATEGORY_PRODUC, GET_PRODUCTS, CREATE_USER } from '../constants/constans';
+import { ADD_CATEGORY, GET_CATEGORIES, DELETE_CATEGORY, MODIFY_CATEGORY, ERROR_MESSAGE, ADD_PRODUCT, DELETE_PRODUCTS, ADD_CATEGORY_PRODUCT, REMOVE_CATEGORY_PRODUC, GET_PRODUCTS, GET_PRODUCTS_BY_CATEGORY } from '../constants/constans';
 
 const inicialState = {
 	categories: [],
@@ -6,7 +6,7 @@ const inicialState = {
 	users: [],
 };
 
-const Reducer = (state = inicialState, action) => {
+const ReducerCategory = (state = inicialState, action) => {
 	console.log(action);
 	switch (action.type) {
 		case GET_CATEGORIES:
@@ -18,6 +18,20 @@ const Reducer = (state = inicialState, action) => {
 			let cat = state.categories.filter((cat) => cat.id == parseInt(action.category.id))[0];
 			if (cat === undefined) return { ...state };
 			let ind = state.categories.indexOf(cat);
+
+			let categories = [...state.categories];
+			console.log(categories[ind]);
+			categories[ind].name = action.category.name;
+			categories[ind].description = action.category.description;
+			console.log(categories);
+			return { ...state, categories: categories };
+		case DELETE_CATEGORY:
+			return {
+				...state,
+				categories: state.categories.filter((c) => {
+					return c.id !== action.category.id;
+				}),
+			};
 
 			let categories = [...state.categories];
 			console.log(categories[ind]);
@@ -47,11 +61,14 @@ const Reducer = (state = inicialState, action) => {
 			console.log('error en algun lado: el reducer');
 			return inicialState;
 
-		/****************************** DEFAULT *********************************** */
+		/****************************** CATALOGO *********************************** */
+		case GET_PRODUCTS_BY_CATEGORY:
+			return { ...state, products: action.products };
+
 		default:
 			return inicialState;
 			break;
 	}
 };
 
-export default Reducer;
+export default ReducerCategory;
