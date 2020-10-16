@@ -15,7 +15,8 @@ import { createUser } from '../../store/actions/userActions.js';
 // <-------------------------------------------------------------->
 const url = 'localhost:3001';
 
-const FormUsers = function ({ users, createUserP }) {
+const FormUsers = function ({ users, createUserP, createUserSuccessP }) {
+	console.log(createUserSuccessP);
 	const getUserData = function () {
 		let // nombre = document.getElementById(`nombre`).value,
 			// 	apellido = document.getElementById(`apellido`).value,
@@ -47,16 +48,37 @@ const FormUsers = function ({ users, createUserP }) {
 			// codPostal,
 			// userName,
 			password,
-			passwordConfirm,
+			// passwordConfirm,
 			// terminos: terminos,
-			// role: 'user',
+			role: 'client',
 		};
 		console.log(userData);
 		return userData;
 	};
 
+	// personId: {
+	// 		type: DataTypes.INTEGER,
+	// 		allowNull: false,
+	// 	},
+	// 	email: {
+	// 		type: DataTypes.STRING,
+	// 		allowNull: false,
+	// 	},
+	// 	password: {
+	// 		type: DataTypes.STRING,
+	// 		allowNull: false,
+	// 	},
+	// 	role: {
+	// 		type: DataTypes.ENUM('client', 'admin'),
+	// 		allowNull: false,
+	// 	},
+
 	const createSuccess = function () {
-		return alert('Usuario creado correctamente!');
+		if (createUserSuccessP) {
+			return alert('Usuario creado correctamente!');
+		} else {
+			return alert('Hubo algun problema');
+		}
 	};
 
 	// Funcion que se dispara al hacer submit
@@ -65,13 +87,14 @@ const FormUsers = function ({ users, createUserP }) {
 		var data = getUserData();
 
 		// Comprobacion de que las contraseñas coincidan
-		if (data.password != data.passwordConfirm) {
-			return alert('las contras no coinciden');
-		}
+		// if (data.password != data.passwordConfirm) {
+		// 	return alert('las contras no coinciden');
+		// }
 
 		console.log('se estan por enviar los datos');
 		console.log(data);
 		createUserP(data);
+		console.log(createUserSuccessP);
 		createSuccess(); // Alert
 	};
 
@@ -232,6 +255,7 @@ const FormUsers = function ({ users, createUserP }) {
 function mapStateToProps(state) {
 	return {
 		users: state.users,
+		createUserSuccessP: state.createUserSuccess,
 	};
 }
 

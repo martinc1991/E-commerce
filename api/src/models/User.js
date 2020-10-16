@@ -1,7 +1,11 @@
-const { DataTypes, Sequelize } = require('sequelize');
+const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
-	sequelize.define('users', {
+	sequelize.define('User', {
+		// personId: {
+		// 	type: DataTypes.INTEGER,
+		// 	allowNull: false,
+		// },
 		email: {
 			type: DataTypes.STRING,
 			allowNull: false,
@@ -9,6 +13,10 @@ module.exports = (sequelize) => {
 		},
 		password: {
 			type: DataTypes.STRING,
+			allowNull: false,
+		},
+		role: {
+			type: DataTypes.ENUM('client', 'admin'),
 			allowNull: false,
 		},
 	});

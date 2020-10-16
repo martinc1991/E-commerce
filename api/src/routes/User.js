@@ -1,5 +1,5 @@
 const server = require('express').Router(); //Import router from express module.
-const { Users } = require('../db.js'); // Import Categories model.
+const { User } = require('../db.js'); // Import Categories model.
 const { OK, CREATED, ERROR, ERROR_SERVER } = require('../constants/index'); // Import Status constants.
 
 // Start Routes
@@ -7,9 +7,9 @@ const { OK, CREATED, ERROR, ERROR_SERVER } = require('../constants/index'); // I
 //// 'Create User' route in '/'
 
 server.post('/', function (req, res) {
-	const { email, password } = req.body;
+	const { email, password, role } = req.body;
 	console.log(req.body);
-	Users.create({ email, password })
+	User.create({ email, password, role })
 		.then((user) => {
 			console.log(user.id);
 			return res.status(CREATED).json({
@@ -29,7 +29,7 @@ server.post('/', function (req, res) {
 server.get('/', (req, res) => {
 	//Product.findAll().then(products => res.status(STATUS.OK).json({message: 'Success',data: products})
 	// res.send('andó');
-	Users.findAll()
+	User.findAll()
 		.then((users) => {
 			return res.status(OK).json({
 				message: 'Success',

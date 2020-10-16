@@ -14,9 +14,11 @@ export function createUser(userData) {
 				console.log('peticion enviada');
 				if (res.status === 201) {
 					console.log('tire estado 201');
+					console.log(res.data);
 					dispatch({
 						type: CREATE_USER,
-						users: res.data[0] || [],
+						users: res.data || [],
+						createUserSuccess: true,
 					});
 				} else {
 					dispatch({
@@ -27,6 +29,7 @@ export function createUser(userData) {
 			})
 			.catch((err) => {
 				console.log('Error');
+				console.log(err);
 			});
 	};
 }

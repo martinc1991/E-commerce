@@ -1,9 +1,10 @@
-import { ADD_CATEGORY, GET_CATEGORIES, DELETE_CATEGORY, MODIFY_CATEGORY, ERROR_MESSAGE, ADD_PRODUCT, DELETE_PRODUCTS, ADD_CATEGORY_PRODUCT, REMOVE_CATEGORY_PRODUC, GET_PRODUCTS, GET_PRODUCTS_BY_CATEGORY } from '../constants/constans';
+import { ADD_CATEGORY, GET_CATEGORIES, DELETE_CATEGORY, MODIFY_CATEGORY, ERROR_MESSAGE, ADD_PRODUCT, DELETE_PRODUCTS, ADD_CATEGORY_PRODUCT, REMOVE_CATEGORY_PRODUC, GET_PRODUCTS, GET_PRODUCTS_BY_CATEGORY, CREATE_USER } from '../constants/constans';
 
 const inicialState = {
 	categories: [],
 	products: [],
 	users: [],
+	createUserSuccess: false,
 };
 
 const ReducerCategory = (state = inicialState, action) => {
@@ -33,20 +34,6 @@ const ReducerCategory = (state = inicialState, action) => {
 				}),
 			};
 
-			let categories = [...state.categories];
-			console.log(categories[ind]);
-			categories[ind].name = action.category.name;
-			categories[ind].description = action.category.description;
-			console.log(categories);
-			return { ...state, categories: categories };
-		case DELETE_CATEGORY:
-			return {
-				...state,
-				categories: state.categories.filter((c) => {
-					return c.id !== action.category.id;
-				}),
-			};
-
 		/****************************** PRODUCTS *********************************** */
 		case GET_PRODUCTS:
 			return { ...state, products: action.products };
@@ -55,8 +42,9 @@ const ReducerCategory = (state = inicialState, action) => {
 
 		/****************************** USERS *********************************** */
 		case CREATE_USER:
-			console.log('entre al reducer correcto');
-			return { ...state, users: action.users };
+			console.log('accion del reducer');
+			console.log(action);
+			return { ...state, users: inicialState.users.concat(action.users.data), createUserSuccess: action.createUserSuccess };
 		case ERROR_MESSAGE:
 			console.log('error en algun lado: el reducer');
 			return inicialState;
