@@ -21,20 +21,20 @@ module.exports = (sequelize) => {
       validate:{
         isNumeric: true,
         isDecimal: true
-      }    
+      }
     },
     dimentions:{
       type: DataTypes.TEXT
     },
     stock:{
       type: DataTypes.INTEGER,
-      allowNull: false      
+      allowNull: false
     },
     rating:{
       type: DataTypes.FLOAT
     },
     image:{
       type: DataTypes.TEXT
-    }    
+    }
   });
 };
