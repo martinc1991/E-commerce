@@ -10,6 +10,8 @@ import {
     REMOVE_CATEGORY_PRODUC,
     GET_PRODUCTS,
     MODIFY_PRODUCT,
+    GET_PRODUCTS_BY_CATEGORY
+    
 } from '../constants/constans'
 
 const inicialState = {
@@ -17,8 +19,8 @@ const inicialState = {
     products:[]
 }
 
-const Reducer = (state = inicialState, action)=> {
-  
+const ReducerCategory = (state = inicialState, action)=> {
+    console.log(action)
     switch (action.type) {
         
         case GET_CATEGORIES:
@@ -51,7 +53,6 @@ const Reducer = (state = inicialState, action)=> {
                 })
             }
 
-
         /****************************** PRODUCTS *********************************** */
         case GET_PRODUCTS:
             return {...state, products: action.products};
@@ -82,6 +83,11 @@ const Reducer = (state = inicialState, action)=> {
             let newProduct = [...state.products];
             newProduct[productIndex] = action.product;
             return {...state, products: newProduct}
+
+         /****************************** CATALOGO *********************************** */
+        case GET_PRODUCTS_BY_CATEGORY:
+            return {...state, products:action.products}
+
         default:
             return inicialState
     
@@ -89,4 +95,4 @@ const Reducer = (state = inicialState, action)=> {
 }
 
 
-export default Reducer
+export default ReducerCategory

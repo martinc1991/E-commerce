@@ -4,8 +4,16 @@ import {useState, useEffect} from 'react'
 import ProductCard from '../ProductCard/index';
 import Navegacion from '../Navegacion/Navegacion'
 import Filter from '../Filter/index';
+import { connect } from 'react-redux';
+import {
+    getCategories,
+    getProductByCategory
+}from '../../store/actions/category_actions';
+import {
+    getProducts
+}from '../../store/actions/product_actions';
 
-import {Container, Row, Col} from 'react-bootstrap';
+import {Container, Row, Col, Form} from 'react-bootstrap';
 import s from '../../styles/catalogo.module.css';
 const url = 'localhost:3001';
 
@@ -18,100 +26,43 @@ var enlacesUser = [
 ];
 
 
-const Catalogo = (props)=> {
+const Catalogo = ({products, productsP, categories, getCategoryP, getProductP, onSearch, getProductByCategoryP})=> {
 
-    const [data, setData] = useState([]);
-    const [categories, setCategories] = useState([]);
-
-
-
-    const onSelect = (select)=> {
-		axios.get(`http://${url}/catalogo/`)
-			 .then(res => {
-				 let {data} = res.data
-				 console.log(data)
-				 return
-                
-			 })
-    };
-
-       
-    const getCategory = () => {
-        axios.get(`http://${url}/products/category`)
-            .then(res => {
-                if(res) return setCategories(res.data.result)
-                else console.log("No hay Datos")
-            })
-            .catch(err => {
-                console.log('Error')
-            })
-    };
-    
+    console.log(products)
     const handlerSelect= (e)=> {
         const catName = e.target.value;
         let obj = {
             [e.target.value]: e.target.checked
         };
         if(obj[e.target.value] === false){
-            setData([]);
-            getProduct();
+            getProductP();
         } else {
         console.log(obj)
-        getCategory();
+        getCategoryP();
         console.log(catName);
-        axios.get(`http://${url}/products/category/${catName}`)
-        .then(res => {
-            if(res){
-                console.log(res.data.data)
-                return setData(res.data.data)
-            }else{
-                console.log("No hay Datos")
-            }
-        })
-        .catch(err => {
-            console.log('Errod')
-        })
+        getProductByCategoryP(catName)
         }
 	};
 
-    const getProduct = () => {
-        axios.get(`http://${url}/products`)
-            .then(res => {
-                if(res){
-                    console.log(res.data.data)
-                    return setData(res.data.data)
-                }else{
-                    console.log("No hay Datos")
-                }
-            })
-            .catch(err => {
-                console.log('Errod')
-            })
-        //console.log('hola')
-    }
-
     useEffect(()=> {
-        getProduct();
-        getCategory();
+        getProductP();
+        getCategoryP();
     }, [])
 
-    console.log(props.products)
-    const {products} = props
+
     return (
-        
 
     <div>
-        < Navegacion links={enlacesUser} showSearchbar={true} onSearch={props.onSearch}/>
+        < Navegacion links={enlacesUser} showSearchbar={true} onSearch={onSearch}/>
         <h5><a href="/products/catalogo" className={s.title5}>Mostrar todos</a></h5>
         {products.length == 0  ? 
-        data.length == 0 ? <h1 className={s.title2}>No hay registros en la base de datos</h1>
+        productsP.length == 0 ? <h1 className={s.title2}>No hay registros en la base de datos</h1>
         :
         <Container>
-            <h1 className={s.title1}>Registros encontrados: {data.length}</h1>
+            <h1 className={s.title1}>Registros encontrados: {productsP.length}</h1>
             < Filter categories={categories} handlerSelect={handlerSelect}/>
             <Row >
-
-            {data.map((p)=> {
+            {productsP.map((p)=> {
                 return (
                     <Col lg="3">
                     <ProductCard 
@@ -120,11 +71,11 @@ const Catalogo = (props)=> {
                         description = {p.description}
                         img = {p.image}
                         price = {p.price}
+                        stock={p.stock}
                     />
                     </Col>
                 )
             })}
-          
             </Row>
         </Container>
         :
@@ -141,20 +92,33 @@ const Catalogo = (props)=> {
                     description = {p.description}
                     img = {p.image}
                     price = {p.price}
+                    stock={p.stock}
                 />
                 </Col>
             )
         })}
         </Row>
         </Container>
-        
-    
     }
         
     </div>
     )
-
 }
 
+function mapStateToProps(state){
+    return {
+        categories: state.categories,
+        productsP: state.products
+    }
+}
+function mapDispatchToProps(dispatch){
+    return {
+        getCategoryP: () =>  dispatch(getCategories()),
+        getProductP : () => dispatch(getProducts()),
+        getProductByCategoryP : (catN) =>  dispatch(getProductByCategory(catN))
+    }
+}
 
-export default Catalogo;
+export default connect(mapStateToProps, mapDispatchToProps)(Catalogo);
+
+

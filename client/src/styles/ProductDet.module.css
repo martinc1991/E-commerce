@@ -3,8 +3,9 @@
 .cont_prin{
     width: 70%;    
     margin: auto;
-    margin-top: 25px;
-    margin-bottom: 25px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: 20px 10px;
     box-shadow: 0px 0px 15px  rgba(0,0,0,0.51);
     border-radius: 7px;
     
@@ -77,7 +78,7 @@
 }
 .cont_cant .select{
     width: 40px;
-    height: 18px;
+    padding: 5px;
 }
 .cont_cant label{
     color: #1F2333;
@@ -130,6 +131,16 @@
 .icon{
     padding-left: 8%;
     color:#F19953 ;
+}
+
+.agotadoProct{
+    color: red !important;
+    text-shadow: 0 0 10px rgba(0,0,0,0.51);
+    font-weight: bold;
+}
+
+.productCardOutStock{
+    background-color: rgb(247, 7, 7) !important;
 }
 
 
