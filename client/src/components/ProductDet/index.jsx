@@ -26,7 +26,7 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import {
     getProducts,
-}from '../../store/actions/actions'
+}from '../../store/actions/product_actions'
 
 const url = 'localhost:3001';
 

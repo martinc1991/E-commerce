@@ -13,7 +13,7 @@ import {
     AddCategorie,
     updCategory,
     deleteCategory
-} from '../../store/actions/actions'
+} from '../../store/actions/category_actions'
 
 
 const url = 'localhost:3001';
@@ -55,9 +55,9 @@ const Categorys = ({categories, getCategoryP, addCategoryP, updCategoryP, delete
 
     const updateCategory = (dat)=>{
         console.log(dat)
-                updCategoryP(dat)
-                setShowUpdate(false);
-                return
+            updCategoryP(dat);
+            setShowUpdate(false);
+        return;
     }
 
     const deleteCategory = (id)=>{
