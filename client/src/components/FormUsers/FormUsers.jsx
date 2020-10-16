@@ -1,80 +1,82 @@
 // React
 import React from 'react';
 
-// Axios
-import axios from 'axios';
-
 // Bootstrap
 import { Container, Card, Form, Button, Col, Row } from 'react-bootstrap';
 
 // CSS
 import s from '../../styles/FormUsers.module.css';
 
+// Redux
+import { connect } from 'react-redux';
+
+// Actions
+import { createUser } from '../../store/actions/userActions.js';
+// <-------------------------------------------------------------->
 const url = 'localhost:3001';
 
-export default function FormUsers() {
+const FormUsers = function ({ users, createUserP }) {
 	const getUserData = function () {
-		let nombre = document.getElementById(`nombre`).value,
-			apellido = document.getElementById(`apellido`).value,
-			telefono = document.getElementById(`telefono`).value,
-			dni = document.getElementById(`dni`).value,
+		let // nombre = document.getElementById(`nombre`).value,
+			// 	apellido = document.getElementById(`apellido`).value,
+			// 	telefono = document.getElementById(`telefono`).value,
+			// 	dni = document.getElementById(`dni`).value,
 			email = document.getElementById(`email`).value,
-			fechaNacimiento = document.getElementById(`fechaNacimiento`).value,
-			direccion = document.getElementById(`direccion`).value,
-			pais = document.getElementById(`pais`).value,
-			provincia = document.getElementById(`provincia`).value,
-			ciudad = document.getElementById(`ciudad`).value,
-			codPostal = document.getElementById(`codPostal`).value,
-			userName = document.getElementById(`userName`).value,
+			// fechaNacimiento = document.getElementById(`fechaNacimiento`).value,
+			// direccion = document.getElementById(`direccion`).value,
+			// pais = document.getElementById(`pais`).value,
+			// provincia = document.getElementById(`provincia`).value,
+			// ciudad = document.getElementById(`ciudad`).value,
+			// codPostal = document.getElementById(`codPostal`).value,
+			// userName = document.getElementById(`userName`).value,
 			password = document.getElementById(`password`).value,
-			passwordConfirm = document.getElementById(`passwordConfirm`).value,
-			terminos = document.getElementById(`terminos`).checked;
+			passwordConfirm = document.getElementById(`passwordConfirm`).value;
+		// terminos = document.getElementById(`terminos`).checked;
 
 		let userData = {
-			nombre,
-			apellido,
-			telefono,
-			dni,
+			// nombre,
+			// apellido,
+			// telefono,
+			// dni,
 			email,
-			fechaNacimiento,
-			direccion,
-			pais,
-			provincia,
-			ciudad,
-			codPostal,
-			userName,
+			// fechaNacimiento,
+			// direccion,
+			// pais,
+			// provincia,
+			// ciudad,
+			// codPostal,
+			// userName,
 			password,
 			passwordConfirm,
-			terminos: terminos,
-			role: 'user',
+			// terminos: terminos,
+			// role: 'user',
 		};
 		console.log(userData);
 		return userData;
 	};
 
-	const sendUserData = function (userData) {
-		// Aca va la peticion POST que se manda al servidor para crear el usuario en la base de datos
-		// axios.post(`http://${url}/users`, userData).then((res) => {
-		// 	console.log('usuario creado correctamente');
-		// 	console.log(res);
-		// });
-		console.log('funciono');
-		console.log(userData);
+	const createSuccess = function () {
+		return alert('Usuario creado correctamente!');
 	};
 
+	// Funcion que se dispara al hacer submit
 	const handleSubmit = function (e) {
-		// Algo
 		e.preventDefault();
 		var data = getUserData();
+
+		// Comprobacion de que las contraseñas coincidan
 		if (data.password != data.passwordConfirm) {
 			return alert('las contras no coinciden');
 		}
-		sendUserData(data);
+
+		console.log('se estan por enviar los datos');
+		console.log(data);
+		createUserP(data);
+		createSuccess(); // Alert
 	};
 
 	const aceptarTerminos = function () {
-		// console.log('anda');
-		// console.log(document.getElementById('terminos').checked);
+		// Funcion para que el boton de submit solo este disponible si se aceptan terminos y condiciones
 		if (document.getElementById('terminos').checked) {
 			document.getElementById('submitButton').disabled = false;
 		}
@@ -96,7 +98,7 @@ export default function FormUsers() {
 							</Col>
 
 							<Col lg={9}>
-								<Form.Row>
+								{/* <Form.Row>
 									<Form.Group as={Col}>
 										<Form.Label>Nombre</Form.Label>
 										<Form.Control className={`${s.input}`} type='text' placeholder='Nombre' id={`nombre`} required />
@@ -111,14 +113,14 @@ export default function FormUsers() {
 										<Form.Label>DNI</Form.Label>
 										<Form.Control className={`${s.input}`} type='number' placeholder='DNI' id={`dni`} required />
 									</Form.Group>
-								</Form.Row>
+								</Form.Row> */}
 								<Form.Row>
-									<Col lg={4}>
+									{/* <Col lg={4}>
 										<Form.Group>
 											<Form.Label>Numero de Telefono</Form.Label>
 											<Form.Control className={`${s.input}`} type={'tel'} placeholder='Numero de Telefono' id={`telefono`} required />
 										</Form.Group>
-									</Col>
+									</Col> */}
 									<Col>
 										<Form.Group>
 											<Form.Label>Email</Form.Label>
@@ -127,18 +129,16 @@ export default function FormUsers() {
 									</Col>
 								</Form.Row>
 
-								<Form.Row>
-									<Col lg={4}>
+								<Form.Row>{/* <Col lg={4}>
 										<Form.Group>
 											<Form.Label>Fecha de Nacimiento</Form.Label>
 											<Form.Control className={`${s.input}`} type='date' placeholder='' id={`fechaNacimiento`} required />
 										</Form.Group>
-									</Col>
-								</Form.Row>
+									</Col> */}</Form.Row>
 							</Col>
 						</Row>
 						<hr></hr>
-						<Row>
+						{/* <Row>
 							<Col lg={3}>
 								<h2>Domicilio</h2>
 							</Col>
@@ -180,18 +180,18 @@ export default function FormUsers() {
 								</Form.Row>
 							</Col>
 						</Row>
-						<hr></hr>
+						<hr></hr> */}
 						<Row>
 							<Col lg={3}>
 								<h2>Datos de la cuenta</h2>
 							</Col>
 							<Col lg={9}>
-								<Form.Row>
+								{/* <Form.Row>
 									<Form.Group as={Col}>
 										<Form.Label>Nombre de usuario</Form.Label>
 										<Form.Control className={`${s.input}`} type='text' placeholder='Enter email' id={`userName`} required />
 									</Form.Group>
-								</Form.Row>
+								</Form.Row> */}
 
 								<Form.Row>
 									<Form.Group as={Col}>
@@ -227,4 +227,18 @@ export default function FormUsers() {
 			</Container>
 		</div>
 	);
+};
+
+function mapStateToProps(state) {
+	return {
+		users: state.users,
+	};
 }
+
+function mapDispatchToProps(dispatch) {
+	return {
+		createUserP: (data) => dispatch(createUser(data)),
+	};
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(FormUsers);
