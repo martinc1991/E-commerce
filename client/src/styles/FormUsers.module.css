@@ -1,0 +1,54 @@
+/* Import de fonts */
+/* @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap'); */
+
+/* Colores personalizados */
+/* :root {
+	--azul: #1f2333;
+	--celeste: #3b8ea5;
+	--blanco: #edf7f6;
+	--naranja: #f19953;
+} */
+
+.formCard {
+	box-shadow: 1px 1px 5px black;
+}
+
+.formTitle,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+label {
+	font-family: 'Open Sans', sans-serif;
+}
+
+h2 {
+	font-size: 24px;
+}
+
+label {
+	padding-left: 5px;
+}
+
+.input {
+	border-radius: 100px;
+}
+
+.input:focus {
+	box-shadow: none;
+	border: 1px solid var(--naranja);
+}
+
+.botonSubmit {
+	border-radius: 100px;
+	background-color: var(--naranja);
+	border: 1px solid var(--naranja);
+}
+
+.botonSubmit:disabled {
+	background-color: grey;
+	border: 1px solid grey;
+}
