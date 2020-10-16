@@ -41,9 +41,7 @@
 }
 
 .productCardShopCartIcon {
-	margin-right: 20px !important;
-	cursor: pointer;
-	color: var(--azul);
+	color: white;
 	transition: 300ms;
 }
 
@@ -53,8 +51,7 @@
 
 .productCardTitle {
 	font-family: 'Open Sans', sans-serif;
-	font-size: 15px;
-	font-weight: bold;
+	font-size: 24px;
 	color: var(--azul);
 }
 
@@ -67,56 +64,26 @@
 .productCardPrice {
 	font-family: 'Open Sans', sans-serif;
 	font-weight: bold;
-	font-size: 20px;
+	font-size: 36px;
 	color: var(--celeste);
 }
 
 .productCardButton {
 	font-family: 'Open Sans', sans-serif;
-	font-weight: bold;
 	background-color: var(--azul);
-	border: none;	
-	padding: 2px;
-	margin-top: 30px;
-	width: 90%;
-	height: 30px;
+	border: none;
+	border-radius: 100px;
+	width: 70%;
 }
 
-.productCardButton:hover {
+.productCardButton:hover, .productCardButtonAgo:hover{
 	background-color: var(--celeste);
 }
-.productCardButton2:hover {
-	background-color: var(--celeste);
-}
-.icon{
-	padding-top: 1%;
-	color:#F19953;
-	font-size: 0.8em;
-}
-.cont_prin{
-	position: relative;
-}
-.buttons{
-	opacity: 0;
-	transition: all 0.3s ease-in-out;
-	position: absolute;
-	width: 100%;
-	bottom: 160px;
-	left: 15px;	
-}
-.cont_prin:hover .buttons{
-	opacity: 1;
-	
-}
-.productCardButton2{
-	color:var(--azul);
+
+.productCardButtonAgot{
 	font-family: 'Open Sans', sans-serif;
-	font-weight: bold;
-	background-color: var(--naranja);
-	border: none;	
-	padding: 2px;
-	margin-top: 30px;
-	width: 90%;
-	height: 30px;
-
+	background-color: rgb(252, 130, 130);
+	border: none;
+	border-radius: 100px;
+	width: 70%;
 }

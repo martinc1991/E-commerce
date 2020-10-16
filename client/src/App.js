@@ -38,13 +38,15 @@ function App() {
 
 	const onSearch = (search) => {
 		//console.log('NOmbre: ' + search)
-		axios.get(`http://${url}/products/search?query=${search}`).then((res) => {
-			let { data } = res.data;
-			console.log(data);
-			setProduct(data);
-			return;
-		});
-	};
+		axios.get(`http://${url}/products/search?query=${search}`)
+			 .then(res => {
+				 let {data} = res.data
+				 console.log(data)
+				 setProduct(data)
+				 return
+				 
+			 })
+	}
 
 	return (
 		<div>

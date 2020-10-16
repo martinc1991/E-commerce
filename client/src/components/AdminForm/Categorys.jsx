@@ -19,6 +19,7 @@ import {
 const url = 'localhost:3001';
 
 const Categorys = ({categories, getCategoryP, addCategoryP, updCategoryP, deleteCategoryP}) => {
+    console.log(categories)
     //console.log(props)
     /*********************** Local States ************************* */
     const [data, setData] = useState([]);

@@ -8,7 +8,9 @@ import {
     DELETE_PRODUCTS,
     ADD_CATEGORY_PRODUCT,
     REMOVE_CATEGORY_PRODUC,
-    GET_PRODUCTS
+    GET_PRODUCTS,
+    GET_PRODUCTS_BY_CATEGORY
+    
 } from '../constants/constans'
 
 const inicialState = {
@@ -16,8 +18,8 @@ const inicialState = {
     products:[]
 }
 
-const Reducer = (state = inicialState, action)=> {
-    console.log(action.products)
+const ReducerCategory = (state = inicialState, action)=> {
+    console.log(action)
     switch (action.type) {
         case GET_CATEGORIES:
             return {...state, categories: action.categories}
@@ -51,6 +53,13 @@ const Reducer = (state = inicialState, action)=> {
             return {...state, products: action.products}
         case ADD_PRODUCT:
             //return {...state, products: state.products.concat(action.products)}
+
+
+
+         /****************************** CATALOGO *********************************** */
+        case GET_PRODUCTS_BY_CATEGORY:
+            return {...state, products:action.products}
+
         default:
             return inicialState
             break;
@@ -58,4 +67,4 @@ const Reducer = (state = inicialState, action)=> {
 }
 
 
-export default Reducer
+export default ReducerCategory

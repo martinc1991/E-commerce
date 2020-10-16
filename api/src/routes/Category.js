@@ -1,12 +1,11 @@
-
 const server = require('express').Router(); //Import router from express module.
-const { Categories, Product } = require('../db.js'); // Import Categories model.
+const { Product, Categories } = require('../db.js'); // Import Categories model.
 const { OK, CREATED, UPDATED, ERROR, NOT_FOUND, ERROR_SERVER } = require('../constants'); // Import Status constants.
 
 // Start Routes
 
-//// 'Create Category' route in '/products/category'
 
+//// 'Get Categories' route in '/products/category'
 server.get('/category', (req, res)=> {
     Categories.findAll()    
         .then(categorys => {
@@ -20,7 +19,7 @@ server.get('/category', (req, res)=> {
           });
 })
 
-
+//// 'Create Category' route in '/products/category'
 server.post('/category/', ( req, res ) => {
     const { name, description } = req.body;
 
@@ -107,6 +106,7 @@ server.delete('/category/:id', (req, res, next) => {
             })
         })
  });
+
 
 // End Routes
 
