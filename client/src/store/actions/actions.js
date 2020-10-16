@@ -130,6 +130,8 @@ export function getProducts(){
 }
 
 
+
+
 /************************************** CATALOGO ********************************************** */
 export function getProductByCategory(catName){
     return (dispatch)=> {

@@ -14,6 +14,7 @@ import Catalogo from './components/Catalogo/index'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Route, Switch, Link } from 'react-router-dom';
 import axios from 'axios'
+import CartShop from './components/Cart/card';
 
 
 
@@ -90,6 +91,7 @@ function App() {
 					}
 				>	
 				 </Route>
+				 <Route  path='/users/:idUser/cart' component={CartShop}/>
 
 				 
 			</Switch>

@@ -26,7 +26,9 @@ export default function ProductCard({ name, description, img, price, id, destaca
 	}
 
 	return (
-		<Card className={` m-2 flex-dark  ${s.productCard}` }  bg={  stock>0 ? `fill`: `fill` }  >
+		<Card className={stock == 0 ? `m-2 flex-dark  ${s.productCardRunOut}` :  `m-2 flex-dark  ${s.productCard}` }    >
+			{stock === 0 && <div className={s.test}><p>AGOTADO</p> </div>}
+			
 			<Card.Img variant='top' src={`${img}` || `https://picsum.photos/200`} />
 			<Card.ImgOverlay
 				className={`p-1 d-flex flex-column align-items-end justify-content-between ${s.productCardHeadingContainer}`}
@@ -46,9 +48,9 @@ export default function ProductCard({ name, description, img, price, id, destaca
 				<Card.Text className={`my-1 ${s.productCardPrice}`}>{`$ ${price}` || `Product Name`}</Card.Text>
 				<Row className={`d-flex justify-content-around`}>
 					{stock == 0 ? 
-						<Button as={Link} to={`/products/product/${id}`} className={`mb-1 ${s.productCardButtonAgot}`}>
-							Agotado!
-						</Button>
+					<Button as={Link} to={`/products/product/${id}`} className={`mb-1 ${s.productCardButton}`}>
+							vER DETALLE
+					</Button>
 					:
 						<Button as={Link} to={`/products/product/${id}`} className={`mb-1 ${s.productCardButton}`}>
 							Ver mas

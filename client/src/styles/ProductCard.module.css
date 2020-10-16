@@ -16,7 +16,8 @@
 	transition: 300ms;
 	padding: 10px;
 	height: 95%;
-	
+	position: relative;
+	overflow: hidden;
 }
 
 .productCard:hover {
@@ -86,4 +87,32 @@
 	border: none;
 	border-radius: 100px;
 	width: 70%;
+}
+
+.test{
+	background-color: red !important;
+	color: white;
+	transform: rotate(45deg);
+	position: absolute;
+	padding: 5px 80px;
+	width: 100%;
+	top: 10%;
+	left: 30%;
+}
+
+.test > p{
+	width: 90%;
+	margin: auto;
+	font-size: 1rem;
+}
+
+.productCardRunOut{
+	background-color: rgb(218, 218, 218) !important;
+	width: 100%;
+	box-shadow: 1px 1px 5px black;
+	transition: 300ms;
+	padding: 10px;
+	height: 95%;
+	position: relative;
+	overflow: hidden;
 }
