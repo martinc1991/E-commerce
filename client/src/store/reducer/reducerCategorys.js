@@ -10,13 +10,15 @@ import {
     REMOVE_CATEGORY_PRODUCT,
     GET_PRODUCTS,
     MODIFY_PRODUCT,
-    GET_PRODUCTS_BY_CATEGORY
+    GET_PRODUCTS_BY_CATEGORY,
+    ADD_TO_CARD
     
 } from '../constants/constans'
 
 const inicialState = {
     categories: [],
-    products:[]
+    products:[],
+    cart:[]
 }
 
 const ReducerCategory = (state = inicialState, action)=> {
@@ -95,6 +97,20 @@ const ReducerCategory = (state = inicialState, action)=> {
          /****************************** CATALOGO *********************************** */
         case GET_PRODUCTS_BY_CATEGORY:
             return {...state, products:action.products}
+
+
+
+        /****************************** CART *********************************** */
+        case ADD_TO_CARD:
+            const item = action.products;
+            const product = state.cart.find((x)=> x.id === item.id)
+            if(product){
+                return {
+                    ...state,
+                    cart: state.cart.map(x => x.id === product.id ? item : x)
+                }
+            }
+            return {...state, cart : [...state.cart, item]}
 
         default:
             return inicialState

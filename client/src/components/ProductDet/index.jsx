@@ -3,7 +3,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 
 // React-Router-Dom
-import { useRouteMatch, Route } from 'react-router-dom';
+import { useRouteMatch, Route, useHistory } from 'react-router-dom';
 
 // Bootstrap
 import { Button } from 'react-bootstrap';
@@ -35,6 +35,7 @@ const Product = ({ productsP,getProductP }) => {
 	
 	const [qty, setQty] = useState(1)
 	const match = useRouteMatch();
+	const history = useHistory();
 	const { id } = match.params;
 	let objP = {}
 	var objProduct = productsP.find(d => { return d.id == id;})
@@ -43,6 +44,12 @@ const Product = ({ productsP,getProductP }) => {
 	for(let pr in objProduct){
 		var prop = pr
 		objP[prop] = objProduct[pr]
+	}
+
+
+	const handlerAddToCart = (id)=>{
+		history.push(`/users/${id}/cart?qty=${qty}`)
+		
 	}
 
 	console.log(objP)
@@ -88,7 +95,7 @@ const Product = ({ productsP,getProductP }) => {
 						{objP.stock > 0 && 
 							<div className={s.cont_button}>
 								<Button className={s.buttonCom}>Comprar ahora</Button>
-								<Button className={s.buttonCar}>Agregar al carrito</Button>
+								<Button className={s.buttonCar} onClick={() => handlerAddToCart(objP.id)}>Agregar al carrito</Button>
 							</div>
 						}
 					</div>
