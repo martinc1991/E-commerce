@@ -9,7 +9,6 @@ import { Col, Navbar, Container, Form, Button, InputGroup, FormControl } from 'r
 // Font Awesome (iconos)
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser as userLogin, faShoppingCart as shopCart } from '@fortawesome/free-solid-svg-icons';
-import SearchBar from '../SearchBar/SearchBar';
 
 // CSS
 import s from '../../styles/Footer.module.css';
