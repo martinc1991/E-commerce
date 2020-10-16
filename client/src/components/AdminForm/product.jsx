@@ -27,7 +27,6 @@ const Product = ({productsP, getCategoryP, getProductP, addProductP, categoriesP
     /*********************** Local States ************************* */
     const [data, setData] = useState([]);
     const [dataObject, setDataObject] = useState({});
-    const [cat, setCat] = useState([]);
     const [productCat, setProdutCat] = useState([]);
     const [form, setForm] = useState({
         name : "",
