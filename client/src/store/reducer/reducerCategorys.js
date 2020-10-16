@@ -7,7 +7,7 @@ import {
     ADD_PRODUCT,
     DELETE_PRODUCT,
     ADD_CATEGORY_PRODUCT,
-    REMOVE_CATEGORY_PRODUC,
+    REMOVE_CATEGORY_PRODUCT,
     GET_PRODUCTS,
     MODIFY_PRODUCT,
     GET_PRODUCTS_BY_CATEGORY
@@ -77,12 +77,20 @@ const ReducerCategory = (state = inicialState, action)=> {
         case DELETE_PRODUCT:
             let newProducts = state.products.filter(product => product.id !== action.product.id);
             return {...state, products: newProducts}
+
         case ADD_CATEGORY_PRODUCT:
             let filteredProduct = state.products.filter(product => product.id === parseInt(action.product.id))[0];
             let productIndex = state.products.indexOf(filteredProduct);
             let newProduct = [...state.products];
             newProduct[productIndex] = action.product;
             return {...state, products: newProduct}
+
+        case REMOVE_CATEGORY_PRODUCT:
+            let catRemovedProduct = state.products.filter(product => product.id === parseInt(action.product.id))[0];
+            let removedCatIndex = state.products.indexOf(catRemovedProduct);
+            let newProductState = [...state.products];
+            newProductState[removedCatIndex] = action.product;
+            return {...state, products: newProductState}
 
          /****************************** CATALOGO *********************************** */
         case GET_PRODUCTS_BY_CATEGORY:

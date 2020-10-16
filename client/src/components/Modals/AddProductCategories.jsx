@@ -1,7 +1,7 @@
 import React from 'react';
 import {Button, Modal, Form } from 'react-bootstrap';
 
-const AddProductCategories = ({cat, showCategories, handlerProductCat, setShowCategories}) => {
+const AddProductCategories = ({categories, showCategories, handlerProductCat, setShowCategories}) => {
 
     
     return (
@@ -10,7 +10,7 @@ const AddProductCategories = ({cat, showCategories, handlerProductCat, setShowCa
             <Modal.Header><Modal.Title>Choose at least one category</Modal.Title></Modal.Header>
             <Modal.Body>
                 <Form.Group onChange={handlerProductCat} >
-                        {cat.map(c => {
+                        {categories.map(c => {
                             return (
                                     <div>
                                         <label htmlFor={c.name}>{c.name}</label>

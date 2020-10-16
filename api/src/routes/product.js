@@ -146,7 +146,7 @@ server.get('/search', (req, res, next) =>{
 });
 
 //// 'Add Category to a product' route in '/:product_id/category/:category_id'
-server.put('/:product_id/category/:category_id', (req, res)=>{
+server.put('/:product_id/category/:category_id', (req, res, next)=>{
 	console.log(req)
 	const { product_id, category_id } = req.params;
 
@@ -165,6 +165,7 @@ server.put('/:product_id/category/:category_id', (req, res)=>{
 								data: data 
 						})
 				})})
+				.catch(next)
 		});
 })
 
@@ -177,8 +178,19 @@ server.delete('/:product_id/category/:category_id', (req, res)=>{
 	Promise.all([ Product.findByPk(product_id), Categories.findByPk(category_id) ])
 		.then(data =>{
 			data[0].removeCategories(data[1])
-				.then(data => console.log(data))
-				return res.send('OK')
+				.then(() => {
+					Product.findOne({
+						where: {id: product_id},
+						include: Categories
+					})
+						.then((data) => {
+							console.log(data)
+							res.json({
+								message: 'Categoría eliminada correctamente!', 
+								data: data 
+						})
+				})})
+				.catch(next)
 		});
 })
 
