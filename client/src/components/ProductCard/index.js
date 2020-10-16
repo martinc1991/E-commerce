@@ -1,5 +1,5 @@
 // Font Awesome (iconos)
-import { faShoppingCart as shopCart } from '@fortawesome/free-solid-svg-icons';
+import { faShoppingCart as shopCart, faStar } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 //Bootstrap
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -26,7 +26,9 @@ export default function ProductCard({ name, description, img, price, id, destaca
 	}
 
 	return (
-		<Card className={` m-2 flex-dark  ${s.productCard}` }  bg={  stock>0 ? `fill`: `fill` }  >
+		  
+			<Card className={stock === 0 ? ` m-2 flex-dark  ${s.productRunOut}`: ` m-2 flex-dark ${s.productCard}` } >
+				{stock === 0 && <div className={s.test}><p>AGOTADO</p> </div>}
 			<Card.Img variant='top' src={`${img}` || `https://picsum.photos/200`} />
 			<Card.ImgOverlay
 				className={`p-1 d-flex flex-column align-items-end justify-content-between ${s.productCardHeadingContainer}`}
@@ -36,27 +38,45 @@ export default function ProductCard({ name, description, img, price, id, destaca
 				}}
 			>
 				<Card.Text className={`text-center ${s.productCardHeading}`}>{`${destacadoText}`}</Card.Text>
-				<FontAwesomeIcon className={`m-2 ${s.productCardShopCartIcon}`} icon={shopCart} size={'1x'} />
+				{/* <FontAwesomeIcon className={`m-2 ${s.productCardShopCartIcon}`} icon={shopCart} size={'1x'} /> */}
 			</Card.ImgOverlay>
-			<Card.Body className={`p-2`}>
+			<Card.Body className={`p-2`} className={s.cont_prin} >
 				<Card.Title as={Link} to={`/products/product/${id}`} className={`my-1 ${s.productCardTitle}`}>
 					{`${name}` || `Product Name`}
 				</Card.Title>
-				<Card.Text className={`my-1 ${s.productCardDescription}`}>{`${description}` || `Product Name`} </Card.Text>
+				<div className={s.icon}>
+							<FontAwesomeIcon icon={faStar} size={'1x'} />
+							<FontAwesomeIcon icon={faStar} size={'1x'} />
+							<FontAwesomeIcon icon={faStar} size={'1x'} />
+							<FontAwesomeIcon icon={faStar} size={'1x'} />
+							<FontAwesomeIcon icon={faStar} size={'1x'} />
+				</div>
+				{/* <Card.Text className={`my-1 ${s.productCardDescription}`}>{`${description}` || `Product Name`} </Card.Text> */}
 				<Card.Text className={`my-1 ${s.productCardPrice}`}>{`$ ${price}` || `Product Name`}</Card.Text>
-				<Row className={`d-flex justify-content-around`}>
+				<Row className={`d-flex justify-content-around `} >
 					{stock == 0 ? 
-						<Button as={Link} to={`/products/product/${id}`} className={`mb-1 ${s.productCardButtonAgot}`}>
-							Agotado!
+						<Button as={Link} to={`/products/product/${id}`} className={`mb-1 ${s.productCardButton}`}>
+							Ver Detalles
 						</Button>
 					:
+					<div className={s.buttons}>
 						<Button as={Link} to={`/products/product/${id}`} className={`mb-1 ${s.productCardButton}`}>
-							Ver mas
+						Ver Detalles
 						</Button>
+						<Button as={Link} to={`/products/product/${id}`} className={`mb-1 ${s.productCardButton2}`}>
+						Agregar al carrito
+						</Button>
+					</div>
+						
 					}
 
 				</Row>
-			</Card.Body>
+			</Card.Body>	
 		</Card>
+		
+		
+
+		
+	
 	);
 }
