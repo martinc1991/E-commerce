@@ -33,6 +33,7 @@ var enlacesAdmin = [
 	{ text: 'Inicio', to: '/admin' },
 	{ text: 'Productos', to: '/admin/product' },
 	{ text: 'Categorias', to: '/admin/category' },
+	{ text: 'User', to: '/admin/user' },
 ];
 
 function App() {
@@ -78,6 +79,7 @@ function App() {
 
 				<Route path='/admin/product' component={Product} />
 				<Route path='/admin/category' component={Category} />
+				<Route path='/admin/user' component={Category} />
 				{/* <Route path='/product/:id' component={ProductDet} /> */}
 				<Route path='/products/product/:id'>
 					<Navegacion links={enlacesUser} showSearchbar={true} />

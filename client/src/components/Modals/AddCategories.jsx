@@ -1,7 +1,8 @@
 import React from 'react';
 import {Button, Modal, Form } from 'react-bootstrap';
+import AddProductCategories from './AddProductCategories';
 
-const AddCategories = ({cat, dat, editCategories, setEditCategories, handlerProductCat, addProductCat}) => {
+const AddCategories = ({cat, editCategories, handlerProductCat, addProductCategories, setEditCategories, }) => {
 
     return (
         <Modal show={editCategories} onHide={()=> setEditCategories(false)} centered={true} backdrop='static'>
@@ -20,7 +21,7 @@ const AddCategories = ({cat, dat, editCategories, setEditCategories, handlerProd
                 </Form.Group>
             </Modal.Body>
             <Modal.Footer>
-                <Button variant="success" onClick={() => addProductCat(dat)}>done!</Button>
+                <Button variant="success" onClick={() => addProductCategories()}>done!</Button>
             </Modal.Footer>
         </Modal>
     )

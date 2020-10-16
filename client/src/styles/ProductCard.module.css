@@ -1,13 +1,13 @@
 /* Import de fonts */
 /* @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap'); */
-
-/* Colores personalizados */
-/* :root {
+/* 
+Colores personalizados */
+:root {
 	--azul: #1f2333;
 	--celeste: #3b8ea5;
 	--blanco: #edf7f6;
 	--naranja: #f19953;
-} */
+}
 
 .productCard {
 	width: 100%;
@@ -18,15 +18,31 @@
 	height: 95%;
 	position: relative;
 	overflow: hidden;
+	
+}
+.test{
+	background-color: #f19953 !important;
+	color: white;
+	transform: rotate(45deg);
+	position: absolute;
+	padding: 5px 80px;
+	width: 100%;
+	top: 10%;
+	left: 30%;
 }
 
+.test > p{
+	width: 90%;
+	margin: auto;
+	font-size: 1rem;
+}
 .productCard:hover {
 	box-shadow: 1px 1px 10px black;
 }
 
 .productCardHeadingContainer {
 	height: 250px;
-	/* border: 1px solid red; */
+	
 }
 
 .productCardHeading {
@@ -42,7 +58,9 @@
 }
 
 .productCardShopCartIcon {
-	color: white;
+	margin-right: 20px !important;
+	cursor: pointer;
+	color: var(--azul);
 	transition: 300ms;
 }
 
@@ -52,7 +70,8 @@
 
 .productCardTitle {
 	font-family: 'Open Sans', sans-serif;
-	font-size: 24px;
+	font-size: 15px;
+	font-weight: bold;
 	color: var(--azul);
 }
 
@@ -65,54 +84,73 @@
 .productCardPrice {
 	font-family: 'Open Sans', sans-serif;
 	font-weight: bold;
-	font-size: 36px;
+	font-size: 20px;
 	color: var(--celeste);
 }
 
 .productCardButton {
 	font-family: 'Open Sans', sans-serif;
+	font-weight: bold;
 	background-color: var(--azul);
-	border: none;
-	border-radius: 100px;
-	width: 70%;
+	border: none;	
+	padding: 2px;
+	margin-top: 30px;
+	width: 90%;
+	height: 30px;
 }
 
-.productCardButton:hover, .productCardButtonAgo:hover{
+.productCardButton:hover {
 	background-color: var(--celeste);
 }
-
-.productCardButtonAgot{
-	font-family: 'Open Sans', sans-serif;
-	background-color: rgb(252, 130, 130);
-	border: none;
-	border-radius: 100px;
-	width: 70%;
+.productCardButton2:hover {
+	background-color: var(--celeste);
 }
-
-.test{
-	background-color: red !important;
-	color: white;
-	transform: rotate(45deg);
+.icon{
+	padding-top: 1%;
+	color:#F19953;
+	font-size: 0.8em;
+}
+.cont_prin{
+	position: relative;
+	
+}
+.buttons{
+	opacity: 0;
+	transition: all 0.3s ease-in-out;
 	position: absolute;
-	padding: 5px 80px;
 	width: 100%;
-	top: 10%;
-	left: 30%;
+	height: 250px;
+	bottom: 165px;
+	justify-content: center;
+	
+	/* left: 15px;	 */
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
-
-.test > p{
+.cont_prin:hover .buttons{
+	opacity: 1;
+	
+}
+.productCardButton2{
+	color:var(--azul);
+	font-family: 'Open Sans', sans-serif;
+	font-weight: bold;
+	background-color: var(--naranja);
+	border: none;
+	padding: 2px;	
+	margin-top: 25px;
 	width: 90%;
-	margin: auto;
-	font-size: 1rem;
+	height: 30px;
 }
-
-.productCardRunOut{
-	background-color: red !important;
+.productRunOut{
 	width: 100%;
+	background-color: #c2c2c2;
 	box-shadow: 1px 1px 5px black;
 	transition: 300ms;
 	padding: 10px;
 	height: 95%;
 	position: relative;
 	overflow: hidden;
+
 }

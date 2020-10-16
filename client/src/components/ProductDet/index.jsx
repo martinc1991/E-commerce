@@ -26,7 +26,7 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import {
     getProducts,
-}from '../../store/actions/actions'
+}from '../../store/actions/product_actions'
 
 const url = 'localhost:3001';
 
@@ -48,7 +48,8 @@ const Product = ({ productsP,getProductP }) => {
 
 
 	const handlerAddToCart = (id)=>{
-		history.push(`/users/${id}/cart`)
+		history.push(`/users/${id}/cart?qty=${qty}`)
+		
 	}
 
 	console.log(objP)

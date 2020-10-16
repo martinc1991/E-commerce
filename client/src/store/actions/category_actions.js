@@ -5,11 +5,6 @@ import {
     DELETE_CATEGORY,
     MODIFY_CATEGORY,
     ERROR_MESSAGE,
-    ADD_PRODUCT,
-    DELETE_PRODUCTS,
-    ADD_CATEGORY_PRODUCT,
-    REMOVE_CATEGORY_PRODUCT,
-    GET_PRODUCTS,
     GET_PRODUCTS_BY_CATEGORY
 } from '../constants/constans'
 
@@ -69,13 +64,12 @@ export function updCategory(dat){
                         type: MODIFY_CATEGORY,
                         category: res.data.data
                     })
-                }else{
+                } else{
                     dispatch({
                         type: ERROR_MESSAGE,
                         message: 'Error al Actualizar la categoria',
                     })
                 }
-
             })
             .catch(err => {
                 console.log('entro al catch de UPDATE ')
@@ -104,33 +98,6 @@ export function deleteCategory(id){
             })
     }
 }
-
-
-/************************************** PRODUCTS ********************************************** */
-export function getProducts(){
-    return (dispatch) => {
-        axios.get(`http://${url}/products`)
-            .then(res => {
-                if(res.status === 200) {
-                    dispatch({
-                        type: GET_PRODUCTS,
-                        products: res.data.data
-                    })
-                }else{
-                    dispatch({
-                        type: ERROR_MESSAGE,
-                        message: 'Error al mostrar productos'
-                    })
-                }
-            })
-            .catch(err => {
-                console.log(err)
-            })
-    }
-}
-
-
-
 
 /************************************** CATALOGO ********************************************** */
 export function getProductByCategory(catName){

@@ -1,7 +1,7 @@
 const { DataTypes, Sequelize } = require("sequelize");
 
 module.exports = (sequelize) => {
-    sequelize.define('User', {
+    sequelize.define('user', {
         personId:{
             type:DataTypes.INTEGER,
             allowNull:false,
@@ -14,8 +14,8 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING,
         },
         role:{
-            type:DataTypes.ENUM('admin', 'client'),
-            allowNull:false,
+            type:DataTypes.ENUM('Admin', 'Client'),
+            allowNull:false
         }
     });
 };

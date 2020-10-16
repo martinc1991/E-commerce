@@ -7,9 +7,11 @@ import Filter from '../Filter/index';
 import { connect } from 'react-redux';
 import {
     getCategories,
-    getProducts,
     getProductByCategory
-}from '../../store/actions/actions'
+}from '../../store/actions/category_actions';
+import {
+    getProducts
+}from '../../store/actions/product_actions';
 
 import {Container, Row, Col, Form} from 'react-bootstrap';
 import s from '../../styles/catalogo.module.css';
