@@ -53,6 +53,12 @@ export function addProduct(product, catIds){
                                     product: res.data.data
                                 })
                             }
+                            else {
+                                dispatch({
+                                    type: ERROR_MESSAGE,
+                                    message: 'Error al añadir categoría(s) al producto'
+                                })
+                            }
                         })
                 })
             }else{
@@ -112,24 +118,50 @@ export function dltProduct(id){
     }
 }
 
-// export function addProductCat(product, categories){
-//     return async (dispatch) => {
-//         await axios.put(`http://${url}/products/${productId}/category/${catId}`)
-//         .then(res => {
-//             if(res.status === 200) {
-//                 dispatch({
-//                     type: ADD_CATEGORY_PRODUCT,
-//                     payload: res.data.result
-//                 })
-//             }else{
-//                 dispatch({
-//                     type: ERROR_MESSAGE,
-//                     message: 'Error al añadir categoría al producto'
-//                 })
-//             }
-//         })
-//         .catch(err => {
-//             console.log(err)
-//         })
-//     }
-// }
+export function addProductCat(productId, catIds){
+    return async (dispatch) => {
+        catIds.forEach(catId => {
+            axios.put(`http://${url}/products/${productId}/category/${catId}`)
+                .then(res => {
+                    if (res.status === 200){
+                        dispatch({
+                            type: ADD_CATEGORY_PRODUCT,
+                            product: res.data.data
+                        })
+                    }
+                    else {
+                        dispatch({
+                            type: ERROR_MESSAGE,
+                            message: 'Error al añadir categoría(s) al producto'
+                        })
+                    }
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+        })
+    }
+}
+
+export function dltProductCat(productId, catId){
+    return async (dispatch) => {
+            axios.delete(`http://${url}/products/${productId}/category/${catId}`)
+                .then(res => {
+                    if (res.status === 200){
+                        dispatch({
+                            type: REMOVE_CATEGORY_PRODUCT,
+                            product: res.data.data
+                        })
+                    }
+                    else {
+                        dispatch({
+                            type: ERROR_MESSAGE,
+                            message: 'Error al añadir categoría(s) al producto'
+                        })
+                    }
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+    }
+}
