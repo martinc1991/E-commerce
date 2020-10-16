@@ -2,7 +2,7 @@ import React from 'react';
 import s from '../../styles/adminProduct.module.css';
 import {Button, Modal, Form } from 'react-bootstrap';
 
-const UpdateProduct = ({form, showUpdate, closeModalUpdate, handlerChange, updateProduct, setShowCategories}) => {
+const UpdateProduct = ({form, showUpdate, closeModalUpdate, handlerChange, updateProduct}) => {
 
     return (
         <Modal show={showUpdate} backdrop="static" onHide={closeModalUpdate} keyboard={false}>

@@ -55,7 +55,7 @@ server.post('/',function(req,res){
 
 	return Product.create({ name, description, price, stock, dimentions, image,sku})
 		.then( product => {
-			return res.status(CREATED).json({
+			return res.status(OK).json({
 				message: 'Producto creado exitosamente!',
 				data: product
 			})
@@ -74,12 +74,17 @@ server.put('/:id', ( req, res ) => {
 
 	const { name,description,price,stock,dimentions,image,sku} = req.body
 
-	return Product.update(
-		{ name, description, price, stock, dimentions, image,sku },
-		{ where: { id } }
-	)
+	return Product.findOne({ where: { id } })
 	.then( product => {
-		return res.status(UPDATED).json({
+
+		product.name = name;
+		product.description = description;
+		product.price = price;
+		product.stock = stock;
+		product.dimentions = dimentions;
+		product.image = image;
+		product.save();
+		return res.status(OK).json({
 			message:`El ítem se ha actualizado correctamente!`,
 			data: product
 		});
@@ -96,8 +101,9 @@ server.put('/:id', ( req, res ) => {
 server.delete('/:id', ( req, res ) => {
 	const { id } = req.params;
 
-	return Product.destroy({ where: { id } })
+	return Product.findOne({ where: { id } })
 	.then( deletedProduct => {
+		deletedProduct.destroy();
 		return res.status(OK).json({
 			message: 'Producto eliminado',
 			data: deletedProduct
@@ -147,7 +153,18 @@ server.put('/:product_id/category/:category_id', (req, res)=>{
 	Promise.all([ Product.findByPk(product_id), Categories.findByPk(category_id) ])
 		.then(data =>{
 			data[0].addCategories(data[1])
-				.then(data => res.send({message: 'Categoría añadida correctamente!', result:data}))
+				.then(() => {
+					Product.findOne({
+						where: {id: product_id},
+						include: Categories
+					})
+						.then((data) => {
+							console.log(data)
+							res.json({
+								message: 'Categoría añadida correctamente!', 
+								data: data 
+						})
+				})})
 		});
 })
 
