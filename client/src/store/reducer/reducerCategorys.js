@@ -1,4 +1,4 @@
-import { ADD_CATEGORY, GET_CATEGORIES, DELETE_CATEGORY, MODIFY_CATEGORY, ERROR_MESSAGE, ADD_PRODUCT, DELETE_PRODUCTS, ADD_CATEGORY_PRODUCT, REMOVE_CATEGORY_PRODUC, GET_PRODUCTS, GET_PRODUCTS_BY_CATEGORY, CREATE_USER } from '../constants/constans';
+import { ADD_CATEGORY, GET_CATEGORIES, DELETE_CATEGORY, MODIFY_CATEGORY, ERROR_MESSAGE, ADD_PRODUCT, DELETE_PRODUCTS, ADD_CATEGORY_PRODUCT, REMOVE_CATEGORY_PRODUC, GET_PRODUCTS, GET_PRODUCTS_BY_CATEGORY, CREATE_USER, GET_USERS } from '../constants/constans';
 
 const inicialState = {
 	categories: [],
@@ -8,7 +8,7 @@ const inicialState = {
 };
 
 const ReducerCategory = (state = inicialState, action) => {
-	console.log(action);
+	// console.log(action);
 	switch (action.type) {
 		case GET_CATEGORIES:
 			return { ...state, categories: action.categories };
@@ -44,7 +44,12 @@ const ReducerCategory = (state = inicialState, action) => {
 		case CREATE_USER:
 			console.log('accion del reducer');
 			console.log(action);
-			return { ...state, users: inicialState.users.concat(action.users.data), createUserSuccess: action.createUserSuccess };
+			return { ...state, users: state.users.concat(action.users.data), createUserSuccess: action.createUserSuccess };
+
+		case GET_USERS:
+			console.log('reducer GET_USERS');
+			return { ...state, users: action.users };
+
 		case ERROR_MESSAGE:
 			console.log('error en algun lado: el reducer');
 			return inicialState;

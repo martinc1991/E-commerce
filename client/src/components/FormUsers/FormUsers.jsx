@@ -15,8 +15,9 @@ import { createUser } from '../../store/actions/userActions.js';
 // <-------------------------------------------------------------->
 const url = 'localhost:3001';
 
-const FormUsers = function ({ users, createUserP, createUserSuccessP }) {
+const FormUsers = function ({ usersP, createUserP, createUserSuccessP }) {
 	console.log(createUserSuccessP);
+	console.log(usersP);
 	const getUserData = function () {
 		let // nombre = document.getElementById(`nombre`).value,
 			// 	apellido = document.getElementById(`apellido`).value,
@@ -254,7 +255,7 @@ const FormUsers = function ({ users, createUserP, createUserSuccessP }) {
 
 function mapStateToProps(state) {
 	return {
-		users: state.users,
+		usersP: state.users,
 		createUserSuccessP: state.createUserSuccess,
 	};
 }

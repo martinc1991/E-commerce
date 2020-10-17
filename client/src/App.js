@@ -11,6 +11,7 @@ import ProductDet from './components/ProductDet/index';
 import ProductCard from './components/ProductCard/index';
 import Catalogo from './components/Catalogo/index';
 import FormUsers from './components/FormUsers/FormUsers.jsx';
+import UsersData from './components/AdminForm/UsersData';
 // Bootstrap
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Route, Switch, Link } from 'react-router-dom';
@@ -31,6 +32,7 @@ var enlacesAdmin = [
 	{ text: 'Inicio', to: '/admin' },
 	{ text: 'Productos', to: '/admin/product' },
 	{ text: 'Categorias', to: '/admin/category' },
+	{ text: 'Usuarios', to: '/admin/users' },
 ];
 
 function App() {
@@ -65,6 +67,7 @@ function App() {
 					</Route>
 					<Route path='/admin/product' component={Product} />
 					<Route path='/admin/category' component={Category} />
+					<Route path='/admin/users' component={UsersData} />
 				</Route>
 				<Route path='/users' exact>
 					<Navegacion links={enlacesUser} showSearchbar={true} onSearch={onSearch} />

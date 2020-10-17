@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { CREATE_USER, ERROR_MESSAGE } from '../constants/constans';
+import { CREATE_USER, ERROR_MESSAGE, GET_USERS } from '../constants/constans';
 
 const url = 'localhost:3001';
 
@@ -17,7 +17,7 @@ export function createUser(userData) {
 					console.log(res.data);
 					dispatch({
 						type: CREATE_USER,
-						users: res.data || [],
+						users: res.data || {},
 						createUserSuccess: true,
 					});
 				} else {
@@ -34,25 +34,27 @@ export function createUser(userData) {
 	};
 }
 
-// export function getCategories() {
-// 	return (dispatch) => {
-// 		axios
-// 			.get(`http://${url}/products/category`)
-// 			.then((res) => {
-// 				if (res.status === 200) {
-// 					dispatch({
-// 						type: GET_CATEGORIES,
-// 						categories: res.data.result || [],
-// 					});
-// 				} else {
-// 					dispatch({
-// 						type: ERROR_MESSAGE,
-// 						categories: 'Error in the Request',
-// 					});
-// 				}
-// 			})
-// 			.catch((err) => {
-// 				console.log('Error');
-// 			});
-// 	};
-// }
+export function getUsers() {
+	return (dispatch) => {
+		axios
+			.get(`http://${url}/user`)
+			.then((res) => {
+				console.log(res);
+				if (res.status === 200) {
+					dispatch({
+						type: GET_USERS,
+						users: res.data.data,
+					});
+				} else {
+					dispatch({
+						type: ERROR_MESSAGE,
+						categories: 'Error in the Request',
+					});
+				}
+			})
+			.catch((err) => {
+				console.log('Catch Error');
+				console.log(err);
+			});
+	};
+}
