@@ -50,7 +50,9 @@ export default function Navegacion(props) {
 
 				<Col lg={1} className={'d-flex'}>
 					{!!props.showSearchbar && <FontAwesomeIcon className={`flex-fill ${s.userLoginIcon}`} icon={userLogin} size={'1x'} />}
+					<Link to='/users/:idUser/cart'>
 					{!!props.showSearchbar && <FontAwesomeIcon className={`flex-fill ${s.shopCartIcon}`} icon={shopCart} size={'1x'} />}
+					</Link>
 					{!props.showSearchbar && (
 						<Nav.Link href='#' as={Link} to={'/'} className={`${s.navbarLinks}`}>
 							Logout

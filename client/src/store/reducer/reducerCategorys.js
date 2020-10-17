@@ -1,10 +1,10 @@
-import { ADD_CATEGORY, GET_CATEGORIES, DELETE_CATEGORY, MODIFY_CATEGORY, ERROR_MESSAGE, ADD_PRODUCT, DELETE_PRODUCT, ADD_CATEGORY_PRODUCT, REMOVE_CATEGORY_PRODUCT, GET_PRODUCTS, MODIFY_PRODUCT, GET_PRODUCTS_BY_CATEGORY, CREATE_USER, GET_USERS } from '../constants/constans';
+import { ADD_CATEGORY, GET_CATEGORIES, DELETE_CATEGORY, MODIFY_CATEGORY, ERROR_MESSAGE, ADD_PRODUCT, DELETE_PRODUCT, ADD_CATEGORY_PRODUCT, REMOVE_CATEGORY_PRODUCT, GET_PRODUCTS, MODIFY_PRODUCT, GET_PRODUCTS_BY_CATEGORY, ADD_TO_CARD, REMOVE_FROM_CART, CREATE_USER, GET_USERS } from '../constants/constans';
 
 const inicialState = {
 	categories: [],
 	products: [],
+	cart: [],
 	users: [],
-	createUserSuccess: false,
 };
 
 const ReducerCategory = (state = inicialState, action) => {
@@ -94,9 +94,22 @@ const ReducerCategory = (state = inicialState, action) => {
 		case GET_PRODUCTS_BY_CATEGORY:
 			return { ...state, products: action.products };
 
+		/****************************** CART *********************************** */
+		case ADD_TO_CARD:
+			const item = action.products;
+			const product = state.cart.find((x) => x.id === item.id);
+			if (product) {
+				return {
+					...state,
+					cart: state.cart.map((x) => (x.id === product.id ? item : x)),
+				};
+			}
+			return { ...state, cart: [...state.cart, item] };
+		case REMOVE_FROM_CART:
+			return { ...state, cart: state.cart.filter((x) => x.id !== action.payload) };
+
 		default:
 			return inicialState;
-			break;
 	}
 };
 

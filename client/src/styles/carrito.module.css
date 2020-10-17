@@ -1,0 +1,207 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+:root {
+	--azul: #1f2333;
+	--celeste: #3b8ea5;
+	--blanco: #edf7f6;
+	--naranja: #f19953;
+}
+.cont_prin{
+    /* border: 1px solid blue; */
+    width: 90%;    
+    margin: auto;
+}
+.cont_prin .cont1{
+    /* border: 1px solid red; */
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.cont_prin .cont2{
+    /* border: 1px solid green; */
+    width: 100%;
+    height: 200px;
+
+}
+.cont1 .logo{
+    height: 60px;
+}
+.cont1 ul li{
+    display: inline-block;
+}
+.cont1 ul li i{
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 100px;
+    margin-right: 10px;
+    margin-left: 15px;   
+}
+.cont1 ul li span{
+    font-size: 13px;
+    font-weight: lighter;
+    font-family:'Open Sans', sans-serif;
+}
+.cont2 h1{
+    font-size: 25px;
+    font-family:'Open Sans', sans-serif;
+}
+.cont2 .cont_table{
+    width: 100%;
+    margin-top: 25px;
+    /* border: 1px solid red; */
+}
+.cont2 .cont_table .tableTitle{
+    font-size: 13px;
+    color: var(--azul);
+    font-family:'Open Sans', sans-serif;
+    background-color: #f5f5f5;
+}
+.product{
+    display: flex;
+    border: none;
+    
+}
+.cont_img > img{
+    background-color: violet;
+    max-width: 5rem !important;
+    max-height: 5rem    !important;
+    margin-right: 15px;
+
+}
+.nada{
+    width: 1%;
+    
+}
+.tableDescrip{
+    /* background-color: salmon; */
+    font-family:'Open Sans', sans-serif;
+    font-size: 13px;
+   
+
+}
+.tableDescrip .PreCant{
+    font-size: 13px;
+    font-weight: bold;
+    color: var(--celeste);
+    font-family:'Open Sans', sans-serif;
+}
+.tableDescrip .icon{
+    font-weight: bold;  
+    cursor: pointer;  
+}
+.icon:hover{
+    color: var(--naranja);
+}
+.cantidadTitle{   
+    width: 15%;
+}
+.cont_cant{
+    /* background-color: royalblue; */
+    /* position: absolute;
+    top: 40px; */
+    
+}
+.cantidad{   
+    /* width: 100%; */
+    /* display: flex;
+    /* background-color: red; */
+    /* position: relative; */
+    /* bottom: 35px; */
+}
+
+.cont_button{
+    border: 1px solid  #d8d6d6;
+     display: flex;
+     border-radius: 5px;
+     position: absolute;
+     
+     
+}
+.button1{
+    width: 25px;
+    height: 20px;  
+    color: var(--naranja);
+    font-weight: bold;
+    border-radius: 5px 0px 0px 5px;
+    background-color: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    
+}
+.button1:hover{
+    background-color: #f19953;
+    color: white;
+}
+.button2:hover{
+    background-color: #f19953;
+    color: white;
+}
+.button2{
+    width: 25px;
+    height: 20px; 
+    border-radius: 0px 5px 5px 0px;
+    background-color: #f5f5f5; 
+    color: var(--naranja);
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+}
+.input{
+    border-left: 1px solid  #d8d6d6;
+    border-right: 1px solid  #d8d6d6;
+    border-top: none;
+    border-bottom: none;
+    width: 50px;
+    height: 20px;
+    border-radius: 0px;     
+}
+.cont_total{
+    width: 100%;
+    margin-top: 30px;
+    display: flex;
+    justify-content: flex-end;
+}
+.cont_total .total{
+    width: 30%;
+    background-color: #f5f5f5;
+    display: flex;
+    align-items: center;
+}
+.cont_total .total .tabletotal{
+    text-align: center;
+    font-family:'Open Sans', sans-serif;    
+}
+.cont_total .total .tabletotal .subPrecio{
+    font-size: 13px;
+    color: var(--celeste);
+    font-weight: bold;
+}
+.cont_total .total .tabletotal .subinfo1{
+    font-size: 13px;
+    font-style: oblique;
+    font-weight: bold;
+}
+.cont_total .total .tabletotal .subinfo2{
+    font-size: 13px;
+    font-weight: bold;
+}
+.cont_button1{
+    width: 100%;
+    margin-top: 30px;
+    display: flex;
+    justify-content: flex-end;
+}
+.cont_button1 .buttonF{
+    background-color: var(--naranja);
+    color: white;
+    font-weight: bold;
+    font-family:'Open Sans', sans-serif; 
+    border: none;
+}
+.cont_button1 .buttonF:hover{
+    background-color: var(--celeste);
+
+}
+
+
