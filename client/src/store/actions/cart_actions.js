@@ -4,7 +4,8 @@ import axios from 'axios';
 
 import {
     ERROR_MESSAGE,
-    ADD_TO_CARD
+    ADD_TO_CARD,
+    REMOVE_FROM_CART
 } from '../constants/constans';
 
 const url = 'localhost:3001';
@@ -24,7 +25,8 @@ export function addToCart(id, qty){
                             description: res.data.data.description,
                             image:res.data.data.image,
                             name:res.data.data.name,
-                            price: res.data.data.price,                           
+                            price: res.data.data.price,     
+                            stock: res.data.data.stock                    
                         } 
                     })
                 }else{
@@ -37,5 +39,15 @@ export function addToCart(id, qty){
             .catch(err => {
                 console.log(err)
             })
+    }
+}
+
+
+export function removeFromCart(productId){
+    return (dispatch) => {
+        dispatch({
+            type:REMOVE_FROM_CART,
+            payload: productId
+        })
     }
 }
