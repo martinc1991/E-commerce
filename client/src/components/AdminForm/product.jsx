@@ -1,29 +1,44 @@
-import React from 'react'
+import React from 'react';
 import { Table, Button } from 'react-bootstrap';
 import AddProduct from '../Modals/AddProduct';
 import AddCategories from '../Modals/AddCategories';
 import AddProductCategories from '../Modals/AddProductCategories';
 import UpdateProduct from '../Modals/UpdateProduct';
-import s from '../../styles/adminProduct.module.css'
+import s from '../../styles/adminProduct.module.css';
 import axios from 'axios';
-import {useState, useEffect} from 'react'
+import {useState, useEffect} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faTrashAlt, faPencilAlt, faPlusCircle} from '@fortawesome/free-solid-svg-icons';
 import { connect } from 'react-redux';
 import {
-    getCategories,
+    getCategories
+} from '../../store/actions/category_actions';
+import {
     getProducts,
-    addProduct
-} from '../../store/actions/actions'
+    addProduct,
+    updProduct,
+    dltProduct,
+    addProductCat,
+    dltProductCat
+} from '../../store/actions/product_actions';
 
 const url = 'localhost:3001';
 
-const Product = ({productsP, getCategoryP, getProductP, categoriesP, addProductP})=> {
+const Product = ({
+    productsP, 
+    getCategoryP, 
+    getProductP, 
+    addProductP, 
+    categoriesP, 
+    updateProductP, 
+    deleteProductP, 
+    addProductCatP,
+    dltProductCatP 
+})=> {
     
     /*********************** Local States ************************* */
-    const [data, setData] = useState(productsP);
+    const [data, setData] = useState([]);
     const [dataObject, setDataObject] = useState({});
-    const [cat, setCat] = useState(categoriesP);
     const [productCat, setProdutCat] = useState([]);
     const [form, setForm] = useState({
         name : "",
@@ -44,12 +59,12 @@ const Product = ({productsP, getCategoryP, getProductP, categoriesP, addProductP
     const openModal = ()=> { setShow(true)  }
     const closeModal = ()=> { setShow(false)  }
     const closeModalUpdate = ()=> { setShowUpdate(false) }
-    const handlerChange = (e) => {  setForm({ ...form, [e.target.name]:e.target.value})  }
+    const handlerChange = (e) => {  setForm({ ...form, [e.target.name]: e.target.value})  }
+    const handlerClick = (dat) => {setDataObject(dat); setEditCategories(true)}
+
     const updateProductModal = (product)=> {
-        console.log(product)
         let cont = 0;
         let list = data
-        console.log(list)
         list.map((dat)=>{
             if(dat.id === product.id) { 
                 list[cont].id = product.id
@@ -83,84 +98,54 @@ const Product = ({productsP, getCategoryP, getProductP, categoriesP, addProductP
         return;
     }
 
-   
-
-    const insertProduct = async () => {
-        //addProductP(form, productCat, categoriesP)
-        form.sku = Math.random();
-        form.category = productCat;
-        await axios.post(`http://${url}/products`, form)
-            .then(res => {
-                setProdutCat([]);
-                let productCategoriesId = [];
-                let productId = res.data.data.id;
-                form.category.forEach(selectedCat => {
-                    productCategoriesId.push(categoriesP.filter(elem => elem.name === selectedCat)[0].id);
-                })
-                
-                productCategoriesId.forEach(catId => {
-                    axios.put(`http://${url}/products/${productId}/category/${catId}`)
-                        .then(()=>{
-                            getProductP();
-                            setShow(false);
-                            setProdutCat([]);
-                        })
-                })
-            })
-    }
-
-    const addProductCat = async (dat) => {
-        setProdutCat([]);
-        let productId = dat.id;
+    const insertProduct = async (product) => {
+        product.sku = Math.random();
+        product.category = productCat;
         let catIds = [];
-        productCat.forEach(selectedCat => {
-            catIds.push(categoriesP.filter(elem => elem.name === selectedCat)[0].id);
+        product.category.forEach(selectedCat => {
+            catIds.push(categoriesP.filter(elem => elem.name === selectedCat)[0].id)
         })
-        catIds.forEach(catId => {
-            axios.put(`http://${url}/products/${productId}/category/${catId}`)
-            .then(()=>{
-                getProductP();
-                setEditCategories(false);
-                setProdutCat([]);
-                setDataObject({});
-            })
-        })
-    }
-
-    const deleteProductCat = (productId, catId) => {
-        axios.delete(`http://${url}/products/${productId}/category/${catId}`)
-            .then(()=>{
-                getProductP();
-            })
+        addProductP(product, catIds);
+        setShow(false);
+        setProdutCat([]);
     }
 
     const updateProduct = (dat)=>{
-        //console.log(dat)
-        console.log(dat)
-        axios.put(`http://${url}/products/${dat.id}`, dat)
-            .then(dat => {
-                setShowUpdate(false);
-                getProductP();
-            })
+        updateProductP(dat);
+        setShowUpdate(false);
+        // getProductP();
+        return;
     }
 
-    const deleteProduct = (id)=>{
+    const deleteProduct = (id) =>{
         if(window.confirm('Are you sure remove this product?')){
-            axios.delete(`http://${url}/products/${id}`)
-                .then(dat => {
-                    getProductP()
-                })
+           deleteProductP(id);
         }
     }
+
+    const addProductCategories = () => {
+        let productId = dataObject.id;
+        let catIds = [];
+        productCat.forEach(selectedCat => catIds.push(categoriesP.filter(elem => elem.name === selectedCat)[0].id));
+        addProductCatP(productId, catIds);
+        setDataObject({});
+        setProdutCat([]);
+        setEditCategories(false);
+    }
+
+    const deleteProductCategories = (productId, catId) => {
+        dltProductCatP(productId, catId);
+    }
+
 
     /*********************** Component Life Cycle *************************** */
     useEffect(()=> {
         getCategoryP();
-        getProductP()
+        getProductP();
     }, [])
 
     /****************************** Render ********************************** */
-    return (
+        return (
         <div>
         <div>
             {/* <Menu/> */}
@@ -180,7 +165,7 @@ const Product = ({productsP, getCategoryP, getProductP, categoriesP, addProductP
                     <tbody>
                         {productsP.map((dat,index) => {
                             return (
-                                (dat.categories.length < 1)?
+                                (dat.categories && dat.categories.length < 1)?
                                 <tr className={s.tableDescrip} key={index}>
         
                                     <td>{dat.name}</td>
@@ -189,10 +174,7 @@ const Product = ({productsP, getCategoryP, getProductP, categoriesP, addProductP
                                     <td>{dat.stock}</td>
                                     <td>{dat.dimentions}</td>
                                     <td>
-                                        <FontAwesomeIcon icon={faPlusCircle} size={'1x'} className={s.iconAdd} onClick={()=> {
-                                            setEditCategories(true);
-                                            setDataObject(dat);
-                                        }} />
+                                        <FontAwesomeIcon icon={faPlusCircle} size={'1x'} className={s.iconAdd} onClick={()=> handlerClick(dat) } />
                                     </td>
                                     <td className={s.icons}>
                                     <FontAwesomeIcon icon={faPencilAlt} size={'1x'} className={s.iconUpdate} onClick={()=> updateProductModal(dat)} />
@@ -209,15 +191,12 @@ const Product = ({productsP, getCategoryP, getProductP, categoriesP, addProductP
                                     <td>{dat.price}</td>
                                     <td>{dat.stock}</td>
                                     <td>{dat.dimentions}</td>
-                                    <td>{dat.categories.map(category => {   
+                                    <td>{dat.categories && dat.categories.map(category => {   
                                             let productId = dat.id;
                                             let catId = category.id;
-                                            return <h6 className={s.tableDescrip}>{category.name} <span onClick={() => deleteProductCat(productId, catId)} className={s.spanDelete}>x</span></h6>
+                                            return <h6 className={s.tableDescrip}>{category.name} <span onClick={() => deleteProductCategories(productId, catId)} className={s.spanDelete}>x</span></h6>
                                         })}
-                                        <FontAwesomeIcon icon={faPlusCircle} size={'1x'} className={s.iconAdd} onClick={()=> {
-                                            setEditCategories(true);
-                                            setDataObject(dat);
-                                        }} />
+                                        <FontAwesomeIcon icon={faPlusCircle} size={'1x'} className={s.iconAdd} onClick={()=> handlerClick(dat) } />
                                     </td>
                                     <td className={s.icons}>
                                         <FontAwesomeIcon icon={faPencilAlt} size={'1x'} className={s.iconUpdate} onClick={()=> updateProductModal(dat)} />
@@ -234,18 +213,19 @@ const Product = ({productsP, getCategoryP, getProductP, categoriesP, addProductP
         {/**************************** ADD PRODUCT MODAL ******************************** */}
         <AddProduct 
             data={data}
+            form={form}
             show={show}
             closeModal={closeModal}
             handlerChange={handlerChange}
             insertProduct={insertProduct}
             setShowCategories={setShowCategories}
             productCat={productCat}
-            
+            categories={categoriesP}
         />
 
         {/*********************** ADD PRODUCT CATEGORIES MODAL ************************** */}
         <AddProductCategories 
-            cat={categoriesP}
+            categories={categoriesP}
             showCategories={showCategories}
             handlerProductCat={handlerProductCat}
             setShowCategories={setShowCategories}
@@ -264,18 +244,15 @@ const Product = ({productsP, getCategoryP, getProductP, categoriesP, addProductP
         {/************************** EDIT CATEGORIES MODAL ******************************* */}
         <AddCategories 
             cat={categoriesP}
-            dat={dataObject}
             editCategories={editCategories}
             handlerProductCat={handlerProductCat}
+            addProductCategories={addProductCategories}
             setEditCategories={setEditCategories}
-            addProductCat={addProductCat}
         />
     </div>
     )
 }
-
-
-
+    
 function mapStateToProps(state){
     return {
         productsP: state.products,
@@ -287,7 +264,11 @@ function mapDispatchToProps(dispatch){
     return {
         getCategoryP: () =>  dispatch(getCategories()),
         getProductP: () => dispatch(getProducts()),
-       
+        addProductP: (product, catIds) => dispatch(addProduct(product, catIds)),
+        updateProductP: (dat) => dispatch(updProduct(dat)),
+        deleteProductP: (id) => dispatch(dltProduct(id)),
+        addProductCatP: (productId, catIds) => dispatch(addProductCat(productId, catIds)),
+        dltProductCatP: (productId, catId) => dispatch(dltProductCat(productId, catId))
     }
 }
 

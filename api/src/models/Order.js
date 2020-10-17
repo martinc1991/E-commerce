@@ -15,7 +15,9 @@ module.exports = (sequelize) => {
 				isNumeric: true,
 				isDecimal: true,
 			},
-			quantity: DataTypes.INTEGER,
+		},
+		quantity: {
+			type: DataTypes.INTEGER,
 			allowNull: false,
 		},
 		total: {
@@ -27,7 +29,8 @@ module.exports = (sequelize) => {
 			allowNull: false,
 		},
 		status: {
-			type: DataTypes.STRING,
+			type: DataTypes.ENUM('Open', 'Closed'),
+			defaultValue: 'Open',
 			allowNull: false,
 		},
 	});
