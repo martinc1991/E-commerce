@@ -11,7 +11,8 @@ import {
     GET_PRODUCTS,
     MODIFY_PRODUCT,
     GET_PRODUCTS_BY_CATEGORY,
-    ADD_TO_CARD
+    ADD_TO_CARD,
+    REMOVE_FROM_CART
     
 } from '../constants/constans'
 
@@ -111,6 +112,8 @@ const ReducerCategory = (state = inicialState, action)=> {
                 }
             }
             return {...state, cart : [...state.cart, item]}
+        case REMOVE_FROM_CART:
+            return {...state, cart: state.cart.filter(x => x.id !== action.payload)}
 
         default:
             return inicialState
