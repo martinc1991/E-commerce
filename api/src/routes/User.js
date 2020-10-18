@@ -1,5 +1,5 @@
 const server = require('express').Router(); //Import router from express module.
-const { User } = require('../db.js'); // Import Categories model.
+const { User,Order } = require('../db.js'); // Import Categories model.
 const { OK, CREATED, ERROR, ERROR_SERVER } = require('../constants/index'); // Import Status constants.
 
 // Start Routes
@@ -43,6 +43,27 @@ server.get('/', (req, res) => {
 			});
 		});
 });
+//DELETE /users/:idUser/cart/
+
+server.delete('/:idUser/cart', ( req, res ) => {
+	const { user_id } = req.params;
+
+	return Order.findAll({ where: { user_id } })
+	.then( deletedCart => {
+		deletedCart.destroy();
+		return res.status(OK).json({
+			message: 'Elementos eliminados',
+			data: deletedCart
+		});
+	})
+	.catch(err => {
+		return res.status(ERROR_SERVER).json({
+			message: 'Error al eliminar carrito',
+			data: err
+		});
+	});
+});
+
 
 // End Routes
 
