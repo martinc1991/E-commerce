@@ -21,10 +21,6 @@ const UsersData = ({ usersP, successP, getUsersP }) => {
 	// const [usersP, setUsers] = useState(usersP);
 	var usuariosDesdeBD = [];
 	/*********************** Functions **************************** */
-	const getUsersFromDB = async () => {
-		getUsersP();
-	};
-
 	console.log(usuariosDesdeBD);
 	/****************************** Component Life Cycle ********************************** */
 
@@ -117,12 +113,6 @@ const UsersData = ({ usersP, successP, getUsersP }) => {
 							})}
 						</tbody>
 					</Table>
-					<Button
-						className={s.buttonADD}
-						// onClick={openModal}
-					>
-						Add Product
-					</Button>
 				</div>
 			</div>
 		</div>

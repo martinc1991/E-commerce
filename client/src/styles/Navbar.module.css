@@ -77,3 +77,21 @@
 .shopCartIcon:hover {
 	color: var(--blanco);
 }
+
+.contCart{
+	position: relative;
+	height: 100%;
+}
+
+
+.contCart  .shopCartIconSpan{
+	margin-left: 5px;
+	color: white;
+	background-color: red;
+	padding: 2px 5px;
+	position: absolute;
+	top: -12px;
+	left: 6px;
+	border-radius: 50%;
+	font-size: 12px;
+}

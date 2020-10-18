@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import PrinciapalAdmin from './components/AdminForm/pageP';
 import Product from './components/AdminForm/product';
@@ -16,7 +16,11 @@ import UsersData from './components/AdminForm/UsersData';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Route, Switch, Link } from 'react-router-dom';
 import axios from 'axios';
-import CartShop from './components/Cart/card';
+import CartShop from './components/Cart/card';// Redux
+
+
+
+
 
 const url = 'localhost:3001';
 
@@ -35,6 +39,7 @@ var enlacesAdmin = [
 	{ text: 'Categorias', to: '/admin/category' },
 	{ text: 'Users', to: '/admin/users' },
 ];
+
 
 function App() {
 	const [products, setProduct] = useState([]);
@@ -84,22 +89,13 @@ function App() {
 					<Navegacion links={enlacesUser} showSearchbar={true} />
 					<ProductDet />
 				</Route>
-
-				{/* <Route
-					path='/products/catalogo'
-					render={()=>
-						<Catalogo
-							products ={products}
-							onSearch={onSearch}
-						/>
-					}
-					>
-				 </Route> */}
-				<Route path='/users/:idUser/cart' component={CartShop} />
+				<Route path='/users/cart' component={CartShop} />
 				<Route path='/products/catalogo' render={() => <Catalogo products={products} onSearch={onSearch} />}></Route>
 			</Switch>
 		</div>
 	);
 }
+
+
 
 export default App;

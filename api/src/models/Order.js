@@ -3,35 +3,41 @@ const { DataTypes } = require('sequelize');
 module.exports = (sequelize) => {
 	//modelo
 	sequelize.define('order', {
-		key: {
-			type: DataTypes.INTEGER,
-			allowNull: false,
-			unique: true,
-		},
-		price: {
-			type: DataTypes.DECIMAL,
-			allowNull: false,
-			validate: {
-				isNumeric: true,
-				isDecimal: true,
-			},
-		},
-		quantity: {
-			type: DataTypes.INTEGER,
-			allowNull: false,
-		},
-		total: {
-			type: DataTypes.DECIMAL,
-			allowNull: false,
-		},
-		date: {
+
+    subTotal: {
+      type: DataTypes.DECIMAL,
+      validate: {
+        isNumeric: true,
+        isDecimal: true
+      }
+    },
+    shipping: {
+      type: DataTypes.DECIMAL,
+      isNumeric: true,
+      isDecimal: true
+    },
+    discount: {
+      type: DataTypes.STRING,
+      unique: true
+    },
+    total:{
+      type: DataTypes.DECIMAL,
+      validate: {
+        isNumeric: true,
+        isDecimal: true
+      }
+    },
+		date_placed: {
 			type: DataTypes.DATE,
-			allowNull: false,
-		},
+    },
+    date_filled: {
+      type: DataTypes.DATE,
+    },
 		status: {
-			type: DataTypes.ENUM('Open', 'Closed'),
-			defaultValue: 'Open',
+      type: DataTypes.ENUM(['cart', 'created', 'in_process', 'fullfilled', 'rejected']),
+			defaultValue: 'cart',
 			allowNull: false,
 		},
 	});
 };
+

@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react'
 import { connect } from 'react-redux'
-import { addToCart, removeFromCart } from '../../store/actions/cart_actions'
+import { addToCart, removeFromCart, updateFromCart } from '../../store/actions/cart_actions'
 import { Link } from 'react-router-dom'
 import s from '../../styles/carrito.module.css'
 import { Table, Button } from 'react-bootstrap';
@@ -12,10 +12,12 @@ import { useState } from 'react'
 
 
 
-const CartShop = ({match, location, addToCartP, cartP, removeFromCartP}) => {
+const CartShop = ({match, location, addToCartP, cartP, removeFromCartP, updateFromCartP}) => {
     const [quantity, setQuantity] = useState(0)
     const {idUser} = match.params
-    const  qty = location.search.split('=')[1]
+    //console.log(cartP[0].products)
+    let cartP2 =  cartP.length < 1 ? [] :  cartP[0].products
+    // const  qty = location.search.split('=')[1]
     var enlacesUser = [
         { text: 'Catalogo', to: '/products/catalogo' },
         { text: 'FAQs', to: '/' },
@@ -43,17 +45,24 @@ const CartShop = ({match, location, addToCartP, cartP, removeFromCartP}) => {
 
 
     /****************************** USEEFECT ******************************* */
-    useEffect(()=> {
-        if(idUser){
-            addToCartP(idUser, qty)
-        }
-
-    },[])
+    // useEffect(()=> {
+    //     if(idUser){
+    //         addToCartP(idUser, qty)
+    //     }
+    // },[])
      /****************************** USEEFECT ******************************* */
 
 
     return(
+        
         <div>
+            {cartP2.length < 1 ? 
+                <div>
+                    <h1>CARRITO VACIO</h1> 
+                    <Link to='/'>Sigue comprando</Link>
+                </div>
+            :
+            <div>
             < Navegacion links={enlacesUser} showSearchbar={false}/>
             <div className={s.cont_prin}>
                 <div className={s.cont1}>
@@ -81,7 +90,7 @@ const CartShop = ({match, location, addToCartP, cartP, removeFromCartP}) => {
                             </thead>
                             <tbody>
 
-                                {cartP.map((product, index) =>{
+                                {cartP2.map((product, index) =>{
                                     return(
                                         <tr className={s.tableDescrip} >
                                         <Link to={'/products/product/' + product.id}>
@@ -99,7 +108,7 @@ const CartShop = ({match, location, addToCartP, cartP, removeFromCartP}) => {
                                              {/* <div className={s.button1} onClick={() => increment(product)}>-</div>  */}
                                             {/* <input className={s.input} type="number" name="name" value={product.qty}  onChange={(e)=> addToCartP(product.id, e.target.value)}/> */}
                                             {/* {<div className={s.button2} onClick={() => decrement(product)}>+</div> } */}
-                                            <select name='Cantidad' id='Cantidad' value={product.qty} onChange={(e) => addToCartP(product.id, e.target.value)}>
+                                            <select name='Cantidad' id='Cantidad' value={product.order_line.quantity} onChange={(e) => updateFromCartP(product.id, e.target.value)}>
                                                 {[...Array(product.stock).keys()].map(x => {
                                                     return (
                                                         <option value={x+1}>{x+1}</option>
@@ -109,7 +118,7 @@ const CartShop = ({match, location, addToCartP, cartP, removeFromCartP}) => {
 
                                         </td>
                                         {/* </div> */}
-                                    <td className={s.PreCant}>$ {product.qty * product.price}</td>
+                                    <td className={s.PreCant}>$ {product.order_line.quantity * product.price}</td>
                                         <td className={s.icon}>
                                         <FontAwesomeIcon icon={faTrashAlt} size={'1x'} className={s.iconDelete} onClick={() => removeFromCartP(product.id)} />
                                         </td>
@@ -126,15 +135,15 @@ const CartShop = ({match, location, addToCartP, cartP, removeFromCartP}) => {
                             <tbody  className={s.tabletotal}>
                                 <tr>
                                     <td className={s.subinfo1}>Subtotal</td>
-                                    <td className={s.subPrecio}>$ {cartP.reduce((a,c) => a + c.qty*c.price,0)}</td>
+                                    <td className={s.subPrecio}>$ {cartP2.reduce((a,c) => a + c.order_line.quantity*c.price,0)}</td>
                                 </tr>
                                 <tr>
                                     <td className={s.subinfo1}>Iva</td>
-                                    <td className={s.subPrecio}>$ { Math.trunc(cartP.reduce((a,c) => a + c.qty*c.price,0) * 0.19)  }</td>
+                                    <td className={s.subPrecio}>$ { Math.trunc(cartP2.reduce((a,c) => a + c.order_line.quantity*c.price,0) * 0.19)  }</td>
                                 </tr>
                                 <tr>
                                     <td className={s.subinfo2}>Total</td>
-                                    <td className={s.subPrecio}>$ { (Math.trunc(cartP.reduce((a,c) => a + c.qty*c.price,0) / 1.19)) + cartP.reduce((a,c) => a + c.qty*c.price,0) }</td>
+                                    <td className={s.subPrecio}>$ { ( Math.trunc(cartP2.reduce((a,c) => a + c.order_line.quantity*c.price,0) * 0.19)) + cartP2.reduce((a,c) => a + c.order_line.quantity*c.price,0) }</td>
                                 </tr>
                             </tbody>
                             </Table>
@@ -149,9 +158,9 @@ const CartShop = ({match, location, addToCartP, cartP, removeFromCartP}) => {
                 </div>
 
             </div>
+            </div>
 
-
-
+        }                    
         </div>
 
 
@@ -169,7 +178,9 @@ function mapStateToProps(state){
 function mapDispatchToProps(dispatch){
     return {
         addToCartP : (id, qty) => dispatch(addToCart(id, qty)),
-        removeFromCartP : (id) => dispatch(removeFromCart(id))
+        removeFromCartP : (id) => dispatch(removeFromCart(id)),
+        updateFromCartP : (id, qty) => dispatch(updateFromCart(id, qty))
+
     }
 }
 

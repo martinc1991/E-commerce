@@ -42,12 +42,10 @@ const Catalogo = ({products, productsP, categories, getCategoryP, getProductP, o
         console.log(catName);
         getProductByCategoryP(catName)
         }
-	};
+    };
+    
 
-    useEffect(()=> {
-        getProductP();
-        getCategoryP();
-    }, [])
+
 
 
     return (

@@ -27,11 +27,12 @@ import { connect } from 'react-redux';
 import {
     getProducts,
 }from '../../store/actions/product_actions'
+import { addToCart } from '../../store/actions/cart_actions'
 
 const url = 'localhost:3001';
 
 // <---------------------------Componente--------------------------->
-const Product = ({ productsP,getProductP }) => {
+const Product = ({ productsP,getProductP, addToCartP }) => {
 	
 	const [qty, setQty] = useState(1)
 	const match = useRouteMatch();
@@ -47,9 +48,9 @@ const Product = ({ productsP,getProductP }) => {
 	}
 
 
-	const handlerAddToCart = (id)=>{
-		history.push(`/users/${id}/cart?qty=${qty}`)
-		
+	const handlerAddToCart = (id, qty)=>{
+		addToCartP(id, qty)
+		history.push(`/users/cart`)
 	}
 
 	console.log(objP)
@@ -95,7 +96,7 @@ const Product = ({ productsP,getProductP }) => {
 						{objP.stock > 0 && 
 							<div className={s.cont_button}>
 								<Button className={s.buttonCom}>Comprar ahora</Button>
-								<Button className={s.buttonCar} onClick={() => handlerAddToCart(objP.id)}>Agregar al carrito</Button>
+								<Button className={s.buttonCar} onClick={() => handlerAddToCart(objP.id, qty)}>Agregar al carrito</Button>
 							</div>
 						}
 					</div>
@@ -114,7 +115,8 @@ function mapStateToProps(state){
 }
 function mapDispatchToProps(dispatch){
     return {
-        getProductP : () => dispatch(getProducts()),
+		getProductP : () => dispatch(getProducts()),
+		addToCartP : (id, qty) => dispatch(addToCart(id, qty)),
     }
 }
 

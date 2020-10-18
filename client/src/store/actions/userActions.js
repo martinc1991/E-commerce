@@ -8,7 +8,7 @@ export function createUser(userData) {
 	console.log(userData);
 	return (dispatch) => {
 		axios
-			.post(`http://${url}/user`, userData)
+			.post(`http://${url}/users`, userData)
 			.then((res) => {
 				console.log(res.data);
 				console.log('peticion enviada');
