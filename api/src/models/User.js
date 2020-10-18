@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
-	sequelize.define('User', {
+	sequelize.define('user', {
 		email: {
 			type: DataTypes.STRING,
 			allowNull: false,
@@ -12,7 +12,8 @@ module.exports = (sequelize) => {
 			allowNull: false,
 		},
 		role: {
-			type: DataTypes.ENUM('client', 'admin'),
+			type: DataTypes.ENUM('client', 'admin', 'Guest'),
+			defaultValue: 'Guest',
 			allowNull: false,
 		},
 	});

@@ -12,13 +12,15 @@ import s from '../../styles/Navbar.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser as userLogin, faShoppingCart as shopCart } from '@fortawesome/free-solid-svg-icons';
 import SearchBar from '../SearchBar/SearchBar';
+import { connect } from 'react-redux'
 
 // React -Routes
 import { Link } from 'react-router-dom';
 
-export default function Navegacion(props) {
+function Navegacion(props) {
 	
-
+	console.log('********props nav ***************')
+	console.log(props.cartP[0])
 	return (
 		<Navbar className={`${s.navbar} sticky-top`}>
 			<Container style={{ maxWidth: '1200px' }}>
@@ -50,9 +52,10 @@ export default function Navegacion(props) {
 
 				<Col lg={1} className={'d-flex'}>
 					{!!props.showSearchbar && <FontAwesomeIcon className={`flex-fill ${s.userLoginIcon}`} icon={userLogin} size={'1x'} />}
-					<Link to='/users/:idUser/cart'>
-					{!!props.showSearchbar && <FontAwesomeIcon className={`flex-fill ${s.shopCartIcon}`} icon={shopCart} size={'1x'} />}
-					</Link>
+					
+						
+					{!!props.showSearchbar && <div className={s.contCart}><Link to='/users/cart'><FontAwesomeIcon className={`flex-fill ${s.shopCartIcon}`} icon={shopCart} size={'1x'} /></Link><span className={s.shopCartIconSpan}>{props.cartP[0] ? props.cartP[0].products.length: 0}</span></div>}
+					
 					{!props.showSearchbar && (
 						<Nav.Link href='#' as={Link} to={'/'} className={`${s.navbarLinks}`}>
 							Logout
@@ -63,3 +66,19 @@ export default function Navegacion(props) {
 		</Navbar>
 	);
 }
+
+
+function mapStateToProps(state){
+    return {
+        cartP: state.cart,
+    }
+}
+
+function mapDispatchToProps(dispatch){
+    return {
+
+    }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navegacion);
