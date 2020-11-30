@@ -1,0 +1,55 @@
+/* Import de fonts */
+/* @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap'); */
+
+/* Colores personalizados */
+/* :root {
+	--azul: #1f2333;
+	--celeste: #3b8ea5;
+	--blanco: #edf7f6;
+	--naranja: #f19953;
+} */
+
+.modalContainer {
+}
+
+.cont {
+	text-align: center;
+	font-family: 'Open Sans', sans-serif !important;
+}
+
+.modalTitle {
+	font-size: 18px;
+}
+
+/* .contBotones {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+} */
+
+.button1 {
+	border: 1px solid #3b8ea5;
+	background-color: #3b8ea5;
+	color: var(--azul);
+	font-family: 'Open Sans', sans-serif !important;
+	font-weight: bold !important;
+}
+
+.button1:hover {
+	border: 1px solid #1f2335;
+	background-color: #1f2335;
+	color: white;
+}
+
+.button2 {
+	width: 50%;
+	font-family: 'Open Sans', sans-serif !important;
+	background-color: transparent;
+	color: #3b8ea5;
+	width: auto;
+}
+
+.button2:hover {
+	background-color: transparent;
+	color: #3b8ea5;
+}

@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+
+
+:root {
+	--azul: #1f2333;
+	--celeste: #3b8ea5;
+	--blanco: #edf7f6;
+	--naranjo: #FFB86C ;
+  --gris: #E6E6E6;
+  --negro: #000000;
+}
+
+
+h1{
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bold;
+  font-size: 1.3em;
+
+}
+
+h5{
+  cursor: pointer;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bold;
+  font-size: 1em;
+}
+
+h6{
+  font-family: 'Open Sans', sans-serif;
+  font-weight: lighter;
+  font-style: italic;
+  font-size: 1em;
+
+}
+
+.Pregunta  {
+
+background-color: var(--celeste) !important;
+
+
+}
+
+.Respuesta {
+  background-color: var(--blanco) ;
+
+}
+
+.containerSize{
+  max-height: 600px;
+}

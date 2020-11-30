@@ -1,0 +1,77 @@
+.cont_print{
+    max-width: 45% !important;    
+}
+
+.cont_print .cont_body{
+    padding: 0px !important;
+}
+
+.cont_img{
+    background-color: #f0f0f0;
+    border-radius: 5px 0px 0px 5px !important;
+}
+
+.cont_img .imagen{
+    width: 90% !important;
+    margin:auto !important;
+    margin-top: 80px !important;
+    border-radius: 10px;
+    text-align: center;
+}
+.cont_img .imagen img{
+    width: 100% !important;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+.cont_img .imagen h6{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    color: #1F2333;
+}
+.cont_inf .info{
+    width: 100% !important;
+    /* height: 450px !important;  */
+}
+
+.title{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold !important;
+    color: #1F2333;
+    text-align: center;
+}
+
+.myReviews{
+    width: 100%;
+    box-shadow: 0px 1px 0px lightgrey;
+}
+
+.myReviews .reviewActions{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: -1px 0px 0px lightgrey;
+}
+
+.iconDelete {
+	color: #3b8ea5 !important;
+	cursor: pointer !important;
+	font-size: 1.1em !important;
+    border: none !important;
+    transition: all 0.3s ease-in-out;
+}
+
+.iconUpdate {
+	color: #1f2333 !important;
+	cursor: pointer !important;
+    font-size: 1.1em !important;
+    transition: all 0.3s ease-in-out;
+}
+
+.iconDelete:hover {
+    transform: scale(1.2);
+    transition: all 0.3s ease-in-out;
+}
+.iconUpdate:hover {
+    transform: scale(1.2);
+    transition: all 0.3s ease-in-out;
+}

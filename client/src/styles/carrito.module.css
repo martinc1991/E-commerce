@@ -1,0 +1,548 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+:root {
+	--azul: #1f2333;
+	--celeste: #3b8ea5;
+	--blanco: #edf7f6;
+	--naranja: #f19953;
+}
+
+.contPrincipal {
+	min-height: 400px;
+}
+.cont1 .logo {
+	height: 60px;
+}
+.cont1 ul li {
+	display: inline-block;
+}
+.cont1 ul li i {
+	font-size: 20px;
+	font-weight: bold;
+	border-radius: 100px;
+	margin-right: 10px;
+	margin-left: 15px;
+}
+.cont1 ul li span {
+	font-size: 13px;
+	font-weight: lighter;
+	font-family: 'Open Sans', sans-serif;
+}
+h1 {
+	font-size: 25px;
+	font-family: 'Open Sans', sans-serif;
+}
+.cardVacio {
+	box-shadow: -1px 10px 18px 2px rgba(0, 0, 0, 0.75);
+	width: 50%;
+	/* height: 200px; */
+	margin: auto;
+	text-align: center;
+	border-radius: 30px;
+	padding: 1%;
+}
+.cardVacio h1 {
+	margin-top: 10px;
+	font-weight: bold;
+	color: var(--celeste);
+	font-size: 1em;
+	font-family: 'Open Sans', sans-serif;
+}
+.cardVacio h6 {
+	font-weight: bold;
+	font-size: 0.7em;
+	font-family: 'Open Sans', sans-serif;
+}
+.cardVacio .link {
+	font-weight: bold;
+	color: var(--celeste);
+	font-size: 0.8em;
+	font-family: 'Open Sans', sans-serif;
+}
+.cont2 .cont_table {
+	width: 100%;
+	margin-top: 25px;
+	/* border: 1px solid red; */
+}
+.cont2 .cont_table .tableTitle {
+	font-size: 13px;
+	color: var(--azul);
+	font-family: 'Open Sans', sans-serif;
+	background-color: #f5f5f5;
+}
+.product {
+	display: flex;
+	border: none;
+}
+.cont_img > img {
+	background-color: violet;
+	max-width: 5rem !important;
+	max-height: 5rem !important;
+	margin-right: 15px;
+}
+.cont_prin {
+	/* border: 1px solid blue; */
+	min-height: 400px;
+	width: 90%;
+	margin: auto;
+}
+.cont1 {
+	/* border: 1px solid red; */
+	width: 100%;
+	height: 70px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.cont2 {
+	/* border: 1px solid green; */
+	width: 100%;
+}
+.cont1 .logo {
+	height: 60px;
+}
+.cont1 ul li {
+	display: inline-block;
+}
+.cont1 ul li i {
+	font-size: 20px;
+	font-weight: bold;
+	border-radius: 100px;
+	margin-right: 10px;
+	margin-left: 15px;
+}
+.cont1 ul li span {
+	font-size: 13px;
+	font-weight: lighter;
+	font-family: 'Open Sans', sans-serif;
+}
+.cont2 h1 {
+	font-size: 25px;
+	font-family: 'Open Sans', sans-serif;
+}
+.cont2 .cont_table {
+	width: 100%;
+	margin-top: 25px;
+	/* border: 1px solid red; */
+}
+.cont2 .cont_table .tableTitle {
+	font-size: 13px;
+	color: var(--azul);
+	font-family: 'Open Sans', sans-serif;
+	background-color: #f5f5f5;
+}
+.product {
+	display: flex;
+	border: none;
+}
+.cont_img > img {
+	background-color: violet;
+	max-width: 5rem !important;
+	max-height: 5rem !important;
+	margin-right: 15px;
+}
+.nada {
+	width: 1%;
+}
+.tableDescrip {
+	/* background-color: salmon; */
+	font-family: 'Open Sans', sans-serif;
+	font-size: 13px;
+}
+.tableDescrip .PreCant {
+	font-size: 13px;
+	font-weight: bold;
+	color: var(--celeste);
+	font-family: 'Open Sans', sans-serif;
+}
+.tableDescrip .icon {
+	font-weight: bold;
+	cursor: pointer;
+}
+.icon:hover {
+	color: var(--naranja);
+}
+.cantidadTitle {
+	width: 15%;
+}
+
+.cont_button {
+	border: 1px solid #d8d6d6;
+	display: flex;
+	border-radius: 5px;
+	position: absolute;
+}
+.button1 {
+	width: 25px;
+	height: 20px;
+	color: var(--naranja);
+	font-weight: bold;
+	border-radius: 5px 0px 0px 5px;
+	background-color: #f5f5f5;
+	display: flex;
+	justify-content: center;
+}
+.button1:hover {
+	background-color: #f19953;
+	color: white;
+}
+.button2:hover {
+	background-color: #f19953;
+	color: white;
+}
+.button2 {
+	width: 25px;
+	height: 20px;
+	border-radius: 0px 5px 5px 0px;
+	background-color: #f5f5f5;
+	color: var(--naranja);
+	font-weight: bold;
+	display: flex;
+	justify-content: center;
+}
+.input {
+	border-left: 1px solid #d8d6d6;
+	border-right: 1px solid #d8d6d6;
+	border-top: none;
+	border-bottom: none;
+	width: 50px;
+	height: 20px;
+	border-radius: 0px;
+}
+.cont_total {
+	width: 100%;
+	margin-top: 30px;
+	display: flex;
+	justify-content: flex-end;
+}
+.cont_total .total {
+	width: 30%;
+	background-color: #f5f5f5;
+	display: flex;
+	align-items: center;
+}
+.cont_total .total .tabletotal {
+	text-align: center;
+	font-family: 'Open Sans', sans-serif;
+}
+.cont_total .total .tabletotal .subPrecio {
+	font-size: 13px;
+	color: var(--celeste);
+	font-weight: bold;
+}
+.cont_total .total .tabletotal .subinfo1 {
+	font-size: 13px;
+	font-style: oblique;
+	font-weight: bold;
+}
+.cont_total .total .tabletotal .subinfo2 {
+	font-size: 13px;
+	font-weight: bold;
+}
+.cont_button1 {
+	width: 100%;
+	margin-top: 30px;
+	display: flex;
+	justify-content: flex-end;
+}
+.cont_button1 .buttonF {
+	background-color: var(--naranja);
+	color: white;
+	font-weight: bold;
+	font-family: 'Open Sans', sans-serif;
+	border: none;
+}
+.cont_button1 .buttonF:hover {
+	background-color: var(--celeste);
+}
+
+.buttonFC {
+	background-color: var(--naranja);
+	color: white;
+	font-weight: bold;
+	font-family: 'Open Sans', sans-serif;
+	border: none;
+	margin: 0 10px;
+}
+
+/********************************Seccion Shopping************************************/
+.cont1 ul li .i {
+	font-size: 20px;
+	font-weight: bold;
+	color: #3b8ea5;
+	margin-right: 10px;
+	margin-left: 15px;
+}
+.cont1 ul li .span {
+	font-size: 13px;
+	font-weight: bold;
+	font-family: 'Open Sans', sans-serif;
+	color: #3b8ea5;
+}
+.cont_prin1{
+	width: 90%;
+	margin: auto;
+	padding: 0px;
+
+}
+.cont_form{
+	background-color: #ededed;
+	padding-top: 1%;
+	padding-bottom: 1%;
+}
+.contForm {
+	background-color: white;
+	padding: 25px;
+	width: 40%;
+}
+.contForm h1{
+	font-weight: bold;
+	color: var(--azul);
+	font-size: 1.5em;
+	font-family: 'Open Sans', sans-serif;
+}
+.contForm h6{
+	color: var(--azul);
+	font-size: 0.9em;
+	font-style: normal;
+	font-family: 'Open Sans', sans-serif;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.contForm .label{
+	color: var(--azul);
+	font-size: 0.9em;
+	font-weight: bold;
+	font-family: 'Open Sans', sans-serif;
+
+}
+.cont_button2 {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+.submitDate {
+	width: 40% !important;
+	border: 1px solid #3B8EA5;
+	background-color: #3B8EA5;
+	font-size: 0.9em;
+    color: #1F2333;
+    font-family: 'Open Sans', sans-serif !important;
+    font-weight: bold !important;
+}
+.submitDate:hover{
+	border: 1px solid #1F2335;
+    background-color: #1F2335;
+    color: white;
+}
+
+.submitCancel{
+	width: 40% !important;
+	margin-left: 3%;
+	border: 1px solid white;
+    background-color: white;
+	color: #3B8EA5;
+	font-size: 0.9em;
+    font-family: 'Open Sans', sans-serif !important;
+    font-weight: bold !important;
+
+}
+.submitCancel:hover{
+	border: 1px solid #EDF7F6;
+    background-color: #EDF7F6;
+    color: #3B8EA5;
+}
+
+
+/*************************************** Seccion Metodo de Pago **************************************************/
+.contFormPay {
+	/* background-color: red; */
+	/* display: flex;
+	justify-content: center; */
+	width: 100%;
+	margin: 0 auto;
+	padding: 25px;
+}
+.contFormPay .resCompra {
+	width: 50%;
+	margin: auto;
+	background-color: white;
+	margin-bottom: 30px;
+}
+.contFormPay .resCompra .titleOrden{
+	display: flex;
+	justify-content: flex-start;
+	padding: 10px;
+	color: #1F2333;
+	font-weight: bold;
+	font-size: 0.9em;
+    font-family: 'Open Sans', sans-serif !important;
+}
+.tableTitle{
+    font-size: 0.9em !important;
+    font-weight: bold;
+    font-family: 'Open Sans', sans-serif;
+}
+.tableDescrip{
+    font-size: 0.8em !important;
+    font-weight: normal;
+    font-family: 'Open Sans', sans-serif;
+
+}
+.cont_total1{
+	width: 100%;
+	display: flex;
+	justify-content: flex-end;
+}
+.total{
+    width: 50%;
+}
+
+.subinfo1{
+    font-size: 0.8em !important;
+    font-weight: bold;
+    font-family: 'Open Sans', sans-serif;
+}
+.subPrecio{
+    font-size: 0.8em !important;
+    font-family: 'Open Sans', sans-serif;
+
+}
+
+.formPa {
+	width: 100%;
+}
+
+.contFormPay > div {
+	width: 50%;
+	text-align: center;
+	width: 100%;
+}
+
+
+.contProd {
+	display: flex;
+	justify-content: space-around;
+	border-bottom: 2px solid black;
+}
+
+.contProdHead {
+	display: flex;
+	width: 100%;
+	justify-content: space-around;
+}
+.contProdHead > div {
+	border: 1px solid black;
+	background-color: var(--celeste);
+	color: white;
+	font-weight: bold;
+	padding: 5px;
+}
+
+.buttonFormPay {
+	margin-top: 20px;
+}
+.contFormCardPay{
+	margin-top: 30px;
+	max-width: 50% !important;
+	height: 200px;
+	margin: auto;
+	padding: 10px;
+	background-color: white
+}
+.contFormCardPay .titleOrden{
+	display: flex;
+	justify-content: flex-start;
+	padding: 10px;
+	color: #1F2333;
+	font-weight: bold;
+	font-size: 0.9em;
+    font-family: 'Open Sans', sans-serif !important;
+}
+.button{
+	display: flex;
+	/* background-color: violet; */
+	height: 20%;
+	margin-top: 40px;
+	/* margin-bottom: 40px; */
+	justify-content: center;
+    /* flex-direction: column;
+    align-items: center; */
+}
+.button .button1{
+    border: 1px solid #3B8EA5;
+    background-color: #3B8EA5;
+    color: #1F2333;
+    font-family: 'Open Sans', sans-serif !important;
+	font-weight: bold !important;
+	height: 100%;
+	width: 30%;
+	
+    /* margin-bottom: 20px !important; */
+}.button .button1:hover{
+    border: 1px solid #1F2335;
+    background-color: #1F2335;
+    color: white;
+}
+
+.button .button2{
+    border: 1px solid white;
+    background-color: white;
+    color: #3B8EA5;
+    font-family: 'Open Sans', sans-serif !important;
+	font-weight: bold !important;
+	height: 100%;
+	width: 30%;
+	margin-left: 5%;
+}
+.button .button2:hover{
+    border: 1px solid #EDF7F6;
+    background-color: #EDF7F6;
+    color: #3B8EA5;
+}
+
+@media (max-width: 780px) {
+
+	.tableTitle .envio{
+	   font-size: 0px;
+	   width: 0px;
+       
+	}
+	.tableDescrip .pronto{
+		font-size: 0px;
+	}
+	
+}
+@media (max-width: 780px) {
+
+	.tableTitle .envio{
+	   font-size: 0px;
+	   width: 0px;
+       
+	}
+	.tableDescrip .pronto{
+		font-size: 0px;
+	}
+	
+}
+@media (max-width: 574px) {
+
+	.cont1 ul li i {
+		font-size: 15px;
+		
+	}
+	.cont1 ul li span {
+		font-size: 10px;
+		
+	}
+}
+@media (max-width: 480px) {
+
+	.cont_img > img {
+		
+		width: 0px!important;
+		height: 0px !important;
+		
+	}
+
+}

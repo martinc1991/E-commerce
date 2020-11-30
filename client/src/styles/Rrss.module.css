@@ -1,0 +1,35 @@
+
+:root {
+	--azul: #1f2333;
+	--celeste: #3b8ea5;
+	--blanco: #edf7f6;
+	--naranjo: #FFB86C ;
+  --gris: #E6E6E6;
+  --negro: #000000;
+}
+
+
+.social{
+background: var(--azul);
+padding: 25px 50px;
+display: flex;
+flex-direction: row;
+justify-content: space-around;
+align-items: center;
+}
+
+
+a.social:hover{
+  transform: translateY(-2px);
+	color: var(--blanco);
+}
+
+a.twitter{
+	padding: 2em;
+  color: var(--celeste);
+}
+
+a.instagram {
+	padding: 2em;
+  color: var(--naranja);
+}

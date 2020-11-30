@@ -1,0 +1,125 @@
+/* Import de fonts */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+:root {
+	--azul: #1f2333;
+	--celeste: #3b8ea5;
+	--blanco: #edf7f6;
+	--naranja: #f19953;
+	--gris: #c8c3c0;
+}
+
+/* Bordes */
+/* .bordeRojo {
+	border: 1px solid red;
+}
+
+.bordeVerde {
+	border: 1px solid green;
+}
+
+.bordeAmarillo {
+	border: 1px solid gold;
+} */
+
+/* Bordes */
+
+p {
+	font-family: 'Open Sans', sans-serif;
+}
+
+.footer {
+	background-color: var(--azul);
+	color: var(--celeste);
+	box-shadow: 0px -2px 10px var(--azul);
+	min-height: 300px;
+}
+
+.logo {
+	height: 80px;
+}
+
+.separador {
+	border-left: 1px solid var(--celeste);
+	height: 200px;
+}
+
+.footerTitle {
+	color: var(--blanco);
+	font-size: 16px;
+}
+
+.footerBody {
+	font-size: 14px;
+}
+
+.searchInput {
+	background-color: var(--blanco) !important;
+	border: 1px solid var(--blanco) !important;
+	border-top-left-radius: 100px !important;
+	border-bottom-left-radius: 100px !important;
+	height: 32px !important;
+	font-size: 14px !important;
+}
+
+.contenedorSubmit {
+	/* !important para sobreescribir la clase 'input-group-text' de bootstrap */
+	background-color: var(--celeste) !important;
+	border: 1px solid var(--celeste) !important;
+	border-top-right-radius: 100px !important;
+	border-bottom-right-radius: 100px !important;
+	height: 32px !important;
+}
+
+.contenedorSubmit p {
+	line-height: 18px;
+	transition: 300ms;
+}
+
+.contenedorSubmit p:hover {
+	color: var(--azul);
+}
+
+.social {
+	background: var(--azul);
+	padding: 25px 50px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+}
+
+a.twitter {
+	padding: 2em;
+	color: var(--celeste);
+	transition: 300ms;
+	padding: 0px;
+}
+
+a.twitter:hover {
+	padding: 2em;
+	color: var(--blanco);
+	padding: 0px;
+}
+
+a.instagram {
+	padding: 2em;
+	color: var(--celeste);
+	transition: 300ms;
+	padding: 0px;
+}
+
+a.instagram:hover {
+	padding: 2em;
+	color: var(--blanco);
+	padding: 0px;
+}
+
+.contDerechos {
+	border-top: 1px solid var(--celeste);
+}
+
+.textoDerechos {
+	font-size: 12px;
+	color: var(--blanco);
+}

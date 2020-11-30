@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmation E-mail</title>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <img src={{url}} alt="Logo">
+            </div>
+            <h2> Hola {{name}} </h2>
+            <h3>Gracias  por tu compra!</h3>
+        </div>
+        <div class="summary">
+            <div class="total">
+                <h4>Total</h4>
+                <hr>
+                <h1> $ {{total}} </h1>
+                <p>Método de pago: trajeta de crédito</p>
+                <p>Fecha de la compra: 02/11/2020</p> 
+            </div>
+            <div class="products">
+                <h4>Resumen de productos</h4>
+                <hr>
+                <ul>
+                    {{#each products}}
+                        <li>
+                            <div class="pImage"><img src={{this.image}}></div>
+                            <div class="pInfo">
+                                <h4 class="pName">{{this.name}}</h4>
+                                <h6 class="pQty">{{this.order_line.quantity}} unidad(es)</h6>
+                            </div> 
+                            <div class="pPrice"> $ {{this.order_line.price}} </div>
+                        </li>
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+        <div class="footer">
+            <h5>Orden No. {{reference}} - {{email}}</h5>
+            <h5>Astra Team</h5>
+        </div>
+    </div>
+</body>
+</html>

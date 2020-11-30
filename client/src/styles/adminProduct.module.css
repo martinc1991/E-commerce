@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+/******************** Formulario Add y Update ******************/
+z .title {
+	color: #f19953 !important;
+	font-family: 'Open Sans', sans-serif !important;
+	font-weight: bolder !important;
+	font-size: 1.3em !important;
+	justify-content: center !important;
+}
+.cont {
+	color: #1f2333 !important;
+	font-family: 'Open Sans', sans-serif !important;
+	font-weight: bolder !important;
+	font-size: 0.9em !important;
+	text-align: center !important;
+}
+.cont .titles {
+	width: 80px !important;
+	text-align: right !important;
+	margin-right: 5px !important;
+}
+.cont .inputs {
+	width: 50% !important;
+}
+.buttons {
+	display: flex !important;
+	justify-content: center !important;
+}
+.buttonAdd {
+	background-color: #1f2333 !important;
+	border: 1px solid #1f2333 !important;
+	width: 20% !important;
+	color: white !important;
+	font-family: 'Open Sans', sans-serif !important;
+	font-weight: bolder !important;
+}
+.buttonCancel {
+	background-color: #3b8ea5 !important;
+	border: 1px solid #3b8ea5 !important;
+	width: 20% !important;
+	color: white !important;
+	font-family: 'Open Sans', sans-serif !important;
+	font-weight: bolder !important;
+}
+/******************** Table******************/
+.table_prin {
+	margin-top: 30px !important;
+	margin-left: 50px !important;
+	margin-right: 50px !important;
+}
+
+.tableTitle {
+	color: #3b8ea5;
+	font-family: 'Open Sans', sans-serif !important;
+	font-weight: bolder !important;
+	text-align: center !important;
+}
+.tableDescrip {
+	color: black;
+	font-family: 'Open Sans', sans-serif !important;
+	font-weight: normal !important;
+	font-size: 0.85em !important;
+	text-align: center !important;
+}
+.tibleThDescrip {
+	width: 60% !important;
+}
+.tableActions {
+	width: 7% !important;
+}
+.icons {
+	display: flex !important;
+	justify-content: space-evenly;
+}
+.iconDelete {
+	color: #3b8ea5 !important;
+	cursor: pointer !important;
+	font-size: 1.3em !important;
+	border: none !important;
+}
+.iconUpdate {
+	color: #1f2333 !important;
+	cursor: pointer !important;
+	font-size: 1.3em !important;
+}
+
+.buttonADD {
+	background-color: #f19953 !important;
+	border: 1px solid #f19953 !important;
+	width: 10% !important;
+	color: white !important;
+	font-family: 'Open Sans', sans-serif !important;
+	font-weight: bolder !important;
+	margin-left: 30px !important;
+	margin-bottom: 30px !important;
+	font-size: 0.9em;
+}
+
+.orderButton {
+	background-color: #3b8ea5 !important;
+	border: 1px solid #3b8ea5 !important;
+	font-size: 16px !important;
+}
+
+.spanDelete {
+	cursor: pointer;
+	color: #f19953;
+	font-weight: bold;
+}
+.iconAdd {
+	cursor: pointer;
+	color: #1f2333;
+}
+
+.ulList {
+	list-style: none;
+	display: flex;
+	width: 100%;
+	justify-content: center;
+}
+
+.liList {
+	margin: 0 5px;
+	background-color: #f19953;
+	color: white;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+	padding: 5px 10px;
+}
+@media (max-width: 1270px) {
+
+	.buttonADD{
+       font-size: 0.8em !important;
+       
+    }
+	
+}
+@media (max-width: 1072px) {
+
+	.buttonADD{
+       font-size: 0.8em !important;
+       width: 15% !important;
+    }
+	
+}
+@media (max-width: 570px) {
+
+	.buttonADD{
+       font-size: 0.8em !important;
+       width: 30% !important;
+    }
+	
+}
+@media (max-width: 431px) {
+
+	.buttonADD{
+       font-size: 0.5em !important;
+       width: 30% !important;
+    }
+	
+}
+

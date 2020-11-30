@@ -1,0 +1,91 @@
+/* Import de fonts */
+/* @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap'); */
+
+/* Colores personalizados */
+/* :root {
+	--azul: #1f2333;
+	--celeste: #3b8ea5;
+	--blanco: #edf7f6;
+	--naranja: #f19953;
+} */
+
+.bordeRojo {
+	border: 2px solid green;
+}
+
+.containerPrincipal {
+	max-width: 1400px !important;
+}
+
+.loginCard {
+	font-family: 'Open Sans', sans-serif !important;
+	box-shadow: 1px 1px 5px black;
+}
+
+.cont .img {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 55%;
+	background-image: url('../multimedia/78c8dff1.jpg');
+	margin-bottom: 40px;
+	clip-path: polygon(100% 0, 100% 73%, 0 100%, 0 0);
+	margin-left: 0px !important;
+	margin-right: 0px !important;
+}
+.icon {
+	/* background-color: #1F2333; */
+	border-radius: 100%;
+	color: #edf7f6c5;
+	font-weight: bolder;
+}
+.cont_form {
+	width: 90%;
+	margin: 0 auto;
+}
+.cont_input {
+	position: relative;
+}
+.cont_input .icon2 {
+	color: #1f2333;
+	position: absolute;
+	top: 12px;
+	left: 7px;
+}
+
+.input {
+	padding-left: 40px;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+}
+.cont_input .input:focus + .icon2 {
+	color: #3b8ea5;
+}
+
+.forgot p {
+	font-family: 'Open Sans', sans-serif !important;
+	font-size: 0.8em;
+	cursor: pointer;
+}
+.forgot p:hover {
+	text-decoration-line: underline;
+}
+
+.button {
+	color: white;
+	font-weight: bold;
+	font-family: 'Open Sans', sans-serif;
+	width: 100%;
+	height: 30%;
+	background-color: #1f2333;
+	border: 1px solid #1f2333;
+}
+.reg {
+	font-size: 14px;
+}
+
+.messageError {
+	color: red;
+}

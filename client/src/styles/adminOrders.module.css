@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+/******************** Formulario Add y Update ******************/
+.title{
+    color:#F19953 !important; 
+    font-family: 'Open Sans', sans-serif !important;
+    font-weight: bolder !important;
+    font-size: 1.3em !important;
+    justify-content: center !important;        
+}
+.cont{
+    color:#1F2333 !important; 
+    font-family: 'Open Sans', sans-serif !important;
+    font-weight: bolder !important;
+    font-size: 0.9em !important;
+    text-align: center !important;
+}
+.cont .titles{
+    
+    width: 80px !important;
+    text-align: right !important;
+    margin-right: 5px !important;
+}
+.cont .inputs{
+    width: 50% !important;
+}
+.buttons{
+    display: flex !important;
+    justify-content: center !important;
+}
+.buttonAdd{
+    background-color: #1F2333 !important;
+    border: 1px solid #1F2333 !important;
+    width: 20% !important;
+    color: white !important;
+    font-family: 'Open Sans', sans-serif !important;
+    font-weight: bolder !important;
+}
+.buttonCancel{
+    background-color: #3B8EA5 !important;
+    border: 1px solid #3B8EA5 !important;
+    width: 20% !important;
+    color: white !important;
+    font-family: 'Open Sans', sans-serif !important;
+    font-weight: bolder !important;
+}
+/******************* HEADER *******************/
+.orderHeader{
+    margin-top: 15px;
+    align-items: flex-end;
+}
+
+.orderFilter{
+    
+    align-items: flex-end !important;
+}
+
+.orderFilter .orderFilterCont{
+    margin: 0 !important;
+    padding: 0 !important;
+    padding-top: 15px !important;
+    }
+
+/******************** Table******************/
+.table_prin{
+  margin-top: 30px !important;
+  margin-left: 50px !important;
+  margin-right: 50px !important;
+}
+
+.tableTitle{
+    color: #3B8EA5;
+    font-family: 'Open Sans', sans-serif !important;
+    font-weight: bolder !important;
+    text-align: center !important;
+}
+.tableDescrip{
+    color: black;
+    font-family: 'Open Sans', sans-serif !important;
+    font-weight: normal !important;
+    font-size: 0.85em !important;
+    text-align: center !important;
+}
+.tableActions{
+    width: 10% !important;
+}
+.icons{
+    display: flex !important;
+    justify-content: space-evenly;
+       
+}
+.iconDelete{
+    color:  #3B8EA5 !important;
+    cursor: pointer !important;
+    font-size: 1.3em !important;
+}
+.iconUpdate{
+    color:  #1F2333 !important;
+    cursor: pointer !important;
+    font-size: 1.3em !important;
+
+}
+
+.buttonADD{
+    background-color: #F19953 !important;
+    border: 1px solid #F19953 !important;
+    width: 10% !important;
+    padding: 5px !important;
+    color: white !important;
+    font-family: 'Open Sans', sans-serif !important;
+    font-weight: bolder !important;
+    margin-left: 30px !important;
+}

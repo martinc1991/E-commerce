@@ -1,0 +1,42 @@
+.icon{
+    color: #f19953 !important;
+    margin-left: 10px;
+}
+.cont{
+    text-align: center;
+}
+.cont p{
+    font-family: 'Open Sans', sans-serif !important;
+    font-weight: lighter !important;
+}
+.button{
+    display: flex;
+    justify-content: center;
+}
+.button .button1{
+    border: 1px solid #3B8EA5;
+    background-color: #3B8EA5;
+    color: #1F2333;
+    font-family: 'Open Sans', sans-serif !important;
+    font-weight: bold !important;
+    width: 30%;
+}.button .button1:hover{
+    border: 1px solid #1F2335;
+    background-color: #1F2335;
+    color: white;
+}
+
+.button .button2{
+    border: 1px solid white;
+    background-color: white;
+    color: #3B8EA5;
+    font-family: 'Open Sans', sans-serif !important;
+    font-weight: bold !important;
+    width: 30%;
+    margin-left: 5%;
+}
+.button .button2:hover{
+    border: 1px solid #EDF7F6;
+    background-color: #EDF7F6;
+    color: #3B8EA5;
+}

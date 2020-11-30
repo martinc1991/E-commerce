@@ -1,0 +1,11 @@
+.size{
+    width: 70px;
+    height: 70px;
+}
+
+.contenedorWs{
+    position: fixed;
+    top: 80%;
+    left: 90%;
+    z-index: 9999;
+}

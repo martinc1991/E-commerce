@@ -1,0 +1,154 @@
+/* Import de fonts */
+/* @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap'); */
+
+/* Colores personalizados */
+/* :root {
+	--azul: #1f2333;
+	--celeste: #3b8ea5;
+	--blanco: #edf7f6;
+	--naranja: #f19953;
+} */
+
+/* Bordes */
+
+.bordeRojo {
+	border: 1px solid red;
+}
+
+.bordeAzul {
+	border: 1px solid blue;
+}
+
+.bordeAmarillo {
+	border: 1px solid gold;
+}
+
+/* Bordes */
+
+.contPrincipal {
+	min-height: 70vh;
+}
+
+.formCard {
+	box-shadow: 1px 1px 5px black;
+
+}
+.grupo{
+	margin: 30px;
+	position: relative;
+	/* background-color: yellow; */
+}
+.grupo .label{
+	position: absolute;
+	left: 5px;
+	top: 10px;
+	transition: 0.5s ease-in-out all;
+	pointer-events: none;
+}
+.formTitle{
+	padding-bottom: 10px;
+	padding-left: 10px;
+	font-size: 1.5em;
+	font-weight: bold;
+	color: var(--azul);
+}
+.subTitle{
+	font-size: 1.3em;
+	font-weight: bold;
+	color: var(--azul);
+
+}
+
+.formTitle,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+label {
+	font-family: 'Open Sans', sans-serif;
+}
+
+h2 {
+	font-size: 24px;
+}
+
+label {
+	color: #5e5d5d;
+	font-size: 0.9em;
+	padding-left: 5px;
+}
+
+.input {
+	border-top: none;
+	border-left: none;
+	border-right: none;
+}
+.menssage{
+	opacity: 0;
+}
+
+.input:hover{
+	border-bottom: 1px solid #5e5d5d ;
+}
+.input:hover ~ .menssage{
+	opacity: 1;
+	color: #aaa7a7;
+	font-size: 0.7em;
+	font-family: 'Open Sans', sans-serif;
+}
+
+.input:focus {
+	box-shadow: none;
+	border-bottom: 1px solid var(--celeste);
+}
+.input:focus ~ .menssage{
+	opacity: 1;
+	color: #aaa7a7;
+	font-size: 0.7em;
+	font-family: 'Open Sans', sans-serif;
+}
+.input:focus + .label,
+.input:valid + .label{
+	top: -18px;
+	font-size: 0.8em;
+	color: var(--celeste) !important;
+}
+.input:-webkit-autofill{
+	background-color: white !important;
+}
+.content_buttom{
+margin-top: 30px;
+margin-bottom: 30px;
+margin-left: 10px;
+}
+
+.formCard p{
+	color: #FA5555;
+}
+
+.botonSubmit {
+	font-weight: bold !important;
+	background-color: var(--naranja);
+	border: 1px solid var(--naranja);
+}
+
+.botonSubmit:disabled {
+	background-color: grey;
+	border: 1px solid grey;
+
+}
+.terminos{
+	margin: 0px;
+	margin-bottom: 20px;
+}
+
+.ocultar{
+	display: none;
+}
+
+.mostrar{
+	display: block;
+}
