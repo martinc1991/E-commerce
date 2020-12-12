@@ -29,7 +29,7 @@ import ProfileUser from './components/ProfileUser/ProfileUser';
 import PrivateAdmin from './components/Routes/PrivateAdmin';
 import PrivateRoute from './components/Routes/PrivateRoute';
 import DataUserShopping from './components/ckeckout/dataUser';
-import PaymentMethod from './components/ckeckout/paymentMethod'
+import PaymentMethod from './components/ckeckout/paymentMethod';
 import { enlacesUser, enlacesUserConAdmin, enlacesUserSinAdmin, enlacesAdmin } from './constans/constans';
 import s from './styles/app.module.css';
 
@@ -50,7 +50,9 @@ function App() {
 	};
 
 	return (
-		<div className={`${s.all} d-flex flex-column`}>  {/* Estilos para que el footer quede fijo al final */}
+		<div className={`${s.all} d-flex flex-column`}>
+			{' '}
+			{/* Estilos para que el footer quede fijo al final */}
 			<Switch>
 				{/* HOME */}
 				<Route path='/' exact>

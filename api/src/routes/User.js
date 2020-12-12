@@ -31,8 +31,10 @@ server.post('/', function (req, res) {
 
 // GET USERS
 server.get('/', (req, res) => {
+	console.log('GET a users');
 	User.findAll()
 		.then((users) => {
+			console.log('users: ', users);
 			users.sort(function (a, b) {
 				return a.id - b.id;
 			});

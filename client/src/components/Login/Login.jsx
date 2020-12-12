@@ -45,11 +45,15 @@ const Login = ({ userLoggedP, loginActionP, messageErrorP, checkForEmailP, logge
 		e.preventDefault();
 		// Comprobacion de si el usuario existe o no en la base de datos
 		var dontShowModal = true;
+		console.log('probando con cami');
 		axios
 			.get(`http://${url}/users`)
 			.then((res) => {
+				console.log('RES.DATA.DATA');
 				console.log(res.data.data);
+				console.log('FORM');
 				console.log(form);
+				console.log('punto previo');
 				res.data.data.forEach((user) => {
 					if (user.email == form.email) {
 						console.log('true');
@@ -57,7 +61,7 @@ const Login = ({ userLoggedP, loginActionP, messageErrorP, checkForEmailP, logge
 						dontShowModal = false;
 						loginActionP(form);
 						if (userLoggedP && userLoggedP.role === 'admin') {
-							console.log('Entre al if de ADmin');
+							console.log('Entre al if de Admin');
 							return history.push('/admin');
 						} else {
 							return history.push('/');
@@ -66,6 +70,7 @@ const Login = ({ userLoggedP, loginActionP, messageErrorP, checkForEmailP, logge
 				});
 			})
 			.then((res) => {
+				console.log('nada que ver eh');
 				if (dontShowModal) setShowModalNoUser(true);
 			});
 	};

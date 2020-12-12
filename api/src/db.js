@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const bcrypt = require('bcrypt');
 const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
-
+console.log(DB_USER, DB_PASSWORD, DB_HOST);
 // Password Encrypting
 const crypto = require('crypto');
 
