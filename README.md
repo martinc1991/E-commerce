@@ -1,107 +1,137 @@
-ASTRA
-ASTRA es un E-commerce que comercializa productos de tecnologia y bioseguridad. Fue desarrollado en cojunto con un gran grupo de trabajo y asesorado por un equipo de profesionales como Soy Henry
+<h1>HBANK</h1> 
+<p>
+    Hbank es una billetera electronica, que te ayudara a gestionar tu dinero, podras enviar dinero, recibir y hasta ver tu movimientos y estadisticas de los ultimos dias. Todo esto en base a una cuenta que creas cuando te registras en nuestra app. Se te asignara un CVU en pesos y otro en dolares. A partir de ahi, podras disfrutar de todas las funcionalidades que te mencionamos ya. A continuacion te mostramos un resumen visual de nuestra aplicacion.
 
-HOMEPAGE
+</p>
+
+<div>
+    <h1>HOME</h1> 
+    <img src="./readmeAsset/Home.png"></img>
+    <h1>REGISTRO Y LOGIN</h1> 
+    <h2>PASO 1 - REGISTRO INICIAL</h2> 
+    <p>Solo debes poner tus datos basicos para el registro.</p>
+    <img src="./readmeAsset/Registro1.png"></img>
+    <h2>PASO 2 - VALIDA EL CODIGO</h2> 
+    <p>Una vez termines el paso uno, te enviaremos un correo electronico con el codigo correspondiente.</p>
+    <img src="./readmeAsset/Registro2.png"></img>
+    <h2>PASO 3 - DAR ALTA A TU CUENTA</h2> 
+    <p>Una vez valides tu codigo, tendras que completar un ultimo paso. Llena el formulario con los datos complementarios.</p>
+    <img src="./readmeAsset/Registro3.png"></img>
+    <h2>PASO 4 - LOGIN</h2> 
+    <p>Finalmente ya puedes logearte con tu email y contraseña registrados, ahora puedes disfrutar de Hbank.</p>
+    <img src="./readmeAsset/Login.png"></img>
+<div>
+
+<div>
+    <h1>POSCONSOLIDADA</h1>
+    <p>
+        Una vez inicies session, podras empezar a navegar y explorar todas las funcionalidades que tenemos para ti
+    </p>
+    <img src="./readmeAsset/Poscon.png"></img>
+    <h2>MENU LATERAL</h2>
+    <img src="./readmeAsset/Menu.png"></img>
+    <h1>RECARGAR DINERO</h1> 
+    <p>
+        Recarga dinero a cualquiera de tus dos cuentas por medio de tarjeta credito o deboto, o atravez de un codigo QR que presentaras en cualquier punto de Todo Pago.
+    </p>
+    <h2>TARJETA</h2>
+    <img src="./readmeAsset/Card.png"></img>
+    <h2>CODIGO QR</h2>
+    <img src="./readmeAsset/QR.png"></img>
+    <h1>MANDAR DINERO</h1> 
+    <p>
+        Mandar dinero a tus contactos. Puedes hacerlo desde cualquiera de tus cuentas siempre y cuando tengas saldo disponible.
+    </p>
+    <img src="./readmeAsset/Mandar.png"></img>
+    <h1>MOVIMIENTOS Y ESTADISTICAS</h1>
+    <p>
+        Puedes ver tus ultimos movimientos en los ultimos 15 y 7 dias, asi como los que realizaste el mismo dia. de igual manera tendras informacion un poco mas especifica, ya que contaras con una opcion de estadisticas, en las cuales te muestraremos como fue el comportamiento de tu dienro, en el trascurso de los ultimos 7 dias encuanto a ingreso y egresos.
+    </p>
+    <h2>ULTIMOS MOVIMIENTOS</h2>
+    <img src="./readmeAsset/UlMov.png"></img>
+    <h2>ESTADISTICAS</h2>
+    <img src="./readmeAsset/Est.png"></img>
+</div>
+<div>
+<h1>CONTACTOS</h1>
+    <p>
+        Podras ver todos los contactos que tienes registrados en tu cuenta.
+    </p>
+    <img src="./readmeAsset/Conta.png"></img>
+
+</div>
+<h1>PREGUNTAS Y RESPUESTAS</h1>
+    <p>
+        Si quieres conocer o tienes dudas acerca de como funciona la aplicacion, tendras un opcion para responder lo que necesites.
+    </p>
+    <img src="./readmeAsset/FAQ.png"></img>
+
+</div>
 
 
-LOGIN Y REGISTER
-REGISTER
-Registrase es muy facil !!. Lo puedes hacer con cualquier correo electronico o si lo prefieres hazlo con tu cuenta de Gmail. Solo debes llenar el fomulario y aceptar los terminos. Listo, Bienvenido a ASTRA.
+<div>
+    <h1> COMO CORRER EL PROYECTO ? </h1>
+        <ol>
+        <li>Crea una base de datos en MongDB. En este ejemplo le pondremos "henrybank". Se crea con el siguiente comando: use henrybank</li>
+        <li>Crea un archivo dentro de la carpeta "api" llamado .env con el siguiente contenido:
+            <pre>
+                    <code>
+                    DATABASE = 'mongodb://localhost/henrybank'
+                    ADMIN_EMAIL = hbank.group5@gmail.com
+                    PASSW_EMAIL = HenryBankHenryBank
+                    BACK_URL = http://localhost:3000/
+                    JWT_SECRET = lamejorappdehenryfinal
+                    </code>
+            </pre>
+        </li>
+        <li>Crea un archivo dentro de la carpeta "native" llamado en.jsv con el siguiente contenido:
+            <pre>
+                    <code>
+                        module.exports = { BACK_URL: `http://ipv4DeTuPC:3000`}
+                    </code>
+            </pre>
+        </li>
+        <li>Posicionate en la carpeta api y ejecuta el comando npm install</li>
+        <li>Posicionate en la carpeta native y ejecuta el comando install</li>
+        <li>Correr los servers</li>
+        <li>Abrí dos consolas</li>
+        <li>En una consola posicionate en la carpeta api y ejecuta el comando npm run dev</li>
+        <li>En la otra consola, posicionate en la carpeta client y ejecuta el comando expo start</li>
+        <li>Abre tu app de expo de tu celular y escanea el codigo QR </li>
+        </ol>
+</div>
+<div>
+    <h1> TECNOLOGIAS USADAS </h1>
+        <h2>FRONTEND</h2>
+        <ul>
+            <li>React Native</li>
+            <li>Redux</li>
+            <li>Axios</li>
+        </ul>
+        <h2>BACKEND</h2>
+        <ul>
+            <li>Nodejs</li>
+            <li>MoleculerJS</li>
+            <li>Mongosee (MongoDB)</li>
+            <li>Nodemailer</li>
+            <li>JWT</li>
+            <li>CHART JS</li>
+        </ul>
 
+</div>
+<div>
+    <h1> EQUIPO </h1>
+    <p>El equipo de desarrollo lo conforman los siguientes desarrolladores:</p>
+        <ul>
+            <li><a href="https://github.com/CamilolIn" rel="nofollow">Camilo Lindarte </a></li>
+            <li><a href="https://github.com/quasirsg" rel="nofollow">Alexis Romano </a></li>
+            <li><a href="https://github.com/nvlozano" rel="nofollow">Carlos Saballe</a></li>
+            <li><a href="https://github.com/martinc1991" rel="nofollow">Martin Catala</a></li>
+            <li><a href="https://github.com/JuanFernandezJubin" rel="nofollow">Juan Ignacio Fernandez</a></li>
+            <li><a href="https://github.com/olivertborges" rel="nofollow">Olivert Borges </a></li>
+            <li><a href="https://github.com/gabbies86" rel="nofollow">Gabriela MARCIANO </a></li>
+            <li><a href="https://github.com/Ceci-Caccamo" rel="nofollow">Ceci Caccamo </a></li>
+            <li><a href="https://github.com/sebasf24" rel="nofollow">Sebastian F.</a></li>
+        </ul>
 
-
-LOGIN
-Luego de registrate, ahora ya puedes loegarte con tu cuenta y empezar a disfrutar de los servicios de ASTRA.
-
-
-
-CATALOGO
-Luego de logearte, puedes ahora disfrutar de los servicios de ASTRA. Uno de ellos es ver nuestro catalago. Para eso, debes dirigirte a la pestaña CATALOGO en la parte superior, aca podras ver todos nuestros productos, podras filtrarlos por categrias o nombres.
-
-
-
-DETALLE DEL PRODUCTO
-Puedes ver el detalle del producto, ac podras encontrar la informacion necesaria para qeu decidas si añadirloal carrito o comprar directamente.
-
-
-
-CARRITO DE COMPRAS
-Como cualquier E-commerce, tambien podras tener tu carrito de compras, aca almacenaras todos los productos que quieres comprar. De igual menera tendras la posiilidad de cambiar las cantidades de cada producto o eliminarlos si lo prefieres.
-
-
-
-PROCESO DE CHECKOUT Y PAYMENT
-Una vez tengas los productos que quieres comprar en tu carrito, ya podras continuar con el proceso final de compra. Para esto, debes completar dos pasos mas. El primero sera un formulario en el que te pediremos los datos de envio para almacenar en la orden el lugar al cual debemos enviarte los productos. El segundo sera el proceso de pago, aca te brindamos la posibilidad de realizar tu pago por medio de una tarjeta de credito o debito (libreria Stripe), solo tendras que digitar la siguiente informaciion:
-
-DATOS DE ENVIO:
-
-
-PAYMENT:
-Si deseas probar esta función, podes usar la siguiente información:
-Número: 4242 4242 4242 4242
-Fecha: 04/24
-FCVV: 242
-Ultimos digitos: 42424
-
-
-COMPRA FINALIZADA
-Te enviaremos un correo electronico con la confirmacion de la compra y el resumen de tus productos.
-
-
-
-
-
-ADMINISTRADOR
-Para agregar productos, categorias, administrar ordenes y useuarios, tienes que ser Administrador. Para esto, debes regsitrar un usuarios como ADMIN. Esto lo hacemos con POSTMAN. .
-
-
-
-Luego de esto ya puedes logearte como administrador. Con este Rol tendras acceso a todas las funciones de un usuario comun y las funciones de administratrar todas la categorias y productos principalmente.
-
-HOME ADMIN
-
-
-AGREGAR CATEGORIAS
-
-
-AGREGAR PRODUCTOS
-
-
-COMO CORRER EL PROYECTO ?
-Crea una cuenta en Mailgun
-Buscar la Private Key y el dominio del email. Más abajo hay un ejemplo de como deberían ser
-Crea una base de datos en PostgreSQL. En este ejemplo le pondremos "development". Se crea con el siguiente comando: CREATE DATABASE development
-Crea un archivo dentro de la carpeta "api" llamado .env con el siguiente contenido:
-                    
-                    DB_USER=usuariopostgres
-                    DB_PASSWORD=TuContraseña12345
-                    DB_HOST=localhost
-                    MAILGUN_API_KEY= privatekeydemailgun
-                    MAILGUN_DOMAIN= sandbox(seriedenumerosyletras).mailgun.org
-                    
-            
-Posicionate en la carpeta api y ejecuta el comando npm install
-Posicionate en la carpeta client y ejecuta el comando npm install
-Correr los servers
-Abrí dos consolas
-En una consola posicionate en la carpeta api y ejecuta el comando npm start
-En la otra consola, posicionate en la carpeta client y ejecuta el comando npm start
-TECNOLOGIAS USADAS
-FRONTEND
-React hooks
-Redux
-react Bootstrap
-BACKEND
-Nodejs
-Express JS
-Sequelize (PostgreSQL)
-Mailgun
-Passport
-EQUIPO
-El equipo de desarrollo lo conforman los siguientes desarrolladores:
-
-Jorge Malo
-Vanessa Lozano
-Martin Catala
-Cristobal Chile
-Miguel Hernandez
+</div>
