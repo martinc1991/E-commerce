@@ -1,188 +1,172 @@
+# ASTRA
+
+ASTRA es un E-commerce que comercializa productos de tecnologia y bioseguridad. Fue desarrollado en cojunto con un gran grupo de trabajo y asesorado por un equipo de profesionales como <a href="https://soyhenry.com/" rel="nofollow">Soy Henry</a>
+
+<h1>HOMEPAGE</h1>
 <p align='left'>
-    <img src='https://static.wixstatic.com/media/85087f_0d84cbeaeb824fca8f7ff18d7c9eaafd~mv2.png/v1/fill/w_160,h_30,al_c,q_85,usm_0.66_1.00_0.01/Logo_completo_Color_1PNG.webp' </img>
+    <img src='./ReadmeAsset/Home.JPG' </img>
 </p>
 
-# Henry
+<h1>LOGIN Y REGISTER</h1>
+<h3>REGISTER</h3>
+<p>
+    Registrase es muy facil !!. Lo puedes hacer con cualquier correo electronico o si lo prefieres hazlo con tu cuenta de Gmail.
+    Solo debes llenar el fomulario y aceptar los terminos. Listo,  Bienvenido a ASTRA.
+</p>
+<p align='left'>
+    <img src='./ReadmeAsset/Register.JPG' </img>
+</p>
+<h3>LOGIN</h3>
+<p>
+    Luego de registrate, ahora ya puedes loegarte con tu cuenta y empezar a disfrutar de los servicios de ASTRA.
+</p>
+<p align='left'>
+    <img src='./ReadmeAsset/Login.JPG' </img>
+</p>
 
-## Objetivos del Proyecto
+<div>
+<h1>CATALOGO</h1>
+<p>
+    Luego de logearte, puedes ahora disfrutar de los servicios de ASTRA. Uno de ellos es ver nuestro catalago. Para eso, debes dirigirte a la pestaña CATALOGO en la parte superior, aca podras ver todos nuestros productos, podras filtrarlos por categrias o nombres.
+</p>
+<p align='left'>
+    <img src='./ReadmeAsset/Catalogo.JPG' </img>
+</p>
+</div>
+<div>
+<h1>DETALLE DEL PRODUCTO</h1>
+<p>
+    Puedes ver el detalle del producto, ac podras encontrar la informacion necesaria para qeu decidas si añadirloal carrito o comprar directamente.
+</p>
+<p align='left'>
+    <img src='./ReadmeAsset/Detalle.JPG' </img>
+</p>
+</div>
+<div>
+<h1>CARRITO DE COMPRAS</h1>
+<p>
+    Como cualquier E-commerce, tambien podras tener tu carrito de compras, aca almacenaras todos los productos que quieres comprar. De igual menera tendras la posiilidad de cambiar las cantidades de cada producto o eliminarlos si lo prefieres.
+</p>
+<p align='left'>
+    <img src='./ReadmeAsset/Cart.JPG' </img>
+</p>
+</div>
+<div>
+<h1>PROCESO DE CHECKOUT Y PAYMENT</h1>
+<p>
+        Una vez tengas los productos que quieres comprar en tu carrito, ya podras continuar con el proceso final de compra. Para esto, debes completar dos pasos mas. El primero sera un formulario en el que te pediremos los datos de envio para almacenar en la orden el lugar al cual debemos enviarte los productos. El segundo sera el proceso de pago, aca te brindamos la posibilidad de realizar tu pago por medio de una tarjeta de credito o debito (libreria Stripe), solo tendras que digitar la siguiente informaciion:
 
-- Construir una App JavaScript desde cero.
-- Afirmar y conectar los conceptos aprendidos en la carrera.
-- Aprender mejores prácticas.
-- Aprender y practicar el workflow de GIT.
-- Utilizar Metodologías Ágiles.
-- Trabajar en equipo.
-- Usar y practicar testing.
+</p>
+<h3>DATOS DE ENVIO:</h3>
+<p align='left'>
+    <img src='./ReadmeAsset/DatosEnv.JPG' </img>
+</p>
+<h3>PAYMENT:</h3>
+        <ul>
+            <li> 
+                 Si deseas probar esta función, podes usar la siguiente información: 
+                <li>Número: 4242 4242 4242 4242</li>
+                <li>Fecha: 04/24</li>
+                <li>FCVV: 242</li>
+                <li>Ultimos digitos: 42424</li>
+            </li>
+        </ul>
+<p align='left'>
+    <img src='./ReadmeAsset/Payment.JPG' </img>
+</p>
+</div>
+<div>
+<h1>COMPRA FINALIZADA</h1>
+<p>
+    Te enviaremos un correo electronico con la confirmacion de la compra y el resumen de tus productos.
+</p>
+<p align='left'>
+    <img src='./ReadmeAsset/Gracias.JPG' </img>
+</p>
+<p align='left'>
+    <img src='./ReadmeAsset/Email.JPG' </img>
+</p>
+</div>
 
-## Trabajo en Equipo
+<h1> ADMINISTRADOR </h1>
+<p>
+    Para agregar productos, categorias, administrar ordenes y useuarios, tienes que ser Administrador. Para esto, debes regsitrar un usuarios como ADMIN. Esto lo hacemos con POSTMAN. .
+</p>
+<p align='left'>
+    <img src='./ReadmeAsset/Postman.JPG' </img>
+</p>
+<p>
+    Luego de esto ya puedes logearte como administrador. Con este Rol tendras acceso a todas las funciones de un usuario comun y las funciones de administratrar todas la categorias y productos principalmente.
+</p>
+<h3>HOME ADMIN</h3>
+<p align='left'>
+    <img src='./ReadmeAsset/HomeAdmin.JPG' </img>
+</p>
+<h3>AGREGAR CATEGORIAS</h3>
+<p align='left'>
+    <img src='./ReadmeAsset/AddCat.JPG' </img>
+</p>
+<h3>AGREGAR PRODUCTOS</h3>
+<p align='left'>
+    <img src='./ReadmeAsset/AddPro.JPG' </img>
+</p>
+</div>
 
-En este proyecto, van a trabajar en equipo de 4 a 6 personas. Van a trabajar siempre en pares, al terminar una tarea, van a cambiar de pareja para llegar a trabajar con todos los compañeros.
-Ninguna tarea debería llevar más de dos días en terminar, si esto sucede contactar con tu PM.
+<div>
+    <h1> COMO CORRER EL PROYECTO ? </h1>
+        <ol>
+        <li>Crea una cuenta en Mailgun</li>
+        <li>Buscar la Private Key y el dominio del email. Más abajo hay un ejemplo de como deberían ser</li>
+        <li>Crea una base de datos en PostgreSQL. En este ejemplo le pondremos "development". Se crea con el siguiente comando: CREATE DATABASE development</li>
+        <li>Crea un archivo dentro de la carpeta "api" llamado .env con el siguiente contenido:
+            <pre>
+                    <code>
+                    DB_USER=usuariopostgres
+                    DB_PASSWORD=TuContraseña12345
+                    DB_HOST=localhost
+                    MAILGUN_API_KEY= privatekeydemailgun
+                    MAILGUN_DOMAIN= sandbox(seriedenumerosyletras).mailgun.org
+                    </code>
+            </pre>
+        </li>
+        <li>Posicionate en la carpeta api y ejecuta el comando npm install</li>
+        <li>Posicionate en la carpeta client y ejecuta el comando npm install</li>
+        <li>Correr los servers</li>
+        <li>Abrí dos consolas</li>
+        <li>En una consola posicionate en la carpeta api y ejecuta el comando npm start</li>
+        <li>En la otra consola, posicionate en la carpeta client y ejecuta el comando npm start</li>
+        </ol>
 
-Vamos a usar **GIT** para gestionar el código y **Trello** para gestionar el proyecto y facilitar la colaboración. Recomendamos el siguiente *workflow* para una tarea dada:
+</div>
 
-- Crear una Card de Trello para una tarea.
-- Asignar un equipo de dos para trabajar en la tarea.
-- Hacer un `branch` por cada card de trello (incluir el nombre o ID de la card en el nombre de la branch).
-- Codear en equipo hasta completar la tarea (con tests).
-- Pullear de master a nuestra branch (para mergear código nuevo de master).
-- Pushear nuestra Branch a git y hacer un `PR` indicando la Card que cierra.
-- Mover la Card de trello a `Review`.
-- Asignar a otro equipo de dos para que revise el `PR`.
-- Iterar hasta que no haya más comentarios:
-    + Si hay un comentario, el equipo original debe codear de nuevo la solución y volver a subir el código a github.
-    + Si no hay comentarios, se aprueba el `PR` y se mergea a master
-- Mergear el `PR` a master.
-- Volver al punto 1 hasta terminar el proyecto.
+<div>
+    <h1> TECNOLOGIAS USADAS </h1>
+        <h2>FRONTEND</h2>
+        <ul>
+            <li>React hooks</li>
+            <li>Redux</li>
+            <li>react Bootstrap</li>
+        </ul>
+        <h2>BACKEND</h2>
+        <ul>
+            <li>Nodejs</li>
+            <li>Express JS</li>
+            <li>Sequelize (PostgreSQL)</li>
+            <li>Mailgun</li>
+            <li>Passport</li>
+        </ul>
 
-## Horarios y Fechas
+</div>
 
-El proyecto dura cuatro semanas. El lunes siguiente al terminar el sprint se realiza una demo donde se muestra al TL el progreso de esa semana. La última semana tiene el `demo final` donde se muestra el proyecto a todo el cohorte.
+<div>
+    <h1> EQUIPO </h1>
+    <p>El equipo de desarrollo lo conforman los siguientes desarrolladores:</p>
+        <ul>
+            <li><a href="https://github.com/jorelmaro" rel="nofollow">Jorge Malo</a></li>
+            <li><a href="https://github.com/nvlozano" rel="nofollow">Vanessa Lozano</a></li>
+            <li><a href="https://github.com/martinc1991" rel="nofollow">Martin Catala</a></li>
+            <li><a href="https://github.com/Cristovk" rel="nofollow">Cristobal Chile</a></li>
+            <li><a href="https://github.com/miguehernaandez" rel="nofollow">Miguel Hernandez </a></li>
+        </ul>
 
-El horario de trabajo sigue siendo de 9AM a 18PM.
-Todos los días a un horario a definir con su TL habrá un STAND UP para revisar las tareas del día, el progreso y si están bloqueados y/o necesitan ayuda.
-
-## Comenzando
-
-Vamos iniciar clonando el repo de Github que se les indicará llamado: `ec-{Cohorte}-{Grupo}`. Donde vamos a invitar a todos colaboradores del proyecto.
-
-Nosotros te vamos a dar un `boilerplate` con los modelos de Usuario y el flow de autenticación funcionando. Sobre este código vas a branchear para empezar a agregar tus propias features.
-
-__IMPORTANTE:__ Es necesario contar minimamente con la última versión estable de Node y NPM. Asegurarse de contar con ella para poder instalar correctamente las dependecias necesarias para correr el proyecto.
-
-Actualmente las versiónes necesarias son:
-
- * __Node__: 12.18.3 o mayor
- * __NPM__: 6.14.16 o mayor
-
-Para verificar que versión tienen instalada:
-
-> node -v
->
-> npm -v
-
-## BoilerPlate
-
-El boilerplate cuenta con dos carpetas: `api` y `client`. En estas carpetas estará el código del back-end y el front-end respectivamente.
-
-En `api` vas a tener que crear un archivo llamado: `.env` que tenga la siguiente forma:
-
-```
-DB_USER=usuariodepostgres
-DB_PASSWORD=passwordDePostgres
-DB_HOST=localhost
-```
-
-Tenés que reemplazar `usuariodepostgres` y `passwordDePostgres` con tus propias credenciales para conectarte a postgres. Este archivo va ser ignorado por github, ya que contiene información sensible (las credenciales).
-
-El contenido de `client` fue creado usando: Create React App.
-
-### Requerimientos
-
-La aplicación del e-commerce va a contar con los siguientes requerimientos:
-
-### Usuarios no Autenticados
-
-Un Visitante anónimo debería poder navegar tu e-commerce, ver y buscar productos.
-
-###### Como un Guest yo quiero...
-
-- PRODUCTOS:
-    + ...ver la lista completa de productos (catálogo), para ver todo lo disponible para comprar.
-    + ...refinar el listado por categorías, para poder ver los items en los que estoy interesado.
-    + ...buscas productos, para poder encontrar rápido los productos que quiero comprar.
-    + ...ver los detalles de un producto individual (incluida las fotos, descripciones, reviews, etc...), asi puede determinar si quiero ese producto o no.
-
-- CARRITO:
-    + ...poder agregar items a mi carrito de compras desde el listado o desde a página de detalles de un producto, para poder comprarlos despues.
-    + ...sacar items de mi carrito, en caso que decida no quererlos.
-    + ...editar cantidades de los items de mi carrito, en caso que quiera mas o menos cantidad de un item en particular.
-    + ...refrescar la página, o irme y volver, y todavía tener mi carrito de compras (sin haberme creado una cuenta). (Podés usar sessionStorage, localStorage, cookies, o JWT).
-    + ...poder crearme una cuenta, loguearme y seguir editando ese mismo carrito, asi no pierdo los items seleccionados.
-- CHECKOUT:
-    + ...poder comprar todos los items de un mi carrito.
-    + ...especificar una dirección de envio y un email cuando hago el checkout, asi me envien la compra a lugar que dije.
-    + ...recibir un email de confirmación que hice la compra.
-    + ...recibir un email de notificación cuando la orden fue despachada.
-- GESTION DE CUENTA:
-    + ...poder crear una cuenta, asi puede hacer otras cosas como dejar un review.
-    + ...poder logearme usando Google o Github, para no tener que acordarme de un password nuevo.
-
-### Usuarios Autenticados
-
-Los usuarios que hayan creado su cuenta, podrán hacer todo lo que puede hacer un usuario guest y además:
-
-###### Como un Usuario Autenticado yo quiero...
-
-- GESTION DE CUENTA:
-    + ...poder desloguearme, asi nadie más pueda usar mi sesión.
-    + ...ver el historial de ordenes previas, asi puede reever las ordenes que hice en el pasado.
-    + ...ver los detalles de una orden que hice en el pasado, incluyendo:
-        * Los items comprados, con sus cantidades.
-        * Links a la página del producto comprado.
-        * Fecha y hora de la compra.
-- REVIEWS:
-    + ...poder dejar reviews a los productos, que incluyan texto y un sistema de cinco estrellas.
-
-### Admin
-
-Los usuarios administradores pueden manejar el sitio, los productos que se listan y los items que están disponibles.
-
-###### Como un administrador yo quiero...
-
-- GESTION DE PRODUCTOS:
-    + ...poder crear y editar productos, con nombre, descripción, precio y uno o más fotos, tal que los visitantes puedan ver la última información de lo que se vende.
-    + ...poder crear categorías, para que los usuarios puedan filtrar los items.
-    + ...poder agregar o sacar categorías de los items (los items deben poder aceptar múltiples categorías).
-    + ...gestionar la disponibilidad de un item. (un item que no esta disponible, no deberá estar listado en la página, pero su detalle debe seguir siendo accesible desde el historial de compras o con su URL, pero debe mencionar que el item no está disponible).
-
-- GESTION DE ORDENES:
-    + ...poder ver una lista de todas las ordenes, para poder ver y revisar las ordener.
-    + ...poder filtrar as ordenes por su estado (creada, procesando, cancelada, completa).
-    + ver los detalles de una orden específica, asi puedo revisarla y actualizar su estado.
-    + ...poder cambiar el estado de una orden (creada => procesando, procesando => cancelada || completa).
-
-- GESTION DE USUARIOS:
-    + ...poder hacer que un usuario se convierta en admin.
-    + ...borrar a un usuario, asi no puedan logearse más.
-    + ...forzar una password reset para un usuario.
-
-### Validación de Datos
-
-Cuando crees los modelos, debes considerar los tipos de datos que vas a recibir, qué cosas van a ser requeridas y cómo vas a devolver los errores a los usuarios.
-Algunas constrains qué deberás implementar:
-
-- Productos:
-    + Deben tener `titulo`, `descripcion`, `precio`, `cantidad`
-    + Deben pertenecer a por lo menos una categoría.
-    + Deben tener una foto, si no tienen una foto, deben tener un placeholder de foto por defecto.
-- Usuarios:
-    + Deben tener una dirección de mail válida.
-    + Su email debe ser único.
-- Ordenes:
-    + Una orden debe pertenecer a un usuario o a un guest (autenticado vs no autenticado).
-    + Las ordenes deben tener línea de orden que contiene el `precio`, `productId`, y `cantidad`.
-    + Si un usuario completa una orden, esa orden debe mantener el precio del item al momento de la compra, sin importar que el precio del producto cambie después.
-- Reviews:
-    + Todas las reviews deben pertenecer a un producto.
-    + Todas las reviews deben pertenecer a un usuario.
-    + Todas las reviews deben tener por lo menos x caractéres.
-
-### Milestones
-
-Este proyecto tiene muchas tareas para realizar, asi que es fácil sentirse abrumado. Estas son las features que esperamos que muestres en cada demo:
-
-- Demo **1**: Catálogo de productos
-    + Los usuarios pueden ver los productos y filtrar por categoría.
-    + Los administradores pueden editar y agregar productos
-- Demo **2**:
-    + Los usuarios pueden buscar productos en el catálogo.
-    + El catálogo está paginado.
-    + Los usuarios tienen un carrito al que pueden agregar productos.
-- Demo **3**:
-    + Los usuarios pueden ver su historial de compras.
-    + Los usuarios tienen su carrito en cualquier device al que se logueen.
-- Demo **Final**:
-    + Los usuarios pueden hacer el checkout.
-    + Los admins pueden ver las ordenes pendientes.
-    + Los usuarios reciben mails de notificaciones.
+</div>
