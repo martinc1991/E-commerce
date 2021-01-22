@@ -1,19 +1,14 @@
+import { faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons';
+// Font Awesome (iconos)
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
-// import Rrss from '../Rrss/Rrss.jsx';
-// Logo
-import logo from '../../multimedia/logo.png';
-
 // Bootstrap
-import { Col, Navbar, Container, Form, Button, InputGroup, FormControl, Row } from 'react-bootstrap';
-
+import { Button, Col, Container, Form, FormControl, InputGroup, Navbar, Row } from 'react-bootstrap';
 // React -Routes
 import { Link } from 'react-router-dom';
 
-// Font Awesome (iconos)
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
-import { faUser as userLogin, faShoppingCart as shopCart } from '@fortawesome/free-solid-svg-icons';
-
+// Logo
+import logo from '../../multimedia/logo.png';
 // CSS
 import s from '../../styles/Footer.module.css';
 

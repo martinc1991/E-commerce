@@ -1,10 +1,10 @@
 /* Import de fonts */
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
 
 /* Colores personalizados */
 /* :root {
-	--azul: #1f2333;
-	--celeste: #3b8ea5;
+	--azul: #243363;
+	--celeste: #4CCED8;
 	--blanco: #edf7f6;
 	--naranja: #f19953;
 } */
@@ -17,7 +17,6 @@
 	border: none !important;
 	border-radius: 4px;
 	/* margin-bottom: 30px !important; */
-
 }
 .productReviewHeader {
 	width: 100%;
@@ -25,7 +24,6 @@
 }
 
 @media (max-width: 768px) {
-
 	.productReviewHeader div:nth-child(1) h3 {
 		font-size: 1.5rem;
 		text-align: center;
@@ -37,7 +35,6 @@
 }
 
 @media (max-width: 428px) {
-
 	.productReviewHeader div:nth-child(1) h3 {
 		font-size: 1.1rem;
 	}
@@ -47,7 +44,6 @@
 }
 
 @media (max-width: 343px) {
-
 	.productReviewHeader div:nth-child(1) h3 {
 		font-size: 0.95rem;
 	}
@@ -55,7 +51,6 @@
 		font-size: 0.8rem !important;
 	}
 }
-
 
 .productReviewHeader div:nth-child(2) {
 	width: 30%;
@@ -79,37 +74,37 @@
 .bordeRojo {
 	border: none;
 }
-.icon{
+.icon {
 	width: 50%;
 	padding-top: 1%;
 	font-size: 1rem;
-    position: relative;
+	position: relative;
 }
 .icon .emptyStars {
-    position: absolute;
-    /* background-color: thistle; */
-    font-size: 1em;
+	position: absolute;
+	/* background-color: thistle; */
+	font-size: 1em;
 	width: 100%;
-    color: lightgray;
-    top: -500%;
-    left: 131%;
-    z-index:1
+	color: lightgray;
+	top: -500%;
+	left: 131%;
+	z-index: 1;
 }
 
 .icon .fullStarsRate {
-    /* margin-left: -94px; */
-    overflow: hidden;
-    position: absolute;
-    top: -500%;
-    left: 131%;
-    z-index:2
+	/* margin-left: -94px; */
+	overflow: hidden;
+	position: absolute;
+	top: -500%;
+	left: 131%;
+	z-index: 2;
 }
 
 .icon .fullStarsRate .fullStars {
-    width: 500%;
-    font-size: 1em;
+	width: 500%;
+	font-size: 1em;
 	/* width: 0%; */
-	color:#F19953;
+	color: #f19953;
 }
 
 .hr {

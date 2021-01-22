@@ -1,61 +1,56 @@
-
-.container{
-    /* background-color: tomato; */
-    padding-top: 2%;
-    text-align: center;
+.container {
+	/* background-color: tomato; */
+	padding-top: 2%;
+	text-align: center;
 }
 
-.title h3{
-    font-size: 1.3em !important;
-    font-weight: bold;
-    font-family: 'Open Sans', sans-serif;
-
+.title h3 {
+	font-size: 1.3em !important;
+	font-weight: bold;
+	font-family: 'Source Sans Pro', sans-serif;
 }
-.tableTitle{
-    background-color: #ededed;
-    font-size: 0.9em !important;
-    font-weight: bold;
-    font-family: 'Open Sans', sans-serif;
-
+.tableTitle {
+	background-color: #ededed;
+	font-size: 0.9em !important;
+	font-weight: bold;
+	font-family: 'Source Sans Pro', sans-serif;
 }
-.tableDescrip{
-    font-size: 0.8em !important;
-    font-weight: normal;
-    font-family: 'Open Sans', sans-serif;
-
+.tableDescrip {
+	font-size: 0.8em !important;
+	font-weight: normal;
+	font-family: 'Source Sans Pro', sans-serif;
 }
-.thStyle{
-    background-color: #3b8ea5;
-    text-align: center;
-    color: white;
+.thStyle {
+	background-color: #4cced8;
+	text-align: center;
+	color: white;
 }
 
-.contOrder{
-    width: 60%;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-    padding: 15px;
-    text-align: center;
-    margin: auto;
+.contOrder {
+	width: 60%;
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+	padding: 15px;
+	text-align: center;
+	margin: auto;
 }
-.total{
-    width: 50%;
+.total {
+	width: 50%;
 }
 
-.subinfo1{
-    font-size: 0.8em !important;
-    font-weight: bold;
-    font-family: 'Open Sans', sans-serif;
+.subinfo1 {
+	font-size: 0.8em !important;
+	font-weight: bold;
+	font-family: 'Source Sans Pro', sans-serif;
 }
-.subPrecio{
-    font-size: 0.8em !important;
-    font-family: 'Open Sans', sans-serif;
-
+.subPrecio {
+	font-size: 0.8em !important;
+	font-family: 'Source Sans Pro', sans-serif;
 }
 .cardVacio {
 	box-shadow: -1px 10px 18px 2px rgba(0, 0, 0, 0.75);
 	width: 30%;
-    margin: auto;
-    margin-top: 2%;
+	margin: auto;
+	margin-top: 2%;
 	text-align: center;
 	border-radius: 15px;
 	padding: 1%;
@@ -65,5 +60,5 @@
 	font-weight: bold;
 	color: var(--celeste);
 	font-size: 1em;
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Source Sans Pro', sans-serif;
 }

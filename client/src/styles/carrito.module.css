@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
 :root {
-	--azul: #1f2333;
-	--celeste: #3b8ea5;
+	--azul: #243363;
+	--celeste: #4cced8;
 	--blanco: #edf7f6;
 	--naranja: #f19953;
 }
@@ -25,11 +25,11 @@
 .cont1 ul li span {
 	font-size: 13px;
 	font-weight: lighter;
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Source Sans Pro', sans-serif;
 }
 h1 {
 	font-size: 25px;
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Source Sans Pro', sans-serif;
 }
 .cardVacio {
 	box-shadow: -1px 10px 18px 2px rgba(0, 0, 0, 0.75);
@@ -45,18 +45,18 @@ h1 {
 	font-weight: bold;
 	color: var(--celeste);
 	font-size: 1em;
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Source Sans Pro', sans-serif;
 }
 .cardVacio h6 {
 	font-weight: bold;
 	font-size: 0.7em;
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Source Sans Pro', sans-serif;
 }
 .cardVacio .link {
 	font-weight: bold;
 	color: var(--celeste);
 	font-size: 0.8em;
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Source Sans Pro', sans-serif;
 }
 .cont2 .cont_table {
 	width: 100%;
@@ -66,7 +66,7 @@ h1 {
 .cont2 .cont_table .tableTitle {
 	font-size: 13px;
 	color: var(--azul);
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Source Sans Pro', sans-serif;
 	background-color: #f5f5f5;
 }
 .product {
@@ -113,11 +113,11 @@ h1 {
 .cont1 ul li span {
 	font-size: 13px;
 	font-weight: lighter;
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Source Sans Pro', sans-serif;
 }
 .cont2 h1 {
 	font-size: 25px;
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Source Sans Pro', sans-serif;
 }
 .cont2 .cont_table {
 	width: 100%;
@@ -127,7 +127,7 @@ h1 {
 .cont2 .cont_table .tableTitle {
 	font-size: 13px;
 	color: var(--azul);
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Source Sans Pro', sans-serif;
 	background-color: #f5f5f5;
 }
 .product {
@@ -145,14 +145,14 @@ h1 {
 }
 .tableDescrip {
 	/* background-color: salmon; */
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Source Sans Pro', sans-serif;
 	font-size: 13px;
 }
 .tableDescrip .PreCant {
 	font-size: 13px;
 	font-weight: bold;
 	color: var(--celeste);
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Source Sans Pro', sans-serif;
 }
 .tableDescrip .icon {
 	font-weight: bold;
@@ -222,7 +222,7 @@ h1 {
 }
 .cont_total .total .tabletotal {
 	text-align: center;
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Source Sans Pro', sans-serif;
 }
 .cont_total .total .tabletotal .subPrecio {
 	font-size: 13px;
@@ -248,7 +248,7 @@ h1 {
 	background-color: var(--naranja);
 	color: white;
 	font-weight: bold;
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Source Sans Pro', sans-serif;
 	border: none;
 }
 .cont_button1 .buttonF:hover {
@@ -259,7 +259,7 @@ h1 {
 	background-color: var(--naranja);
 	color: white;
 	font-weight: bold;
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Source Sans Pro', sans-serif;
 	border: none;
 	margin: 0 10px;
 }
@@ -268,23 +268,22 @@ h1 {
 .cont1 ul li .i {
 	font-size: 20px;
 	font-weight: bold;
-	color: #3b8ea5;
+	color: #4cced8;
 	margin-right: 10px;
 	margin-left: 15px;
 }
 .cont1 ul li .span {
 	font-size: 13px;
 	font-weight: bold;
-	font-family: 'Open Sans', sans-serif;
-	color: #3b8ea5;
+	font-family: 'Source Sans Pro', sans-serif;
+	color: #4cced8;
 }
-.cont_prin1{
+.cont_prin1 {
 	width: 90%;
 	margin: auto;
 	padding: 0px;
-
 }
-.cont_form{
+.cont_form {
 	background-color: #ededed;
 	padding-top: 1%;
 	padding-bottom: 1%;
@@ -294,26 +293,25 @@ h1 {
 	padding: 25px;
 	width: 40%;
 }
-.contForm h1{
+.contForm h1 {
 	font-weight: bold;
 	color: var(--azul);
 	font-size: 1.5em;
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Source Sans Pro', sans-serif;
 }
-.contForm h6{
+.contForm h6 {
 	color: var(--azul);
 	font-size: 0.9em;
 	font-style: normal;
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Source Sans Pro', sans-serif;
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
-.contForm .label{
+.contForm .label {
 	color: var(--azul);
 	font-size: 0.9em;
 	font-weight: bold;
-	font-family: 'Open Sans', sans-serif;
-
+	font-family: 'Source Sans Pro', sans-serif;
 }
 .cont_button2 {
 	width: 100%;
@@ -323,36 +321,34 @@ h1 {
 
 .submitDate {
 	width: 40% !important;
-	border: 1px solid #3B8EA5;
-	background-color: #3B8EA5;
+	border: 1px solid #4cced8;
+	background-color: #4cced8;
 	font-size: 0.9em;
-    color: #1F2333;
-    font-family: 'Open Sans', sans-serif !important;
-    font-weight: bold !important;
+	color: #243363;
+	font-family: 'Source Sans Pro', sans-serif !important;
+	font-weight: bold !important;
 }
-.submitDate:hover{
-	border: 1px solid #1F2335;
-    background-color: #1F2335;
-    color: white;
+.submitDate:hover {
+	border: 1px solid #1f2335;
+	background-color: #1f2335;
+	color: white;
 }
 
-.submitCancel{
+.submitCancel {
 	width: 40% !important;
 	margin-left: 3%;
 	border: 1px solid white;
-    background-color: white;
-	color: #3B8EA5;
+	background-color: white;
+	color: #4cced8;
 	font-size: 0.9em;
-    font-family: 'Open Sans', sans-serif !important;
-    font-weight: bold !important;
-
+	font-family: 'Source Sans Pro', sans-serif !important;
+	font-weight: bold !important;
 }
-.submitCancel:hover{
-	border: 1px solid #EDF7F6;
-    background-color: #EDF7F6;
-    color: #3B8EA5;
+.submitCancel:hover {
+	border: 1px solid #edf7f6;
+	background-color: #edf7f6;
+	color: #4cced8;
 }
-
 
 /*************************************** Seccion Metodo de Pago **************************************************/
 .contFormPay {
@@ -369,44 +365,42 @@ h1 {
 	background-color: white;
 	margin-bottom: 30px;
 }
-.contFormPay .resCompra .titleOrden{
+.contFormPay .resCompra .titleOrden {
 	display: flex;
 	justify-content: flex-start;
 	padding: 10px;
-	color: #1F2333;
+	color: #243363;
 	font-weight: bold;
 	font-size: 0.9em;
-    font-family: 'Open Sans', sans-serif !important;
+	font-family: 'Source Sans Pro', sans-serif !important;
 }
-.tableTitle{
-    font-size: 0.9em !important;
-    font-weight: bold;
-    font-family: 'Open Sans', sans-serif;
+.tableTitle {
+	font-size: 0.9em !important;
+	font-weight: bold;
+	font-family: 'Source Sans Pro', sans-serif;
 }
-.tableDescrip{
-    font-size: 0.8em !important;
-    font-weight: normal;
-    font-family: 'Open Sans', sans-serif;
-
+.tableDescrip {
+	font-size: 0.8em !important;
+	font-weight: normal;
+	font-family: 'Source Sans Pro', sans-serif;
 }
-.cont_total1{
+.cont_total1 {
 	width: 100%;
 	display: flex;
 	justify-content: flex-end;
 }
-.total{
-    width: 50%;
+.total {
+	width: 50%;
 }
 
-.subinfo1{
-    font-size: 0.8em !important;
-    font-weight: bold;
-    font-family: 'Open Sans', sans-serif;
+.subinfo1 {
+	font-size: 0.8em !important;
+	font-weight: bold;
+	font-family: 'Source Sans Pro', sans-serif;
 }
-.subPrecio{
-    font-size: 0.8em !important;
-    font-family: 'Open Sans', sans-serif;
-
+.subPrecio {
+	font-size: 0.8em !important;
+	font-family: 'Source Sans Pro', sans-serif;
 }
 
 .formPa {
@@ -418,7 +412,6 @@ h1 {
 	text-align: center;
 	width: 100%;
 }
-
 
 .contProd {
 	display: flex;
@@ -442,107 +435,95 @@ h1 {
 .buttonFormPay {
 	margin-top: 20px;
 }
-.contFormCardPay{
+.contFormCardPay {
 	margin-top: 30px;
 	max-width: 50% !important;
 	height: 200px;
 	margin: auto;
 	padding: 10px;
-	background-color: white
+	background-color: white;
 }
-.contFormCardPay .titleOrden{
+.contFormCardPay .titleOrden {
 	display: flex;
 	justify-content: flex-start;
 	padding: 10px;
-	color: #1F2333;
+	color: #243363;
 	font-weight: bold;
 	font-size: 0.9em;
-    font-family: 'Open Sans', sans-serif !important;
+	font-family: 'Source Sans Pro', sans-serif !important;
 }
-.button{
+.button {
 	display: flex;
 	/* background-color: violet; */
 	height: 20%;
 	margin-top: 40px;
 	/* margin-bottom: 40px; */
 	justify-content: center;
-    /* flex-direction: column;
+	/* flex-direction: column;
     align-items: center; */
 }
-.button .button1{
-    border: 1px solid #3B8EA5;
-    background-color: #3B8EA5;
-    color: #1F2333;
-    font-family: 'Open Sans', sans-serif !important;
+.button .button1 {
+	border: 1px solid #4cced8;
+	background-color: #4cced8;
+	color: #243363;
+	font-family: 'Source Sans Pro', sans-serif !important;
 	font-weight: bold !important;
 	height: 100%;
 	width: 30%;
-	
-    /* margin-bottom: 20px !important; */
-}.button .button1:hover{
-    border: 1px solid #1F2335;
-    background-color: #1F2335;
-    color: white;
+
+	/* margin-bottom: 20px !important; */
+}
+.button .button1:hover {
+	border: 1px solid #1f2335;
+	background-color: #1f2335;
+	color: white;
 }
 
-.button .button2{
-    border: 1px solid white;
-    background-color: white;
-    color: #3B8EA5;
-    font-family: 'Open Sans', sans-serif !important;
+.button .button2 {
+	border: 1px solid white;
+	background-color: white;
+	color: #4cced8;
+	font-family: 'Source Sans Pro', sans-serif !important;
 	font-weight: bold !important;
 	height: 100%;
 	width: 30%;
 	margin-left: 5%;
 }
-.button .button2:hover{
-    border: 1px solid #EDF7F6;
-    background-color: #EDF7F6;
-    color: #3B8EA5;
+.button .button2:hover {
+	border: 1px solid #edf7f6;
+	background-color: #edf7f6;
+	color: #4cced8;
 }
 
 @media (max-width: 780px) {
-
-	.tableTitle .envio{
-	   font-size: 0px;
-	   width: 0px;
-       
+	.tableTitle .envio {
+		font-size: 0px;
+		width: 0px;
 	}
-	.tableDescrip .pronto{
+	.tableDescrip .pronto {
 		font-size: 0px;
 	}
-	
 }
 @media (max-width: 780px) {
-
-	.tableTitle .envio{
-	   font-size: 0px;
-	   width: 0px;
-       
+	.tableTitle .envio {
+		font-size: 0px;
+		width: 0px;
 	}
-	.tableDescrip .pronto{
+	.tableDescrip .pronto {
 		font-size: 0px;
 	}
-	
 }
 @media (max-width: 574px) {
-
 	.cont1 ul li i {
 		font-size: 15px;
-		
 	}
 	.cont1 ul li span {
 		font-size: 10px;
-		
 	}
 }
 @media (max-width: 480px) {
-
 	.cont_img > img {
-		
-		width: 0px!important;
+		width: 0px !important;
 		height: 0px !important;
-		
 	}
-
 }

@@ -1,40 +1,27 @@
 // React
-import React from 'react';
-import { useState, useEffect } from 'react';
-
-// React-Router-Dom
-import { useRouteMatch, Route, useHistory } from 'react-router-dom';
-
-// Bootstrap
-import { Button, Container, Row, Col } from 'react-bootstrap';
-
-// CSS
-import s from '../../styles/ProductDet.module.css';
-
-// Componentes
-import Navegacion from '../Navegacion/Navegacion';
-import Footer from '../Footer/Footer';
-import Slider from '../Slider/Slider';
-import AddReview from '../Modals/AddReview';
-import AvisoLoggin from '../Modals/AvisoLoggin'
-import Reviews from './Reviews';
-
+import { faStar } from '@fortawesome/free-solid-svg-icons';
 // Iconos
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar } from '@fortawesome/free-solid-svg-icons';
-
-// Axios
-import axios from 'axios';
-
+import React, { useEffect, useState } from 'react';
+// Bootstrap
+import { Button, Col, Container, Row } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { getProducts } from '../../store/actions/product_actions';
+// React-Router-Dom
+import { useHistory, useRouteMatch } from 'react-router-dom';
 import { addToCart } from '../../store/actions/cart_actions';
-import { addReview, deleteUserReview, getUserReviews, editUserReview } from '../../store/actions/review_actions';
+import { getProducts } from '../../store/actions/product_actions';
+import { addReview, deleteUserReview, editUserReview, getUserReviews } from '../../store/actions/review_actions';
+// CSS
+import s from '../../styles/ProductDet.module.css';
+import Footer from '../Footer/Footer';
+import AddReview from '../Modals/AddReview';
+import AvisoLoggin from '../Modals/AvisoLoggin';
+import Reviews from './Reviews';
 
-const url = 'localhost:3001';
+// const url = 'localhost:3001';
 
 // <---------------------------Componente--------------------------->
-const Product = ({productsP, userReviewsP, getProductP, addToCartP, addReviewP, userLoggedP, getUserReviewsP, editUserReviewP, deleteReviewP }) => {
+const Product = ({ productsP, userReviewsP, getProductP, addToCartP, addReviewP, userLoggedP, getUserReviewsP, editUserReviewP, deleteReviewP }) => {
 	const [qty, setQty] = useState(1);
 	const [show, setShow] = useState(false);
 	const [showLoggin, setShowLoggin] = useState(false);
@@ -45,40 +32,39 @@ const Product = ({productsP, userReviewsP, getProductP, addToCartP, addReviewP, 
 	const { id } = match.params;
 	let objP = {};
 	var objProduct = productsP.find((d) => {
-		return d.id == id;
+		return d.id === id;
 	});
 
-	console.log(objProduct);
+	// console.log(objProduct);
 	for (let pr in objProduct) {
 		var prop = pr;
 		objP[prop] = objProduct[pr];
 	}
 
-	console.log(objP);
+	// console.log(objP);
 
-	
 	const getRate = (reviews) => {
 		let rate = 0;
-		if (reviews.length > 0){
-			reviews.forEach(review => {
+		if (reviews.length > 0) {
+			reviews.forEach((review) => {
 				rate += review.rate;
-			})
+			});
 			rate /= reviews.length;
 		}
-		return rate
-	}
+		return rate;
+	};
 	if (objP.reviews) var rate = getRate(objP.reviews);
 
-	const colorStars = (rate)=>{
-		if(!rate){
+	const colorStars = (rate) => {
+		if (!rate) {
 			var rate = 0;
 		}
-		if (rate > 2.5) rate*=27;
-		else if (rate <= 2.5) rate *=27.2;
+		if (rate > 2.5) rate *= 27;
+		else if (rate <= 2.5) rate *= 27.2;
 		return rate;
-	}
-    var startWidth = colorStars(rate)
-	const roundedRate = Math.round(rate * 10)/10;
+	};
+	var startWidth = colorStars(rate);
+	const roundedRate = Math.round(rate * 10) / 10;
 	const fixedRate = roundedRate.toFixed(1);
 
 	const handlerAddToCart = (id, qty, idUser) => {
@@ -99,8 +85,8 @@ const Product = ({productsP, userReviewsP, getProductP, addToCartP, addReviewP, 
 			...review,
 			userId: userLoggedP.id,
 		};
-		console.log(newReview)
-		console.log(productId)
+		// console.log(newReview);
+		// console.log(productId);
 		addReviewP(newReview, productId);
 		setShow(false);
 		setReview({});
@@ -130,8 +116,8 @@ const Product = ({productsP, userReviewsP, getProductP, addToCartP, addReviewP, 
 				rate: parseInt(e.target.value),
 			});
 		}
-		console.log('SOY EL NUEVO RATE EDITADO')
-		console.log(editReview)
+		// console.log('SOY EL NUEVO RATE EDITADO');
+		// console.log(editReview);
 	};
 
 	const editReviewForm = (e) => {
@@ -140,18 +126,17 @@ const Product = ({productsP, userReviewsP, getProductP, addToCartP, addReviewP, 
 			[e.target.name]: e.target.value,
 		};
 		setEditReview(newReview);
-		console.log('SOY EL ESTADO CAMBIADO DE LA EDIT REVIEW')
-		console.log(editReview)
+		// console.log('SOY EL ESTADO CAMBIADO DE LA EDIT REVIEW');
+		// console.log(editReview);
 	};
 
-	const handlerEditReview = (productId, editReview) =>{
-		
+	const handlerEditReview = (productId, editReview) => {
 		editUserReviewP(productId, editReview);
 		getUserReviewsP(objP.id, userLoggedP.id);
 		setEditReview({});
-	}
+	};
 
-	console.log(objP.reviews);
+	// console.log(objP.reviews);
 	useEffect(() => {
 		getProductP();
 	}, []);
@@ -166,90 +151,79 @@ const Product = ({productsP, userReviewsP, getProductP, addToCartP, addReviewP, 
 						</Col>
 						<Col xs={12} md={12} lg={4} className={s.cont_info}>
 							<div className={s.infog}>
-							<h3>{`${objP.name}` || `Product Name Here`}</h3>
-							<h4>$ {`${objP.price}` || `00000`}</h4>
-							<h6>Referencia: {`${objP.sku}` || `codReferencia`}</h6>
-							<div className={s.contReviw}>
-							<div className={s.icon}>
-								<div className={s.emptyStarsCont}>
-									<div className={s.emptyStars}>
-										<FontAwesomeIcon icon={faStar} />
-										<FontAwesomeIcon icon={faStar} />
-										<FontAwesomeIcon icon={faStar}  />
-										<FontAwesomeIcon icon={faStar}  />
-										<FontAwesomeIcon icon={faStar}  />
+								<h3>{`${objP.name}` || `Product Name Here`}</h3>
+								<h4>$ {`${objP.price}` || `00000`}</h4>
+								<h6>Referencia: {`${objP.sku}` || `codReferencia`}</h6>
+								<div className={s.contReviw}>
+									<div className={s.icon}>
+										<div className={s.emptyStarsCont}>
+											<div className={s.emptyStars}>
+												<FontAwesomeIcon icon={faStar} />
+												<FontAwesomeIcon icon={faStar} />
+												<FontAwesomeIcon icon={faStar} />
+												<FontAwesomeIcon icon={faStar} />
+												<FontAwesomeIcon icon={faStar} />
+											</div>
+										</div>
+										<div className={s.fullStarsRate} style={{ width: startWidth + 'px' }}>
+											<div className={s.fullStars}>
+												<FontAwesomeIcon icon={faStar} />
+												<FontAwesomeIcon icon={faStar} />
+												<FontAwesomeIcon icon={faStar} />
+												<FontAwesomeIcon icon={faStar} />
+												<FontAwesomeIcon icon={faStar} />
+											</div>
+										</div>
+									</div>
+									<div className={s.addReview}>
+										<p onClick={() => handlerReview()}>Escribir comentario</p>
 									</div>
 								</div>
-								<div className={s.fullStarsRate} style={{width: startWidth + 'px'}}>
-									<div className={s.fullStars}>
-										<FontAwesomeIcon icon={faStar}  />
-										<FontAwesomeIcon icon={faStar}  />
-										<FontAwesomeIcon icon={faStar}  />
-										<FontAwesomeIcon icon={faStar}  />
-										<FontAwesomeIcon icon={faStar}  />
-									</div>
+								<h5>
+									{fixedRate}/ 5.0 ({objP.reviews && objP.reviews.length} opiniones)
+								</h5>
+								<p>{`${objP.description}` || `Descripcion no disponible`}</p>
+								<p>
+									<span className={s.dim}>Dimensiones:</span> {`${objP.dimentions}` || `noDisponible`}
+								</p>
+								<div className={s.cont_cant}>
+									{objP.stock > 0 ? (
+										<div className={s.cont_cant2}>
+											<label for='Cantidad'>Candidad:</label>
+											<select
+												name='Cantidad'
+												id='Cantidad'
+												className={s.select}
+												value={qty}
+												onChange={(e) => {
+													setQty(e.target.value);
+												}}
+											>
+												{[...Array(objP.stock).keys()].map((x) => {
+													return <option value={x + 1}>{x + 1}</option>;
+												})}
+											</select>
+											<h6> {objP.stock} Unidades Disponibles</h6>
+										</div>
+									) : (
+										<h4 className={s.agotadoProct}> Producto Agotado</h4>
+									)}
 								</div>
-							</div>
-							<div className={s.addReview}>
-								<p onClick={() => handlerReview()}>Escribir comentario</p>
-							</div>
-							</div>
-							<h5>{fixedRate}/ 5.0 ({objP.reviews && objP.reviews.length} opiniones)</h5>
-							<p>{`${objP.description}` || `Descripcion no disponible`}</p>
-							<p>
-								<span className={s.dim}>Dimensiones:</span> {`${objP.dimentions}` || `noDisponible`}
-							</p>
-							<div className={s.cont_cant}>
-								{objP.stock > 0 ? (
-									<div className={s.cont_cant2}>
-										<label for='Cantidad'>Candidad:</label>
-										<select
-											name='Cantidad'
-											id='Cantidad'
-											className={s.select}
-											value={qty}
-											onChange={(e) => {
-												setQty(e.target.value);
-											}}
-										>
-											{[...Array(objP.stock).keys()].map((x) => {
-												return <option value={x + 1}>{x + 1}</option>;
-											})}
-										</select>
-										<h6> {objP.stock} Unidades Disponibles</h6>
+								{objP.stock > 0 && (
+									<div className={s.cont_button}>
+										<Button className={s.buttonCom}>Comprar ahora</Button>
+										<Button className={s.buttonCar} onClick={() => handlerAddToCart(objP.id, qty, userLoggedP && userLoggedP.id)}>
+											Agregar al carrito
+										</Button>
 									</div>
-								) : (
-									<h4 className={s.agotadoProct}> Producto Agotado</h4>
 								)}
-							</div>
-							{objP.stock > 0 && (
-								<div className={s.cont_button}>
-									<Button className={s.buttonCom}>Comprar ahora</Button>
-									<Button className={s.buttonCar} onClick={() => handlerAddToCart(objP.id, qty, userLoggedP && userLoggedP.id )}>
-										Agregar al carrito
-									</Button>
-								</div>
-							)}
 							</div>
 						</Col>
 					</Row>
 				</div>
 				<AddReview show={show} setShow={setShow} product={objP} handlerAddReview={handlerAddReview} reviewForm={reviewForm} review={review} handlerRate={handlerRate} />
-				<AvisoLoggin showLoggin={showLoggin} setShowLoggin={setShowLoggin}/>
-				<Reviews 
-					product={objP} 
-					getProductP={getProductP} 
-					userReviews={userReviewsP} 
-					getUserReviews={getUserReviewsP} 
-					deleteReviewP={deleteReviewP} 
-					userLoggedP={userLoggedP}
-					editReview={editReview}
-					setEditReview={setEditReview}
-					handlerRate={handlerEditRate}
-					editReviewForm={editReviewForm}
-					handlerEditReview={handlerEditReview}
-					rating={rate}
-				/>
+				<AvisoLoggin showLoggin={showLoggin} setShowLoggin={setShowLoggin} />
+				<Reviews product={objP} getProductP={getProductP} userReviews={userReviewsP} getUserReviews={getUserReviewsP} deleteReviewP={deleteReviewP} userLoggedP={userLoggedP} editReview={editReview} setEditReview={setEditReview} handlerRate={handlerEditRate} editReviewForm={editReviewForm} handlerEditReview={handlerEditReview} rating={rate} />
 			</Container>
 			<Footer />
 		</div>

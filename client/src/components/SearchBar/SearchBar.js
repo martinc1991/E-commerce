@@ -16,7 +16,7 @@ export default function SearchBar(props) {
 	let { onSearch } = props;
 
 	const handlerInput = (e) => {
-		console.log(e.target.value);
+		// console.log(e.target.value);
 		if (e.target.value === '') {
 			setProduct('');
 		}
@@ -26,7 +26,7 @@ export default function SearchBar(props) {
 	const onSubmit = (e) => {
 		e.preventDefault();
 		e.target.value = '';
-		console.log('OK funciona Search');
+		// console.log('OK funciona Search');
 		//window.location.href = `http://${url}/products/catalogo`
 		onSearch(product);
 		let textInput = document.getElementById('inlineFormInputGroup');

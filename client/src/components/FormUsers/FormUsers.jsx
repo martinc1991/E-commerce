@@ -34,7 +34,7 @@ const FormUsers = function ({ usersP, createUserP, createUserSuccessP, getUsersP
 
 	const registroCorrecto = () => {
 		let name = document.getElementById(`name`).value;
-		console.log(values);
+		// console.log(values);
 		swal({
 			title: 'Bienvenido' + '  ' + name,
 			text: 'Registro completado',
@@ -91,8 +91,8 @@ const FormUsers = function ({ usersP, createUserP, createUserSuccessP, getUsersP
 			document.getElementById('submitButton').disabled = true;
 		}
 
-		console.log(errorValidate);
-		console.log(errors);
+		// console.log(errorValidate);
+		// console.log(errors);
 	};
 
 	//************************
@@ -118,7 +118,7 @@ const FormUsers = function ({ usersP, createUserP, createUserSuccessP, getUsersP
 			[e.target.name]: e.target.value,
 		});
 
-		console.log(values);
+		// console.log(values);
 	};
 
 	// Funcion que se dispara al hacer submit

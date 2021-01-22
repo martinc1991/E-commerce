@@ -1,11 +1,13 @@
 const { Router } = require('express');
-// import all routers;
-const productRouter = require('./product');
-const categoryRouter = require('./Category');
-const userRouter = require('./User');
-const cartRouter = require('./cart');
-const orderRouter = require('./order');
-const reviewRouter = require('./review')
+// Import all routers;
+const productRouter = require('./productsRoutes');
+const categoryRouter = require('./categoriesRoutes');
+const userRouter = require('./usersRoutes');
+const cartRouter = require('./cartRoutes');
+const orderRouter = require('./ordersRoutes');
+const reviewRouter = require('./reviewsRoutes');
+// Populate router
+const populateRouter = require('./populateRoutes');
 
 const router = Router();
 
@@ -18,5 +20,7 @@ router.use('/users', userRouter);
 router.use('/users', cartRouter);
 router.use('/orders', orderRouter);
 router.use('/product', reviewRouter);
+// Populate
+router.use('/populate', populateRouter);
 
 module.exports = router;

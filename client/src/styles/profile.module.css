@@ -1,82 +1,77 @@
 /* Import de fonts */
-/* @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap'); */
 
 /* Colores personalizados */
 /* :root {
-	--azul: #1f2333;
-	--celeste: #3b8ea5;
+	--azul: #243363;
+	--celeste: #4CCED8;
 	--blanco: #edf7f6;
 	--naranja: #f19953;
 } */
 
-
-.background{
-    background-color: #3b8ea5 !important;
-    height: 300px;
-    border-radius: 0px 0px 15px 15px;
+.background {
+	background-color: #4cced8 !important;
+	height: 300px;
+	border-radius: 0px 0px 15px 15px;
 }
 
-.contPrincipal{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.contPrincipal {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
-
-.cardStyle1{
-    width: 70%;
-    align-items: center !important;
-
+.cardStyle1 {
+	width: 70%;
+	align-items: center !important;
 }
 
-
-.cardStyle{
-    margin-top:100px;
-    width: 70%;
-    /* width: 40rem !important; */
-    align-items: center !important;
+.cardStyle {
+	margin-top: 100px;
+	width: 70%;
+	/* width: 40rem !important; */
+	align-items: center !important;
 }
 
-.otro{
-    width: 15rem;
-    
+.otro {
+	width: 15rem;
 }
 
-.prueba{
-    position: absolute;
-    top: 0px;
-    margin-top: 150px;
+.prueba {
+	position: absolute;
+	top: 0px;
+	margin-top: 150px;
 }
 
-.size{
-    margin-top: 30px;
-    width: 150px;
-    height: 150px;
+.size {
+	margin-top: 30px;
+	width: 150px;
+	height: 150px;
 }
 
-.cardItemUser{
-    font-family: "Open Sans", sans-serif;
-    font-size: 30px;
-    padding-bottom: 10px;
+.cardItemUser {
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 30px;
+	padding-bottom: 10px;
 }
 
-.compras{
-    margin-top: 200px;
+.compras {
+	margin-top: 200px;
 }
 
-.email{
-    padding-top: 0px;
+.email {
+	padding-top: 0px;
 }
 
-.image{
-    width: 100px;
+.image {
+	width: 100px;
 }
 
-.columna{
-    width: 20rem;
+.columna {
+	width: 20rem;
 }
 
-.total{
-    background-color: #3b8ea5;
-    color: white;
+.total {
+	background-color: #4cced8;
+	color: white;
 }

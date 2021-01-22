@@ -1,7 +1,7 @@
 import React from 'react';
-import s from '../../styles/loginModals.module.css';
-import { Button, Modal, Row, Col, Form } from 'react-bootstrap';
+import { Button, Modal } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import s from '../../styles/loginModals.module.css';
 
 export const LoginModalNoUser = ({ showModalNoUser, setShowModalNoUser }) => {
 	return (

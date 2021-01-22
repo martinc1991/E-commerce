@@ -25,7 +25,7 @@ const Login = ({ userLoggedP, loginActionP, messageErrorP, checkForEmailP, logge
 	const [showModalAuthError, setShowModalAuthError] = useState(false);
 	// useEffect
 	useEffect(() => {
-		if (loggedP == true) {
+		if (loggedP === true) {
 			window.location.href = 'http://localhost:3000/';
 		}
 	}, [loggedP]);
@@ -45,23 +45,23 @@ const Login = ({ userLoggedP, loginActionP, messageErrorP, checkForEmailP, logge
 		e.preventDefault();
 		// Comprobacion de si el usuario existe o no en la base de datos
 		var dontShowModal = true;
-		console.log('probando con cami');
+		// console.log('probando con cami');
 		axios
 			.get(`http://${url}/users`)
 			.then((res) => {
-				console.log('RES.DATA.DATA');
-				console.log(res.data.data);
-				console.log('FORM');
-				console.log(form);
-				console.log('punto previo');
+				// console.log('RES.DATA.DATA');
+				// console.log(res.data.data);
+				// console.log('FORM');
+				// console.log(form);
+				// console.log('punto previo');
 				res.data.data.forEach((user) => {
-					if (user.email == form.email) {
-						console.log('true');
+					if (user.email === form.email) {
+						// console.log('true');
 						// loginActionP(form);
 						dontShowModal = false;
 						loginActionP(form);
 						if (userLoggedP && userLoggedP.role === 'admin') {
-							console.log('Entre al if de Admin');
+							// console.log('Entre al if de Admin');
 							return history.push('/admin');
 						} else {
 							return history.push('/');
@@ -70,30 +70,33 @@ const Login = ({ userLoggedP, loginActionP, messageErrorP, checkForEmailP, logge
 				});
 			})
 			.then((res) => {
-				console.log('nada que ver eh');
+				// console.log('nada que ver eh');
 				if (dontShowModal) setShowModalNoUser(true);
+			})
+			.catch((err) => {
+				console.log(err);
 			});
 	};
 	// <-------------------------- Google Login -------------------------->
 
 	// Si la autenticacion de Google sale bien
 	const responseGoogleSuccess = (response) => {
-		console.log(response.profileObj.email);
-		console.log(response.profileObj.googleId);
+		// console.log(response.profileObj.email);
+		// console.log(response.profileObj.googleId);
 		var googleForm = {
 			email: response.profileObj.email,
 			password: response.profileObj.googleId,
 		};
-		console.log(googleForm);
+		// console.log(googleForm);
 		// Comprobacion de si el usuario existe o no en la base de datos
 		var dontShowModal = true;
 		axios
 			.get(`http://${url}/users`)
 			.then((res) => {
-				console.log(res.data.data);
+				// console.log(res.data.data);
 				res.data.data.forEach((user) => {
-					if (user.email == response.profileObj.email) {
-						console.log('true');
+					if (user.email === response.profileObj.email) {
+						// console.log('true');
 						loginActionP(googleForm);
 						dontShowModal = false;
 						return;

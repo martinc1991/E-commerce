@@ -1,21 +1,21 @@
 import axios from 'axios';
-import { CREATE_USER, ERROR_MESSAGE, GET_USERS, DELETE_USER, UPDATE_USER, DETAIL_USER } from '../constants/constans';
+import { CREATE_USER, ERROR_MESSAGE, GET_USERS, DELETE_USER, UPDATE_USER, DETAIL_USER } from '../constants/constants';
 
 const url = 'localhost:3001';
 
 // CREAR USUARIO
 export function createUser(userData) {
-	console.log('algo me llego');
-	console.log(userData);
+	// console.log('algo me llego');
+	// console.log(userData);
 	return (dispatch) => {
 		axios
 			.post(`http://${url}/users`, userData)
 			.then((res) => {
-				console.log(res.data);
-				console.log('peticion enviada');
+				// console.log(res.data);
+				// console.log('peticion enviada');
 				if (res.status === 201) {
-					console.log('tire estado 201');
-					console.log(res.data);
+					// console.log('tire estado 201');
+					// console.log(res.data);
 					dispatch({
 						type: CREATE_USER,
 						users: res.data || {},
@@ -29,7 +29,7 @@ export function createUser(userData) {
 				}
 			})
 			.catch((err) => {
-				console.log('Error');
+				// console.log('Error');
 				console.log(err);
 			});
 	};
@@ -41,7 +41,7 @@ export function getUsers() {
 		axios
 			.get(`http://${url}/users`)
 			.then((res) => {
-				console.log(res);
+				// console.log(res);
 				if (res.status === 200) {
 					dispatch({
 						type: GET_USERS,
@@ -55,7 +55,7 @@ export function getUsers() {
 				}
 			})
 			.catch((err) => {
-				console.log('Catch Error');
+				// console.log('Catch Error');
 				console.log(err);
 			});
 	};
@@ -63,25 +63,25 @@ export function getUsers() {
 
 // ELIMINAR USUARIOS
 export function deleteUser(userID) {
-	console.log('algo me llego para hacer delete');
-	console.log(userID);
+	// console.log('algo me llego para hacer delete');
+	// console.log(userID);
 	return (dispatch) => {
 		axios
 			.delete(`http://${url}/users`, {
 				params: { id: userID },
 			})
 			.then((res) => {
-				console.log(res.data);
-				console.log('delete enviado');
+				// console.log(res.data);
+				// console.log('delete enviado');
 				if (res.status === 200) {
-					console.log('tire estado 200');
-					console.log(res.data);
+					// console.log('tire estado 200');
+					// console.log(res.data);
 					dispatch({
 						type: DELETE_USER,
 						id: res.data || {},
 					});
 				} else {
-					console.log('delete error en la action');
+					// console.log('delete error en la action');
 					dispatch({
 						type: ERROR_MESSAGE,
 						id: 'Error in the Request',
@@ -97,18 +97,18 @@ export function deleteUser(userID) {
 
 // MODIFICAR USUARIOS
 export function updateUser(data) {
-	console.log('el update llego a ACTIONS');
+	// console.log('el update llego a ACTIONS');
 	// const { id, password, role } = data;
 	console.log(data);
 	return (dispatch) => {
 		axios
 			.put(`http://${url}/users`, data)
 			.then((res) => {
-				console.log(res.data);
-				console.log('peticion PUT enviada');
+				// console.log(res.data);
+				// console.log('peticion PUT enviada');
 				if (res.status === 200) {
-					console.log('tire estado 200');
-					console.log(res.data);
+					// console.log('tire estado 200');
+					// console.log(res.data);
 					dispatch({
 						type: UPDATE_USER,
 						payload: res.data || {},
@@ -133,15 +133,15 @@ export function getUserDetail(id) {
 		axios
 			.get(`http://${url}/users/${id}`)
 			.then((res) => {
-				console.log('***** Detail USer **********');
-				console.log(res);
+				// console.log('***** Detail USer **********');
+				// console.log(res);
 				dispatch({
 					type: DETAIL_USER,
 					users: res.data.user,
 				});
 			})
-			.catch((er) => {
-				console.log(er);
+			.catch((err) => {
+				console.log(err);
 			});
 	};
 }

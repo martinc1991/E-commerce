@@ -17,7 +17,6 @@ function SideBar({ categories, getCategoryP, getProductByCategoryP }) {
 			<div className='navbar'>
 				<Link to='#' className='menu-bars'>
 					<faIcons.FaBars onClick={showSideBar}>
-						{console.log('se hizo click ' + sidebar)}
 						<h1>Categorias.</h1>
 					</faIcons.FaBars>
 				</Link>

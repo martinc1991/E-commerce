@@ -18,8 +18,8 @@ module.exports = (sequelize) => {
 			allowNull: false,
 		},
 		role: {
-			type: DataTypes.ENUM('client', 'admin', 'Guest'),
-			defaultValue: 'Guest',
+			type: DataTypes.ENUM('client', 'admin', 'guest'),
+			defaultValue: 'guest',
 			allowNull: false,
 		},
 	});
@@ -31,8 +31,8 @@ module.exports = (sequelize) => {
 		return bcrypt.hashSync(password, salt);
 	};
 	User.comparePassword = function (password, userPassword) {
-		console.log(userPassword);
-		console.log(password);
+		// console.log(userPassword);
+		// console.log(password);
 		return bcrypt.compareSync(password, userPassword);
 	};
 };

@@ -1,41 +1,25 @@
-import React from 'react';
-import { useHistory } from 'react-router-dom';
-
-// Logo
-import logo from '../../multimedia/logo.png';
-
-// Bootstrap
-import { Navbar, Nav, Container, Col, NavDropdown } from 'react-bootstrap';
-
-// CSS
-import s from '../../styles/Navbar.module.css';
-
+import { faBars, faShoppingCart as shopCart, faTimes } from '@fortawesome/free-solid-svg-icons';
 // Font Awesome (iconos)
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser as userLogin, faSignInAlt as signIn, faShoppingCart as shopCart, faTimes, faBars } from '@fortawesome/free-solid-svg-icons';
-import SearchBar from '../SearchBar/SearchBar';
-import UserList from '../UserList/UserList.js';
-import { connect } from 'react-redux';
-
-// React -Routes
-import { Link } from 'react-router-dom';
 //Cookie
 import Cookie from 'js-cookie';
-
+import React from 'react';
+// Bootstrap
+import { Col, Container, Nav, Navbar } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+// Logo
+import logo from '../../multimedia/logo.png';
 //Actions
 import { logout } from '../../store/actions/loginActions';
+// CSS
+import s from '../../styles/Navbar.module.css';
+import SearchBar from '../SearchBar/SearchBar';
+import UserList from '../UserList/UserList.js';
 
 // <--------------------------- IMPORTS --------------------------->
 
 function Navegacion(props) {
-	// console.log('State User Loaded');
-	// console.log(props.userLogin);
-	// console.log(props.cartP[0]);
-	console.log(props);
-
-	// <--------------------------- CONSTANTES --------------------------->
-	const history = useHistory();
-
 	// <--------------------------- FUNCIONES --------------------------->
 	const handlerClick = () => {
 		window.location = '/';
@@ -52,7 +36,7 @@ function Navegacion(props) {
 		// console.log(botonHamburguesa);
 		botonHamburguesa.classList.toggle('d-none');
 		botonHamburguesa2.classList.toggle('d-none');
-		console.log(document.getElementById('navbarCompleto'));
+		// console.log(document.getElementById('navbarCompleto'));
 	};
 
 	const initialStateHamburgerIcons = function () {
@@ -64,8 +48,6 @@ function Navegacion(props) {
 	};
 	// <--------------------------- FUNCIONES --------------------------->
 
-	// console.log('********props nav ***************');
-	// console.log(props.cartP[0]);
 	// / <--------------------------- RENDER --------------------------->
 
 	return (
@@ -74,7 +56,7 @@ function Navegacion(props) {
 				<Container className={`${s.containerPrincipal} ${s.bordeVerde} d-flex m-0 p-0`}>
 					<Navbar.Brand as={Link} to='/' className={`${s.bordeVerde} mx-0 ml-1`}>
 						{/* Logo */}
-						<img className={`${s.logo}`} src={logo}></img>
+						<img className={`${s.logo}`} src={logo} alt='logo'></img>
 					</Navbar.Brand>
 					<Navbar.Toggle aria-controls='responsive-navbar-nav' className={`order-2`}>
 						<FontAwesomeIcon id={`hamburgerButton`} className={`${s.bordeVerde} flex-fill ${s.plusIcon}`} icon={faBars} size={'1x'} onClick={handleHamburgerIcon} />
@@ -174,14 +156,7 @@ function Navegacion(props) {
 										) : (
 											<div></div>
 										)}
-										<UserList 
-										linksU={props.linksU}
-										linksA={props.linksA}
-										showSearchbar={props.showSearchbar} 
-										userLogin={props.userLogin} 
-										handlerClick={handlerClick}>
-
-										</UserList>
+										<UserList linksU={props.linksU} linksA={props.linksA} showSearchbar={props.showSearchbar} userLogin={props.userLogin} handlerClick={handlerClick}></UserList>
 										{!!props.showSearchbar && (
 											<div className={s.contCart}>
 												<Link to='/users/cart'>
@@ -195,8 +170,6 @@ function Navegacion(props) {
 							</Col>
 						</div>
 					)}
-					
-					
 
 					{/* Mio */}
 					{/* Iconos de carrito y login */}

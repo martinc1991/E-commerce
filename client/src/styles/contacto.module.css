@@ -1,56 +1,53 @@
 :root {
-	--azul: #1f2333;
-	--celeste: #3b8ea5;
+	--azul: #243363;
+	--celeste: #4cced8;
 	--blanco: #edf7f6;
 	--naranja: #f19953;
 }
 
-
-.form{
-  max-width:  50%;
+.form {
+	max-width: 50%;
 	max-height: 40%;
 	height: 40px;
-  margin: 0;
-  padding:  100px 0 0;
+	margin: 0;
+	padding: 100px 0 0;
 }
-
 
 .resposive {
-  width: 45%;
-  height: 40%;
-  padding-bottom: 56.25%;
-  position: relative;
+	width: 45%;
+	height: 40%;
+	padding-bottom: 56.25%;
+	position: relative;
 }
 
-.main-content iframe{
-  height: 500px;
-  width: 440px;
+.main-content iframe {
+	height: 500px;
+	width: 440px;
 }
-
 
 hr {
-    border-top: 1px solid #007bff;
-    width:70%;
+	border-top: 1px solid #007bff;
+	width: 70%;
 }
 
-a {color: #000;}
-
-
-.card{
-    background-color: #FFFFFF;
-    padding:0;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    border-radius:4px;
-    box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.3);
+a {
+	color: #000;
 }
 
-
-.card:hover{
-    box-shadow: 0 16px 24px 2px rgba(0,0,0,0.14), 0 6px 30px 5px rgba(0,0,0,0.12), 0 8px 10px -5px rgba(0,0,0,0.3);
-    color:black;
+.card {
+	background-color: #ffffff;
+	padding: 0;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
 }
 
-address{
-  margin-bottom: 0px;
+.card:hover {
+	box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.3);
+	color: black;
+}
+
+address {
+	margin-bottom: 0px;
 }

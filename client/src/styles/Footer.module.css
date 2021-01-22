@@ -1,9 +1,9 @@
 /* Import de fonts */
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
 
 :root {
-	--azul: #1f2333;
-	--celeste: #3b8ea5;
+	--azul: #243363;
+	--celeste: #4cced8;
 	--blanco: #edf7f6;
 	--naranja: #f19953;
 	--gris: #c8c3c0;
@@ -25,7 +25,7 @@
 /* Bordes */
 
 p {
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Source Sans Pro', sans-serif;
 }
 
 .footer {

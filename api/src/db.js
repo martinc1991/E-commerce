@@ -2,11 +2,11 @@ require('dotenv').config();
 const { Sequelize } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
-const bcrypt = require('bcrypt');
+// const bcrypt = require('bcrypt');
 const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
-console.log(DB_USER, DB_PASSWORD, DB_HOST);
+// console.log(DB_USER, DB_PASSWORD, DB_HOST);
 // Password Encrypting
-const crypto = require('crypto');
+// const crypto = require('crypto');
 
 const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/development`, {
 	logging: false, // set to console.log to see the raw SQL queries
@@ -33,11 +33,9 @@ sequelize.models = Object.fromEntries(capsEntries);
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
 const { Product, Categories, Order, User, Order_line, Review } = sequelize.models;
-console.log(sequelize.models);
+// console.log(sequelize.models);
 
-// Aca vendrian las relaciones
-// Product.hasMany(Reviews);
-
+// RELACIONES ENTRE LAS TABLAS
 Product.belongsToMany(Order, { through: Order_line });
 Order.belongsToMany(Product, { through: Order_line });
 
@@ -46,58 +44,14 @@ Product.hasMany(Review);
 Review.belongsTo(Product);
 
 //Review user
-
 User.hasMany(Review);
 Review.belongsTo(User);
 
-//productos y categorias
-
+// Productos y categorias
 Product.belongsToMany(Categories, { through: 'Product_Category' });
 Categories.belongsToMany(Product, { through: 'Product_Category' });
 User.hasMany(Order);
 Order.belongsTo(User);
-
-/***************************** Function of Model *****************/
-// User.generateSalt = function() {
-//     return crypto.randomBytes(16).toString('base64')
-// }
-// User.methods.encryptPassword = function(password) {
-// 	return bcrypt.hashSync(password, bcrypt.genSaltSync(10))
-// }
-// User.methods.comparePassword = function(password){
-// 	return bcrypt.compareSync(password, this.password);
-// }
-
-// User.prototype.correctPassword = function(enteredPassword) {
-//     return User.encryptPassword(enteredPassword, this.salt()) === this.password()
-// }
-
-// <----------------------------- Password Encrypting ----------------------------->
-// Funciones auxiliares para la encriptacion
-// User.generateSalt = function () {
-// 	return crypto.randomBytes(16).toString('base64');
-// };
-// User.encryptPassword = function (plainText, salt) {
-// 	return crypto.createHash('RSA-SHA256').update(plainText).update(salt).digest('hex');
-// };
-
-// // Esta funcion se utiliza para corroborar si la contraseña que llega es igual a la almacenada en la base de datos a traves de la encriptacion
-// User.prototype.correctPassword = function (enteredPassword) {
-// 	return User.encryptPassword(enteredPassword, this.salt()) === this.password();
-// };
-
-// // Esta funcion es la que encripta el dato de la contraseña utilizando los hooks de mas abajo
-// const setSaltAndPassword = (user) => {
-// 	if (user.changed('password')) {
-// 		user.salt = User.generateSalt();
-// 		user.password = User.encryptPassword(user.password(), user.salt());
-// 	}
-// };
-
-// // Hooks que se utilizan para encriptar el valor ingresado de contraseña antes de crearse por primera vez y cada vez que se actualiza
-// User.beforeCreate(setSaltAndPassword);
-// User.beforeUpdate(setSaltAndPassword);
-// <----------------------------- Password Encrypting ----------------------------->
 
 module.exports = {
 	...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');

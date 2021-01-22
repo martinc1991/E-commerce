@@ -1,5 +1,4 @@
-import { ADD_CATEGORY, GET_CATEGORIES, DELETE_CATEGORY, MODIFY_CATEGORY, ERROR_MESSAGE, ADD_PRODUCT, DELETE_PRODUCT, ADD_CATEGORY_PRODUCT, REMOVE_CATEGORY_PRODUCT, GET_PRODUCTS, MODIFY_PRODUCT, GET_PRODUCTS_BY_CATEGORY, ADD_TO_CARD, REMOVE_FROM_CART, GET_ORDERS, UPDATE_FROM_CART, CREATE_USER, GET_USERS, DELETE_USER, UPDATE_USER, DELETE_ORDER, DETAIL_USER, DELETE_CART, LOGIN, LOGIN_ERROR, LOGOUT, ADD_REVIEW, CREATE_ORDER, UPDATE_ORDER_TO_CREATE, UPDATE_ORDER_TO_PROCESS, CHECKOUT_END, UPDATE_ORDER_TO_FULL, UPDATE_ORDER_TO_REJECT, UPDATE_REVIEW, DELETE_REVIEW, GET_USER_REVIEWS, GET_ORDERS_STATUS } from '../constants/constans';
-
+import { ADD_CATEGORY, GET_CATEGORIES, DELETE_CATEGORY, MODIFY_CATEGORY, ERROR_MESSAGE, ADD_PRODUCT, DELETE_PRODUCT, ADD_CATEGORY_PRODUCT, REMOVE_CATEGORY_PRODUCT, GET_PRODUCTS, MODIFY_PRODUCT, GET_PRODUCTS_BY_CATEGORY, ADD_TO_CARD, REMOVE_FROM_CART, GET_ORDERS, UPDATE_FROM_CART, CREATE_USER, GET_USERS, DELETE_USER, UPDATE_USER, DELETE_ORDER, DETAIL_USER, DELETE_CART, LOGIN, LOGIN_ERROR, LOGOUT, ADD_REVIEW, CREATE_ORDER, UPDATE_ORDER_TO_CREATE, UPDATE_ORDER_TO_PROCESS, CHECKOUT_END, UPDATE_ORDER_TO_FULL, UPDATE_ORDER_TO_REJECT, UPDATE_REVIEW, DELETE_REVIEW, GET_USER_REVIEWS, GET_ORDERS_STATUS } from '../constants/constants';
 import Cookie from 'js-cookie';
 
 const cartItems = Cookie.getJSON('cartItems') || [];
@@ -21,7 +20,7 @@ const inicialState = {
 };
 
 const ReducerCategory = (state = inicialState, action) => {
-	console.log(action);
+	// console.log(action);
 	switch (action.type) {
 		/****************************** CATEGORIES ********************************/
 		case GET_CATEGORIES:
@@ -31,16 +30,16 @@ const ReducerCategory = (state = inicialState, action) => {
 			return { ...state, categories: state.categories.concat(action.category) };
 
 		case MODIFY_CATEGORY:
-			console.log(state.categories);
-			let cat = state.categories.filter((cat) => cat.id == parseInt(action.category.id))[0];
+			// console.log(state.categories);
+			let cat = state.categories.filter((cat) => cat.id === parseInt(action.category.id))[0];
 			if (cat === undefined) return { ...state };
 			let ind = state.categories.indexOf(cat);
 
 			let categories = [...state.categories];
-			console.log(categories[ind]);
+			// console.log(categories[ind]);
 			categories[ind].name = action.category.name;
 			categories[ind].description = action.category.description;
-			console.log(categories);
+			// console.log(categories);
 			return { ...state, categories: categories };
 
 		case DELETE_CATEGORY:
@@ -59,8 +58,8 @@ const ReducerCategory = (state = inicialState, action) => {
 			return { ...state, products: [...state.products, action.products] };
 
 		case MODIFY_PRODUCT:
-			console.log(action);
-			const { sku, name, description, price, stock, image, dimentions } = action.product;
+			// console.log(action);
+			const { name, description, price, stock, image, dimentions } = action.product;
 			let productToUpdate = state.products.filter((product) => product.id === parseInt(action.product.id))[0];
 			let index = state.products.indexOf(productToUpdate);
 			let products = [...state.products];
@@ -92,23 +91,23 @@ const ReducerCategory = (state = inicialState, action) => {
 
 		/****************************** USERS *********************************** */
 		case CREATE_USER:
-			console.log('accion del reducer');
-			console.log(action);
+			// console.log('accion del reducer');
+			// console.log(action);
 			return { ...state, users: state.users.concat(action.users.data), createUserSuccess: action.createUserSuccess };
 
 		case GET_USERS:
-			console.log('reducer GET_USERS');
+			// console.log('reducer GET_USERS');
 			return { ...state, users: action.users };
 
 		case DELETE_USER:
-			console.log(action.id.data.id);
+			// console.log(action.id.data.id);
 			let newUsers = state.users.filter((user) => user.id !== action.id.data.id);
 			return { ...state, users: newUsers };
 
 		case UPDATE_USER:
-			console.log(action.payload.data);
+			// console.log(action.payload.data);
 			const { id, role } = action.payload.data;
-			console.log(id, role);
+			// console.log(id, role);
 			var userToUpdatePosition = state.users.indexOf(state.users.filter((user) => user.id === id)[0]);
 			// console.log(userToUpdatePosition);
 			var userToUpdate = state.users[userToUpdatePosition];
@@ -156,8 +155,8 @@ const ReducerCategory = (state = inicialState, action) => {
 		case GET_ORDERS:
 			return { ...state, orders: action.orders };
 		case GET_ORDERS_STATUS:
-			console.log('EL STATUS EN EL REDUCER');
-			console.log(action.orders);
+			// console.log('EL STATUS EN EL REDUCER');
+			// console.log(action.orders);
 			return { ...state, orders: action.orders };
 		case DELETE_ORDER:
 			let newOrders = state.orders.filter((order) => order.id !== action.order.id);
@@ -193,8 +192,8 @@ const ReducerCategory = (state = inicialState, action) => {
 		case GET_USER_REVIEWS:
 			return { ...state, userReviews: action.reviews };
 		case UPDATE_REVIEW:
-			console.log('REVIEWS DE USUARIO EN EL REDUCER DESPUES DE EDITAR UNA');
-			console.log(action.review);
+			// console.log('REVIEWS DE USUARIO EN EL REDUCER DESPUES DE EDITAR UNA');
+			// console.log(action.review);
 			let editedReview = action.review;
 			let newReviewsEdit = state.userReviews;
 			let editReviewIndex = newReviewsEdit.indexOf(editedReview);

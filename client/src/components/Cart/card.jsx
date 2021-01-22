@@ -1,35 +1,33 @@
-import React, { useEffect } from 'react';
-import { CreateOrder, deleteOrderCart, UpdateOrderToCreateStatus } from '../../store/actions/checkout_actions';
-import { connect } from 'react-redux';
-import { addToCart, removeFromCart, updateFromCart, deleteCart } from '../../store/actions/cart_actions';
-import { getOrders, deleteOrder } from '../../store/actions/order_actions';
-import { Link } from 'react-router-dom';
-import s from '../../styles/carrito.module.css';
-import { Table, Button } from 'react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import logo from '../../multimedia/logo.png';
-import CardVacio from '../../multimedia/carrtvacio.png';
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
-import { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Cookie from 'js-cookie';
+import React, { useEffect } from 'react';
+import { Button, Table } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import { Link, useHistory } from 'react-router-dom';
+import CardVacio from '../../multimedia/carrtvacio.png';
+import logo from '../../multimedia/logo.png';
+import { addToCart, deleteCart, removeFromCart, updateFromCart } from '../../store/actions/cart_actions';
+import { CreateOrder, UpdateOrderToCreateStatus } from '../../store/actions/checkout_actions';
+import { deleteOrder, getOrders } from '../../store/actions/order_actions';
+import s from '../../styles/carrito.module.css';
 
 const CartShop = ({ addToCartP, cartP, removeFromCartP, updateFromCartP, deleteOrderP, UpdateOrderToCreateStatusP, deleteCartP, orderCreatedP, getOrdersP, orderP, userLogin, CreateOrderP }) => {
-	const [quantity, setQuantity] = useState(0);
+	// const [quantity, setQuantity] = useState(0);
 	// const {idUser} = match.params
-	console.log(Cookie.getJSON('cartItems'));
-	console.log(orderCreatedP);
-	console.log(orderP);
+	// console.log(Cookie.getJSON('cartItems'));
+	// console.log(orderCreatedP);
+	// console.log(orderP);
 	let cartCookie = Cookie.getJSON('cartItems');
 	let cartP2 = cartP.length < 1 ? [] : cartP[0].products;
-	let orderP2 = orderCreatedP ? orderCreatedP.products : [];
+	// let orderP2 = orderCreatedP ? orderCreatedP.products : [];
 	// const  qty = location.search.split('=')[1]
 	var arrayOrderBd = orderP.filter((x) => {
-		return x.id == orderCreatedP.id;
+		return x.id === orderCreatedP.id;
 	});
-	console.log(arrayOrderBd);
+	// console.log(arrayOrderBd);
 	let obj = arrayOrderBd[0] && arrayOrderBd[0].products;
-	console.log(obj);
+	// console.log(obj);
 
 	/********** USEEFECT *********** */
 	useEffect(() => {
@@ -42,23 +40,23 @@ const CartShop = ({ addToCartP, cartP, removeFromCartP, updateFromCartP, deleteO
 		getOrdersP();
 	}, []);
 	/********** USEEFECT *********** */
-	console.log('*****ORDER******');
-	console.log(userLogin);
+	// console.log('*****ORDER******');
+	// console.log(userLogin);
 	let history = useHistory();
 
-	const createOrder = (cart, id) => {
-		if (!userLogin) {
-			history.push('/login');
-		} else {
-			//alert('Estas Logueado' + userLogin.name)
-			CreateOrderP(cart, id);
-			//deleteOrderCartP(cartP[0].id, cartP[0].status)
-			history.push('/shopping');
-			// deleteCartP()
-			//window.location = '/users/cart'
-			return;
-		}
-	};
+	// const createOrder = (cart, id) => {
+	// 	if (!userLogin) {
+	// 		history.push('/login');
+	// 	} else {
+	// 		//alert('Estas Logueado' + userLogin.name)
+	// 		CreateOrderP(cart, id);
+	// 		//deleteOrderCartP(cartP[0].id, cartP[0].status)
+	// 		history.push('/shopping');
+	// 		// deleteCartP()
+	// 		//window.location = '/users/cart'
+	// 		return;
+	// 	}
+	// };
 	const UpdateOrderToCreate = (id, cart) => {
 		//
 		let objOrder = {
@@ -69,7 +67,7 @@ const CartShop = ({ addToCartP, cartP, removeFromCartP, updateFromCartP, deleteO
 		if (!userLogin) {
 			return history.push('/login');
 		} else {
-			console.log(objOrder);
+			// console.log(objOrder);
 			history.push('/shopping');
 			UpdateOrderToCreateStatusP(id, objOrder);
 			return;
@@ -86,11 +84,11 @@ const CartShop = ({ addToCartP, cartP, removeFromCartP, updateFromCartP, deleteO
 	};
 
 	const handlerDeleteOrder = (idOrder) => {
-		deleteOrderP(idOrder)
-		Cookie.remove('cartItems')
-		window.location = '/'
-		return
-	}
+		deleteOrderP(idOrder);
+		Cookie.remove('cartItems');
+		window.location = '/';
+		return;
+	};
 
 	return (
 		<div>
@@ -229,7 +227,7 @@ function mapDispatchToProps(dispatch) {
 		getOrdersP: () => dispatch(getOrders()),
 		CreateOrderP: (cartP2, userId) => dispatch(CreateOrder(cartP2, userId)),
 		UpdateOrderToCreateStatusP: (id, objCart) => dispatch(UpdateOrderToCreateStatus(id, objCart)),
-		deleteOrderP : (id) => dispatch(deleteOrder(id))
+		deleteOrderP: (id) => dispatch(deleteOrder(id)),
 		//deleteOrderCartP : (id, status) => dispatch(deleteOrderCart(id, status))
 	};
 }

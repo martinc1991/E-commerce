@@ -1,15 +1,15 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { Table, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import s from '../../styles/detailUser.module.css';
-import { enlacesUser, enlacesUserConAdmin, enlacesUserSinAdmin, enlacesAdmin } from '../../constans/constans';
-import Navegacion from '../Navegacion/Navegacion';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React from 'react';
+import { Table } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { enlacesAdmin, enlacesUserSinAdmin } from '../../constants/constants';
+import s from '../../styles/detailUser.module.css';
+import Navegacion from '../Navegacion/Navegacion';
 
 const UserDetail = ({ userSelectedP }) => {
-	console.log(userSelectedP);
+	// console.log(userSelectedP);
 	return (
 		<div>
 			<Navegacion linksU={enlacesUserSinAdmin} linksA={enlacesAdmin} showSearchbar={false} />
@@ -22,16 +22,16 @@ const UserDetail = ({ userSelectedP }) => {
 			) : (
 				<div className={`container ${s.container}`}>
 					<div className={s.title}>
-					<h3>
-						Ordenes de {userSelectedP[0].name}: {userSelectedP[0].orders.length}
-					</h3>
+						<h3>
+							Ordenes de {userSelectedP[0].name}: {userSelectedP[0].orders.length}
+						</h3>
 					</div>
 					<div>
 						{userSelectedP.map((x, index) => {
 							return (
 								<div className={s.contOrder}>
 									<h1>Orden No.{index + 1}</h1>
-									<Table  bordered size='sm'>
+									<Table bordered size='sm'>
 										<thead className={s.tableTitle}>
 											<tr>
 												<th>Usuario</th>
@@ -53,7 +53,7 @@ const UserDetail = ({ userSelectedP }) => {
 												</th>
 											</tr>
 											<tr className={s.tableTitle}>
-												<th>Producto</th> 
+												<th>Producto</th>
 												<th>Cantidad</th>
 												<th>Precio</th>
 												<th>Total</th>

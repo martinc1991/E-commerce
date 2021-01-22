@@ -1,10 +1,10 @@
 /* Import de fonts */
-/* @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap'); */
 
 /* Colores personalizados */
 /* :root {
-	--azul: #1f2333;
-	--celeste: #3b8ea5;
+	--azul: #243363;
+	--celeste: #4CCED8;
 	--blanco: #edf7f6;
 	--naranja: #f19953;
 } */
@@ -14,7 +14,7 @@
 
 .cont {
 	text-align: center;
-	font-family: 'Open Sans', sans-serif !important;
+	font-family: 'Source Sans Pro', sans-serif !important;
 }
 
 .modalTitle {
@@ -28,10 +28,10 @@
 } */
 
 .button1 {
-	border: 1px solid #3b8ea5;
-	background-color: #3b8ea5;
+	border: 1px solid #4cced8;
+	background-color: #4cced8;
 	color: var(--azul);
-	font-family: 'Open Sans', sans-serif !important;
+	font-family: 'Source Sans Pro', sans-serif !important;
 	font-weight: bold !important;
 }
 
@@ -43,13 +43,13 @@
 
 .button2 {
 	width: 50%;
-	font-family: 'Open Sans', sans-serif !important;
+	font-family: 'Source Sans Pro', sans-serif !important;
 	background-color: transparent;
-	color: #3b8ea5;
+	color: #4cced8;
 	width: auto;
 }
 
 .button2:hover {
 	background-color: transparent;
-	color: #3b8ea5;
+	color: #4cced8;
 }

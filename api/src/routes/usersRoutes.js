@@ -11,11 +11,11 @@ const crypto = require('crypto');
 
 server.post('/', function (req, res) {
 	const { email, password, role, name } = req.body;
-	console.log(req.body);
+	// console.log(req.body);
 	let passEncrypt = User.encryptPassword(password);
 	User.create({ name, email, password: passEncrypt, role })
 		.then((user) => {
-			console.log(user);
+			// console.log(user);
 			return res.status(CREATED).json({
 				message: 'Usuario creado exitosamente!',
 				data: user,
@@ -31,10 +31,10 @@ server.post('/', function (req, res) {
 
 // GET USERS
 server.get('/', (req, res) => {
-	console.log('GET a users');
+	// console.log('GET a users');
 	User.findAll()
 		.then((users) => {
-			console.log('users: ', users);
+			// console.log('users: ', users);
 			users.sort(function (a, b) {
 				return a.id - b.id;
 			});
@@ -53,12 +53,12 @@ server.get('/', (req, res) => {
 
 // DELETE USER
 server.delete('/', (req, res) => {
-	console.log('**********');
-	console.log(req.query);
+	// console.log('**********');
+	// console.log(req.query);
 	const { id } = req.query;
 	User.findOne({ where: { id } })
 		.then((deletedUser) => {
-			console.log('voy a eliminar un usuario');
+			// console.log('voy a eliminar un usuario');
 			deletedUser.destroy();
 			return res.status(OK).json({
 				message: 'Usuario eliminado',
@@ -66,7 +66,7 @@ server.delete('/', (req, res) => {
 			});
 		})
 		.catch((err) => {
-			console.log('Se me complico la eliminada');
+			// console.log('Se me complico la eliminada');
 			console.log(err);
 			return res.status(ERROR_SERVER).json({
 				message: 'Error al eliminar usuario',
@@ -77,16 +77,16 @@ server.delete('/', (req, res) => {
 
 // MODIFICAR DATOS DEL USER
 server.put('/', (req, res) => {
-	console.log(req.body);
+	// console.log(req.body);
 	const { email, id, role, resetPassword } = req.body;
-	console.log(resetPassword);
+	// console.log(resetPassword);
 
 	if (resetPassword) {
 		var newRandomNumber = '';
 		// Se genera un numero aleatorio con crypto.randomBytes
 		newRandomNumber = crypto.randomBytes(10, (err, buf) => {
 			if (err) throw err;
-			console.log(`${buf.length} bytes of random data: ${buf.toString('hex')}`);
+			// console.log(`${buf.length} bytes of random data: ${buf.toString('hex')}`);
 			// Se asigna el numero aleatorio a la variable newRandomNumber
 			// Ademas se utiliza la funcion encryptPassword de bcrypt para la encriptacion
 			newRandomNumber = User.encryptPassword(buf.toString('hex'));
@@ -95,8 +95,8 @@ server.put('/', (req, res) => {
 
 	User.findOne({ where: { email } })
 		.then((user) => {
-			console.log('Dentro del .then');
-			console.log(newRandomNumber);
+			// console.log('Dentro del .then');
+			// console.log(newRandomNumber);
 			// Se actualizan los datos
 			// resetPassword es 'true' solo cuando se aprieta el boton de resetear password, sino es 'false'
 			if (resetPassword) {
@@ -106,7 +106,7 @@ server.put('/', (req, res) => {
 			// Se guardan los datos
 			user.save();
 			// IMPORTANTE: la contraseña aleatoria numerica que se pone mas arriba (newRandomNumber) luego se encripta y por el diseño del modelo no se muestra en queries. (en la base de datos solo se puede ver una encriptacion de la contraseña).
-			console.log(user.dataValues);
+			// console.log(user.dataValues);
 			return res.status(OK).json({
 				message: `El usuario se ha actualizado correctamente!`,
 				data: user,
@@ -123,7 +123,7 @@ server.put('/', (req, res) => {
 server.get('/:id', (req, res, next) => {
 	const { id } = req.params;
 	User.findAll({ where: { id }, include: { model: Order, include: Product } }).then((user) => {
-		console.log(user);
+		// console.log(user);
 		res
 			.json({
 				user: user,
@@ -172,14 +172,14 @@ server.get('/auth/google', passport.authenticate('google', { scope: ['profile em
 // GET /auth/google/callback
 // Use passport.authenticate() as route middleware to authenticate the request. If authentication fails, the user will be redirected back to the login page.  Otherwise, the primary route function function will be called, which, in this example, will redirect the user to the home page.
 server.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: 'http://localhost:3000/users' }), function (req, res) {
-	console.log('a ver que hay en REQ');
+	// console.log('a ver que hay en REQ');
 	// console.log(req);
 	// console.log('************');
 	// console.log(req.login);
 	// console.log('a ver que hay en REQ');
-	console.log('Estos son los datos de la respuesta en RUTAS');
-	console.log(res.req.user);
-	console.log('antes de redireccionar');
+	// console.log('Estos son los datos de la respuesta en RUTAS');
+	// console.log(res.req.user);
+	// console.log('antes de redireccionar');
 	res.redirect('http://localhost:3000/login');
 });
 

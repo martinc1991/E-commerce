@@ -1,46 +1,40 @@
 import React from 'react';
 // Bootstrap
-import { Carousel, Image } from 'react-bootstrap';
+import { Carousel } from 'react-bootstrap';
 
-// CSS
-import s from '../../styles/Slider.module.css';
-
-export default function Slider(imagenes) {
-	// Imagenes para probar el slider, desues deberiamos traerla desde otro lado
-	// if(!imagenes){
-
-	// }
+export default function Slider() {
+	// Imagenes para probar el slider, despues deberiamos traerla desde otro lado
 	var imagenes = [
 		{
-			url: 'oferta_slide_1.png',
+			url: require('../../multimedia/slider/img1.jpg'),
+			alt: 'Texto de accesibilidad',
 		},
 		{
-			url: 'oferta_slide_2.png',
+			url: require('../../multimedia/slider/img2.jpg'),
+			alt: 'Texto de accesibilidad',
 		},
 		{
-			url: '../../multimedia/slider/oferta_slide_3.png',
+			url: require('../../multimedia/slider/img3.jpg'),
+			alt: 'Texto de accesibilidad',
+		},
+		{
+			url: require('../../multimedia/slider/img4.jpg'),
+			alt: 'Texto de accesibilidad',
 		},
 	];
 
 	return (
-		<Carousel indicators={true} controls={true} style={{ zIndex: -1 }}>
-			<Carousel.Item style={{ height: '500px' }}>
-				{/* <Image src={imagenes[0].url} fluid /> */}
-				<img className='w-100' style={{ height: '100%' }} src={require('../../multimedia/slider/oferta_slide_1.png')} alt='First slide' />
-				<Carousel.Caption>{/* Si queremos poner texto en cada slide */}</Carousel.Caption>
-			</Carousel.Item>
-
-			<Carousel.Item style={{ height: '500px' }}>
-				{/* <Image className='w-100'style={{'height':"100%"}} src={imagenes[0].url} fluid /> */}
-				<img className='w-100' style={{ height: '100%' }} src={require('../../multimedia/slider/oferta_slide_2.jpg')} alt='Third slide' />
-				<Carousel.Caption>{/* Si queremos poner texto en cada slide */}</Carousel.Caption>
-			</Carousel.Item>
-
-			<Carousel.Item style={{ height: '500px' }}>
-				{/* <Image className='w-100'style={{'height':"100%"}} src={imagenes[0].url} fluid /> */}
-				<img className='w-100' style={{ height: '100%' }} src={require('../../multimedia/slider/oferta_slide_3.jpg')} alt='Third slide' />
-				<Carousel.Caption>{/* Si queremos poner texto en cada slide */}</Carousel.Caption>
-			</Carousel.Item>
+		<Carousel indicators={false} controls={false} style={{ zIndex: -1 }}>
+			{imagenes.map((img) => {
+				// console.log('url', img.url);
+				return (
+					<Carousel.Item>
+						{/* <Image src={imagenes[0].url} fluid /> */}
+						<img className='w-100' style={{ height: '100%' }} src={img.url} alt={img.alt} />
+						<Carousel.Caption>{/* Si queremos poner texto en cada slide */}</Carousel.Caption>
+					</Carousel.Item>
+				);
+			})}
 		</Carousel>
 	);
 }

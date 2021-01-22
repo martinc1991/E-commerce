@@ -1,10 +1,10 @@
 /* Import de fonts */
-/* @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap'); */
 /* 
 Colores personalizados */
 :root {
-	--azul: #1f2333;
-	--celeste: #3b8ea5;
+	--azul: #243363;
+	--celeste: #4cced8;
 	--blanco: #edf7f6;
 	--naranja: #f19953;
 }
@@ -13,15 +13,14 @@ Colores personalizados */
 	width: 100%;
 	height: 335px;
 	background-color: #edf7f6;
-	box-shadow: 0px 0px 5px 3px rgba(221,220,220,1);
+	box-shadow: 0px 0px 5px 3px rgba(221, 220, 220, 1);
 	transition: 300ms;
-	padding: 10px;	
+	padding: 10px;
 	position: relative;
 	overflow: hidden;
 	flex-basis: content;
-	
 }
-.runOut{
+.runOut {
 	background-color: #f19953 !important;
 	color: white;
 	transform: rotate(45deg);
@@ -33,7 +32,7 @@ Colores personalizados */
 	text-align: center;
 }
 
-.runOut > p{
+.runOut > p {
 	width: 90%;
 	margin: auto;
 	font-weight: bold;
@@ -49,35 +48,31 @@ Colores personalizados */
 	height: 200px;
 	background-color: rgba(59, 142, 165, 0.3);
 	border-radius: 5px;
-	margin:0 auto;
-	margin-top: 10px;	
+	margin: 0 auto;
+	margin-top: 10px;
 }
-.productCardHeadingContainer:hover{
+.productCardHeadingContainer:hover {
 	opacity: 1;
 	transition: opacity 500ms;
 }
-.productCardDetailIcon:hover{
+.productCardDetailIcon:hover {
 	color: white;
 	transform: scale(1.2);
 	transition: all ease-in-out 300ms;
-	
 }
 
-
-.productCardHeadingContainer div{
-	margin:auto;
-
+.productCardHeadingContainer div {
+	margin: auto;
 }
-.productCardDetailIcon{
-	font-size: 70px;	
+.productCardDetailIcon {
+	font-size: 70px;
 	cursor: pointer;
 	color: rgba(237, 247, 246, 0.7);
 	transition: 300ms;
 }
 
-
 .productCardHeading {
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Source Sans Pro', sans-serif;
 	color: var(--blanco);
 	font-size: 12px;
 	font-style: italic;
@@ -88,7 +83,7 @@ Colores personalizados */
 	background-color: var(--naranja);
 }
 
-.productCardShopCartIcon {	
+.productCardShopCartIcon {
 	font-size: 1em;
 	cursor: pointer;
 	color: var(--azul);
@@ -96,12 +91,10 @@ Colores personalizados */
 	margin-top: 20%;
 	margin-right: 20%;
 }
-.productCardButton2 div:nth-child(2){
+.productCardButton2 div:nth-child(2) {
 	width: 30%;
 	height: 100%;
-	
 }
-
 
 .productCardShopCartIcon:hover {
 	color: var(--celeste);
@@ -109,23 +102,22 @@ Colores personalizados */
 
 .productCardTitle {
 	height: 30px;
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Source Sans Pro', sans-serif;
 	font-size: 0.8em;
 	font-weight: bold;
 	color: var(--azul);
 }
 
 .productCardDescription {
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Source Sans Pro', sans-serif;
 	font-size: 13px;
 	color: var(--azul);
 }
-.contPI{
+.contPI {
 	display: flex;
 	width: 100%;
-	
 }
-.cont_I{
+.cont_I {
 	display: flex;
 	padding-top: 3px;
 	align-items: center;
@@ -134,25 +126,24 @@ Colores personalizados */
 	position: relative;
 }
 
-.productCardPrice {	
+.productCardPrice {
 	width: 50%;
 	/* background-color: violet; */
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Source Sans Pro', sans-serif;
 	font-weight: bold;
 	font-size: 20px;
 	color: var(--celeste);
 }
 
 .productCardButton {
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Source Sans Pro', sans-serif;
 	font-weight: bold;
 	background-color: var(--azul);
-	border: none;	
+	border: none;
 	padding: 2px;
 	margin-top: 30px;
 	width: 90%;
 	height: 30px;
-	
 }
 
 .productCardButton:hover {
@@ -163,7 +154,7 @@ Colores personalizados */
 	background-color: var(--celeste);
 }
 
-.icon{
+.icon {
 	width: 100%;
 	padding-top: 1%;
 	font-size: 1rem;
@@ -181,31 +172,28 @@ Colores personalizados */
 
 .icon .fullStarsRate .fullStars {
 	width: 94px;
-	color:#F19953;
+	color: #f19953;
 }
 
-.productCard .fixedRate{
+.productCard .fixedRate {
 	position: absolute;
 	top: 77.5%;
 	right: 13%;
 }
 
-.productCard .fixedRate h6{
+.productCard .fixedRate h6 {
 	font-size: 0.7rem;
 }
 
-.cont_prin{
+.cont_prin {
 	position: relative;
 	padding: 0px !important;
-	
-	
 }
 
-.cont_prin:hover .buttons{
+.cont_prin:hover .buttons {
 	opacity: 1;
-	
 }
-.productCardButton2{
+.productCardButton2 {
 	display: flex;
 	background-color: var(--naranja);
 	border: none;
@@ -213,7 +201,7 @@ Colores personalizados */
 	width: 100%;
 	height: 30px;
 }
-.productCardButton2 div:nth-child(1){
+.productCardButton2 div:nth-child(1) {
 	/* background-color: wheat; */
 	width: 70%;
 	height: 100%;
@@ -221,16 +209,15 @@ Colores personalizados */
 	padding-left: 5%;
 }
 
-.productCardButton2 div:nth-child(1) .h6{
+.productCardButton2 div:nth-child(1) .h6 {
 	/* background-color: powderblue; */
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Source Sans Pro', sans-serif;
 	font-weight: bold;
-	color:var(--azul);
+	color: var(--azul);
 	font-style: normal !important;
-	
 }
 
-.productRunOut{
+.productRunOut {
 	width: 100%;
 	background-color: #c2c2c2;
 	box-shadow: 1px 1px 5px black;
@@ -239,27 +226,25 @@ Colores personalizados */
 	height: 95%;
 	position: relative;
 	overflow: hidden;
-
 }
-.productCardImg{
+.productCardImg {
 	width: 100%;
 	height: 200px;
 	border-radius: 5px;
 }
-.cont_stockButon{
+.cont_stockButon {
 	/* background-color: bisque; */
 	text-align: center;
 	width: 100%;
 	height: 33px;
 }
 .productStockButton {
-	color:white;
-	font-family: 'Open Sans', sans-serif;
+	color: white;
+	font-family: 'Source Sans Pro', sans-serif;
 	font-weight: bold;
 	background-color: var(--azul);
 	border: none;
 	padding: 2px;
 	width: 60%;
 	height: 30px;
-
 }
