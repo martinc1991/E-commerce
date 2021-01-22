@@ -90,8 +90,8 @@
 }
 .button2 {
 	color: white !important;
-	background-color: #f19953 !important;
-	border: 1px solid #f19953 !important;
+	background-color: #ef9635 !important;
+	border: 1px solid #ef9635 !important;
 	font-family: 'Source Sans Pro', sans-serif !important;
 	font-weight: bold !important;
 	width: 130px !important;
@@ -102,9 +102,9 @@
 	margin-bottom: 15px;
 }
 .button2:hover {
-	color: #f19953 !important;
+	color: #ef9635 !important;
 	background-color: white !important;
-	border: 1px solid #f19953 !important;
+	border: 1px solid #ef9635 !important;
 	font-family: 'Source Sans Pro', sans-serif !important;
 	font-weight: bold !important;
 	width: 130px !important;

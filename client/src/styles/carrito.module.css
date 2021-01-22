@@ -3,7 +3,7 @@
 	--azul: #243363;
 	--celeste: #4cced8;
 	--blanco: #edf7f6;
-	--naranja: #f19953;
+	--naranja: #ef9635;
 }
 
 .contPrincipal {
@@ -182,11 +182,11 @@ h1 {
 	justify-content: center;
 }
 .button1:hover {
-	background-color: #f19953;
+	background-color: #ef9635;
 	color: white;
 }
 .button2:hover {
-	background-color: #f19953;
+	background-color: #ef9635;
 	color: white;
 }
 .button2 {

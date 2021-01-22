@@ -6,12 +6,13 @@ import { connect } from 'react-redux';
 import { enlacesAdmin, enlacesUserSinAdmin } from '../../constants/constants';
 import { AddCategorie, deleteCategory, getCategories, updCategory } from '../../store/actions/category_actions';
 import s from '../../styles/adminCategories.module.css';
+import Footer from '../Footer/Footer';
 import AddCategory from '../Modals/AddCategory';
 import Confirm from '../Modals/Confirm';
 import UpdateCategory from '../Modals/UpdateCategory';
 import Navegacion from '../Navegacion/Navegacion';
 
-const Categorys = ({ categories, getCategoryP, addCategoryP, updCategoryP, deleteCategoryP }) => {
+const Categories = ({ categories, getCategoryP, addCategoryP, updCategoryP, deleteCategoryP }) => {
 	/*********************** Local States ************************* */
 	const [data, setData] = useState([]);
 	const [form, setForm] = useState({ name: '', description: '' });
@@ -109,6 +110,7 @@ const Categorys = ({ categories, getCategoryP, addCategoryP, updCategoryP, delet
 			<UpdateCategory form={form} showUpdate={showUpdate} closeModalUpdate={closeModalUpdate} handlerChange={handlerChange} updateCategory={updateCategory} />
 			{/*************************** AVISO CONFIRMAR MODAL ****************************** */}
 			<Confirm tipo={'categories'} show={showCat} setShow={setShowCat} deleted={deleteCategoryP} selected={catSelected} />
+			<Footer></Footer>
 		</div>
 	);
 };
@@ -128,4 +130,4 @@ function mapDispatchToProps(dispatch) {
 	};
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Categorys);
+export default connect(mapStateToProps, mapDispatchToProps)(Categories);

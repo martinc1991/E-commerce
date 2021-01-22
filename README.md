@@ -1,4 +1,4 @@
-# Astra
+# Astra - E-commerce
 
 <p align='center'>
     <img src='./ReadmeAsset/logo.png' height=200 </img>
@@ -35,7 +35,7 @@ Luego de registrate, ahora ya puedes loegarte con tu cuenta y empezar a disfruta
 Luego de logearte, puedes ahora disfrutar de los servicios de Astra. Uno de ellos es ver nuestro catalago. Para eso, debes dirigirte a la pestaña CATALOGO en la parte superior, aca podras ver todos nuestros productos, podras filtrarlos por categrias o nombres.
 
 <p align='center'>
-    <img src='./ReadmeAsset/Catalogo.JPG' </img>
+    <img src='./ReadmeAsset/Catalogo.png' </img>
 </p>
  
  
@@ -104,19 +104,19 @@ Luego de esto ya puedes logearte como administrador. Con este Rol tendras acceso
 ### Home del Administrador
 
 <p align='center'>
-    <img src='./ReadmeAsset/HomeAdmin.JPG' </img>
+    <img src='./ReadmeAsset/HomeAdmin.png' </img>
 </p>
 
 ### Agregar Categorias
 
 <p align='center'>
-    <img src='./ReadmeAsset/AddCat.JPG' </img>
+    <img src='./ReadmeAsset/AddCat.png' </img>
 </p>
 
 ### Agregar Productos
 
 <p align='center'>
-    <img src='./ReadmeAsset/AddPro.JPG' </img>
+    <img src='./ReadmeAsset/AddPro.png' </img>
 </p>
 
 ## Como correr el proyecyo?
@@ -145,9 +145,9 @@ MAILGUN_DOMAIN = sandbox(seriedenumerosyletras).mailgun.org;
 
 ### Frontend
 
-- React hooks
+- React
 - Redux
-- react Bootstrap
+- React-Bootstrap
 
 ### Backend
 

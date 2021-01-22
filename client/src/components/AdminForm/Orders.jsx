@@ -13,6 +13,7 @@ import {
 	getOrders,
 } from '../../store/actions/order_actions';
 import s from '../../styles/adminOrders.module.css';
+import Footer from '../Footer/Footer';
 import Navegacion from '../Navegacion/Navegacion';
 
 // const url = 'localhost:3001';
@@ -129,6 +130,7 @@ const Orders = ({ ordersP, getOrdersP, filterOrdersP, deleteOrderP }) => {
 					</Table>
 				</div>
 			</div>
+			<Footer></Footer>
 		</div>
 	);
 };

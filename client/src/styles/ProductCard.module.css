@@ -6,7 +6,7 @@ Colores personalizados */
 	--azul: #243363;
 	--celeste: #4cced8;
 	--blanco: #edf7f6;
-	--naranja: #f19953;
+	--naranja: #ef9635;
 }
 
 .productCard {
@@ -21,7 +21,7 @@ Colores personalizados */
 	flex-basis: content;
 }
 .runOut {
-	background-color: #f19953 !important;
+	background-color: #ef9635 !important;
 	color: white;
 	transform: rotate(45deg);
 	position: absolute;
@@ -172,7 +172,7 @@ Colores personalizados */
 
 .icon .fullStarsRate .fullStars {
 	width: 94px;
-	color: #f19953;
+	color: #ef9635;
 }
 
 .productCard .fixedRate {

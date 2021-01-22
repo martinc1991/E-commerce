@@ -103,9 +103,9 @@
 	margin-bottom: 15px;
 }
 .buttonCar {
-	color: #f19953 !important;
+	color: #ef9635 !important;
 	background-color: white !important;
-	border: 1px solid #f19953 !important;
+	border: 1px solid #ef9635 !important;
 	font-family: 'Source Sans Pro', sans-serif !important;
 	font-weight: bold !important;
 	width: 130px !important;
@@ -116,8 +116,8 @@
 }
 .buttonCom {
 	color: white !important;
-	background-color: #f19953 !important;
-	border: 1px solid #f19953 !important;
+	background-color: #ef9635 !important;
+	border: 1px solid #ef9635 !important;
 	font-family: 'Source Sans Pro', sans-serif !important;
 	font-weight: bold !important;
 	width: 130px !important;
@@ -184,7 +184,7 @@
 	width: 500%;
 	font-size: 1.5em;
 	/* width: 0%; */
-	color: #f19953;
+	color: #ef9635;
 }
 .cont_cant2 {
 	display: flex;

@@ -4,13 +4,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import './App.css';
-import Category from './components/AdminForm/Categorys';
+import Category from './components/AdminForm/Categories';
 import UserDetail from './components/AdminForm/DetailUser.jsx';
 import Orders from './components/AdminForm/Orders';
 // import UserList from './components/UserList/UserList.js';
-import Product from './components/AdminForm/product';
+import Product from './components/AdminForm/Products';
 import UsersData from './components/AdminForm/UsersData';
-import WellcomeAdmin from './components/AdminForm/WellcomAdmin';
+import WellcomeAdmin from './components/AdminForm/WelcomeAdmin';
 import CartShop from './components/Cart/card'; // Redux
 import Catalogo from './components/Catalogo/index';
 import CheckoutSucess from './components/ckeckout/checkoutSucess';

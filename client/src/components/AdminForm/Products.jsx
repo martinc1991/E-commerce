@@ -7,6 +7,7 @@ import { enlacesAdmin, enlacesUserSinAdmin } from '../../constants/constants';
 import { getCategories } from '../../store/actions/category_actions';
 import { addProduct, addProductCat, dltProduct, dltProductCat, getProducts, updProduct } from '../../store/actions/product_actions';
 import s from '../../styles/adminProduct.module.css';
+import Footer from '../Footer/Footer';
 import AddCategories from '../Modals/AddCategories';
 import AddProduct from '../Modals/AddProduct';
 import AddProductCategories from '../Modals/AddProductCategories';
@@ -131,7 +132,7 @@ const Product = ({ productsP, getCategoryP, getProductP, addProductP, categories
 
 	/****************************** Render ********************************** */
 	return (
-		<div>
+		<div style={{ margin: 0 }}>
 			<div>
 				<Navegacion linksU={enlacesUserSinAdmin} linksA={enlacesAdmin} showSearchbar={false} />
 				<div className={s.table_prin}>
@@ -216,6 +217,7 @@ const Product = ({ productsP, getCategoryP, getProductP, addProductP, categories
 			<AddCategories cat={categoriesP} editCategories={editCategories} handlerProductCat={handlerProductCat} addProductCategories={addProductCategories} setEditCategories={setEditCategories} />
 			{/*************************** AVISO CONFIRMAR MODAL ****************************** */}
 			<Confirm tipo={'products'} show={showProd} setShow={setShowProd} deleted={deleteProductP} selected={ProdSelected} />
+			<Footer></Footer>
 		</div>
 	);
 };

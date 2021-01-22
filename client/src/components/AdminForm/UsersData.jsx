@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import { enlacesAdmin, enlacesUserSinAdmin } from '../../constants/constants';
 import { deleteUser, getUserDetail, getUsers, updateUser } from '../../store/actions/userActions';
 import s from '../../styles/adminProduct.module.css';
+import Footer from '../Footer/Footer';
 import Confirm from '../Modals/Confirm';
 import Navegacion from '../Navegacion/Navegacion';
 
@@ -131,6 +132,7 @@ const UsersData = ({ usersP, successP, getUsersP, deleteUserP, updateUserP, getU
 					<Confirm tipo={'user'} show={showUser} setShow={setShowUser} deleted={deleteUserP} selected={userSelected} />
 				</div>
 			</div>
+			<Footer></Footer>
 		</div>
 	);
 };

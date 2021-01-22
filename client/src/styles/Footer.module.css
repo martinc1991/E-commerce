@@ -5,7 +5,7 @@
 	--azul: #243363;
 	--celeste: #4cced8;
 	--blanco: #edf7f6;
-	--naranja: #f19953;
+	--naranja: #ef9635;
 	--gris: #c8c3c0;
 }
 
@@ -32,6 +32,13 @@ p {
 	background-color: var(--azul);
 	color: var(--celeste);
 	box-shadow: 0px -2px 10px var(--azul);
+	min-height: 300px;
+}
+
+.footer_admin {
+	background-color: var(--naranja);
+	color: var(--celeste);
+	box-shadow: 0px -2px 10px var(--naranja);
 	min-height: 300px;
 }
 
